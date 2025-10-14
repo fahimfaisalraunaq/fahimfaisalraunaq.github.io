@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fahim Faisal Raunaq — Portfolio</title>
-  <meta name="description" content="Portfolio of Fahim Faisal Raunaq — data-driven safety & decision analytics in socio-technical systems (IE/OR, ML, optimization, human–technology systems)." />
+  <title>Fahim Faisal Raunaq — Academic Portfolio</title>
+  <meta name="description" content="Fahim Faisal Raunaq — Industrial & Production Engineering (IE/OR). Research focus: data‑driven safety, decision analytics, ML/optimization, human–technology systems, supply‑chain & operations analytics." />
   <link rel="canonical" href="https://fahimfaisalraunaq.github.io/" />
   <link rel="preload" as="image" href="assets/profile.jpg" />
-  <meta property="og:title" content="Fahim Faisal Raunaq — Portfolio" />
-  <meta property="og:description" content="Data-driven safety & decision analytics in socio-technical systems (IE/OR, ML, optimization)." />
+  <meta property="og:title" content="Fahim Faisal Raunaq — Academic Portfolio" />
+  <meta property="og:description" content="Data‑driven safety & decision analytics (IE/OR, ML/optimization, human–technology systems)." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://fahimfaisalraunaq.github.io/" />
   <meta name="twitter:card" content="summary" />
@@ -19,25 +19,38 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
   <link rel="shortcut icon" href="assets/favicon.ico" />
   <style>
-    :root { --bg:#ffffff; --panel:#f6f7f9; --text:#0f172a; --muted:#334155; --link:#2563eb; --accent:#111827; --chip:#e2e8f0; --ring:rgba(37,99,235,.25); }
+    :root { --bg:#ffffff; --panel:#f6f7f9; --text:#0f172a; --muted:#334155; --link:#2563eb; --accent:#111827; --chip:#e2e8f0; --ring:rgba(37,99,235,.25); --ok:#065f46; }
     @media (prefers-color-scheme: dark) { :root { --bg:#0b0f1a; --panel:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --link:#60a5fa; --accent:#1f2937; --chip:#1e293b; --ring:rgba(96,165,250,.25); } }
     html{scroll-behavior:smooth}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);line-height:1.6}
     a{color:var(--link)} a:hover{text-decoration:underline}
     .container{max-width:1200px;margin:0 auto;padding:0 1.25rem}
 
-    header.site{position:sticky;top:0;z-index:50;background:var(--bg);background:color-mix(in srgb, var(--bg) 90%, transparent);border-bottom:1px solid var(--accent)}
+    /* Header & Nav */
+    header.site{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 92%, transparent);border-bottom:1px solid var(--accent);backdrop-filter:saturate(1.1) blur(6px)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
     .brand{font-weight:800;letter-spacing:.2px;font-size:clamp(1.1rem,2.5vw,1.3rem);text-decoration:none;color:inherit}
-    nav a{color:var(--muted);text-decoration:none;font-weight:600;margin-left:1rem;padding:.5rem .25rem}
-    nav a:hover,nav a:focus{color:var(--link);outline:none}
+    nav.primary{display:flex;align-items:center;gap:.25rem}
+    nav.primary a{color:var(--muted);text-decoration:none;font-weight:600;margin-left:1rem;padding:.5rem .25rem;border-radius:.4rem}
+    nav.primary a:hover,nav.primary a:focus{color:var(--link);outline:none}
+    nav.primary a.active{color:var(--link);box-shadow: inset 0 -2px var(--link)}
 
-    .hero{padding:3rem 0 1.75rem}
+    /* Mobile menu */
+    .menu-btn{display:none;border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.6rem;padding:.45rem .6rem}
+    .menu-btn[aria-expanded="true"]{box-shadow:0 0 0 .2rem var(--ring)}
+    @media (max-width:860px){
+      nav.primary{position:absolute;top:60px;right:1.25rem;left:1.25rem;background:var(--panel);border:1px solid var(--accent);border-radius:.8rem;padding:.6rem;display:none;flex-direction:column;gap:.25rem}
+      nav.primary.open{display:flex}
+      .menu-btn{display:inline-flex}
+    }
+
+    /* Hero */
+    .hero{padding:2.75rem 0 1.5rem}
     .hero-grid{display:grid;grid-template-columns:1fr;gap:1.6rem;align-items:center}
     @media (min-width:900px){.hero-grid{grid-template-columns:1.2fr .8fr;gap:2rem}}
     .hero .name{font-size:clamp(2rem,6vw,2.8rem);line-height:1.2;margin:0 0 .25rem}
-    .hero .headline{font-size:clamp(1.2rem,4.2vw,1.8rem);margin:.15rem 0 .6rem;color:var(--text)}
-    .lead{color:var(--muted);max-width:65ch;margin:0 0 .5rem}
+    .hero .headline{font-size:clamp(1.2rem,4.2vw,1.6rem);margin:.15rem 0 .6rem;color:var(--text)}
+    .lead{color:var(--muted);max-width:62ch;margin:0 0 .5rem}
     .nowline{margin:.2rem 0 .6rem}
     .cta{display:inline-flex;gap:.65rem;align-items:center;padding:.6rem .9rem;border:1px solid var(--accent);border-radius:.75rem;text-decoration:none;color:var(--text);font-weight:700}
     .cta:hover{box-shadow:0 0 0 .2rem var(--ring)}
@@ -46,6 +59,7 @@
     .avatar{width:180px;height:180px;border-radius:9999px;object-fit:cover;border:2px solid var(--accent);box-shadow:0 0 0 .2rem var(--ring)}
     @media (min-width:900px){.avatar{width:200px;height:200px}}
 
+    /* Sections & Cards */
     .section{padding:1.25rem 0;scroll-margin-top:5.5rem}
     .section h2{font-size:clamp(1.3rem,3vw,1.6rem);margin:0 0 .8rem}
     .row{display:grid;grid-template-columns:1fr;gap:.9rem}
@@ -65,45 +79,56 @@
     .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;color:var(--muted)}
     .muted{color:var(--muted)}
     .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+    .nowrap{white-space:nowrap}
+
+    /* Publications */
     .pub-filter{display:flex;gap:.5rem;margin:.5rem 0 1rem;flex-wrap:wrap}
     .pub-filter button{padding:.4rem .6rem;border:1px solid var(--accent);background:var(--bg);color:var(--text);border-radius:.55rem;cursor:pointer}
     .pub-filter button[aria-pressed="true"]{background:var(--chip);font-weight:700}
     .pub{border-left:3px solid var(--accent);padding-left:.75rem}
+    .pub .summary{display:block;color:var(--muted);font-size:.95rem;margin-top:.2rem}
+
+    /* Embeds */
     .embed{position:relative;width:100%;aspect-ratio:16/9;border-radius:.75rem;overflow:hidden;border:1px solid var(--accent);background:#000}
     .embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
-    /* Lite YouTube embed */
+    /* Lite YouTube */
     .yt-lite{position:relative;width:100%;aspect-ratio:16/9;border-radius:.75rem;overflow:hidden;border:1px solid var(--accent);background:#000 center/cover no-repeat;cursor:pointer}
     .yt-lite::before{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.35), rgba(0,0,0,.05))}
     .yt-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:.6rem .9rem;border-radius:9999px;background:rgba(255,255,255,.9);font-weight:800}
     @media (prefers-color-scheme: dark){.yt-play{background:rgba(0,0,0,.7);color:#fff}}
 
-    /* Accessibility: focus + skip link */
-    a:focus-visible,button:focus-visible,.cta:focus-visible,.pub-filter button:focus-visible,.brand:focus-visible,.yt-lite:focus-visible{
+    /* A11y: focus + skip link */
+    a:focus-visible,button:focus-visible,.cta:focus-visible,.pub-filter button:focus-visible,.brand:focus-visible,.yt-lite:focus-visible,.menu-btn:focus-visible{
       outline:2px solid var(--link);outline-offset:3px;border-radius:.5rem;box-shadow: inset 0 -2px var(--link)
     }
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
     .sr-only:focus{position:static;width:auto;height:auto;margin:.5rem;clip:auto;white-space:normal;padding:.4rem .6rem;background:var(--panel);border:1px solid var(--accent);border-radius:.5rem}
 
-    /* Motion preferences */
+    /* Motion prefs */
     .reveal{opacity:0;transform:translateY(12px)}
     .reveal.visible{opacity:1;transform:none;transition:opacity .4s ease, transform .4s ease}
     @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .reveal,.reveal.visible{opacity:1;transform:none;transition:none} }
 
-    /* Mobile optimizations */
+    /* Back to top */
+    .to-top{position:fixed;right:1rem;bottom:1rem;opacity:0;pointer-events:none;transform:translateY(10px);transition:all .2s ease}
+    .to-top.show{opacity:1;pointer-events:auto;transform:none}
+    .to-top button{border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:9999px;padding:.6rem .8rem}
+
+    /* Mobile tweaks */
     @media (max-width:700px){
       .container{padding:0 .9rem}
       .hero{padding:2rem 0 1.25rem}
       .avatar{width:140px;height:140px}
-      nav{overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
-      nav a{margin-left:.75rem}
       .cta{padding:.5rem .75rem}
       .chips{gap:.4rem}
     }
+
+    /* Print */
     @media print{
       *{background:transparent !important;box-shadow:none !important}
       body{color:#000}
-      header.site, .pub-filter, .yt-lite, .embed, .cta-row, nav{display:none !important}
+      header.site, .pub-filter, .yt-lite, .embed, .cta-row, nav.primary, .to-top{display:none !important}
       a[href]::after{content:" (" attr(href) ")";font-size:.9em}
       .container{max-width:none;padding:0 12mm}
       .section{padding:8mm 0;page-break-inside:avoid}
@@ -120,8 +145,13 @@
     "email":"mailto:fahimfaisalraunaq@gmail.com",
     "telephone":"+8801839335640",
     "image":"https://fahimfaisalraunaq.github.io/assets/profile.jpg",
-    "sameAs":["https://www.linkedin.com/in/fahimfaisalraunaq"],
-    "url":"https://fahimfaisalraunaq.github.io/"
+    "url":"https://fahimfaisalraunaq.github.io/",
+    "affiliation": {"@type":"Organization","name":"Bangladesh University of Engineering and Technology (BUET)"},
+    "sameAs":[
+      "https://www.linkedin.com/in/fahimfaisalraunaq"
+      /* , "https://scholar.google.com/citations?user=REPLACE_ME" */
+      /* , "https://orcid.org/REPLACE_ME" */
+    ]
   }
   </script>
 </head>
@@ -129,14 +159,16 @@
   <a class="sr-only" href="#main">Skip to content</a>
   <header class="site">
     <div class="container nav">
-      <a class="brand" href="/">Fahim Faisal Raunaq</a>
-      <nav aria-label="Primary">
+      <a class="brand" href="#top">Fahim Faisal Raunaq</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">Menu</button>
+      <nav class="primary" id="primaryNav" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
+        <a href="#awards">Awards</a>
         <a href="#service">Service</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -144,19 +176,22 @@
   </header>
 
   <main id="main" class="container">
-    <section class="hero">
+    <section class="hero" id="top">
       <div class="hero-grid">
         <div>
           <h1 class="name">Fahim Faisal Raunaq</h1>
-          <h2 class="headline">Safety & Decision Analytics for Socio-technical Systems</h2>
-          <p class="lead">I use IE/OR and ML to turn messy operations data into dependable decisions.</p>
+          <h2 class="headline">Safety & Decision Analytics for Socio‑technical Systems</h2>
+          <p class="lead">I turn messy operations data into dependable, safety‑critical decisions using IE/OR + ML.</p>
           <p class="muted nowline">Dhaka, Bangladesh · Open to research collaborations and Ph.D. opportunities.</p>
 
-          <div class="cta-row">
+          <div class="cta-row" role="group" aria-label="Primary actions">
             <a class="cta" href="assets/Fahim_Faisal_Raunaq_CV.pdf" download><span aria-hidden>⬇</span> Download CV (PDF)</a>
             <a class="cta" href="mailto:fahimfaisalraunaq@gmail.com"><span aria-hidden>✉</span> Email</a>
             <a class="cta" href="https://wa.me/8801839335640" target="_blank" rel="noopener"><span aria-hidden>💬</span> WhatsApp</a>
             <a class="cta" href="https://www.linkedin.com/in/fahimfaisalraunaq" target="_blank" rel="noopener"><span aria-hidden>in</span> LinkedIn</a>
+            <!-- Optional: Add your actual links then remove title attribute notes -->
+            <a class="cta" href="#" target="_blank" rel="noopener" title="Replace # with your Google Scholar URL"><span aria-hidden>G</span> Google Scholar</a>
+            <a class="cta" href="#" target="_blank" rel="noopener" title="Replace # with your ORCID URL"><span aria-hidden>◧</span> ORCID</a>
           </div>
         </div>
         <div class="avatar-wrap">
@@ -174,15 +209,15 @@
       <div class="row">
         <div class="card">
           <h3>About</h3>
-          <p>I design data-driven safety and decision systems for socio-technical operations—manufacturing, supply chains, and human–technology work. My approach blends operations research and machine learning with human factors to model risk, optimize policies, and turn noisy operational data into dependable decisions.</p>
+          <p>I design data‑driven safety and decision systems for socio‑technical operations—manufacturing, supply chains, and human–technology work. My approach blends operations research and machine learning with human factors to model risk, optimize policies, and turn noisy operational data into dependable decisions. My long‑term goal is to improve safety outcomes in developing economies by combining quantitative analytics with practical, human‑centered design.</p>
         </div>
         <div class="card">
           <h3>Education</h3>
           <ul class="list edu">
-            <li><strong>M.Sc., Industrial & Production Engineering</strong> — BUET <span class="muted nowrap">(Jun 2023–Present)</span></li>
-            <li><strong>B.Sc., Industrial & Production Engineering</strong> — BUET <span class="muted nowrap">(Feb 2017–May 2023)</span></li>
-            <li><strong>H.S.C.</strong> — Dhaka College <span class="muted nowrap">(Jan 2015–Dec 2016)</span></li>
-            <li><strong>S.S.C.</strong> — Motijheel Govt. Boys' High School <span class="muted nowrap">(Jan 2007–Dec 2014)</span></li>
+            <li><strong>M.Sc., Industrial & Production Engineering</strong> — Bangladesh University of Engineering and Technology (<strong>BUET</strong>) <span class="muted nowrap">(Jun 2023–Present)</span></li>
+            <li><strong>B.Sc., Industrial & Production Engineering</strong> — Bangladesh University of Engineering and Technology (<strong>BUET</strong>) <span class="muted nowrap">(Feb 2017–May 2023)</span></li>
+            <li><strong>Higher Secondary Certificate (H.S.C.)</strong> — Dhaka College <span class="muted nowrap">(Jan 2015–Dec 2016)</span></li>
+            <li><strong>Secondary School Certificate (S.S.C.)</strong> — Motijheel Govt. Boys' High School <span class="muted nowrap">(Jan 2007–Dec 2014)</span></li>
           </ul>
         </div>
       </div>
@@ -190,12 +225,12 @@
 
     <section id="research" class="section">
       <h2>Research Focus</h2>
-      <p class="muted">Human–technology interfaces • Safety science • IE/OR • ML/Optimization • Supply-chain & operations analytics</p>
+      <p class="muted">Human–technology interfaces • Safety science • IE/OR • ML/Optimization • Supply‑chain & operations analytics</p>
       <div class="chips" aria-label="Core methods">
         <span class="chip">Decision Analysis</span>
         <span class="chip">Optimization</span>
         <span class="chip">Operations Research</span>
-        <span class="chip">Supply-Chain & Ops Analytics</span>
+        <span class="chip">Supply‑Chain & Ops Analytics</span>
         <span class="chip">Machine Learning</span>
         <span class="chip">Data Science</span>
       </div>
@@ -203,11 +238,11 @@
         <div class="card">
           <h3>M.Sc. Thesis — <span class="muted">in progress</span></h3>
           <div class="meta">Supervisor: Dr. Nafisa Mahbub</div>
-          <p><em>Machine Translation vs. Language-Specific Models: A Benchmarking Framework for Low-Resource Sentiment Analysis</em></p>
+          <p><em>Machine Translation vs. Language‑Specific Models: A Benchmarking Framework for Low‑Resource Sentiment Analysis</em></p>
           <ul class="list">
-            <li>Linked MT quality (BLEU/chrF/SAM/COMET) to downstream macro-F1/accuracy on a gold-standard Bangla dataset.</li>
-            <li>Stress-tested English pipelines under MT noise; audited failure modes on phenomenon-tagged slices.</li>
-            <li>Ran translation-free baselines; validated “comment-as-a-unit” with ablations and McNemar tests.</li>
+            <li>Linked MT quality (BLEU/chrF/SacreBLEU/COMET) to downstream macro‑F1/accuracy on a gold‑standard Bangla dataset.</li>
+            <li>Stress‑tested English pipelines under MT noise; audited failure modes on phenomenon‑tagged slices.</li>
+            <li>Ran translation‑free baselines; validated “comment‑as‑a‑unit” with ablations and McNemar tests.</li>
           </ul>
         </div>
         <div class="card">
@@ -215,9 +250,9 @@
           <div class="meta">Supervisor: Dr. Nafisa Mahbub</div>
           <p><em>An Unsupervised Machine Learning Approach to Unfold Online Toxicity Pattern: A Look at the Bangladeshi Community</em></p>
           <ul class="list">
-            <li>Built an ~18k-comment Bangla toxicity corpus with context.</li>
-            <li>Used K-Prototypes on mixed features to reveal a “slow-burn” toxicity cluster and Dhaka-centered, male-skewed participation.</li>
-            <li>Contrasted human-coded signals with BanglaBERT, isolating social response vs. model bias.</li>
+            <li>Built an ~18k‑comment Bangla toxicity corpus with context.</li>
+            <li>Used K‑Prototypes on mixed features to reveal a “slow‑burn” toxicity cluster and Dhaka‑centered, male‑skewed participation.</li>
+            <li>Contrasted human‑coded signals with BanglaBERT, isolating social response vs. model bias.</li>
           </ul>
         </div>
       </div>
@@ -234,27 +269,27 @@
       <div class="list" id="pub-list" aria-live="polite">
         <article class="pub" data-status="published">
           <div class="kicker">Published</div>
-          <p><strong>Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies.</strong> <em>Informatics and Health</em> 2, 194–209 (2025). Raunaq, F. F., Islam, S., Anam, M. Z., & Bari, A. B. M. M. DOI: <a href="https://doi.org/10.1016/j.infoh.2025.09.001" target="_blank" rel="noopener">10.1016/j.infoh.2025.09.001</a></p>
+          <p><strong>Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies.</strong> <em>Informatics and Health</em> 2, 194–209 (2025). <strong>Raunaq, F. F.</strong>, Islam, S., Anam, M. Z., & Bari, A. B. M. M. DOI: <a href="https://doi.org/10.1016/j.infoh.2025.09.001" target="_blank" rel="noopener">10.1016/j.infoh.2025.09.001</a><span class="summary">— Empirical study of adoption barriers with sustainability implications in emerging‑economy health systems.</span></p>
         </article>
         <article class="pub" data-status="under-review">
           <div class="kicker">Under review</div>
-          <p><strong>Decoding Mode-Specific Crash Dynamics in Work Zones through Machine Learning: Uncovering Spatial–Temporal Patterns for Policy-Oriented Interventions.</strong> <em>Safety Science</em>. Raunaq, F. F., Mahbub, N., Kaiyum, A., Hasanat-e-Rabbi, S., Ali, S. M.</p>
+          <p><strong>Decoding Mode‑Specific Crash Dynamics in Work Zones through Machine Learning: Uncovering Spatial–Temporal Patterns for Policy‑Oriented Interventions.</strong> <em>Safety Science</em>. <strong>Raunaq, F. F.</strong>, Mahbub, N., Kaiyum, A., Hasanat‑e‑Rabbi, S., Ali, S. M.<span class="summary">— ML analysis of work‑zone crash patterns to inform targeted safety interventions.</span></p>
         </article>
         <article class="pub" data-status="under-review">
           <div class="kicker">Under review</div>
-          <p><strong>A Data-Driven Approach to Construction Accident Prevention in Developing Countries: Insights from Bangladesh.</strong> <em>Accident Analysis and Prevention</em>. Kaiyum, A., Mahbub, N., Raunaq, F. F., Ali, S. M.</p>
+          <p><strong>A Data‑Driven Approach to Construction Accident Prevention in Developing Countries: Insights from Bangladesh.</strong> <em>Accident Analysis and Prevention</em>. Kaiyum, A., Mahbub, N., <strong>Raunaq, F. F.</strong>, Ali, S. M.<span class="summary">— Data‑centric framework for construction safety in resource‑constrained contexts.</span></p>
         </article>
         <article class="pub" data-status="under-review">
           <div class="kicker">Under review</div>
-          <p><strong>A Data-Driven Approach to Stance Detection Combining Topic Modelling and BanglaBERT: A Case Study in Social Media Rumors.</strong> <em>Language Resources and Evaluation</em>. Khan, M. R., Aziz, R. A., Karmaker, C. L., Raunaq, F. F., & Agarwal, P.</p>
+          <p><strong>A Data‑Driven Approach to Stance Detection Combining Topic Modelling and BanglaBERT: A Case Study in Social Media Rumors.</strong> <em>Language Resources and Evaluation</em>. Khan, M. R., Aziz, R. A., Karmaker, C. L., <strong>Raunaq, F. F.</strong>, & Agarwal, P.<span class="summary">— Topic‑aware stance detection with BanglaBERT on rumor datasets.</span></p>
         </article>
         <article class="pub" data-status="in-prep">
           <div class="kicker">In preparation</div>
-          <p><strong>A Gold-Standard Bengali UGC Corpus for Translation-Agnostic Sentiment Analysis.</strong> (M.Sc. Thesis). Raunaq, F. F., Mahbub, N.</p>
+          <p><strong>A Gold‑Standard Bengali UGC Corpus for Translation‑Agnostic Sentiment Analysis.</strong> (M.Sc. Thesis). <strong>Raunaq, F. F.</strong>, Mahbub, N.<span class="summary">— Dataset + benchmarking suite enabling MT‑agnostic sentiment analysis in Bangla.</span></p>
         </article>
         <article class="pub" data-status="in-prep">
           <div class="kicker">In preparation</div>
-          <p><strong>Efficient Hyperparameter Optimization of Topic Models: A Taguchi–CRITIC MCDM Framework with LDA and BERTopic.</strong> (Project). Raunaq, F. F., Aziz, R. A.</p>
+          <p><strong>Efficient Hyperparameter Optimization of Topic Models: A Taguchi–CRITIC MCDM Framework with LDA and BERTopic.</strong> (Project). <strong>Raunaq, F. F.</strong>, Aziz, R. A.<span class="summary">— Robust MCDM‑based tuning pipeline for probabilistic and embedding‑based topic models.</span></p>
         </article>
       </div>
     </section>
@@ -265,14 +300,14 @@
         <div class="card">
           <h3>Teaching & Mentorship</h3>
           <ul class="list">
-            <li><strong>Lecturer (Adjunct)</strong>, Asian University of Bangladesh — <span class="muted">Sep 2024–Jan 2025</span><br />Courses: <em>C Programming & Algorithm Design</em>. Built lectures/labs, designed assessments, emphasized clarity, reproducibility, and code quality.</li>
-            <li><strong>Coach → Senior Coach</strong>, <a href="https://x-culture.org/coaching-2020-2/" target="_blank" rel="noopener">X-Culture</a> (Remote) — <span class="muted">Spring 2020–Fall 2021</span><br />Mentored global virtual consulting teams across 40+ countries; program administration & new-coach training.</li>
+            <li><strong>Lecturer (Adjunct)</strong>, Asian University of Bangladesh — <span class="muted">Sep 2024–Jan 2025</span><br />Courses: <em>C Programming & Algorithm Design</em>. Built lectures/labs, designed assessments; emphasized clarity, reproducibility, and code quality.</li>
+            <li><strong>Coach → Senior Coach</strong>, <a href="https://x-culture.org/coaching-2020-2/" target="_blank" rel="noopener">X‑Culture</a> (Remote) — <span class="muted">Spring 2020–Fall 2021</span><br />Mentored global virtual consulting teams across 40+ countries; program administration & new‑coach training.</li>
           </ul>
         </div>
         <div class="card">
           <h3>Industry</h3>
           <ul class="list">
-            <li><strong>Sales Engineer</strong>, Blue Bay Bangladesh Ltd., Dhaka — <span class="muted">Feb 2025–Aug 2025</span><br />Analyzed material specs & supplier performance; coordinated stakeholders for on-time, compliant delivery.</li>
+            <li><strong>Sales Engineer</strong>, Blue Bay Bangladesh Ltd., Dhaka — <span class="muted">Feb 2025–Aug 2025</span><br />Analyzed material specs & supplier performance; coordinated stakeholders for on‑time, compliant delivery.</li>
             <li><strong>Product Owner</strong>, MEKANICC Software Solutions, Dhaka — <span class="muted">May 2023–Sep 2024</span><br />Led discovery & PRDs; maintained roadmaps; produced wireframes (Figma/Adobe XD); bridged developers & clients.</li>
             <li><strong>Industrial Training</strong>, Berger Paints Bangladesh Ltd., Dhaka — <span class="muted">Apr–May 2022</span><br />Mapped manufacturing flows; contributed to warehouse layout & storage; SolidWorks automation concept; QC support.</li>
           </ul>
@@ -285,22 +320,22 @@
       <div class="three-col">
         <div class="card">
           <div class="kicker">Product Design II</div>
-          <strong>Paddle-Powered Water Purifier</strong>
+          <strong>Paddle‑Powered Water Purifier</strong>
           <div class="meta">Operations · Product Design</div>
-          <p>Human-powered purifier for low-resource communities (SDG-6). Requirements capture, design-for-constraints, full CAD & BoM; QFD; lean go-to-market.</p>
+          <p>Human‑powered purifier for low‑resource communities (SDG‑6). Requirements capture, design‑for‑constraints, full CAD & BoM; QFD; lean go‑to‑market.</p>
           <div class="yt-lite" data-ytid="C02LrhTIZ44" aria-label="Play video: Paddle-Powered Water Purifier" role="button" tabindex="0" style="background-image:url('https://i.ytimg.com/vi/C02LrhTIZ44/hqdefault.jpg')"><span class="yt-play" aria-hidden="true">▶</span></div>
         </div>
         <div class="card">
           <div class="kicker">Global Virtual Team</div>
           <strong>Market Expansion Project (UNCG)</strong>
           <div class="meta">Operations</div>
-          <p>6 countries / 4 time zones. Market sizing, operations ramp-up, staged roadmap; risks & milestones for cross-border rollout.</p>
+          <p>6 countries / 4 time zones. Market sizing, operations ramp‑up, staged roadmap; risks & milestones for cross‑border rollout.</p>
         </div>
         <div class="card">
           <div class="kicker">Mechanism Design</div>
           <strong>Geneva–wheel Liquid Filling Machine</strong>
           <div class="meta">Mechanism Design · Operations</div>
-          <p>Semi-automated system using a Geneva mechanism; throughput & timing; tolerance-aware assembly.</p>
+          <p>Semi‑automated system using a Geneva mechanism; throughput & timing; tolerance‑aware assembly.</p>
         </div>
       </div>
       <div class="three-col" style="margin-top:1rem">
@@ -308,13 +343,13 @@
           <div class="kicker">Parametric CAD</div>
           <strong>F1 Race Car (Ferrari SF90)</strong>
           <div class="meta">CAD</div>
-          <p>Detailed chassis/bodywork model with multi-part assemblies; surface + solid modeling; drafting.</p>
+          <p>Detailed chassis/bodywork model with multi‑part assemblies; surface + solid modeling; drafting.</p>
         </div>
         <div class="card">
           <div class="kicker">Reverse Engineering</div>
           <strong>PlayStation 5 Enclosure</strong>
           <div class="meta">CAD</div>
-          <p>Industry-style modeling of a complex enclosure using CATIA V5; multibody surfacing; manufacturing drawings.</p>
+          <p>Industry‑style modeling of a complex enclosure using CATIA V5; multibody surfacing; manufacturing drawings.</p>
         </div>
         <div class="card">
           <div class="kicker">Practicum</div>
@@ -356,27 +391,20 @@
         <ul class="list">
           <li>ISCEA Certified Supply Chain Analyst (CSCA™)</li>
         </ul>
-        <h3 style="margin-top:.75rem">Awards & Achievements</h3>
+      </div>
+    </section>
+
+    <section id="awards" class="section">
+      <h2>Awards & Honors</h2>
+      <div class="card">
         <ul class="list">
-          <li><a href="https://www.worldbank.org/en/news/press-release/2020/01/28/better-road-safety-will-boost-economic-growth-in-bangladesh" target="_blank" rel="noopener">World Bank–United Nations Road Safety Champions’ Video Competition</a> — First Runner-up (2020)</li>
-          <li>X-Culture Best Coach Award (2020); Top 40 X-Culture students</li>
-        </ul>
-        <div class="yt-lite" data-ytid="zIDMUkLRQ1w" aria-label="Play video: World Bank–UN Road Safety Champions — First Runner-up (2020)" role="button" tabindex="0" style="background-image:url('https://i.ytimg.com/vi/zIDMUkLRQ1w/hqdefault.jpg')"><span class="yt-play" aria-hidden="true">▶</span></div>
-        <h4 class="kicker" style="margin-top:.75rem">Business Case Competitions</h4>
-        <ul class="list">
+          <li><a href="https://www.worldbank.org/en/news/press-release/2020/01/28/better-road-safety-will-boost-economic-growth-in-bangladesh" target="_blank" rel="noopener">World Bank–United Nations Road Safety Champions’ Video Competition</a> — First Runner‑up (2020)</li>
+          <li>X‑Culture Best Coach Award (2020); Top 40 X‑Culture students (2020)</li>
           <li><strong>AEMC Business Case Competition</strong> — Champion (2019)</li>
           <li><strong>KUET IPE Fest Business Case Competition</strong> — Champion (2018)</li>
-          <li><strong>MIST Robolution</strong> — 1st Runners-up (2018)</li>
+          <li><strong>MIST Robolution</strong> — 1st Runners‑up (2018)</li>
         </ul>
-      </div>
-
-      <div class="card" style="margin-top:1rem">
-        <h3>Conferences, Workshops & Sessions</h3>
-        <ul class="list">
-          <li>X-Culture Global Symposium (AIB-Southeast Annual Conference) participant (2020)</li>
-          <li>Banglalink Tiger’s Den FGD training</li>
-          <li>Host/Coordinator — “Corporate Views with Kamran Bakr” executive talk series</li>
-        </ul>
+        <div class="yt-lite" data-ytid="zIDMUkLRQ1w" aria-label="Play video: World Bank–UN Road Safety Champions — First Runner-up (2020)" role="button" tabindex="0" style="background-image:url('https://i.ytimg.com/vi/zIDMUkLRQ1w/hqdefault.jpg')"><span class="yt-play" aria-hidden="true">▶</span></div>
       </div>
     </section>
 
@@ -385,8 +413,8 @@
       <div class="card">
         <ul class="list">
           <li><strong>Campus Envoy</strong>, Edward M. Kennedy (EMK) Center<br/>Helped students navigate cultural and environmental differences through open dialogue, informed action, artistic expression, and personal &amp; professional development.</li>
-          <li><strong>Co-Chair</strong>, X-Culture Best Report Selection (2020) — judged top reports among 5,000+ MBA/business students from 140+ universities (40 countries)</li>
-          <li><strong>Event Manager</strong>, BUET Career Club — Study Tour — end-to-end logistics, safety/risk plan, budgets & vendor management</li>
+          <li><strong>Co‑Chair</strong>, X‑Culture Best Report Selection (2020) — judged top reports among 5,000+ MBA/business students from 140+ universities (40 countries)</li>
+          <li><strong>Event Manager</strong>, BUET Career Club — Study Tour — end‑to‑end logistics, safety/risk plan, budgets & vendor management</li>
           <li><strong>Vice Representative</strong>, Industrial & Production Engineering Festival, BUET — program operations & stakeholder liaison</li>
         </ul>
       </div>
@@ -408,9 +436,26 @@
     </footer>
   </main>
 
+  <div class="to-top" id="toTop"><button aria-label="Back to top">↑</button></div>
+
   <script>
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    (function(){
+      const btn = document.getElementById('menuBtn');
+      const nav = document.getElementById('primaryNav');
+      function toggle(){
+        const open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(open));
+      }
+      btn.addEventListener('click', toggle);
+      // Close on link click (mobile)
+      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{
+        if (getComputedStyle(btn).display !== 'none') { nav.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+      }));
+    })();
 
     // Publications filter + status label
     (function(){
@@ -461,6 +506,46 @@
         el.addEventListener('click',()=>activate(el));
         el.addEventListener('keydown',(e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); activate(el);} });
       });
+    })();
+
+    // Scrollspy: highlight active section in nav
+    (function(){
+      const sections = Array.from(document.querySelectorAll('main .section, .hero')).map(s=>({
+        id: s.id || 'top',
+        el: s
+      }));
+      const navLinks = Array.from(document.querySelectorAll('nav.primary a'));
+      const byId = Object.fromEntries(navLinks.map(a=>[a.getAttribute('href').replace('#','')||'top', a]));
+
+      let ticking=false;
+      function onScroll(){
+        if(ticking) return; ticking=true;
+        requestAnimationFrame(()=>{
+          const y = window.scrollY + 120; // offset for sticky header
+          let current = 'top';
+          for(const s of sections){
+            const r = s.el.getBoundingClientRect();
+            const top = r.top + window.scrollY;
+            if (y >= top) current = s.id || 'top';
+          }
+          navLinks.forEach(a=>a.classList.remove('active'));
+          const link = byId[current];
+          if (link){ link.classList.add('active'); }
+          ticking=false;
+        });
+      }
+      window.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+    })();
+
+    // Back to top visibility
+    (function(){
+      const btnWrap = document.getElementById('toTop');
+      const btn = btnWrap.querySelector('button');
+      btn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+      window.addEventListener('scroll', ()=>{
+        if (window.scrollY > 600) btnWrap.classList.add('show'); else btnWrap.classList.remove('show');
+      }, {passive:true});
     })();
   </script>
 </body>
