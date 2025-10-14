@@ -4,32 +4,30 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fahim Faisal Raunaq — Portfolio</title>
-  <meta name="description" content="Portfolio of Fahim Faisal Raunaq — data-driven safety & decision analytics in socio-technical systems (IE/OR, ML, optimization, human–technology systems)." />
+  <meta name="description" content="Portfolio of Fahim Faisal Raunaq — data‑driven safety & decision analytics in socio‑technical systems (IE/OR, ML, optimization, human–technology systems)." />
   <link rel="canonical" href="https://fahimfaisalraunaq.github.io/" />
   <link rel="preload" as="image" href="assets/profile.jpg" />
   <meta property="og:title" content="Fahim Faisal Raunaq — Portfolio" />
-  <meta property="og:description" content="Data-driven safety & decision analytics in socio-technical systems (IE/OR, ML, optimization)." />
+  <meta property="og:description" content="Data‑driven safety & decision analytics in socio‑technical systems (IE/OR, ML, optimization)." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://fahimfaisalraunaq.github.io/" />
   <meta name="twitter:card" content="summary" />
   <meta property="og:image" content="https://fahimfaisalraunaq.github.io/assets/profile.jpg" />
   <meta name="twitter:image" content="https://fahimfaisalraunaq.github.io/assets/profile.jpg" />
-
-  <!-- Favicons / Touch icon -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
   <link rel="shortcut icon" href="assets/favicon.ico" />
-
   <style>
-    :root { --bg:#ffffff; --panel:#f6f7f9; --text:#0f172a; --muted:#334155; --link:#0ea5e9; --accent:#111827; --chip:#e2e8f0; --ring:rgba(14,165,233,.35); }
-    @media (prefers-color-scheme: dark) { :root { --bg:#0b0f1a; --panel:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --link:#7dd3fc; --accent:#1f2937; --chip:#1e293b; --ring:rgba(125,211,252,.35); } }
+    :root { --bg:#ffffff; --panel:#f6f7f9; --text:#0f172a; --muted:#334155; --link:#2563eb; --accent:#111827; --chip:#e2e8f0; --ring:rgba(37,99,235,.25); }
+    @media (prefers-color-scheme: dark) { :root { --bg:#0b0f1a; --panel:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --link:#60a5fa; --accent:#1f2937; --chip:#1e293b; --ring:rgba(96,165,250,.25); } }
     html{scroll-behavior:smooth}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--link)} a:hover{text-decoration:underline}
     .container{max-width:1100px;margin:0 auto;padding:0 1.25rem}
     header.site{position:sticky;top:0;z-index:50;background:var(--bg);background:color-mix(in srgb, var(--bg) 90%, transparent);border-bottom:1px solid var(--accent)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
-    .brand{font-weight:800;letter-spacing:.2px;font-size:clamp(1.1rem,2.5vw,1.3rem)}
+    .brand{font-weight:800;letter-spacing:.2px;font-size:clamp(1.1rem,2.5vw,1.3rem);text-decoration:none;color:inherit}
     nav a{color:var(--muted);text-decoration:none;font-weight:600;margin-left:1rem}
     nav a:hover,nav a:focus{color:var(--link);outline:none}
     .hero{padding:3.5rem 0 2rem}
@@ -70,8 +68,9 @@
     .reveal{opacity:0;transform:translateY(12px)}
     .reveal.visible{opacity:1;transform:none;transition:opacity .4s ease, transform .4s ease}
     @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .reveal,.reveal.visible{opacity:1;transform:none;transition:none} }
+    .embed{position:relative;width:100%;aspect-ratio:16/9;border-radius:.75rem;overflow:hidden;border:1px solid var(--accent);background:#000}
+    .embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   </style>
-
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -91,7 +90,7 @@
   <a class="sr-only" href="#main">Skip to content</a>
   <header class="site">
     <div class="container nav">
-      <div class="brand">Fahim Faisal Raunaq</div>
+      <a class="brand" href="/">Fahim Faisal Raunaq</a>
       <nav aria-label="Primary">
         <a href="#about">About</a>
         <a href="#research">Research</a>
@@ -108,13 +107,13 @@
     <section class="hero">
       <div class="hero-grid">
         <div>
-          <h1>Data-driven Safety & Decision Analytics in Socio-technical Systems</h1>
+          <h1>Data‑driven Safety & Decision Analytics in Socio‑technical Systems</h1>
           <p class="tag">Industrial & Production Engineering • Human–Technology Systems • IE/OR • ML/Optimization</p>
           <div class="chips" aria-label="Core methods">
             <span class="chip">Decision Analysis</span>
             <span class="chip">Optimization</span>
             <span class="chip">Operations Research</span>
-            <span class="chip">Supply-Chain & Ops Analytics</span>
+            <span class="chip">Supply‑Chain & Ops Analytics</span>
             <span class="chip">Machine Learning</span>
             <span class="chip">Data Science</span>
           </div>
@@ -134,7 +133,7 @@
     <section id="about" class="section">
       <div>
         <h2>About</h2>
-        <p>I design data-driven safety and decision systems for socio-technical operations—manufacturing, supply chains, and human–technology work. My approach blends operations research and machine learning with human factors to model risk, optimize policies, and turn noisy operational data into dependable decisions. Recent work includes building a benchmarking pipeline for low-resource sentiment analysis, mentoring global teams, and translating product requirements across industry and academia. I’m preparing for PhD research on safety analytics, human-in-the-loop optimization, and operations at scale.</p>
+        <p>I design data‑driven safety and decision systems for socio‑technical operations—manufacturing, supply chains, and human–technology work. My approach blends operations research and machine learning with human factors to model risk, optimize policies, and turn noisy operational data into dependable decisions. Recent work includes building a benchmarking pipeline for low‑resource sentiment analysis, mentoring global teams, and translating product requirements across industry and academia. I’m preparing for PhD research on safety analytics, human‑in‑the‑loop optimization, and operations at scale.</p>
         <div class="card">
           <h3>Education</h3>
           <ul class="list edu">
@@ -149,16 +148,16 @@
 
     <section id="research" class="section">
       <h2>Research Focus</h2>
-      <p class="muted">Human–technology interfaces • Safety science • IE/OR • ML/Optimization • Supply-chain & operations analytics</p>
+      <p class="muted">Human–technology interfaces • Safety science • IE/OR • ML/Optimization • Supply‑chain & operations analytics</p>
       <div class="two-col">
         <div class="card">
           <h3>M.Sc. Thesis — <span class="muted">in progress</span></h3>
           <div class="meta">Supervisor: Dr. Nafisa Mahbub</div>
-          <p><em>Machine Translation vs. Language-Specific Models: A Benchmarking Framework for Low-Resource Sentiment Analysis</em></p>
+          <p><em>Machine Translation vs. Language‑Specific Models: A Benchmarking Framework for Low‑Resource Sentiment Analysis</em></p>
           <ul class="list">
-            <li>Linked MT quality (BLEU/chrF/SAM/COMET) to downstream macro-F1/accuracy on a gold-standard Bangla dataset.</li>
-            <li>Stress-tested English pipelines under MT noise using protected stopword lists and simple negation marking; audited failure modes on phenomenon-tagged slices (negation, intensifiers, idioms, honorifics).</li>
-            <li>Ran translation-free baselines (BanglaBERT, Bengali VADER); validated “comment-as-a-unit” with sentence-level ablations and McNemar tests.</li>
+            <li>Linked MT quality (BLEU/chrF/SAM/COMET) to downstream macro‑F1/accuracy on a gold‑standard Bangla dataset.</li>
+            <li>Stress‑tested English pipelines under MT noise using protected stopword lists and simple negation marking; audited failure modes on phenomenon‑tagged slices (negation, intensifiers, idioms, honorifics).</li>
+            <li>Ran translation‑free baselines (BanglaBERT, Bengali VADER); validated “comment‑as‑a‑unit” with sentence‑level ablations and McNemar tests.</li>
           </ul>
         </div>
         <div class="card">
@@ -166,9 +165,9 @@
           <div class="meta">Supervisor: Dr. Nafisa Mahbub</div>
           <p><em>An Unsupervised Machine Learning Approach to Unfold Online Toxicity Pattern: A Look at the Bangladeshi Community</em></p>
           <ul class="list">
-            <li>Built an ~18k-comment Bangla toxicity corpus with context (reactions, timestamps, gender, location).</li>
-            <li>Used K-Prototypes on mixed features to reveal a “slow-burn” toxicity cluster and Dhaka-centered, male-skewed participation.</li>
-            <li>Contrasted human-coded signals with BanglaBERT, isolating social response vs. model bias.</li>
+            <li>Built an ~18k‑comment Bangla toxicity corpus with context (reactions, timestamps, gender, location).</li>
+            <li>Used K‑Prototypes on mixed features to reveal a “slow‑burn” toxicity cluster and Dhaka‑centered, male‑skewed participation.</li>
+            <li>Contrasted human‑coded signals with BanglaBERT, isolating social response vs. model bias.</li>
           </ul>
         </div>
       </div>
@@ -189,19 +188,19 @@
         </article>
         <article class="pub" data-status="under-review">
           <div class="kicker">Under review</div>
-          <p><strong>Decoding Mode-Specific Crash Dynamics in Work Zones through Machine Learning: Uncovering Spatial–Temporal Patterns for Policy-Oriented Interventions.</strong> <em>Safety Science</em>. Raunaq, F. F., Mahbub, N., Kaiyum, A., Hasanat-e-Rabbi, S., Ali, S. M.</p>
+          <p><strong>Decoding Mode‑Specific Crash Dynamics in Work Zones through Machine Learning: Uncovering Spatial–Temporal Patterns for Policy‑Oriented Interventions.</strong> <em>Safety Science</em>. Raunaq, F. F., Mahbub, N., Kaiyum, A., Hasanat‑e‑Rabbi, S., Ali, S. M.</p>
         </article>
         <article class="pub" data-status="under-review">
           <div class="kicker">Under review</div>
-          <p><strong>A Data-Driven Approach to Construction Accident Prevention in Developing Countries: Insights from Bangladesh.</strong> <em>Accident Analysis and Prevention</em>. Kaiyum, A., Mahbub, N., Raunaq, F. F., Ali, S. M.</p>
+          <p><strong>A Data‑Driven Approach to Construction Accident Prevention in Developing Countries: Insights from Bangladesh.</strong> <em>Accident Analysis and Prevention</em>. Kaiyum, A., Mahbub, N., Raunaq, F. F., Ali, S. M.</p>
         </article>
         <article class="pub" data-status="under-review">
           <div class="kicker">Under review</div>
-          <p><strong>A Data-Driven Approach to Stance Detection Combining Topic Modelling and BanglaBERT: A Case Study in Social Media Rumors.</strong> <em>Language Resources and Evaluation</em>. Khan, M. R., Aziz, R. A., Karmaker, C. L., Raunaq, F. F., & Agarwal, P.</p>
+          <p><strong>A Data‑Driven Approach to Stance Detection Combining Topic Modelling and BanglaBERT: A Case Study in Social Media Rumors.</strong> <em>Language Resources and Evaluation</em>. Khan, M. R., Aziz, R. A., Karmaker, C. L., Raunaq, F. F., & Agarwal, P.</p>
         </article>
         <article class="pub" data-status="in-prep">
           <div class="kicker">In preparation</div>
-          <p><strong>A Gold-Standard Bengali UGC Corpus for Translation-Agnostic Sentiment Analysis.</strong> (M.Sc. Thesis). Raunaq, F. F., Mahbub, N.</p>
+          <p><strong>A Gold‑Standard Bengali UGC Corpus for Translation‑Agnostic Sentiment Analysis.</strong> (M.Sc. Thesis). Raunaq, F. F., Mahbub, N.</p>
         </article>
         <article class="pub" data-status="in-prep">
           <div class="kicker">In preparation</div>
@@ -217,13 +216,13 @@
           <h3>Teaching & Mentorship</h3>
           <ul class="list">
             <li><strong>Lecturer (Adjunct)</strong>, Asian University of Bangladesh — <span class="muted">Sep 2024–Jan 2025</span><br />Courses: <em>C Programming & Algorithm Design</em>. Built lectures/labs, designed assessments, emphasized clarity, reproducibility, and code quality.</li>
-            <li><strong>Coach → Senior Coach</strong>, X-Culture (Remote) — <span class="muted">Spring 2020–Fall 2021</span><br />Mentored global virtual consulting teams across 40+ countries; program administration & new-coach training.</li>
+            <li><strong>Coach → Senior Coach</strong>, <a href="https://x-culture.org/coaching-2020-2/" target="_blank" rel="noopener">X‑Culture</a> (Remote) — <span class="muted">Spring 2020–Fall 2021</span><br />Mentored global virtual consulting teams across 40+ countries; program administration & new‑coach training.</li>
           </ul>
         </div>
         <div class="card">
           <h3>Industry</h3>
           <ul class="list">
-            <li><strong>Sales Engineer</strong>, Blue Bay Bangladesh Ltd., Dhaka — <span class="muted">Feb 2025–Aug 2025</span><br />Analyzed material specs & supplier performance; coordinated stakeholders for on-time, compliant delivery.</li>
+            <li><strong>Sales Engineer</strong>, Blue Bay Bangladesh Ltd., Dhaka — <span class="muted">Feb 2025–Aug 2025</span><br />Analyzed material specs & supplier performance; coordinated stakeholders for on‑time, compliant delivery.</li>
             <li><strong>Product Owner</strong>, MEKANICC Software Solutions, Dhaka — <span class="muted">May 2023–Sep 2024</span><br />Led discovery & PRDs; maintained roadmaps; produced wireframes (Figma/Adobe XD); bridged developers & clients.</li>
             <li><strong>Industrial Training</strong>, Berger Paints Bangladesh Ltd., Dhaka — <span class="muted">Apr–May 2022</span><br />Mapped manufacturing flows; contributed to warehouse layout & storage; SolidWorks automation concept; QC support.</li>
           </ul>
@@ -233,45 +232,36 @@
 
     <section id="projects" class="section">
       <h2>Selected Academic Projects</h2>
-
-      <!-- Project filter -->
-      <div class="pub-filter proj-filter" role="toolbar" aria-label="Filter projects">
-        <button type="button" data-pfilter="all" aria-controls="projects-grid" aria-pressed="true">All</button>
-        <button type="button" data-pfilter="cad" aria-controls="projects-grid">CAD</button>
-        <button type="button" data-pfilter="ops" aria-controls="projects-grid">Operations</button>
-        <button type="button" data-pfilter="ml" aria-controls="projects-grid">ML</button>
-      </div>
-
-      <div class="three-col" id="projects-grid" aria-live="polite">
-        <div class="card project" data-tags="ops design">
+      <div class="three-col">
+        <div class="card">
           <div class="kicker">Product Design II</div>
-          <strong>Paddle-Powered Water Purifier</strong>
-          <p>Human-powered purifier for low-resource communities (SDG-6). Requirements capture, design-for-constraints, full CAD & BoM; QFD; lean go-to-market.</p>
+          <strong>Paddle‑Powered Water Purifier</strong>
+          <p>Human‑powered purifier for low‑resource communities (SDG‑6). Requirements capture, design‑for‑constraints, full CAD & BoM; QFD; lean go‑to‑market.</p>
+          <div class="embed"><iframe src="https://www.youtube.com/embed/C02LrhTIZ44?rel=0" title="Paddle‑Powered Water Purifier" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
         </div>
-        <div class="card project" data-tags="ops">
+        <div class="card">
           <div class="kicker">Global Virtual Team</div>
           <strong>Market Expansion Project (UNCG)</strong>
-          <p>6 countries / 4 time zones. Market sizing, operations ramp-up, staged roadmap; risks & milestones for cross-border rollout.</p>
+          <p>6 countries / 4 time zones. Market sizing, operations ramp‑up, staged roadmap; risks & milestones for cross‑border rollout.</p>
         </div>
-        <div class="card project" data-tags="ops design">
+        <div class="card">
           <div class="kicker">Mechanism Design</div>
-          <strong>Geneva-Wheel Liquid Filling Machine</strong>
-          <p>Semi-automated system using a Geneva mechanism; throughput & timing; tolerance-aware assembly.</p>
+          <strong>Geneva‑Wheel Liquid Filling Machine</strong>
+          <p>Semi‑automated system using a Geneva mechanism; throughput & timing; tolerance‑aware assembly.</p>
         </div>
       </div>
-
-      <div class="three-col" style="margin-top:1rem" aria-live="polite">
-        <div class="card project" data-tags="cad">
+      <div class="three-col" style="margin-top:1rem">
+        <div class="card">
           <div class="kicker">Parametric CAD</div>
           <strong>F1 Race Car (Ferrari SF90)</strong>
-          <p>Detailed chassis/bodywork model with multi-part assemblies; surface + solid modeling; drafting.</p>
+          <p>Detailed chassis/bodywork model with multi‑part assemblies; surface + solid modeling; drafting.</p>
         </div>
-        <div class="card project" data-tags="cad">
+        <div class="card">
           <div class="kicker">Reverse Engineering</div>
           <strong>PlayStation 5 Enclosure</strong>
-          <p>Industry-style modeling of a complex enclosure using CATIA V5; multibody surfacing; manufacturing drawings.</p>
+          <p>Industry‑style modeling of a complex enclosure using CATIA V5; multibody surfacing; manufacturing drawings.</p>
         </div>
-        <div class="card project" data-tags="ops">
+        <div class="card">
           <div class="kicker">Practicum</div>
           <strong>AutoCAD • Foundry • Welding</strong>
           <p>2D/3D drafting of mechanical parts; TIG/MIG processes; executed joints with proper setup, safety & inspection basics.</p>
@@ -309,15 +299,15 @@
           <h3>Certifications, Awards & Achievements</h3>
           <ul class="list">
             <li>ISCEA Certified Supply Chain Analyst (CSCA™)</li>
-            <li>United Nations & World Bank Road Safety Champion — 1st Runners-up (2020)</li>
-            <li>X-Culture Best Coach Award (2020); Top 40 X-Culture students</li>
-            <li>AEMC-2019 Champion; KUET IPE Fest 2018 Champion; Robolution-2018 (MIST) 1st Runners-up</li>
+            <li>United Nations & World Bank Road Safety Champion — 1st Runners‑up (2020)</li>
+            <li>X‑Culture Best Coach Award (2020); Top 40 X‑Culture students</li>
+            <li>AEMC‑2019 Champion; KUET IPE Fest 2018 Champion; Robolution‑2018 (MIST) 1st Runners‑up</li>
           </ul>
         </div>
         <div class="card">
           <h3>Conferences, Workshops & Sessions</h3>
           <ul class="list">
-            <li>X-Culture Global Symposium (AIB-Southeast Annual Conference) participant (2020)</li>
+            <li>X‑Culture Global Symposium (AIB‑Southeast Annual Conference) participant (2020)</li>
             <li>Banglalink Tiger’s Den FGD training</li>
             <li>Host/Coordinator — “Corporate Views with Kamran Bakr” executive talk series</li>
           </ul>
@@ -326,9 +316,10 @@
       <div class="card" style="margin-top:1rem">
         <h3>Service & Leadership</h3>
         <ul class="list">
-          <li>Co-Chair, X-Culture Best Report Selection (2020) — judged top reports among 5,000+ MBA/business students from 140+ universities (40 countries)</li>
-          <li>Event Manager, BUET Career Club — Study Tour — end-to-end logistics, safety/risk plan, budgets & vendor management</li>
+          <li>Co‑Chair, X‑Culture Best Report Selection (2020) — judged top reports among 5,000+ MBA/business students from 140+ universities (40 countries)</li>
+          <li>Event Manager, BUET Career Club — Study Tour — end‑to‑end logistics, safety/risk plan, budgets & vendor management</li>
           <li>Vice Representative, Industrial & Production Engineering Festival, BUET — program operations & stakeholder liaison</li>
+          <li><strong>Envoy</strong>, EMK Center — community engagement & program support</li>
         </ul>
       </div>
     </section>
@@ -368,25 +359,6 @@
       if (['published','under-review','in-prep'].includes(hash)) setFilter(hash);
     })();
 
-    // Project tags filter
-    (function(){
-      const pBtns = document.querySelectorAll('.proj-filter [data-pfilter]');
-      const cards = document.querySelectorAll('.project');
-      function setPFilter(key){
-        cards.forEach(c=>{
-          const tags=(c.getAttribute('data-tags')||'').split(/\s+/);
-          const ok = key==='all' || tags.includes(key);
-          c.style.display = ok ? '' : 'none';
-        });
-        pBtns.forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.pfilter===key)));
-        const hash = key==='all' ? '#projects' : `#projects-${key}`;
-        history.replaceState(null,'',hash);
-      }
-      pBtns.forEach(b=>b.addEventListener('click',()=>setPFilter(b.dataset.pfilter)));
-      const phash = location.hash.replace('#projects-','');
-      if(['cad','ops','ml'].includes(phash)) setPFilter(phash);
-    })();
-
     // Reveal-on-scroll (respects reduced motion)
     (function(){
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -397,15 +369,6 @@
       document.querySelectorAll('.card, .section h2, .hero .chips, .cta').forEach(el=>{
         el.classList.add('reveal'); io.observe(el);
       });
-    })();
-
-    // Lightweight analytics (privacy-friendly, no cookies). Set enabled:true after creating an account.
-    (function(){
-      const cfg = { enabled:false, goatcounter:'https://fahimfaisalraunaq.goatcounter.com/count' };
-      if(!cfg.enabled) return;
-      const s=document.createElement('script');
-      s.async=true; s.src='//gc.zgo.at/count.js'; s.dataset.goatcounter=cfg.goatcounter;
-      document.body.appendChild(s);
     })();
   </script>
 </body>
