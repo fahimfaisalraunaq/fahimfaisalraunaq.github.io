@@ -199,12 +199,8 @@
           </div>
         </div>
         <div class="avatar-wrap">
-          <picture>
-            <source srcset="assets/profile.webp 1x, assets/profile@2x.webp 2x" type="image/webp" />
-            <img src="assets/profile.jpg" srcset="assets/profile.jpg 1x, assets/profile@2x.jpg 2x"
-                 alt="Portrait of Fahim Faisal Raunaq" class="avatar" loading="lazy" decoding="async" fetchpriority="high" width="200" height="200"
-                 onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'><rect width=\'100%\' height=\'100%\' fill=\'%23e2e8f0\'/><text x=\'50%\' y=\'54%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'64\' fill=\'%23111827\'>FFR</text></svg>';" />
-          </picture>
+          <img src="assets/profile.jpg"
+                 alt="Portrait of Fahim Faisal Raunaq" class="avatar" loading="lazy" decoding="async" width="200" height="200" />
         </div>
       </div>
     </section>
@@ -214,8 +210,8 @@
       <div class="row">
         <div class="card">
           <h3>About</h3>
-          <p>I am a prospective Ph.D. researcher completing an M.Sc. in Industrial &amp; Production Engineering at BUET. I work at the intersection of IE/OR, machine learning, and safety science. I build rigorous decision‑support pipelines that turn messy, high‑volume operations data into reliable, auditable actions for high‑stakes environments. I am especially motivated by socio‑technical challenges in developing economies, where data scarcity and complex workflows demand methods that are both methodologically sound and pragmatically robust.</p>
-          <p>Recently, I have benchmarked ML models for low‑resource languages and developed policy‑oriented analytics for transportation and construction safety. I am seeking a Ph.D. setting that values clinical or industrial collaboration, reproducibility, and a rigorous approach to building engineering solutions that are both equitable and effective in practice.</p>
+          <p>I’m a prospective Ph.D. researcher finishing an M.Sc. in Industrial &amp; Production Engineering at BUET. I work across IE/OR, machine learning, and safety science to design end‑to‑end decision systems for high‑stakes operations—manufacturing, supply chains, and transportation. My emphasis is on traceability and auditability so that quantitative models can support accountable decisions in real organizations.</p>
+          <p>Current work follows two tracks: (1) low‑resource NLP for Bangla user‑generated content, benchmarking MT‑based vs. native models; and (2) policy‑driven safety analytics in transportation and construction, using spatio‑temporal and causal methods to surface actionable countermeasures. I’m seeking a Ph.D. program with strong clinical/industrial partnerships, a reproducible research culture, and opportunities to deploy methods in resource‑constrained contexts.</p>
         </div>
         <div class="card">
           <h3>Education</h3>
@@ -231,33 +227,40 @@
 
     <section id="research" class="section">
       <h2>Research Focus</h2>
-      <p class="muted">I study data‑driven safety and decision analytics in socio‑technical systems. My goal is to build trustworthy decision support for high‑stakes operations under real‑world constraints.</p>
-      <div class="two-col">
+      <p class="muted">I develop reliable decision support for safety‑critical, resource‑constrained systems.</p>
+      <div class="three-col" style="margin-top:.5rem">
         <div class="card">
-          <h3>Research Agenda</h3>
+          <h3>Safety analytics &amp; risk modeling</h3>
           <ul class="list">
-            <li>Data‑driven safety &amp; risk modeling in socio‑technical systems.</li>
-            <li>Decision support for high‑stakes operations (manufacturing, supply chain, work zones).</li>
-            <li>Robust methods for low‑resource, noisy, and imbalanced data.</li>
+            <li>Spatio‑temporal crash modeling; work‑zone &amp; construction risk.</li>
+            <li>Countermeasure evaluation and uncertainty quantification.</li>
           </ul>
         </div>
         <div class="card">
-          <h3>Domains &amp; Methods</h3>
-          <div class="kicker">Domains</div>
-          <div class="chips" style="margin-bottom:.5rem">
-            <span class="chip">Transportation &amp; Work‑Zone Safety</span>
-            <span class="chip">Construction Safety</span>
-            <span class="chip">Human–Technology Systems</span>
-            <span class="chip">Supply‑Chain &amp; Operations</span>
-          </div>
-          <div class="kicker" style="margin-top:.5rem">Methods</div>
-          <div class="chips">
-            <span class="chip">Decision Analysis</span>
-            <span class="chip">Optimization</span>
-            <span class="chip">Operations Research</span>
-            <span class="chip">Machine Learning</span>
-            <span class="chip">Data Science</span>
-          </div>
+          <h3>Decision optimization</h3>
+          <ul class="list">
+            <li>Human‑in‑the‑loop policies; interpretable OR/ML for operations.</li>
+            <li>Cost–risk trade‑offs under constraints (inventory, capacity, safety).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Low‑resource ML/NLP</h3>
+          <ul class="list">
+            <li>MT vs. native model benchmarking for Bangla UGC.</li>
+            <li>Robustness to noise/imbalance; dataset design &amp; evaluation.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1rem">
+        <div class="kicker">Methods toolbox</div>
+        <div class="chips">
+          <span class="chip">Decision analysis</span>
+          <span class="chip">Optimization</span>
+          <span class="chip">Causal inference</span>
+          <span class="chip">Spatio‑temporal modeling</span>
+          <span class="chip">Machine learning</span>
+          <span class="chip">Operations research</span>
+          <span class="chip">Data engineering</span>
         </div>
       </div>
       <h3 class="kicker" style="margin-top:1rem">Selected Work</h3>
