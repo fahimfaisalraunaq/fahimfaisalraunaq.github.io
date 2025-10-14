@@ -24,7 +24,7 @@
     html{scroll-behavior:smooth}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);line-height:1.6}
     a{color:var(--link)} a:hover{text-decoration:underline}
-    .container{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+    .container{max-width:1200px;margin:0 auto;padding:0 1.25rem}
     header.site{position:sticky;top:0;z-index:50;background:var(--bg);background:color-mix(in srgb, var(--bg) 90%, transparent);border-bottom:1px solid var(--accent)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
     .brand{font-weight:800;letter-spacing:.2px;font-size:clamp(1.1rem,2.5vw,1.3rem);text-decoration:none;color:inherit}
@@ -59,8 +59,8 @@
     .pub{border-left:3px solid var(--accent);padding-left:.75rem}
     footer{margin:2rem 0 3rem;text-align:center;color:var(--muted)}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    .hero-grid{display:grid;grid-template-columns:1fr;gap:1.2rem;align-items:center}
-    @media (min-width:900px){.hero-grid{grid-template-columns:1fr auto}}
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;align-items:center}
+    @media (min-width:900px){.hero-grid{grid-template-columns:1.2fr .8fr;gap:2rem}}
     .avatar{width:180px;height:180px;border-radius:9999px;object-fit:cover;border:2px solid var(--accent);box-shadow:0 0 0 .2rem var(--ring)}
     @media (min-width:900px){.avatar{width:220px;height:220px}}
     .avatar-wrap{display:flex;justify-content:center}
@@ -70,6 +70,23 @@
     @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .reveal,.reveal.visible{opacity:1;transform:none;transition:none} }
     .embed{position:relative;width:100%;aspect-ratio:16/9;border-radius:.75rem;overflow:hidden;border:1px solid var(--accent);background:#000}
     .embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+      /* Hero identity hierarchy */
+    .hero .name{font-size:clamp(2rem,6vw,2.8rem);line-height:1.2;margin:0 0 .25rem}
+    .hero .headline{font-size:clamp(1.2rem,4.2vw,1.8rem);margin:.15rem 0 .5rem;color:var(--text)}
+    .lead{color:var(--muted);max-width:65ch;margin:0 0 .75rem}
+    .proof{margin:.25rem 0 .75rem}
+    .cta-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.5rem}
+
+    /* Mobile optimizations */
+    @media (max-width:700px){
+      .container{padding:0 .9rem}
+      .hero{padding:2rem 0 1.25rem}
+      .avatar{width:140px;height:140px}
+      nav{overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+      nav a{margin-left:.75rem}
+      .cta{padding:.5rem .75rem}
+      .chips{gap:.4rem}
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -92,7 +109,7 @@
     <div class="container nav">
       <a class="brand" href="/">Fahim Faisal Raunaq</a>
       <nav aria-label="Primary">
-        <a href="#about">About</a>
+        <a href="#profile">Profile</a>
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
         <a href="#experience">Experience</a>
@@ -107,8 +124,10 @@
     <section class="hero">
       <div class="hero-grid">
         <div>
-          <h1>Data‑driven Safety & Decision Analytics in Socio‑technical Systems</h1>
-          <p class="tag">Industrial & Production Engineering • Human–Technology Systems • IE/OR • ML/Optimization</p>
+          <h1 class="name">Fahim Faisal Raunaq</h1>
+          <h2 class="headline">Safety & Decision Analytics for Socio‑technical Systems</h2>
+          <p class="lead">I combine industrial engineering/operations research and machine learning to turn messy operational data into dependable decisions for manufacturing and supply chains.</p>
+          
           <div class="chips" aria-label="Core methods">
             <span class="chip">Decision Analysis</span>
             <span class="chip">Optimization</span>
@@ -117,12 +136,12 @@
             <span class="chip">Machine Learning</span>
             <span class="chip">Data Science</span>
           </div>
-          <p style="margin-top:1rem">
+          <div class="cta-row">
             <a class="cta" href="assets/Fahim_Faisal_Raunaq_CV.pdf" download><span aria-hidden>⬇</span> Download CV (PDF)</a>
             <a class="cta" href="mailto:fahimfaisalraunaq@gmail.com"><span aria-hidden>✉</span> Email</a>
             <a class="cta" href="https://wa.me/8801839335640" target="_blank" rel="noopener"><span aria-hidden>💬</span> WhatsApp</a>
             <a class="cta" href="https://www.linkedin.com/in/fahimfaisalraunaq" target="_blank" rel="noopener"><span aria-hidden>in</span> LinkedIn</a>
-          </p>
+          </div>
         </div>
         <div class="avatar-wrap">
           <img src="assets/profile.jpg" alt="Portrait of Fahim Faisal Raunaq" class="avatar" loading="lazy" decoding="async" fetchpriority="high" width="220" height="220" />
@@ -130,10 +149,18 @@
       </div>
     </section>
 
-    <section id="about" class="section">
+    <section id="profile" class="section">
       <div>
-        <h2>About</h2>
+        <h2>Profile</h2>
         <p>I design data‑driven safety and decision systems for socio‑technical operations—manufacturing, supply chains, and human–technology work. My approach blends operations research and machine learning with human factors to model risk, optimize policies, and turn noisy operational data into dependable decisions. Recent work includes building a benchmarking pipeline for low‑resource sentiment analysis, mentoring global teams, and translating product requirements across industry and academia. I’m preparing for PhD research on safety analytics, human‑in‑the‑loop optimization, and operations at scale.</p>
+        <div class="card">
+          <h3>Highlights</h3>
+          <ul class="list">
+            <li>WB–UN Road Safety First Runner‑up (2020)</li>
+            <li>X‑Culture Best Coach Award (2020)</li>
+            <li>M.Sc. in Industrial & Production Engineering @ BUET (ongoing)</li>
+          </ul>
+        </div>
         <div class="card">
           <h3>Education</h3>
           <ul class="list edu">
