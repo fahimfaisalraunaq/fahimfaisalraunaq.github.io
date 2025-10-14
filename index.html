@@ -87,6 +87,22 @@
     .brand-link{text-decoration:none;color:inherit}
     .brand-link:hover{text-decoration:underline}
 
+    /* Tagline: keep single line on desktop */
+    @media (min-width:900px){ .tagline{white-space:nowrap} }
+
+    /* About layout: stack cards to avoid awkward whitespace */
+    #about .row{grid-template-columns:1fr}
+
+    /* Methods toolbox grid */
+    .toolbox-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem}
+    .toolbox-grid .tool{display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid var(--accent);background:var(--chip);border-radius:.65rem;padding:.55rem .6rem;font-weight:700;min-height:44px}
+    @media (max-width:900px){ .toolbox-grid{grid-template-columns:repeat(2,1fr);} }
+
+    /* Small helper text */
+    .small-links{margin-top:.5rem;font-size:.95rem}
+    .small-links a{text-decoration:none}
+    .small-links a:hover{text-decoration:underline}
+
     /* Publications */
     .pub-filter{display:flex;gap:.5rem;margin:.5rem 0 1rem;flex-wrap:wrap}
     .pub-filter button{padding:.4rem .6rem;border:1px solid var(--accent);background:var(--bg);color:var(--text);border-radius:.55rem;cursor:pointer}
@@ -187,7 +203,7 @@
         <div>
           <h1 class="name"><a href="/" class="brand-link" aria-label="Home — reload site">Fahim Faisal Raunaq</a></h1>
           <h2 class="headline">Safety & Decision Analytics for Socio‑technical Systems</h2>
-          <p class="lead">I turn messy operations data into dependable, safety‑critical decisions using IE/OR + ML.</p>
+          <p class="lead tagline">I turn messy operations data into dependable, safety‑critical decisions with IE/OR and ML.</p>
           <p class="muted nowline">Dhaka, Bangladesh · Open to research collaborations and Ph.D. opportunities.</p>
 
           <div class="cta-row" role="group" aria-label="Primary actions">
@@ -209,7 +225,6 @@
       <h2>About</h2>
       <div class="row">
         <div class="card">
-          <h3>About</h3>
           <p>I’m a prospective Ph.D. researcher finishing an M.Sc. in Industrial &amp; Production Engineering at BUET. I work across IE/OR, machine learning, and safety science to design end‑to‑end decision systems for high‑stakes operations—manufacturing, supply chains, and transportation. My emphasis is on traceability and auditability so that quantitative models can support accountable decisions in real organizations.</p>
           <p>Current work follows two tracks: (1) low‑resource NLP for Bangla user‑generated content, benchmarking MT‑based vs. native models; and (2) policy‑driven safety analytics in transportation and construction, using spatio‑temporal and causal methods to surface actionable countermeasures. I’m seeking a Ph.D. program with strong clinical/industrial partnerships, a reproducible research culture, and opportunities to deploy methods in resource‑constrained contexts.</p>
         </div>
@@ -252,16 +267,20 @@
         </div>
       </div>
       <div class="card" style="margin-top:1rem">
-        <div class="kicker">Methods toolbox</div>
-        <div class="chips">
-          <span class="chip">Decision analysis</span>
-          <span class="chip">Optimization</span>
-          <span class="chip">Causal inference</span>
-          <span class="chip">Spatio‑temporal modeling</span>
-          <span class="chip">Machine learning</span>
-          <span class="chip">Operations research</span>
-          <span class="chip">Data engineering</span>
+        <h3 class="kicker">Methods toolbox</h3>
+        <div class="toolbox-grid">
+          <div class="tool">Decision analysis</div>
+          <div class="tool">Optimization</div>
+          <div class="tool">Causal inference</div>
+          <div class="tool">Spatio‑temporal modeling</div>
+          <div class="tool">Machine learning</div>
+          <div class="tool">Operations research</div>
+          <div class="tool">Data engineering</div>
+          <div class="tool">Time‑series analysis</div>
+          <div class="tool">Bayesian modeling</div>
+          <div class="tool">Evaluation &amp; ablation</div>
         </div>
+      </div>
       </div>
       <h3 class="kicker" style="margin-top:1rem">Selected Work</h3>
       <div class="two-col" style="margin-top:1rem">
@@ -412,7 +431,21 @@
         </div>
         <div class="card">
           <h3>Relevant Coursework</h3>
-          <p class="muted">Calculus • Matrix & Linear Algebra • Numerical Analysis • Probability & Statistics • Operations Research • Quality Engineering • Decision Analysis • Differential Equations & Laplace • Ergonomics & Safety • Project & Environment Management • Supply Chain Management • Industrial & Business Management</p>
+          <div class="chips" style="margin-bottom:.5rem">
+            <span class="chip">Calculus</span>
+            <span class="chip">Matrix &amp; Linear Algebra</span>
+            <span class="chip">Numerical Analysis</span>
+            <span class="chip">Probability &amp; Statistics</span>
+            <span class="chip">Operations Research</span>
+            <span class="chip">Quality Engineering</span>
+            <span class="chip">Decision Analysis</span>
+            <span class="chip">Differential Equations &amp; Laplace</span>
+            <span class="chip">Ergonomics &amp; Safety</span>
+            <span class="chip">Project &amp; Environment Management</span>
+            <span class="chip">Supply Chain Management</span>
+            <span class="chip">Industrial &amp; Business Management</span>
+          </div>
+          <p class="muted small-links">See full course lists: <a href="https://ipe.buet.ac.bd/undergraduate-courses" target="_blank" rel="noopener">Undergraduate courses</a> · <a href="https://ipe.buet.ac.bd/page/msc-enggmengg-in-ipe" target="_blank" rel="noopener">M.Sc. in IPE courses</a></p>
         </div>
       </div>
 
