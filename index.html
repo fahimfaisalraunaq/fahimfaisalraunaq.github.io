@@ -20,9 +20,8 @@
   <link rel="shortcut icon" href="assets/favicon.ico" />
 
   <style>
-    :root { --bg:#0b0f1a; --panel:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --link:#60a5fa; --accent:#1f2937; --chip:#1e293b; --ring:rgba(96,165,250,.25); --ok:#16a34a; --btn:#1a2332; }
-    @media (prefers-color-scheme: light) { :root { --bg:#ffffff; --panel:#f6f7f9; --text:#0f172a; --muted:#334155; --link:#2563eb; --accent:#e5e7eb; --chip:#e2e8f0; --ring:rgba(37,99,235,.25); --btn:#fff; } }
-
+    :root { --bg:#0b0f1a; --panel:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --link:#60a5fa; --accent:#1f2937; --chip:#1e293b; --ring:rgba(96,165,250,.2); }
+    @media (prefers-color-scheme: light) { :root { --bg:#ffffff; --panel:#f6f7f9; --text:#0f172a; --muted:#334155; --link:#2563eb; --accent:#e5e7eb; --chip:#e2e8f0; --ring:rgba(37,99,235,.18); } }
     html{scroll-behavior:smooth}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);line-height:1.6}
     a{color:var(--link)} a:hover{text-decoration:underline}
@@ -52,10 +51,9 @@
     .hero .headline{font-size:clamp(1.2rem,4.2vw,1.6rem);margin:.15rem 0 .6rem;color:var(--text)}
     .lead{color:var(--muted);max-width:62ch;margin:0 0 .5rem}
     .nowline{margin:.2rem 0 .6rem}
-    .cta{display:inline-flex;gap:.6rem;align-items:center;padding:.6rem .9rem;border:1px solid var(--accent);border-radius:.75rem;text-decoration:none;color:var(--text);font-weight:700;white-space:nowrap;background:var(--btn)}
+    .cta{display:inline-flex;gap:.6rem;align-items:center;padding:.6rem .9rem;border:1px solid var(--accent);border-radius:.75rem;text-decoration:none;color:var(--text);font-weight:700;white-space:nowrap}
     .cta:hover{box-shadow:0 0 0 .2rem var(--ring)}
     .cta-row{display:flex;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
-
     .avatar-wrap{display:flex;justify-content:center}
     .avatar{width:260px;height:260px;border-radius:9999px;object-fit:cover;border:2px solid var(--accent);box-shadow:0 0 0 .2rem var(--ring)}
     @media (max-width:700px){.avatar{width:180px;height:180px}}
@@ -65,6 +63,7 @@
     .section h2{font-size:clamp(1.3rem,3vw,1.6rem);margin:0 0 .8rem}
     .row{display:grid;grid-template-columns:1fr;gap:.9rem}
     @media (min-width:900px){.row{grid-template-columns:1.4fr .6fr}}
+    .stack{display:grid;gap:.9rem}
     .two-col{display:grid;grid-template-columns:1fr;gap:1rem}
     @media (min-width:800px){.two-col{grid-template-columns:repeat(2,1fr)}}
     .three-col{display:grid;grid-template-columns:1fr;gap:1rem}
@@ -80,13 +79,11 @@
     .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;color:var(--muted)}
     .muted{color:var(--muted)}
     .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
-    .nowrap{white-space:nowrap}
 
     /* Toolbox */
     .toolbox-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem}
     .toolbox-grid .tool{display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid var(--accent);background:var(--chip);border-radius:.65rem;padding:.55rem .6rem;font-weight:700;min-height:44px;transition:transform .15s ease, box-shadow .15s ease}
-    .toolbox-grid .tool:hover,
-    .toolbox-grid .tool:focus-visible{transform:translateY(-2px);box-shadow:0 0 0 .18rem var(--ring)}
+    .toolbox-grid .tool:hover{transform:translateY(-2px);box-shadow:0 4px 14px var(--ring)}
     @media (max-width:900px){ .toolbox-grid{grid-template-columns:repeat(2,1fr);} }
 
     /* Publications */
@@ -96,8 +93,9 @@
     .pub{border-left:3px solid var(--accent);padding-left:.75rem}
     .pub .summary{display:block;color:var(--muted);font-size:.95rem;margin-top:.2rem}
     .actions{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.35rem}
-    .action{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .6rem;border:1px solid var(--accent);border-radius:.55rem;background:var(--panel);font-weight:700;text-decoration:none;cursor:pointer}
-    .action[data-variant="muted"]{opacity:.92}
+    .action{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .6rem;border:1px solid var(--accent);border-radius:.55rem;background:var(--panel);color:var(--text);font-weight:700;text-decoration:none;cursor:pointer}
+    .action:hover{box-shadow:0 0 0 .15rem var(--ring)}
+    .action.ghost{opacity:.92}
 
     /* A11y + motion prefs */
     a:focus-visible,button:focus-visible,.cta:focus-visible,.pub-filter button:focus-visible,.brand:focus-visible,.menu-btn:focus-visible,.action:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:.5rem}
@@ -199,36 +197,33 @@
     <section id="about" class="section">
       <h2>About</h2>
       <div class="row">
+        <!-- Left: narrative -->
         <div class="card">
           <p>I’m a prospective Ph.D. researcher finishing an M.Sc. in Industrial &amp; Production Engineering at BUET. I work across IE/OR, machine learning, and safety science to design end-to-end decision systems for high-stakes operations—manufacturing, supply chains, and transportation. My emphasis is on traceability and auditability so that quantitative models can support accountable decisions where safety and resources are tight.</p>
           <p>Current work follows two tracks: (1) low-resource NLP for Bangla user-generated content, benchmarking MT-based vs. native models; and (2) policy-driven safety analytics in transportation and construction, using spatio-temporal and causal methods to surface actionable countermeasures. I’m seeking a Ph.D. program with strong industrial/clinical partnerships, a reproducible research culture, and opportunities to deploy methods in resource-constrained contexts.</p>
-          <h3 class="kicker" style="margin-top:.75rem">Research agenda</h3>
-          <ul class="list">
-            <li>Causal audits for safety-critical OR/ML in transportation and construction.</li>
-            <li>Translation-agnostic Bangla NLP pipelines for noisy UGC at policy scale.</li>
-            <li>Human-in-the-loop optimization with explicit uncertainty and risk budgets.</li>
-          </ul>
         </div>
 
-        <!-- Right column now has TWO separate cards to reduce blank space -->
-        <div class="card">
-          <h3>Quick stats</h3>
-          <ul class="list">
-            <li>2 theses · 4 manuscripts (1 published, 3 under review/in prep)</li>
-            <li>X-Culture: peer-evaluated <strong>Top 5%</strong>; expert-evaluated report in the <strong>Top 20%</strong> (quality 5.3/7; creativity 4.9/7; writing 5.1/7)</li>
-            <li>Mentored/served teams across 40+ countries (Coach → Senior Coach)</li>
-            <li>Methods: spatio-temporal modeling, causal inference, interpretable ML, optimization</li>
-          </ul>
-        </div>
+        <!-- Right: stacked cards (Quick Stats + Education) -->
+        <div class="stack">
+          <div class="card">
+            <h3>Quick stats</h3>
+            <ul class="list">
+              <li>2 theses · 4 manuscripts (1 published, 3 under review/in prep)</li>
+              <li>X-Culture: peer-evaluated <strong>Top 5%</strong>; expert-evaluated report in the <strong>Top 20%</strong> (quality 5.3/7; creativity 4.9/7; writing 5.1/7)</li>
+              <li>Mentored/served teams across 40+ countries (Coach → Senior Coach)</li>
+              <li>Methods: spatio-temporal modeling, causal inference, interpretable ML, optimization</li>
+            </ul>
+          </div>
 
-        <div class="card">
-          <h3>Education</h3>
-          <ul class="list">
-            <li><strong>M.Sc., Industrial &amp; Production Engineering</strong> — BUET <span class="muted nowrap">(Jun 2023–Present)</span></li>
-            <li><strong>B.Sc., Industrial &amp; Production Engineering</strong> — BUET <span class="muted nowrap">(Feb 2017–May 2023)</span></li>
-            <li><strong>H.S.C.</strong> — Dhaka College <span class="muted nowrap">(2015–2016)</span></li>
-            <li><strong>S.S.C.</strong> — Motijheel Govt. Boys' High School <span class="muted nowrap">(2007–2014)</span></li>
-          </ul>
+          <div class="card">
+            <h3>Education</h3>
+            <ul class="list">
+              <li><strong>M.Sc., Industrial &amp; Production Engineering</strong> — BUET <span class="muted nowrap">(Jun 2023–Present)</span></li>
+              <li><strong>B.Sc., Industrial &amp; Production Engineering</strong> — BUET <span class="muted nowrap">(Feb 2017–May 2023)</span></li>
+              <li><strong>H.S.C.</strong> — Dhaka College <span class="muted nowrap">(2015–2016)</span></li>
+              <li><strong>S.S.C.</strong> — Motijheel Govt. Boys' High School <span class="muted nowrap">(2007–2014)</span></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -265,16 +260,16 @@
       <div class="card" style="margin-top:1rem">
         <h3 class="kicker">Methods toolbox</h3>
         <div class="toolbox-grid">
-          <button class="tool" aria-label="Decision analysis">Decision analysis</button>
-          <button class="tool" aria-label="Optimization">Optimization</button>
-          <button class="tool" aria-label="Causal inference">Causal inference</button>
-          <button class="tool" aria-label="Spatio-temporal modeling">Spatio-temporal modeling</button>
-          <button class="tool" aria-label="Machine learning">Machine learning</button>
-          <button class="tool" aria-label="Operations research">Operations research</button>
-          <button class="tool" aria-label="Data engineering">Data engineering</button>
-          <button class="tool" aria-label="Time-series analysis">Time-series</button>
-          <button class="tool" aria-label="Bayesian modeling">Bayesian modeling</button>
-          <button class="tool" aria-label="Evaluation and ablation">Evaluation &amp; ablation</button>
+          <div class="tool">Decision analysis</div>
+          <div class="tool">Optimization</div>
+          <div class="tool">Causal inference</div>
+          <div class="tool">Spatio-temporal</div>
+          <div class="tool">Machine learning</div>
+          <div class="tool">Operations research</div>
+          <div class="tool">Data engineering</div>
+          <div class="tool">Time-series</div>
+          <div class="tool">Bayesian modeling</div>
+          <div class="tool">Evaluation &amp; ablation</div>
         </div>
       </div>
 
@@ -321,17 +316,12 @@
             <span class="summary">— Empirical barriers to digital tech adoption in emerging-economy health systems; policy-oriented implications.</span>
           </p>
           <div class="actions">
-            <!-- direct PDF view -->
+            <!-- (i) View: direct PDF link -->
             <a class="action" href="https://www.sciencedirect.com/science/article/pii/S2949953425000323/pdfft?md5=2fb3b24bcbef4d181538d83cf0ba2e41&pid=1-s2.0-S2949953425000323-main.pdf" target="_blank" rel="noopener">View</a>
-            <!-- DOI copy -->
-            <a class="action doi-copy" href="https://doi.org/10.1016/j.infoh.2025.09.001" data-doi="https://doi.org/10.1016/j.infoh.2025.09.001" role="button">DOI</a>
-            <!-- APA -->
-            <button class="action apa-btn" data-cite-title="Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies."
-              data-cite-authors="Raunaq, F. F., Islam, S., Anam, M. Z., &amp; Bari, A. B. M. M."
-              data-cite-venue="Informatics and Health, 2, 194–209"
-              data-cite-year="2025"
-              data-cite-doi="10.1016/j.infoh.2025.09.001"
-              data-apa="Raunaq, F. F., Islam, S., Anam, M. Z., &amp; Bari, A. B. M. M. (2025). Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies. *Informatics and Health, 2*, 194–209. https://doi.org/10.1016/j.infoh.2025.09.001">APA</button>
+            <!-- (ii) DOI: copy link -->
+            <button class="action ghost doi-copy" data-doi="https://doi.org/10.1016/j.infoh.2025.09.001" aria-live="polite">DOI</button>
+            <!-- (iii) Cite: APA only -->
+            <button class="action ghost apa-btn" data-apa="Raunaq, F. F., Islam, S., Anam, M. Z., &amp; Bari, A. B. M. M. (2025). Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies. <em>Informatics and Health, 2</em>, 194–209. https://doi.org/10.1016/j.infoh.2025.09.001">APA</button>
           </div>
         </article>
 
@@ -381,9 +371,9 @@
         <div class="card">
           <h3>Teaching &amp; Mentorship</h3>
           <ul class="list">
-            <li><strong>Lecturer (Adjunct)</strong>, <a href="https://aub.ac.bd/" target="_blank" rel="noopener">Asian University of Bangladesh</a> — <span class="muted">Sep 2024–Jan 2025</span><br />Courses: <em>C Programming &amp; Algorithm Design</em>. Built lectures/labs, designed assessments; emphasized clarity, reproducibility, and code quality.</li>
-            <li><strong>Senior Coach</strong>, <a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> (Remote) — <span class="muted">Winter 2020–Fall 2021</span><br/>Led coach training and best-report reviews; streamlined evaluation rubric and supported coach cohort.</li>
             <li><strong>Coach</strong>, <a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> (Remote) — <span class="muted">Spring–Fall 2020</span><br/>Mentored global virtual consulting teams across 40+ countries; assisted program operations and onboarding.</li>
+            <li><strong>Senior Coach</strong>, <a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> (Remote) — <span class="muted">Winter 2020–Fall 2021</span><br/>Led coach training and best-report reviews; streamlined evaluation rubric and supported coach cohort.</li>
+            <li><strong>Lecturer (Adjunct)</strong>, <a href="https://aub.ac.bd/" target="_blank" rel="noopener">Asian University of Bangladesh</a> — <span class="muted">Sep 2024–Jan 2025</span><br />Course: <em>C Programming &amp; Algorithm Design</em>. Built lectures/labs, assessments; emphasized clarity, reproducibility, and code quality.</li>
           </ul>
         </div>
 
@@ -391,7 +381,7 @@
           <h3>Industry</h3>
           <ul class="list">
             <li><strong>Sales Engineer</strong>, <a href="https://bluebaybangladesh.com/" target="_blank" rel="noopener">Blue Bay Bangladesh Ltd.</a>, Dhaka — <span class="muted">Feb 2025–Aug 2025</span><br />Analyzed material specs &amp; supplier performance; coordinated stakeholders for on-time, compliant delivery.</li>
-            <li><strong>Product Owner</strong>, MEKANICC Software Solutions, Dhaka — <span class="muted">May 2023–Sep 2024</span><br />Led discovery &amp; PRDs; maintained roadmaps; produced wireframes (Figma/Adobe XD); bridged developers &amp; clients.</li>
+            <li><strong>Product Owner</strong>, MEKANICC Software Solutions, Dhaka — <span class="muted">May 2023–Sep 2024</span><br />Led discovery &amp; PRDs; maintained roadmaps; produced wireframes; bridged developers &amp; clients.</li>
             <li><strong>Industrial Training</strong>, <a href="https://www.bergerbd.com/" target="_blank" rel="noopener">Berger Paints Bangladesh Ltd.</a>, Dhaka — <span class="muted">Apr–May 2022</span><br />Mapped manufacturing flows; contributed to warehouse layout; QC support and automation concept.</li>
           </ul>
         </div>
@@ -439,7 +429,7 @@
         <div class="card">
           <h3>Relevant Coursework</h3>
           <div class="chips" style="margin-bottom:.5rem">
-            <span class="chip">Calculus</span><span class="chip">Matrix &amp; Linear Algebra</span><span class="chip">Numerical Analysis</span><span class="chip">Probability &amp; Statistics</span><span class="chip">Operations Research</span><span class="chip">Quality Engineering</span><span class="chip">Decision Analysis</span><span class="chip">Differential Equations</span><span class="chip">Ergonomics &amp; Safety</span><span class="chip">Project &amp; Environment Mgmt</span><span class="chip">Supply Chain Mgmt</span><span class="chip">Industrial &amp; Business Mgmt</span>
+            <span class="chip">Calculus</span><span class="chip">Linear Algebra</span><span class="chip">Numerical Analysis</span><span class="chip">Probability &amp; Statistics</span><span class="chip">Operations Research</span><span class="chip">Quality Engineering</span><span class="chip">Decision Analysis</span><span class="chip">Differential Equations</span><span class="chip">Ergonomics &amp; Safety</span><span class="chip">Project &amp; Environment Mgmt</span><span class="chip">Supply Chain Mgmt</span><span class="chip">Industrial &amp; Business Mgmt</span>
           </div>
           <div class="muted small-links">
             <div>Undergrad curriculum: <a href="https://ipe.buet.ac.bd/undergraduate-courses" target="_blank" rel="noopener">B.Sc. in IPE (BUET)</a></div>
@@ -474,18 +464,18 @@
         <h3>Selected Certificates</h3>
         <ul class="list">
           <li><strong>X-Culture Top 40 Students</strong> — AIB-SE Global Symposium (Oct 21–23, 2020). <a href="/assets/assets/certificates/AIBSE_Top40_XCulture_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/assets/certificates/AIBSE_Top40_XCulture_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
-          <li><strong>X-Culture Global Collaboration</strong> — completed training + international team project (Jan 10, 2020). <a href="/assets/assets/certificates/XCulture_GlobalCollaboration_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/assets/certificates/XCulture_GlobalCollaboration_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
+          <li><strong>X-Culture Global Collaboration</strong> — Training + international team project (Jan 10, 2020). <a href="/assets/assets/certificates/XCulture_GlobalCollaboration_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/assets/certificates/XCulture_GlobalCollaboration_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
           <li><strong>X-Culture Coach</strong> — theoretical &amp; practical coaching (Jun 2, 2020). <a href="/assets/assets/certificates/XCulture_Coach_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/assets/certificates/XCulture_Coach_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
           <li><strong>X-Culture Senior Coach</strong> — mentor of coaches; leadership role (Dec 30, 2020). <a href="/assets/assets/certificates/XCulture_SeniorCoach_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/assets/certificates/XCulture_SeniorCoach_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
         </ul>
       </div>
 
-      <!-- NEW: Events & Participation as its own box -->
+      <!-- 6) EVENTS & PARTICIPATION – separate box -->
       <div class="card" style="margin-top:1rem">
         <h3>Events &amp; Participation</h3>
-        <p class="muted">AIB-SE Global Virtual Symposium (X-Culture) — plenaries and mentoring practices in global virtual teamwork.</p>
+        <p class="muted">Global collaboration forum highlighting best practices for distributed teamwork and cross-cultural project execution.</p>
         <ul class="list">
-          <li><strong>Global Virtual Symposium — Participation</strong> (May 29, 2020). <a href="/assets/assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
+          <li><strong>Global Virtual Symposium — Participation</strong> (May 29, 2020) · <a href="/assets/assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
         </ul>
       </div>
     </section>
@@ -534,17 +524,16 @@
       </div>
     </footer>
 
-    <!-- APA modal (no BibTeX, calmer styling) -->
-    <dialog id="apa-modal" class="yt-modal" aria-label="APA reference">
+    <!-- APA modal (no BibTeX) -->
+    <dialog id="apa-modal" class="yt-modal" aria-label="APA">
       <div class="bar" style="display:flex;justify-content:space-between;align-items:center;padding:.4rem .6rem;border-bottom:1px solid var(--accent);background:var(--panel)">
         <strong>APA</strong><button class="action" id="apa-close" value="cancel" aria-label="Close">✕</button>
       </div>
       <div style="padding:1rem;max-width:min(90vw,900px)">
-        <p id="apa-text" style="margin-top:0"></p>
-        <button class="action" id="apa-copy" data-variant="muted">Copy</button>
+        <p id="apa-text" class="muted" style="margin:0 0 .6rem 0"></p>
+        <button class="action" id="apa-copy">Copy</button>
       </div>
     </dialog>
-
   </main>
 
   <div class="to-top" id="toTop"><button aria-label="Back to top">↑</button></div>
@@ -585,7 +574,7 @@
       if (['published','under-review','in-prep'].includes(hash)) setFilter(hash);
     })();
 
-    // Scrollspy: highlight active section in nav
+    // Scrollspy
     (function(){
       const sections = Array.from(document.querySelectorAll('main .section, .hero')).map(s=>({ id: s.id || 'top', el: s }));
       const navLinks = Array.from(document.querySelectorAll('nav.primary a'));
@@ -611,7 +600,7 @@
       onScroll();
     })();
 
-    // Back to top visibility
+    // Back to top
     (function(){
       const btnWrap = document.getElementById('toTop');
       const btn = btnWrap.querySelector('button');
@@ -623,51 +612,35 @@
 
     // DOI copy + APA modal
     (function(){
-      // Copy DOI to clipboard
-      document.addEventListener('click', e=>{
-        const doi = e.target.closest('.doi-copy');
-        if(!doi) return;
-        e.preventDefault();
-        const url = doi.dataset.doi || doi.getAttribute('href');
-        if (navigator.clipboard && url){
-          navigator.clipboard.writeText(url).then(()=>{
-            const orig = doi.textContent;
-            doi.textContent = 'Copied!';
-            setTimeout(()=> doi.textContent = 'DOI', 1400);
-          });
-        } else {
-          // Fallback
-          prompt('Copy DOI URL:', url);
+      // DOI copy
+      document.addEventListener('click', async (e)=>{
+        const doiBtn = e.target.closest('.doi-copy');
+        if(doiBtn){
+          const txt = doiBtn.dataset.doi;
+          try{ await navigator.clipboard.writeText(txt); doiBtn.textContent = 'Copied!'; setTimeout(()=>doiBtn.textContent='DOI', 1200); }
+          catch{ doiBtn.textContent = 'Copy failed'; setTimeout(()=>doiBtn.textContent='DOI', 1200); }
         }
       });
 
       // APA modal
       const dlg = document.getElementById('apa-modal');
       const closeBtn = document.getElementById('apa-close');
-      const copyBtn = document.getElementById('apa-copy');
-      const textEl = document.getElementById('apa-text');
+      const apaText = document.getElementById('apa-text');
+      const apaCopy = document.getElementById('apa-copy');
 
-      document.addEventListener('click', e=>{
+      document.addEventListener('click', (e)=>{
         const btn = e.target.closest('.apa-btn');
         if(!btn) return;
-        const apa = btn.dataset.apa || '';
-        textEl.innerHTML = apa;
+        apaText.innerHTML = btn.dataset.apa || '';
         dlg.showModal();
       });
-
-      copyBtn && copyBtn.addEventListener('click', ()=>{
-        const tmp = document.createElement('textarea');
-        tmp.value = textEl.innerText;
-        document.body.appendChild(tmp);
-        tmp.select();
-        document.execCommand('copy');
-        document.body.removeChild(tmp);
-        copyBtn.textContent = 'Copied!';
-        setTimeout(()=> copyBtn.textContent = 'Copy', 1200);
-      });
-
       closeBtn && closeBtn.addEventListener('click', ()=> dlg.close());
       dlg && dlg.addEventListener('cancel', (e)=>{ e.preventDefault(); dlg.close(); });
+      apaCopy && apaCopy.addEventListener('click', async ()=>{
+        const tmp = apaText.innerText;
+        try{ await navigator.clipboard.writeText(tmp); apaCopy.textContent='Copied!'; setTimeout(()=>apaCopy.textContent='Copy', 1200); }
+        catch{ apaCopy.textContent='Copy failed'; setTimeout(()=>apaCopy.textContent='Copy', 1200); }
+      });
     })();
   </script>
 </body>
