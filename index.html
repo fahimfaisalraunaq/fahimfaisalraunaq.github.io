@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Fahim Faisal Raunaq | Safety-Critical Decision Analytics (IE/OR × ML)</title>
+  <meta name="description" content="IE/OR × ML for safety-critical, resource-constrained systems. Spatio-temporal safety modeling, causal inference, optimization, low-resource NLP." />
+
+  <link rel="canonical" href="https://fahimfaisalraunaq.github.io/" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://fahimfaisalraunaq.github.io/" />
+  <meta property="og:title" content="Fahim Faisal Raunaq — Safety-Critical Decision Analytics (IE/OR × ML)" />
+  <meta property="og:description" content="Data-driven safety &amp; decision analytics (spatio-temporal modeling, causal inference, optimization, low-resource NLP)." />
+  <meta property="og:image" content="https://fahimfaisalraunaq.github.io/assets/og-card.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root { --bg:#0b0f1a; --panel:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --link:#60a5fa; --accent:#1f2937; --chip:#1e293b; --ring:rgba(96,165,250,.2); }
+    @media (prefers-color-scheme: light) { :root { --bg:#ffffff; --panel:#f6f7f9; --text:#0f172a; --muted:#334155; --link:#2563eb; --accent:#e5e7eb; --chip:#e2e8f0; --ring:rgba(37,99,235,.18); } }
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--link)} a:hover{text-decoration:underline}
+    .container{max-width:1200px;margin:0 auto;padding:0 1.25rem}
+    header.site{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 92%, transparent);border-bottom:1px solid var(--accent);backdrop-filter:saturate(1.1) blur(6px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
+    .brand{font-weight:800;letter-spacing:.2px;font-size:clamp(1.1rem,2.5vw,1.3rem);text-decoration:none;color:inherit}
+    nav.primary{display:flex;align-items:center;gap:.25rem}
+    nav.primary a{color:var(--muted);text-decoration:none;font-weight:600;margin-left:1rem;padding:.5rem .25rem;border-radius:.4rem}
+    nav.primary a:hover,nav.primary a:focus{color:var(--link);outline:none}
+    nav.primary a.active{color:var(--link);box-shadow: inset 0 -2px var(--link)}
+    .menu-btn{display:none;border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.6rem;padding:.45rem .6rem}
+    .menu-btn[aria-expanded="true"]{box-shadow:0 0 0 .2rem var(--ring)}
+    @media (max-width:860px){
+      nav.primary{position:absolute;top:60px;right:1.25rem;left:1.25rem;background:var(--panel);border:1px solid var(--accent);border-radius:.8rem;padding:.6rem;display:none;flex-direction:column;gap:.25rem}
+      nav.primary.open{display:flex}
+      .menu-btn{display:inline-flex}
+    }
+    .hero{padding:2.75rem 0 1.5rem}
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:1.6rem;align-items:center}
+    @media (min-width:900px){.hero-grid{grid-template-columns:1.2fr .8fr;gap:2rem}}
+    .hero .name{font-size:clamp(2rem,6vw,2.8rem);line-height:1.2;margin:0 0 .25rem}
+    .hero .headline{font-size:clamp(1.2rem,4.2vw,1.6rem);margin:.15rem 0 .6rem;color:var(--text)}
+    .lead{color:var(--muted);max-width:62ch;margin:0 0 .5rem}
+    .nowline{margin:.2rem 0 .6rem}
+    .cta{display:inline-flex;gap:.6rem;align-items:center;padding:.6rem .9rem;border:1px solid var(--accent);border-radius:.75rem;text-decoration:none;color:var(--text);font-weight:700;white-space:nowrap}
+    .cta:hover{box-shadow:0 0 0 .2rem var(--ring)}
+    .cta-row{display:flex;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
+    .id-row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-top:.5rem}
+    .id-row a{display:inline-flex;align-items:center;gap:.35rem;border:1px solid var(--accent);background:var(--panel);border-radius:.55rem;padding:.35rem .6rem;text-decoration:none;color:var(--text")}
+    .avatar-wrap{display:flex;justify-content:center}
+    .avatar{width:260px;height:260px;border-radius:9999px;object-fit:cover;border:2px solid var(--accent);box-shadow:0 0 0 .2rem var(--ring)}
+    @media (max-width:700px){.avatar{width:180px;height:180px}}
+    .section{padding:1.25rem 0;scroll-margin-top:5.5rem}
+    .section h2{font-size:clamp(1.3rem,3vw,1.6rem);margin:0 0 .8rem}
+    .list{display:grid;gap:.85rem;padding-inline-start:1.25rem;padding-right:.5rem}
+    .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;color:var(--muted)}
+    .muted{color:var(--muted)}
+    .pub-filter{display:flex;gap:.5rem;margin:.5rem 0 1rem;flex-wrap:wrap}
+    .pub-filter button{padding:.4rem .6rem;border:1px solid var(--accent);background:var(--bg);color:var(--text);border-radius:.55rem;cursor:pointer}
+    .pub-filter button[aria-pressed="true"]{background:var(--chip);font-weight:700}
+    .pub{border-left:3px solid var(--accent);padding-left:.75rem}
+    .pub .summary{display:block;color:var(--muted);font-size:.95rem;margin-top:.2rem}
+    .actions{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.35rem}
+    .action{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .6rem;border:1px solid var(--accent);border-radius:.55rem;background:var(--panel);color:var(--text);font-weight:700;text-decoration:none;cursor:pointer}
+    .action:hover{box-shadow:0 0 0 .15rem var(--ring)}
+    .action.ghost{opacity:.92}
+  </style>
+
+  <!-- Schema: Person -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "@id":"https://fahimfaisalraunaq.github.io/#person",
+    "name":"Fahim Faisal Raunaq",
+    "jobTitle":"M.Sc. Researcher (IE/OR) and Prospective PhD Student",
+    "address":{"@type":"PostalAddress","addressLocality":"Dhaka","addressCountry":"Bangladesh"},
+    "email":"mailto:fahimfaisalraunaq@gmail.com",
+    "image":"https://fahimfaisalraunaq.github.io/assets/profile.jpg",
+    "url":"https://fahimfaisalraunaq.github.io/",
+    "affiliation":{"@type":"CollegeOrUniversity","name":"Bangladesh University of Engineering and Technology (BUET)"},
+    "alumniOf":{"@type":"CollegeOrUniversity","name":"BUET"},
+    "sameAs":[
+      "https://scholar.google.com/citations?user=BI00vUYAAAAJ",
+      "https://orcid.org/0009-0001-3571-8739",
+      "https://github.com/fahimfaisalraunaq",
+      "https://www.linkedin.com/in/fahimfaisalraunaq"
+    ]
+  }
+  </script>
+
+  <!-- Schema: your published article -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ScholarlyArticle",
+    "@id":"https://fahimfaisalraunaq.github.io/#pub-infoh-2025-healthtech-adoption",
+    "name":"Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies",
+    "headline":"Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies",
+    "author":[{"@id":"https://fahimfaisalraunaq.github.io/#person"},{"@type":"Person","name":"S. Islam"},{"@type":"Person","name":"M. Z. Anam"},{"@type":"Person","name":"A. B. M. M. Bari"}],
+    "isPartOf":{"@type":"Periodical","name":"Informatics and Health"},
+    "publisher":{"@type":"Organization","name":"Informatics and Health"},
+    "pagination":"194–209",
+    "datePublished":"2025",
+    "image":"https://fahimfaisalraunaq.github.io/assets/og-card.jpg",
+    "identifier":{"@type":"PropertyValue","propertyID":"DOI","value":"10.1016/j.infoh.2025.09.001"},
+    "url":"https://doi.org/10.1016/j.infoh.2025.09.001",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://fahimfaisalraunaq.github.io/#publications"}
+  }
+  </script>
+</head>
+<body>
+  <header class="site">
+    <div class="container nav">
+      <a class="brand" href="/">Fahim Faisal Raunaq</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation">Menu</button>
+      <nav class="primary" id="primaryNav" aria-label="Primary">
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section id="publications" class="section">
+      <h2>Publications &amp; Manuscripts <span id="pub-status" class="muted" style="font-weight:normal">· Showing: All</span></h2>
+      <div class="pub-filter" role="toolbar" aria-label="Filter publications">
+        <button type="button" data-filter="all" aria-controls="pub-list" aria-pressed="true">All</button>
+        <button type="button" data-filter="published" aria-controls="pub-list">Published</button>
+        <button type="button" data-filter="under-review" aria-controls="pub-list">Under review</button>
+        <button type="button" data-filter="in-prep" aria-controls="pub-list">In preparation</button>
+      </div>
+      <div class="list" id="pub-list" aria-live="polite">
+
+        <article class="pub" data-status="published">
+          <div class="kicker">Published</div>
+          <p><strong>Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies.</strong> <em>Informatics and Health</em> 2, 194–209 (2025). <strong>Fahim Faisal Raunaq</strong>, S. Islam, M. Z. Anam, &amp; A. B. M. M. Bari.
+            <span class="summary">— Empirical barriers to digital tech adoption in emerging-economy health systems; policy-oriented implications.</span>
+          </p>
+          <div class="actions">
+            <a class="action" href="https://www.sciencedirect.com/science/article/pii/S2949953425000323/pdfft?md5=2fb3b24bcbef4d181538d83cf0ba2e41&pid=1-s2.0-S2949953425000323-main.pdf" target="_blank" rel="noopener">View</a>
+            <button class="action ghost doi-copy" data-doi="https://doi.org/10.1016/j.infoh.2025.09.001" aria-live="polite">DOI</button>
+            <button class="action ghost apa-btn" data-apa="Raunaq, F. F., Islam, S., Anam, M. Z., &amp; Bari, A. B. M. M. (2025). Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies. <em>Informatics and Health, 2</em>, 194–209. https://doi.org/10.1016/j.infoh.2025.09.001">APA</button>
+          </div>
+        </article>
+
+        <article class="pub" data-status="under-review">
+          <div class="kicker">Under review</div>
+          <p><strong>Decoding Mode-Specific Crash Dynamics in Work Zones through Machine Learning: Uncovering Spatial–Temporal Patterns for Policy-Oriented Interventions.</strong> <em>Safety Science</em>. <strong>Fahim Faisal Raunaq</strong>, N. Mahbub, A. Kaiyum, S. Hasanat-e-Rabbi, S. M. Ali
+            <span class="summary">— ML analysis of work-zone crash patterns to inform targeted safety interventions.</span>
+          </p>
+        </article>
+
+        <article class="pub" data-status="under-review">
+          <div class="kicker">Under review</div>
+          <p><strong>A Data-Driven Approach to Construction Accident Prevention in Developing Countries: Insights from Bangladesh.</strong> <em>Accident Analysis and Prevention</em>. A. Kaiyum, N. Mahbub, <strong>Fahim Faisal Raunaq</strong>, S. M. Ali
+            <span class="summary">— Data-centric framework for construction safety in resource-constrained contexts.</span>
+          </p>
+        </article>
+
+        <article class="pub" data-status="under-review">
+          <div class="kicker">Under review</div>
+          <p><strong>A Data-Driven Approach to Stance Detection Combining Topic Modelling and BanglaBERT: A Case Study in Social Media Rumors.</strong> <em>Language Resources and Evaluation</em>. M. R. Khan, R. A. Aziz, C. L. Karmaker, <strong>Fahim Faisal Raunaq</strong>, &amp; P. Agarwal
+            <span class="summary">— Topic-aware stance detection with BanglaBERT on rumor datasets.</span>
+          </p>
+        </article>
+
+        <article class="pub" data-status="in-prep">
+          <div class="kicker">In preparation</div>
+          <p><strong>A Gold-Standard Bengali UGC Corpus for Translation-Agnostic Sentiment Analysis.</strong> (M.Sc. Thesis). <strong>Fahim Faisal Raunaq</strong>, N. Mahbub
+            <span class="summary">— Dataset + benchmarking suite enabling MT-agnostic sentiment analysis in Bangla.</span>
+          </p>
+        </article>
+
+        <article class="pub" data-status="in-prep">
+          <div class="kicker">In preparation</div>
+          <p><strong>Efficient Hyperparameter Optimization of Topic Models: A Taguchi–CRITIC MCDM Framework with LDA and BERTopic.</strong> (Project). <strong>Fahim Faisal Raunaq</strong>, R. A. Aziz
+            <span class="summary">— Robust MCDM-based tuning pipeline for probabilistic and embedding-based topic models.</span>
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:fahimfaisalraunaq@gmail.com">fahimfaisalraunaq@gmail.com</a></p>
+    </section>
+
+    <footer class="section">
+      <p>&copy; <span id="year"></span> Fahim Faisal Raunaq</p>
+    </footer>
+  </main>
+
+  <dialog id="apa-modal" aria-label="APA">
+    <div style="padding:1rem;max-width:min(90vw,900px)">
+      <p id="apa-text" class="muted" style="margin:0 0 .6rem 0"></p>
+      <button id="apa-close">Close</button>
+      <button id="apa-copy">Copy</button>
+    </div>
+  </dialog>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    (function(){
+      const btn = document.getElementById('menuBtn');
+      const nav = document.getElementById('primaryNav');
+      function toggle(){ const open = nav.classList.toggle('open'); btn.setAttribute('aria-expanded', String(open)); }
+      btn.addEventListener('click', toggle);
+      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{
+        if (getComputedStyle(btn).display !== 'none') { nav.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+      }));
+    })();
+    (function(){
+      const buttons = document.querySelectorAll('.pub-filter button');
+      const pubs = document.querySelectorAll('#pub-list .pub');
+      const status = document.getElementById('pub-status');
+      function setFilter(key){
+        pubs.forEach(p => { const ok = key === 'all' || p.dataset.status === key; p.style.display = ok ? '' : 'none'; });
+        buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === key)));
+        const labels={all:'All','published':'Published','under-review':'Under review','in-prep':'In preparation'};
+        status.textContent = '· Showing: ' + (labels[key]||'All');
+      }
+      buttons.forEach(btn => btn.addEventListener('click', () => setFilter(btn.dataset.filter)));
+    })();
+    (function(){
+      const dlg = document.getElementById('apa-modal');
+      const apaText = document.getElementById('apa-text');
+      const closeBtn = document.getElementById('apa-close');
+      const copyBtn = document.getElementById('apa-copy');
+      document.addEventListener('click', (e)=>{
+        const btn = e.target.closest('.apa-btn');
+        if(!btn) return;
+        apaText.innerHTML = btn.dataset.apa || '';
+        if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');
+      });
+      closeBtn.addEventListener('click', ()=> dlg.close());
+      copyBtn.addEventListener('click', async ()=>{
+        try{ await navigator.clipboard.writeText(apaText.innerText); copyBtn.textContent='Copied!'; setTimeout(()=>copyBtn.textContent='Copy', 1200); }
+        catch{ copyBtn.textContent='Copy failed'; setTimeout(()=>copyBtn.textContent='Copy', 1200); }
+      });
+      document.addEventListener('click', async (e)=>{
+        const doiBtn = e.target.closest('.doi-copy');
+        if(doiBtn){
+          const txt = doiBtn.dataset.doi;
+          try{ await navigator.clipboard.writeText(txt); doiBtn.textContent = 'Copied!'; setTimeout(()=>doiBtn.textContent='DOI', 1200); }
+          catch{ doiBtn.textContent = 'Copy failed'; setTimeout(()=>doiBtn.textContent='DOI', 1200); }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
