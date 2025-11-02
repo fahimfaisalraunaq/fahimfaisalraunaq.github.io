@@ -1,0 +1,134 @@
+[
+  {
+    "id": "infoh-2025-digital-tech-adoption",
+    "status": "published",
+    "title": "Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies",
+    "venue": "Informatics and Health",
+    "volume": "2",
+    "pages": "194–209",
+    "year": 2025,
+    "datePublished": "2025-09-01",
+    "doi": "10.1016/j.infoh.2025.09.001",
+    "url_pdf": "https://www.sciencedirect.com/science/article/pii/S2949953425000323/pdfft?md5=2fb3b24bcbef4d181538d83cf0ba2e41&pid=1-s2.0-S2949953425000323-main.pdf",
+    "authors": [
+      {
+        "name": "Fahim Faisal Raunaq",
+        "me": true
+      },
+      {
+        "name": "Shahadat Islam"
+      },
+      {
+        "name": "Md. Zubaer Anam"
+      },
+      {
+        "name": "A. B. M. Md. Bari"
+      }
+    ],
+    "summary": "Empirical barriers to digital tech adoption in emerging-economy health systems; policy-oriented implications."
+  },
+  {
+    "id": "wz-ml-safety-science",
+    "status": "under-review",
+    "title": "Decoding Mode-Specific Crash Dynamics in Work Zones through Machine Learning: Uncovering Spatial–Temporal Patterns for Policy-Oriented Interventions",
+    "venue": "Safety Science",
+    "authors": [
+      {
+        "name": "Fahim Faisal Raunaq",
+        "me": true
+      },
+      {
+        "name": "Nafisa Mahbub"
+      },
+      {
+        "name": "A. Kaiyum"
+      },
+      {
+        "name": "S. Hasanat-e-Rabbi"
+      },
+      {
+        "name": "S. M. Ali"
+      }
+    ],
+    "summary": "ML analysis of work-zone crash patterns to inform targeted safety interventions."
+  },
+  {
+    "id": "construction-aap",
+    "status": "under-review",
+    "title": "A Data-Driven Approach to Construction Accident Prevention in Developing Countries: Insights from Bangladesh",
+    "venue": "Accident Analysis and Prevention",
+    "authors": [
+      {
+        "name": "A. Kaiyum"
+      },
+      {
+        "name": "Nafisa Mahbub"
+      },
+      {
+        "name": "Fahim Faisal Raunaq",
+        "me": true
+      },
+      {
+        "name": "S. M. Ali"
+      }
+    ],
+    "summary": "Data-centric framework for construction safety in resource-constrained contexts."
+  },
+  {
+    "id": "stance-banglabert-lre",
+    "status": "under-review",
+    "title": "A Data-Driven Approach to Stance Detection Combining Topic Modelling and BanglaBERT: A Case Study in Social Media Rumors",
+    "venue": "Language Resources and Evaluation",
+    "authors": [
+      {
+        "name": "Md. Rafiul Khan"
+      },
+      {
+        "name": "Ridwan Al Aziz"
+      },
+      {
+        "name": "Chitrolekha L. Karmaker"
+      },
+      {
+        "name": "Fahim Faisal Raunaq",
+        "me": true
+      },
+      {
+        "name": "P. Agarwal"
+      }
+    ],
+    "summary": "Topic-aware stance detection with BanglaBERT on rumor datasets."
+  },
+  {
+    "id": "bengali-ugc-sentiment",
+    "status": "in-prep",
+    "title": "A Gold-Standard Bengali UGC Corpus for Translation-Agnostic Sentiment Analysis",
+    "venue": "M.Sc. Thesis (BUET)",
+    "authors": [
+      {
+        "name": "Fahim Faisal Raunaq",
+        "me": true
+      },
+      {
+        "name": "Nafisa Mahbub"
+      }
+    ],
+    "summary": "Dataset + benchmarking suite enabling MT-agnostic sentiment analysis in Bangla."
+  },
+  {
+    "id": "taguchi-critic-topic-models",
+    "status": "in-prep",
+    "title": "Efficient Hyperparameter Optimization of Topic Models: A Taguchi–CRITIC MCDM Framework with LDA and BERTopic",
+    "venue": "Project manuscript",
+    "authors": [
+      {
+        "name": "Fahim Faisal Raunaq",
+        "me": true
+      },
+      {
+        "name": "Ridwan Al Aziz"
+      }
+    ],
+    "summary": "Robust MCDM-based tuning pipeline for probabilistic and embedding-based topic models."
+  }
+]
