@@ -6,7 +6,7 @@
   <title>Fahim Faisal Raunaq — Academic Portfolio</title>
 
   <!-- SEO -->
-  <meta name="description" content="Fahim Faisal Raunaq — IE/OR + ML. Safety-critical decision analytics, optimization, socio-technical risk, and low-resource NLP." />
+  <meta name="description" content="Fahim Faisal Raunaq — IE/OR + ML. Safety-critical decision analytics, optimization, socio-technical risk, low-resource NLP." />
   <link rel="canonical" href="https://fahimfaisalraunaq.github.io/" />
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
@@ -29,14 +29,12 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
   <link rel="shortcut icon" href="assets/favicon.ico" />
 
-  <!-- Performance -->
+  <!-- Perf -->
   <link rel="preload" as="image" href="assets/profile.jpg" />
-  <link rel="preconnect" href="https://www.youtube.com" crossorigin />
-  <link rel="preconnect" href="https://i.ytimg.com" crossorigin />
 
   <style>
-    :root { --bg:#ffffff; --panel:#f6f7f9; --text:#0f172a; --muted:#334155; --link:#2563eb; --accent:#111827; --chip:#e2e8f0; --ring:rgba(37,99,235,.25); --ok:#065f46; }
-    @media (prefers-color-scheme: dark) { :root { --bg:#0b0f1a; --panel:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --link:#60a5fa; --accent:#1f2937; --chip:#1e293b; --ring:rgba(96,165,250,.25); } }
+    :root { --bg:#ffffff; --panel:#f6f7f9; --text:#0f172a; --muted:#334155; --link:#2563eb; --accent:#111827; --chip:#e2e8f0; --ring:rgba(37,99,235,.25) }
+    @media (prefers-color-scheme: dark) { :root { --bg:#0b0f1a; --panel:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --link:#60a5fa; --accent:#1f2937; --chip:#1e293b; --ring:rgba(96,165,250,.25) } }
     html{scroll-behavior:smooth}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);line-height:1.6}
     a{color:var(--link)} a:hover{text-decoration:underline}
@@ -59,7 +57,7 @@
       nav.primary.open{display:flex}
       .menu-btn{display:inline-flex}
     }
-    /* No-JS mobile fallback */
+    /* No-JS fallback */
     @media (max-width:860px){
       html.noscript nav.primary{display:block !important; position:static !important; border:none !important; background:transparent !important;}
       html.noscript .menu-btn{display:none !important;}
@@ -68,17 +66,18 @@
     /* Hero */
     .hero{padding:2.75rem 0 1.5rem}
     .hero-grid{display:grid;grid-template-columns:1fr;gap:1.6rem;align-items:center}
-    @media (min-width:900px){.hero-grid{grid-template-columns:1.2fr .8fr;gap:2rem}}
+    @media (min-width:900px){.hero-grid{grid-template-columns:1.15fr .85fr;gap:2rem}}
     .hero .name{font-size:clamp(2rem,6vw,2.8rem);line-height:1.2;margin:0 0 .25rem}
     .hero .headline{font-size:clamp(1.2rem,4.2vw,1.6rem);margin:.15rem 0 .6rem;color:var(--text)}
     .lead{color:var(--muted);max-width:62ch;margin:0 0 .5rem}
     .nowline{margin:.2rem 0 .6rem}
     .cta{display:inline-flex;gap:.65rem;align-items:center;padding:.6rem .9rem;border:1px solid var(--accent);border-radius:.75rem;text-decoration:none;color:var(--text);font-weight:700;white-space:nowrap}
     .cta:hover{box-shadow:0 0 0 .2rem var(--ring)}
-    .cta-row{display:flex;gap:.6rem;margin-top:.5rem;flex-wrap:wrap;-webkit-overflow-scrolling:touch;white-space:nowrap}
+    .cta-row{display:flex;gap:.6rem;margin-top:.5rem;flex-wrap:wrap;white-space:nowrap}
+
     .avatar-wrap{display:flex;justify-content:center}
-    .avatar{width:180px;height:180px;border-radius:9999px;object-fit:cover;border:2px solid var(--accent);box-shadow:0 0 0 .2rem var(--ring)}
-    @media (min-width:900px){.avatar{width:200px;height:200px}}
+    .avatar{width:220px;height:220px;border-radius:9999px;object-fit:cover;border:2px solid var(--accent);box-shadow:0 0 0 .2rem var(--ring)}
+    @media (min-width:1100px){.avatar{width:260px;height:260px}}
 
     /* Sections & Cards */
     .section{padding:1.25rem 0;scroll-margin-top:5.5rem}
@@ -103,7 +102,7 @@
     .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
     .nowrap{white-space:nowrap}
 
-    /* Methods toolbox */
+    /* Research toolbox */
     .toolbox-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem}
     .toolbox-grid .tool{display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid var(--accent);background:var(--chip);border-radius:.65rem;padding:.55rem .6rem;font-weight:700;min-height:44px}
     @media (max-width:900px){ .toolbox-grid{grid-template-columns:repeat(2,1fr);} }
@@ -115,18 +114,8 @@
     .pub{border-left:3px solid var(--accent);padding-left:.75rem}
     .pub .summary{display:block;color:var(--muted);font-size:.95rem;margin-top:.2rem}
 
-    /* Embeds / YouTube */
-    .yt-lite, .embed{position:relative;width:100%;aspect-ratio:16/9;border-radius:.75rem;overflow:hidden;border:1px solid var(--accent);background:#000}
-    .yt-lite::before{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.35), rgba(0,0,0,.05))}
-    .yt-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:.6rem .9rem;border-radius:9999px;background:rgba(255,255,255,.9);font-weight:800;pointer-events:none}
-    @media (prefers-color-scheme: dark){.yt-play{background:rgba(0,0,0,.7);color:#fff}}
-    .yt-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.5rem}
-    .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .7rem;border:1px solid var(--accent);border-radius:.55rem;background:var(--bg);font-weight:700;cursor:pointer}
-    .btn:hover{box-shadow:0 0 0 .15rem var(--ring)}
-    .btn-link{display:inline-flex;align-items:center;padding:.45rem .2rem;font-weight:700;text-decoration:none}
-
     /* A11y: focus + skip link */
-    a:focus-visible,button:focus-visible,.cta:focus-visible,.pub-filter button:focus-visible,.brand:focus-visible,.yt-lite:focus-visible,.menu-btn:focus-visible{
+    a:focus-visible,button:focus-visible,.cta:focus-visible,.pub-filter button:focus-visible,.brand:focus-visible,.menu-btn:focus-visible{
       outline:2px solid var(--link);outline-offset:3px;border-radius:.5rem;box-shadow: inset 0 -2px var(--link)
     }
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
@@ -142,11 +131,28 @@
     .to-top.show{opacity:1;pointer-events:auto;transform:none}
     .to-top button{border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:9999px;padding:.6rem .8rem}
 
+    /* Mobile tweaks */
+    @media (max-width:700px){
+      .container{padding:0 .9rem}
+      .hero{padding:2rem 0 1.25rem}
+      .avatar{width:160px;height:160px}
+      .cta{padding:.5rem .75rem}
+    }
+
+    /* About layout: stack on all widths to avoid blank area beside Education */
+    #about .row{grid-template-columns:1fr !important}
+
+    /* Footer */
+    footer{border-top:1px solid var(--accent);margin-top:2rem}
+    footer .container{display:flex;justify-content:center;align-items:center;padding:1rem 0}
+    footer p{margin:0}
+    @media (min-width:900px){ footer .container{justify-content:flex-start} }
+
     /* Print */
     @media print{
       *{background:transparent !important;box-shadow:none !important}
       body{color:#000}
-      header.site, .pub-filter, .yt-lite, .embed, .cta-row, nav.primary, .to-top{display:none !important}
+      header.site, .pub-filter, .cta-row, nav.primary, .to-top{display:none !important}
       a[href]::after{content:" (" attr(href) ")";font-size:.9em}
       .container{max-width:none;padding:0 12mm}
       .section{padding:8mm 0;page-break-inside:avoid}
@@ -154,7 +160,7 @@
     }
   </style>
 
-  <!-- Person schema with Scholar + ORCID + GitHub -->
+  <!-- Person schema -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -205,7 +211,7 @@
           <p class="lead tagline">I turn messy operations data into <strong>auditable</strong>, safety-critical decisions with IE/OR and ML.</p>
           <p class="muted nowline">Dhaka, Bangladesh · Open to research collaborations and Ph.D. opportunities.</p>
 
-          <!-- CTA row (priority order): View CV, Download CV, Google Scholar, GitHub, LinkedIn, ORCID, Email -->
+          <!-- CTA row (priority): View CV, Download CV, Google Scholar, GitHub, LinkedIn, ORCID, Email -->
           <div class="cta-row" role="group" aria-label="Primary actions">
             <a class="cta" href="assets/Fahim_Faisal_Raunaq_CV.pdf" target="_blank" rel="noopener" aria-label="View CV (opens in new tab)"><span aria-hidden>⬇</span> View CV</a>
             <a class="cta" href="assets/Fahim_Faisal_Raunaq_CV.pdf" download aria-label="Download CV"><span aria-hidden>⬇</span> Download CV</a>
@@ -218,7 +224,7 @@
         </div>
         <div class="avatar-wrap">
           <img src="assets/profile.jpg" alt="Portrait of Fahim Faisal Raunaq"
-               class="avatar" loading="eager" fetchpriority="high" decoding="async" width="200" height="200" />
+               class="avatar" loading="eager" fetchpriority="high" decoding="async" width="260" height="260" />
         </div>
       </div>
     </section>
@@ -233,8 +239,8 @@
         <div class="card">
           <h3>Education</h3>
           <ul class="list edu">
-            <li><strong>M.Sc., Industrial & Production Engineering</strong> — Bangladesh University of Engineering and Technology (<strong>BUET</strong>) <span class="muted nowrap">(Jun 2023–Present)</span></li>
-            <li><strong>B.Sc., Industrial & Production Engineering</strong> — Bangladesh University of Engineering and Technology (<strong>BUET</strong>) <span class="muted nowrap">(Feb 2017–May 2023)</span></li>
+            <li><strong>M.Sc., Industrial &amp; Production Engineering</strong> — Bangladesh University of Engineering and Technology (<strong>BUET</strong>) <span class="muted nowrap">(Jun 2023–Present)</span></li>
+            <li><strong>B.Sc., Industrial &amp; Production Engineering</strong> — Bangladesh University of Engineering and Technology (<strong>BUET</strong>) <span class="muted nowrap">(Feb 2017–May 2023)</span></li>
             <li><strong>Higher Secondary Certificate (H.S.C.)</strong> — Dhaka College <span class="muted nowrap">(Jan 2015–Dec 2016)</span></li>
             <li><strong>Secondary School Certificate (S.S.C.)</strong> — Motijheel Govt. Boys' High School <span class="muted nowrap">(Jan 2007–Dec 2014)</span></li>
           </ul>
@@ -320,11 +326,12 @@
             <span class="summary">— Empirical study of adoption barriers with sustainability implications in emerging-economy health systems.</span>
           </p>
           <div class="chips">
+            <!-- NOTE: ScienceDirect “View” link here is pre-signed and may expire. Replace with a stable link if you host an accepted manuscript. -->
+            <a class="chip" href="https://pdf.sciencedirectassets.com/783571/1-s2.0-S2949953425X00023/1-s2.0-S2949953425000323/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHwaCXVzLWVhc3QtMSJHMEUCIQCOJqxiPhdQlaVQNUqwOOwzCSk%2BOacICRelDZlgH3nFSAIgUXe4Qb2dtICJy9ZHhRLYS4ck4wcoqpnESb%2B7oGE9O6oqsgUIRBAFGgwwNTkwMDM1NDY4NjUiDBbYuR52jnCtCBnLqyqPBVWBBrZkgbXOisxDtiF%2FggaWuM5XjxIVePDtMFr8U0v%2FZJDorVuN5BWKlJYVjKjnzVX4QtWtWAS%2BUBJC6pe1VKAMnVmnb8zH2P2OU1PQjjTg0Fk9y2XGIGNYd8Okf0BXdpBMD8JYhu0geTRpRVKbk4wPvmPDBqW3QBv3E9P4q75%2BxTKN8%2BpVT0pd3G1eQld22aetnQzuwhtPh%2BwGm10wvY6l%2FiBHkG1Bs1yYktLg5UNavkVgNfCMcRC2I9Wdak1MslHsX6mrvb0aqMiZRTRKMlkmyBVz%2FYF4KZK4qara%2BUDxm91thCuuKmtA6hc2eyrXGsIDVAfMfanaUsYA2wUTdLIoLj3%2FFOBwluPBStd%2B4GpH6lZBFksAPu1yuxXPWjVAtdQupFfplCWtopMHxSwyrtvrE95kMBvynhPmlMn9VfojRJy7IcOdinGetSnEXjRtg3Ie6tkejDgoE5gDHDZV%2BG%2Fqgg4HrEBi%2FDsIO5mX0QDQd%2Bxy%2BKcRsIJkTpNct7jUsX9RxgQaIYPfoSxisM8qn%2F9fOZFjMa%2BdC2E%2Blx0gpYZAzT%2FqiIrUzvh4Si5EqH7vn9yxjjJ1DzPai%2FgyvgHz467WBZMh0X%2BHB6JBIbf7OeNX4ZfxDeseBQlyfxcr6YlHc%2FxcaOmqZ0iqURtppYx37trTwzGkl1L9Zg1mrvys7rJCjON%2BFT42aWsSCEAYL2wjYMpDzpeg%2FLwwhD9arCG84%2FV6DlkVmSSPy7FIJLWhMmHn2NJ1YzkUhFZQclgccsX2Ni5IyocxSMMyCjnNtmKIBPyjP2aCsAC8iFQefSCZdvomVYYdW3al0lyJ%2F8PlE5Ck37WvcFMyv1JJeWoRPxTkwPjjP5zHk4oqIiMja2rYNPow2%2FmcyAY6sQGBNEECuprwUPv1j%2B%2BtzY%2FS%2BuzrahIWR37ews41uC8bqly584oa2K5Y2E8MoWZ5iX5dYf7fwvp9FNotWG21EcxJnW4VT%2F7pW2cZ2OZvny%2F5QUINeM5bzOjTKS6eRijD4ycsELp7LjF%2BMVGMe6mt5omMIEvOt9RCB1TmrhKHFO3S%2FMvww2TYcdQ%2BIGK9UHrDmOsvpbQsQPWQFAJhDIKTnZA2ssRd7oAouTKR5zyhXcI%2BE3Y%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20251102T121319Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTY7ZLSRLNM%2F20251102%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=78d1fdcc3cec8af34329b3dfbf6f62c2ed5ff67b8d54d8902e2dd9cb88db4290" target="_blank" rel="noopener">View</a>
             <a class="chip" href="https://doi.org/10.1016/j.infoh.2025.09.001" target="_blank" rel="noopener">DOI</a>
             <button class="chip mono" type="button" aria-controls="cite-modal" data-cite="infoh-2025">Cite</button>
-            <button class="chip mono" type="button" aria-label="Copy BibTeX" onclick="copyBib('bib-infoh-2025')">Copy BibTeX</button>
           </div>
-          <!-- BibTeX (based on Google Scholar/Crossref metadata) -->
+          <!-- BibTeX (kept inside Cite modal only) -->
 <pre id="bib-infoh-2025" class="sr-only">@article{Raunaq2025InfoH,
   title={Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies},
   author={Raunaq, Fahim Faisal and Islam, S. and Anam, M. Z. and Bari, A. B. M. M.},
@@ -377,7 +384,8 @@
           <h3>Teaching & Mentorship</h3>
           <ul class="list">
             <li><strong>Lecturer (Adjunct)</strong>, <a href="https://aub.ac.bd/" target="_blank" rel="noopener">Asian University of Bangladesh</a> — <span class="muted">Sep 2024–Jan 2025</span><br />Courses: <em>C Programming & Algorithm Design</em>. Built lectures/labs, designed assessments; emphasized clarity, reproducibility, and code quality.</li>
-            <li><strong>Coach → Senior Coach</strong>, <a href="https://x-culture.org/coaching-2020-2/" target="_blank" rel="noopener">X-Culture</a> (Remote) — <span class="muted">Spring 2020–Fall 2021</span><br />Mentored global virtual consulting teams across 40+ countries; program administration & new-coach training.</li>
+            <li><strong>Coach</strong>, <a href="https://x-culture.org/coaching-2020-2/" target="_blank" rel="noopener">X-Culture</a> (Remote) — <span class="muted">Spring 2020–Fall 2020</span><br />Mentored global virtual consulting teams across 40+ countries; supported program administration and new-coach onboarding.</li>
+            <li><strong>Senior Coach</strong>, <a href="https://x-culture.org/coaching-2020-2/" target="_blank" rel="noopener">X-Culture</a> (Remote) — <span class="muted">Winter 2020–Fall 2021</span><br />Led and mentored coaches; co-ran evaluations and coach training; contributed to best-report selection workflows.</li>
           </ul>
         </div>
         <div class="card">
@@ -396,24 +404,25 @@
       <div class="three-col">
         <div class="card">
           <div class="kicker">Global Virtual Team</div>
-          <strong>Market Expansion Project (UNCG)</strong>
+          <strong>Market Expansion Project (<a href="https://www.uncg.edu/" target="_blank" rel="noopener" title="University of North Carolina at Greensboro">UNCG</a>)</strong>
           <div class="meta">Operations</div>
-          <p>6 countries / 4 time zones. Market sizing, operations ramp-up, staged roadmap; risks & milestones for cross-border rollout.</p>
+          <p>Cross-border rollout for a U.S. brand: market sizing, entry sequencing, channel strategy, and ops ramp-up across <strong>6 countries / 4 time zones</strong>. Built risk register, stage-gate milestones, and cost-to-serve estimates for the first year.</p>
         </div>
         <div class="card">
           <div class="kicker">Mechanism Design</div>
           <strong>Geneva–wheel Liquid Filling Machine</strong>
           <div class="meta">Mechanism Design · Operations</div>
-          <p>Semi-automated system using a Geneva mechanism; throughput & timing; tolerance-aware assembly.</p>
+          <p>Semi-automated system using a Geneva mechanism; throughput & timing model; tolerance-aware assembly.</p>
         </div>
         <div class="card">
-          <div class="kicker">Product Design II</div>
+          <div class="kicker">Product Design</div>
           <strong>Paddle-Powered Water Purifier</strong>
           <div class="meta">Operations · Product Design</div>
-          <p>Human-powered purifier for low-resource communities (SDG-6). Requirements capture, design-for-constraints, full CAD & BoM; QFD; lean go-to-market.</p>
+          <p>Human-powered purifier for low-resource communities (SDG-6). Requirements capture, design-for-constraints, full CAD & BoM; QFD; lean go-to-market. (Additional demos and presentations will be added.)</p>
           <div class="yt-actions"><button type="button" class="btn yt-open" data-ytid="C02LrhTIZ44" aria-label="Play: Paddle-Powered Water Purifier">▶ Watch project video</button> <a class="btn-link" href="https://www.youtube.com/watch?v=C02LrhTIZ44" target="_blank" rel="noopener">Open on YouTube</a></div>
         </div>
       </div>
+
       <div class="three-col" style="margin-top:1rem">
         <div class="card">
           <div class="kicker">Parametric CAD</div>
@@ -482,7 +491,7 @@
       <div class="card" style="margin-top:1rem">
         <h3>Certifications</h3>
         <ul class="list">
-          <li>ISCEA Certified Supply Chain Analyst (CSCA™)</li>
+          <li><strong>ISCEA Certified Supply Chain Analyst (CSCA™)</strong> — foundational certification from the International Supply Chain Education Alliance (<a href="https://www.iscea.org/" target="_blank" rel="noopener">ISCEA</a>) covering end-to-end supply chain concepts (planning, procurement, manufacturing, logistics, and cash-to-cash fundamentals).</li>
         </ul>
       </div>
     </section>
@@ -508,23 +517,23 @@
         <ul class="list">
           <li>
             <strong>X-Culture Senior Coach</strong> — leadership role (Dec 30, 2020).
-            <a href="/assets/assets/certificates/XCulture_SeniorCoach_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener" aria-label="View certificate: X-Culture Senior Coach (opens in new tab)">View</a> ·
-            <a href="/assets/assets/certificates/XCulture_SeniorCoach_FahimFaisalRaunaq.pdf" download aria-label="Download certificate: X-Culture Senior Coach">Download</a>
+            <a href="/assets/assets/certificates/XCulture_SeniorCoach_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a> ·
+            <a href="/assets/assets/certificates/XCulture_SeniorCoach_FahimFaisalRaunaq.pdf" download>Download</a>
           </li>
           <li>
             <strong>X-Culture Global Virtual Team Coach</strong> — mentoring/coaching (Jun 2, 2020).
-            <a href="/assets/assets/certificates/XCulture_Coach_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener" aria-label="View certificate: X-Culture Coach (opens in new tab)">View</a> ·
-            <a href="/assets/assets/certificates/XCulture_Coach_FahimFaisalRaunaq.pdf" download aria-label="Download certificate: X-Culture Coach">Download</a>
+            <a href="/assets/assets/certificates/XCulture_Coach_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a> ·
+            <a href="/assets/assets/certificates/XCulture_Coach_FahimFaisalRaunaq.pdf" download>Download</a>
           </li>
           <li>
             <strong>X-Culture Global Collaboration (Academy / Student)</strong> — program completion (Jan 10, 2020).
-            <a href="/assets/assets/certificates/XCulture_GlobalCollaboration_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener" aria-label="View certificate: X-Culture Global Collaboration (opens in new tab)">View</a> ·
-            <a href="/assets/assets/certificates/XCulture_GlobalCollaboration_FahimFaisalRaunaq.pdf" download aria-label="Download certificate: X-Culture Global Collaboration">Download</a>
+            <a href="/assets/assets/certificates/XCulture_GlobalCollaboration_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a> ·
+            <a href="/assets/assets/certificates/XCulture_GlobalCollaboration_FahimFaisalRaunaq.pdf" download>Download</a>
           </li>
           <li>
             <strong>AIB-SE Top 40 X-Culture Students</strong> — AIB-SE Global Symposium (Oct 21–23, 2020).
-            <a href="/assets/assets/certificates/AIBSE_Top40_XCulture_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener" aria-label="View certificate: AIB-SE Top 40 X-Culture Students (opens in new tab)">View</a> ·
-            <a href="/assets/assets/certificates/AIBSE_Top40_XCulture_FahimFaisalRaunaq.pdf" download aria-label="Download certificate: AIB-SE Top 40 X-Culture Students">Download</a>
+            <a href="/assets/assets/certificates/AIBSE_Top40_XCulture_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a> ·
+            <a href="/assets/assets/certificates/AIBSE_Top40_XCulture_FahimFaisalRaunaq.pdf" download>Download</a>
           </li>
         </ul>
 
@@ -533,17 +542,14 @@
           <ul class="list" style="margin-top:.5rem">
             <li>
               <strong>X-Culture Global Virtual Symposium — Participation</strong> (May 29, 2020).
-              <a href="/assets/assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener"
-                 aria-label="View certificate: X-Culture Global Virtual Symposium Participation (opens in new tab)">View</a> ·
-              <a href="/assets/assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" download
-                 aria-label="Download certificate: X-Culture Global Virtual Symposium Participation">Download</a>
+              <a href="/assets/assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a> ·
+              <a href="/assets/assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" download>Download</a>
             </li>
           </ul>
         </details>
 
         <div class="muted small-links" style="margin-top:.5rem">
-          Letters from X-Culture Founder/Program Director available upon request. Quantitative highlights:
-          peer-evaluated performance <strong>Top 5%</strong>; expert review: quality <strong>5.3/7</strong>, creativity <strong>4.9/7</strong>, writing <strong>5.1/7</strong>.
+          Letters from X-Culture Founder/Program Director available upon request. Peer-evaluated performance <strong>Top 5%</strong>; expert review: quality <strong>5.3/7</strong>, creativity <strong>4.9/7</strong>, writing <strong>5.1/7</strong>.
         </div>
       </div>
     </section>
@@ -552,10 +558,10 @@
       <h2>Service & Leadership</h2>
       <div class="card">
         <ul class="list">
-          <li><strong>Campus Envoy</strong>, Edward M. Kennedy (EMK) Center — facilitated student engagement and development.</li>
+          <li><strong>Campus Envoy</strong>, <a href="https://bd.usembassy.gov/emk-center/" target="_blank" rel="noopener">Edward M. Kennedy (EMK) Center</a> — facilitated student engagement with programs on leadership, entrepreneurship, cultural exchange, and community projects; organized info sessions and connected peers to resources.</li>
           <li><strong>Co-Chair</strong>, X-Culture Best Report Selection (2020) — judged top reports among 5,000+ students from 140+ universities (40 countries)</li>
           <li><strong>Event Manager</strong>, BUET Career Club — Study Tour — logistics, safety/risk, budgets, vendor management</li>
-          <li><strong>Vice Representative</strong>, Industrial & Production Engineering Festival, BUET — program operations & stakeholder liaison</li>
+          <li><strong>Vice Representative</strong>, Industrial &amp; Production Engineering Festival, BUET — program operations &amp; stakeholder liaison</li>
         </ul>
       </div>
     </section>
@@ -573,18 +579,20 @@
   </main>
 
   <footer>
-    <p class="mono">&copy; <span id="year"></span> Fahim Faisal Raunaq</p>
+    <div class="container">
+      <p class="mono">&copy; <span id="year"></span> Fahim Faisal Raunaq</p>
+    </div>
   </footer>
 
   <!-- YouTube modal -->
   <dialog id="yt-modal" class="yt-modal" aria-label="YouTube video" aria-modal="true">
-    <div class="bar">
+    <div class="bar" style="display:flex;justify-content:space-between;align-items:center;padding:.4rem .6rem;border-bottom:1px solid var(--accent);background:var(--panel)">
       <strong id="yt-title">Now playing</strong>
       <button class="btn close" value="cancel" aria-label="Close">✕</button>
     </div>
     <iframe class="yt-frame" src="" title="YouTube video"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="width:min(90vw,900px);aspect-ratio:16/9;border:0"></iframe>
   </dialog>
 
   <!-- Cite modal -->
@@ -595,7 +603,7 @@
     </div>
     <div style="padding:.8rem 1rem">
       <div id="cite-content">
-        <!-- APA fallback for the published item -->
+        <!-- APA for the published item -->
         <p class="mono" style="font-size:.95rem" id="apa-infoh-2025">
           Raunaq, F. F., Islam, S., Anam, M. Z., &amp; Bari, A. B. M. M. (2025). <em>Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies</em>. <em>Informatics and Health</em>, 2, 194–209. https://doi.org/10.1016/j.infoh.2025.09.001
         </p>
@@ -609,13 +617,7 @@
 
   <div class="to-top" id="toTop"><button aria-label="Back to top">↑</button></div>
 
-  <noscript>
-    <style>
-      html{overflow-y:scroll} html{scroll-behavior:auto}
-      html{background:#fff} html{color-scheme:light}
-      html{font-family:system-ui}
-    </style>
-  </noscript>
+  <noscript><style>html{scroll-behavior:auto}</style></noscript>
 
   <script>
     // Remove "noscript" class
@@ -663,19 +665,19 @@
       if (['published','under-review','in-prep'].includes(hash)) setFilter(hash);
     })();
 
-    // Reveal-on-scroll (respects reduced motion)
+    // Reveal-on-scroll (reduced motion respected)
     (function(){
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (prefersReduced || !('IntersectionObserver' in window)) return;
       const io = new IntersectionObserver((entries)=>{
         entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
       }, {threshold:.12});
-      document.querySelectorAll('.card, .section h2, .hero .cta, .chips[aria-label="Core methods"]').forEach(el=>{
+      document.querySelectorAll('.card, .section h2, .hero .cta').forEach(el=>{
         el.classList.add('reveal'); io.observe(el);
       });
     })();
 
-    // Modal YouTube player with focus management
+    // Modal YouTube player
     (function(){
       const dlg = document.getElementById('yt-modal');
       if (!dlg) return;
@@ -689,12 +691,10 @@
         document.getElementById('yt-title').textContent = label || 'Now playing';
         dlg.showModal();
         closeBtn.focus();
-        document.body.setAttribute('inert', '');
       }
       function closeYT() {
         frame.src = '';
         dlg.close();
-        document.body.removeAttribute('inert');
         if (lastActive) lastActive.focus();
       }
       document.addEventListener('click', (e)=>{
@@ -714,7 +714,7 @@
       function onScroll(){
         if(ticking) return; ticking=true;
         requestAnimationFrame(()=>{
-          const y = window.scrollY + 120; // offset for sticky header
+          const y = window.scrollY + 120;
           let current = 'top';
           for(const s of sections){
             const r = s.el.getBoundingClientRect();
@@ -749,11 +749,7 @@
       const close = modal.querySelector('.close-cite');
       document.addEventListener('click', (e)=>{
         const t = e.target.closest(citeBtnSelector);
-        if (t){
-          e.preventDefault();
-          modal.showModal();
-          close?.focus();
-        }
+        if (t){ e.preventDefault(); modal.showModal(); close?.focus(); }
         if (e.target === close){ modal.close(); }
       });
       modal.addEventListener('cancel', (e)=>{ e.preventDefault(); modal.close(); });
