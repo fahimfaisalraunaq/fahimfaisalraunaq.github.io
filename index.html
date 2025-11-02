@@ -4,71 +4,74 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fahim Faisal Raunaq — Academic Portfolio</title>
+
+  <!-- Meta -->
   <meta name="description" content="Safety-critical decision analytics for socio-technical systems (IE/OR × ML). Spatio-temporal safety modeling, low-resource NLP, decision optimization." />
   <link rel="canonical" href="https://fahimfaisalraunaq.github.io/" />
   <link rel="preload" as="image" href="assets/profile.jpg" />
+
+  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Fahim Faisal Raunaq — Academic Portfolio" />
   <meta property="og:description" content="Data-driven safety & decision analytics (IE/OR, ML/optimization, human–technology systems)." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://fahimfaisalraunaq.github.io/" />
-  <meta name="twitter:card" content="summary" />
   <meta property="og:image" content="https://fahimfaisalraunaq.github.io/assets/profile.jpg" />
+  <meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content="https://fahimfaisalraunaq.github.io/assets/profile.jpg" />
+
+  <!-- Icons -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
-  <link rel="manifest" href="site.webmanifest" />
   <link rel="shortcut icon" href="assets/favicon.ico" />
 
   <style>
-    :root {
-      --bg:#0b0f1a; --panel:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --link:#60a5fa; --accent:#1f2937; --chip:#1e293b; --ring:rgba(96,165,250,.2);
-      /* unique hero name color (dark mode) */
-      --brandname:#7dd3fc; /* sky-300 */
-      --topbtn:#93c5fd; /* glow */
+    :root{
+      --bg:#0b0f1a; --panel:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --link:#60a5fa;
+      --accent:#1f2937; --chip:#1e293b; --ring:rgba(96,165,250,.2);
+      --hero-name:#89c2ff; /* distinct color for hero name */
     }
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg:#ffffff; --panel:#f6f7f9; --text:#0f172a; --muted:#334155; --link:#2563eb; --accent:#e5e7eb; --chip:#e2e8f0; --ring:rgba(37,99,235,.18);
-        /* hero name color (light mode) */
-        --brandname:#1d4ed8; /* blue-700 */
-        --topbtn:#60a5fa;
-      }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#ffffff; --panel:#f6f7f9; --text:#0f172a; --muted:#334155; --link:#2563eb;
+             --accent:#e5e7eb; --chip:#e2e8f0; --ring:rgba(37,99,235,.18); --hero-name:#174ea6; }
     }
     html{scroll-behavior:smooth}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);line-height:1.6}
     a{color:var(--link)} a:hover{text-decoration:underline}
     .container{max-width:1200px;margin:0 auto;padding:0 1.25rem}
 
-    /* Header & Nav */
+    /* Header */
     header.site{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 92%, transparent);border-bottom:1px solid var(--accent);backdrop-filter:saturate(1.1) blur(6px)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.8rem 0;flex-wrap:nowrap}
-    .brand{font-weight:800;letter-spacing:.2px;font-size:clamp(1.1rem,2.2vw,1.3rem);text-decoration:none;color:inherit;white-space:nowrap;flex:0 1 auto}
-    nav.primary{display:flex;align-items:center;gap:.2rem;flex:1 1 auto;justify-content:flex-end;min-width:0}
-    nav.primary a{color:var(--muted);text-decoration:none;font-weight:600;margin-left:.8rem;padding:.5rem .2rem;border-radius:.4rem}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
+    .brand{font-weight:800;letter-spacing:.2px;font-size:clamp(1.1rem,2.5vw,1.3rem);text-decoration:none;color:inherit;white-space:nowrap}
+    nav.primary{display:flex;align-items:center;gap:.25rem;flex-wrap:wrap}
+    nav.primary a{color:var(--muted);text-decoration:none;font-weight:600;margin-left:1rem;padding:.5rem .25rem;border-radius:.4rem;white-space:nowrap}
     nav.primary a:hover,nav.primary a:focus{color:var(--link);outline:none}
     nav.primary a.active{color:var(--link);box-shadow: inset 0 -2px var(--link)}
     .menu-btn{display:none;border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.6rem;padding:.45rem .6rem}
     .menu-btn[aria-expanded="true"]{box-shadow:0 0 0 .2rem var(--ring)}
-    @media (max-width:1024px){
+    @media (max-width:1120px){
+      .brand{font-size:1.05rem}
+      nav.primary{gap:.1rem}
+      nav.primary a{margin-left:.6rem}
+    }
+    @media (max-width:860px){
       nav.primary{position:absolute;top:60px;right:1.25rem;left:1.25rem;background:var(--panel);border:1px solid var(--accent);border-radius:.8rem;padding:.6rem;display:none;flex-direction:column;gap:.25rem}
       nav.primary.open{display:flex}
       .menu-btn{display:inline-flex}
     }
 
     /* Hero */
-    .hero{padding:2.75rem 0 1.25rem}
-    .hero-grid{display:grid;grid-template-columns:1fr;gap:1.4rem;align-items:center}
+    .hero{padding:2.4rem 0 1.2rem}
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:1.3rem;align-items:center}
     @media (min-width:900px){.hero-grid{grid-template-columns:1.2fr .8fr;gap:2rem}}
-    .hero .name{font-size:clamp(1.6rem,6vw,2.8rem);line-height:1.2;margin:0 0 .25rem;white-space:nowrap;color:var(--brandname)}
+    .hero .name{font-size:clamp(2rem,6vw,2.8rem);line-height:1.08;margin:0 0 .25rem;color:var(--hero-name);text-shadow:0 0 12px color-mix(in srgb, var(--hero-name) 35%, transparent)}
     .hero .headline{font-size:clamp(1.2rem,4.2vw,1.6rem);margin:.15rem 0 .6rem;color:var(--text)}
     .lead{color:var(--muted);max-width:62ch;margin:0 0 .5rem}
     .nowline{margin:.2rem 0 .6rem}
-    .edu-line{margin:.2rem 0 .4rem;color:var(--muted);font-family:ui-monospace,monospace}
     .cta{display:inline-flex;gap:.6rem;align-items:center;padding:.6rem .9rem;border:1px solid var(--accent);border-radius:.75rem;text-decoration:none;color:var(--text);font-weight:700;white-space:nowrap}
     .cta:hover{box-shadow:0 0 0 .2rem var(--ring)}
     .cta-row{display:flex;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
-    .cta.ghost{opacity:.9;font-weight:600}
     .avatar-wrap{display:flex;justify-content:center}
     .avatar{width:260px;height:260px;border-radius:9999px;object-fit:cover;border:2px solid var(--accent);box-shadow:0 0 0 .2rem var(--ring)}
     @media (max-width:700px){.avatar{width:180px;height:180px}}
@@ -81,16 +84,18 @@
     .stack{display:grid;gap:.9rem}
     .two-col{display:grid;grid-template-columns:1fr;gap:1rem}
     @media (min-width:800px){.two-col{grid-template-columns:repeat(2,1fr)}}
-    .grid-4{display:grid;grid-template-columns:1fr;gap:1rem}
-    @media (min-width:1000px){.grid-4{grid-template-columns:repeat(4,1fr)}}
+    .three-col{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media (min-width:900px){.three-col{grid-template-columns:repeat(3,1fr)}}
+    .four-col{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media (min-width:1100px){.four-col{grid-template-columns:repeat(4,1fr)}}
 
     .card{background:var(--panel);border:1px solid var(--accent);border-radius:1rem;padding:1rem;transition:transform .2s ease, box-shadow .2s ease}
     .card:hover{transform:translateY(-2px)}
     .meta{color:var(--muted);font-size:.95rem}
     .chips{display:flex;flex-wrap:wrap;gap:.5rem}
     .chip{background:var(--chip);border:1px solid var(--accent);padding:.25rem .55rem;border-radius:.65rem;font-size:.9rem}
-    .list{display:grid;gap:.85rem;padding-inline-start:1.25rem;padding-right:.5rem}
-    .list li{margin:0 0 .4rem;padding-right:.25rem}
+    .list{display:grid;gap:.75rem;padding-inline-start:1.25rem;padding-right:.5rem}
+    .list li{margin:0 0 .2rem;padding-right:.25rem}
     .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;color:var(--muted)}
     .muted{color:var(--muted)}
     .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
@@ -101,7 +106,7 @@
     .toolbox-grid .tool:hover{transform:translateY(-2px);box-shadow:0 4px 14px var(--ring)}
     @media (max-width:900px){ .toolbox-grid{grid-template-columns:repeat(2,1fr);} }
 
-    /* Publications */
+    /* Publications, actions, modal */
     .pub-filter{display:flex;gap:.5rem;margin:.5rem 0 1rem;flex-wrap:wrap}
     .pub-filter button{padding:.4rem .6rem;border:1px solid var(--accent);background:var(--bg);color:var(--text);border-radius:.55rem;cursor:pointer}
     .pub-filter button[aria-pressed="true"]{background:var(--chip);font-weight:700}
@@ -111,22 +116,20 @@
     .action{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .6rem;border:1px solid var(--accent);border-radius:.55rem;background:var(--panel);color:var(--text);font-weight:700;text-decoration:none;cursor:pointer}
     .action:hover{box-shadow:0 0 0 .15rem var(--ring)}
     .action.ghost{opacity:.92}
+    dialog.yt-modal{border:1px solid var(--accent);border-radius:.8rem;padding:0;max-width:min(92vw,900px);background:var(--panel);color:var(--text)}
+    dialog::backdrop{background:rgba(0,0,0,.4)}
+    .btn-row{display:flex;gap:.4rem;margin-top:.5rem}
 
-    /* Back to top (glowy) */
+    /* Back to top (glowy circle arrow) */
     .to-top{position:fixed;right:1rem;bottom:1rem;opacity:0;pointer-events:none;transform:translateY(10px);transition:all .2s ease}
     .to-top.show{opacity:1;pointer-events:auto;transform:none}
-    .to-top button{
-      border:1px solid var(--accent);background:linear-gradient(145deg, var(--panel), color-mix(in srgb, var(--panel) 80%, var(--topbtn)));
-      color:var(--text);border-radius:9999px;padding:.6rem .8rem;box-shadow:0 0 0 .15rem rgba(99,102,241,.08), 0 8px 22px rgba(96,165,250,.18);
-      backdrop-filter: blur(6px); cursor:pointer
-    }
-    .to-top button:hover{box-shadow:0 0 0 .2rem rgba(96,165,250,.25), 0 10px 26px rgba(96,165,250,.25)}
+    .to-top button{border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:9999px;padding:.6rem .8rem;box-shadow:0 0 16px rgba(96,165,250,.15)}
+    .to-top button:hover{box-shadow:0 0 24px rgba(96,165,250,.25)}
 
     /* Footer */
     footer{border-top:1px solid var(--accent);margin-top:1.25rem}
-    footer .container{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;min-height:60px;justify-content:space-between}
-    .footer-left{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
-    .footer-right{color:var(--muted);font-size:.95rem}
+    footer .container{display:flex;align-items:center;min-height:60px;justify-content:flex-start}
+    @media(max-width:700px){footer .container{justify-content:center}}
 
     /* Print */
     @media print{
@@ -140,33 +143,33 @@
     }
   </style>
 
-  <!-- Schema: Person (with @id) -->
+  <!-- Person JSON-LD (with @id) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"Person",
     "@id":"https://fahimfaisalraunaq.github.io/#person",
     "name":"Fahim Faisal Raunaq",
-    "jobTitle":"M.Sc. Researcher (IE/OR) and Prospective PhD Student",
+    "jobTitle":"Industrial & Production Engineering (Safety & Decision Analytics)",
     "address":{"@type":"PostalAddress","addressLocality":"Dhaka","addressCountry":"Bangladesh"},
     "email":"mailto:fahimfaisalraunaq@gmail.com",
     "image":"https://fahimfaisalraunaq.github.io/assets/profile.jpg",
     "url":"https://fahimfaisalraunaq.github.io/",
-    "affiliation":{"@type":"CollegeOrUniversity","name":"Bangladesh University of Engineering and Technology (BUET)"},
-    "alumniOf":{"@type":"CollegeOrUniversity","name":"BUET"},
+    "affiliation":{"@type":"Organization","name":"Bangladesh University of Engineering and Technology (BUET)"},
     "sameAs":[
+      "https://www.linkedin.com/in/fahimfaisalraunaq",
       "https://scholar.google.com/citations?user=BI00vUYAAAAJ",
       "https://orcid.org/0009-0001-3571-8739",
-      "https://github.com/fahimfaisalraunaq",
-      "https://www.linkedin.com/in/fahimfaisalraunaq"
+      "https://github.com/fahimfaisalraunaq"
     ]
   }
   </script>
 </head>
 <body>
+
   <header class="site">
     <div class="container nav">
-      <a class="brand" href="/">Fahim Faisal Raunaq</a>
+      <span class="brand">Fahim Faisal Raunaq</span>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">Menu</button>
       <nav class="primary" id="primaryNav" aria-label="Primary">
         <a href="#about">About</a>
@@ -191,18 +194,16 @@
         <div>
           <h1 class="name">Fahim Faisal Raunaq</h1>
           <h2 class="headline">Safety-critical decision analytics for socio-technical systems</h2>
-          <p class="lead tagline">I turn messy operations data into auditable decisions with IE/OR and ML.</p>
-          <p class="edu-line">BUET — M.Sc. IPE (ongoing) · B.Sc. IPE (2023)</p>
+          <p class="lead tagline">I turn messy operations data into auditable, safety-critical decisions with IE/OR and ML.</p>
           <p class="muted nowline">Dhaka, Bangladesh · Open to research collaborations and Ph.D. opportunities.</p>
-
           <div class="cta-row" role="group" aria-label="Primary actions">
-            <a class="cta" href="assets/Fahim_Faisal_Raunaq_CV.pdf" target="_blank" rel="noopener"><span aria-hidden>📄</span> View CV</a>
-            <a class="cta ghost" href="assets/Fahim_Faisal_Raunaq_CV.pdf" download><span aria-hidden>⬇</span> Download CV</a>
-            <a class="cta" href="https://scholar.google.com/citations?user=BI00vUYAAAAJ" target="_blank" rel="noopener"><span aria-hidden>G</span> Google Scholar</a>
-            <a class="cta" href="https://github.com/fahimfaisalraunaq" target="_blank" rel="noopener"><span aria-hidden>GH</span> GitHub</a>
-            <a class="cta" href="https://www.linkedin.com/in/fahimfaisalraunaq" target="_blank" rel="noopener"><span aria-hidden>in</span> LinkedIn</a>
-            <a class="cta" href="https://orcid.org/0009-0001-3571-8739" target="_blank" rel="noopener"><span aria-hidden>◧</span> ORCID</a>
-            <a class="cta" href="mailto:fahimfaisalraunaq@gmail.com"><span aria-hidden>✉</span> Email</a>
+            <a class="cta" href="assets/Fahim_Faisal_Raunaq_CV.pdf" target="_blank" rel="noopener" aria-label="View CV as PDF">📄 View CV</a>
+            <a class="cta" href="assets/Fahim_Faisal_Raunaq_CV.pdf" download>⬇ Download CV</a>
+            <a class="cta" href="https://scholar.google.com/citations?user=BI00vUYAAAAJ" target="_blank" rel="noopener">G Scholar</a>
+            <a class="cta" href="https://github.com/fahimfaisalraunaq" target="_blank" rel="noopener">GH GitHub</a>
+            <a class="cta" href="https://www.linkedin.com/in/fahimfaisalraunaq" target="_blank" rel="noopener">in LinkedIn</a>
+            <a class="cta" href="https://orcid.org/0009-0001-3571-8739" target="_blank" rel="noopener">◧ ORCID</a>
+            <a class="cta" href="mailto:fahimfaisalraunaq@gmail.com">✉ Email</a>
           </div>
         </div>
         <div class="avatar-wrap">
@@ -217,18 +218,19 @@
       <div class="row">
         <!-- Left: narrative -->
         <div class="card">
-          <p>I build reliable, traceable decision systems for high-stakes operations—manufacturing, supply chains, and transport—where safety and resources are tight. My work blends IE/OR, machine learning, and safety science so decisions are auditable and useful to the people who rely on them.</p>
-          <p>Two current threads: (1) translation-aware benchmarking for Bangla sentiment analysis, comparing English pipelines via MT with native models; (2) policy-driven safety analytics in work zones and construction, using spatio-temporal and causal methods to surface actionable countermeasures. I value reproducibility, failure-mode analysis, and reporting stability—not just averages.</p>
+          <p>I’m a prospective Ph.D. researcher finishing an M.Sc. in Industrial &amp; Production Engineering at BUET. I work across IE/OR, machine learning, and safety science to design end-to-end decision systems for high-stakes operations—manufacturing, supply chains, and transportation. My emphasis is on traceability and auditability so that quantitative models can support accountable decisions where safety and resources are tight.</p>
+          <p>Current work follows two tracks: (1) low-resource NLP for Bangla user-generated content, benchmarking MT-based vs. native models; and (2) policy-driven safety analytics in transportation and construction, using spatio-temporal and causal methods to surface actionable countermeasures. I’m seeking a Ph.D. program with strong industrial/clinical partnerships, a reproducible research culture, and opportunities to deploy methods in resource-constrained contexts.</p>
         </div>
 
-        <!-- Right: Highlights -->
+        <!-- Right: Education box -->
         <div class="stack">
-          <div class="card">
-            <h3>Highlights</h3>
+          <div class="card" id="education">
+            <h3>Education</h3>
             <ul class="list">
-              <li><strong>1 published + 3 under review/in-prep</strong> (safety analytics &amp; Bangla NLP)</li>
-              <li><strong>Top 5% peer evaluations</strong> at X-Culture; mentored teams in <strong>40+ countries</strong></li>
-              <li><strong>Methods:</strong> spatio-temporal · causal · interpretable ML · optimization</li>
+              <li><strong>M.Sc., Industrial &amp; Production Engineering</strong> — BUET <span class="muted nowrap">(Jun 2023–Present)</span></li>
+              <li><strong>B.Sc., Industrial &amp; Production Engineering</strong> — BUET <span class="muted nowrap">(Feb 2017–May 2023)</span></li>
+              <li><strong>H.S.C.</strong> — Dhaka College <span class="muted nowrap">(2015–2016)</span></li>
+              <li><strong>S.S.C.</strong> — Motijheel Govt. Boys' High School <span class="muted nowrap">(2007–2014)</span></li>
             </ul>
           </div>
         </div>
@@ -240,7 +242,7 @@
       <h2>Research Focus</h2>
       <p class="muted">Reliable decision support for safety-critical, resource-constrained systems.</p>
 
-      <div class="two-col" style="margin-top:.5rem">
+      <div class="three-col" style="margin-top:.5rem">
         <div class="card">
           <h3>Safety analytics &amp; risk modeling</h3>
           <ul class="list">
@@ -255,17 +257,32 @@
             <li>Cost–risk trade-offs under constraints (inventory, capacity, safety)</li>
           </ul>
         </div>
+        <div class="card">
+          <h3>Low-resource ML/NLP</h3>
+          <ul class="list">
+            <li>MT vs. native model benchmarking for Bangla UGC</li>
+            <li>Robustness to noise/imbalance; dataset design &amp; evaluation</li>
+          </ul>
+        </div>
       </div>
 
       <div class="card" style="margin-top:1rem">
         <h3 class="kicker">Methods toolbox</h3>
         <div class="toolbox-grid">
-          <div class="tool">Decision analysis</div><div class="tool">Optimization</div><div class="tool">Causal inference</div><div class="tool">Spatio-temporal</div><div class="tool">Machine learning</div>
-          <div class="tool">Operations research</div><div class="tool">Data engineering</div><div class="tool">Time-series</div><div class="tool">Bayesian modeling</div><div class="tool">Evaluation &amp; ablation</div>
+          <div class="tool">Decision analysis</div>
+          <div class="tool">Optimization</div>
+          <div class="tool">Causal inference</div>
+          <div class="tool">Spatio-temporal</div>
+          <div class="tool">Machine learning</div>
+          <div class="tool">Operations research</div>
+          <div class="tool">Data engineering</div>
+          <div class="tool">Time-series</div>
+          <div class="tool">Bayesian modeling</div>
+          <div class="tool">Evaluation &amp; ablation</div>
         </div>
       </div>
 
-      <h3 class="kicker" style="margin-top:1rem">Research Experiences</h3>
+      <h3 class="kicker" style="margin-top:1rem">Selected Work</h3>
       <div class="two-col" style="margin-top:1rem">
         <div class="card">
           <h3>M.Sc. Thesis — <span class="muted">in progress</span></h3>
@@ -302,27 +319,16 @@
 
       <div class="list" id="pub-list" aria-live="polite">
         <!-- Published -->
-        <article
-          class="pub"
-          data-status="published"
-          data-id="infoh-2025-healthtech-adoption"
-          data-title="Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies"
-          data-venue="Informatics and Health"
-          data-year="2025"
-          data-pages="194–209"
-          data-doi="10.1016/j.infoh.2025.09.001"
-          data-image="https://fahimfaisalraunaq.github.io/assets/profile.jpg"
-          data-authors="Fahim Faisal Raunaq|me; S. Islam; M. Z. Anam; A. B. M. M. Bari"
-          data-apa="Raunaq, F. F., Islam, S., Anam, M. Z., &amp; Bari, A. B. M. M. (2025). Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies. <em>Informatics and Health, 2</em>, 194–209. https://doi.org/10.1016/j.infoh.2025.09.001"
-          data-bibtex='@article{Raunaq2025InfoH, title={Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies}, author={Raunaq, Fahim Faisal and Islam, S. and Anam, M. Z. and Bari, A. B. M. M.}, journal={Informatics and Health}, year={2025}, volume={2}, pages={194--209}, doi={10.1016/j.infoh.2025.09.001}}'
-        >
+        <article class="pub" data-status="published">
           <div class="kicker">Published</div>
           <p><strong>Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies.</strong> <em>Informatics and Health</em> 2, 194–209 (2025). <strong>Raunaq, F. F.</strong>, Islam, S., Anam, M. Z., &amp; Bari, A. B. M. M.
             <span class="summary">— Empirical barriers to digital tech adoption in emerging-economy health systems; policy-oriented implications.</span>
           </p>
           <div class="actions">
             <a class="action" href="https://www.sciencedirect.com/science/article/pii/S2949953425000323" target="_blank" rel="noopener">View</a>
-            <button class="action ghost cite-btn" data-cite-id="infoh-2025-healthtech-adoption">Cite</button>
+            <button class="action ghost cite-btn"
+              data-apa="Raunaq, F. F., Islam, S., Anam, M. Z., &amp; Bari, A. B. M. M. (2025). Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies. <em>Informatics and Health, 2</em>, 194–209. https://doi.org/10.1016/j.infoh.2025.09.001"
+              data-bib='@article{raunaq2025infoh, title={Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies}, author={Raunaq, Fahim Faisal and Islam, S and Anam, MZ and Bari, ABMM}, journal={Informatics and Health}, volume={2}, pages={194--209}, year={2025}, publisher={Elsevier}, doi={10.1016/j.infoh.2025.09.001} }'>Cite</button>
           </div>
         </article>
 
@@ -392,7 +398,7 @@
     <!-- PROJECTS -->
     <section id="projects" class="section">
       <h2>Selected Academic Projects</h2>
-      <div class="grid-4">
+      <div class="four-col">
         <div class="card">
           <div class="kicker">Product Design</div>
           <strong>Paddle-Powered Water Purifier</strong>
@@ -405,21 +411,21 @@
           <div class="kicker">Global Virtual Team</div>
           <strong>Market Expansion Project (UNCG)</strong>
           <div class="meta">Operations</div>
-          <p>Cross-border rollout across <strong>6 countries / 4 time zones</strong> with a stage-gate plan (discovery → pilots → scale). Built a risk register (supply, regulatory, currency), capacity roadmap, and milestone burn-down. Partner: <a href="https://www.uncg.edu/" target="_blank" rel="noopener">UNCG</a>.</p>
+          <p>Cross-border rollout across <strong>6 countries / 4 time zones</strong> with a stage-gate plan (discovery → pilots → scale). Built a risk register (supply, regulatory, currency), capacity roadmap, and milestone burn-down. Partner context: <a href="https://www.uncg.edu/" target="_blank" rel="noopener">UNCG</a>.</p>
         </div>
 
         <div class="card">
           <div class="kicker">Mechanism Design</div>
-          <strong>Geneva-wheel Liquid Filling Machine</strong>
+          <strong>Geneva–wheel Liquid Filling Machine</strong>
           <div class="meta">Mechanism Design · Operations</div>
           <p>Semi-automated system using a Geneva mechanism; throughput &amp; timing; tolerance-aware assembly.</p>
         </div>
 
         <div class="card">
-          <div class="kicker">Program Quality · Pet Project</div>
-          <strong>XCRM Coaching Quality</strong>
-          <div class="meta">Survey · Recommendations</div>
-          <p>Analyzed coach feedback and platform pain points; drafted etiquette guidelines and onboarding improvements; proposed a lightweight rubric update and office-hours cadence to raise coaching consistency.</p>
+          <div class="kicker">Program Quality</div>
+          <strong>Pet Project — XCRM Coaching Quality</strong>
+          <div class="meta">Measurement &amp; QA for coaching operations</div>
+          <p>Designed a lightweight rubric and sampling protocol to assess coaching quality signals (clarity, timeliness, reproducibility) from routine artifacts; translated findings into a simple performance dashboard to drive coaching improvements.</p>
         </div>
       </div>
     </section>
@@ -445,6 +451,26 @@
           </div>
         </div>
       </div>
+
+      <div class="card" style="margin-top:1rem">
+        <h3>Certifications &amp; Certificates</h3>
+        <ul class="list">
+          <!-- 2020 (descending) -->
+          <li><strong>X-Culture Senior Coach</strong> — mentor of coaches; leadership (Dec 30, 2020). <a href="assets/certificates/XCulture_SeniorCoach_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="assets/certificates/XCulture_SeniorCoach_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
+          <li><strong>X-Culture Coach</strong> — theoretical &amp; practical coaching (Jun 2, 2020). <a href="assets/certificates/XCulture_Coach_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="assets/certificates/XCulture_Coach_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
+          <li><strong>X-Culture Global Collaboration</strong> — training + international team project (Jan 10, 2020). <a href="assets/certificates/XCulture_GlobalCollaboration_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="assets/certificates/XCulture_GlobalCollaboration_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
+          <!-- 2019 -->
+          <li><strong>ISCEA Certified Supply Chain Analyst (CSCA™)</strong> — end-to-end supply chain (2019). <a href="https://www.iscea.org/" target="_blank" rel="noopener">ISCEA</a></li>
+        </ul>
+      </div>
+
+      <div class="card" style="margin-top:1rem">
+        <h3>Conferences &amp; Symposia (Attendance)</h3>
+        <ul class="list">
+          <li><strong>AIB US Southeast Annual Conference</strong> — Virtual (Oct 22–23, 2020). Theme: <em>Beyond 2020: Developing IB Research &amp; Education for a New Decade</em>; included consortia, teaching &amp; research workshops, and a keynote by Ahmet C. Bozer (former EVP, The Coca-Cola Company). <!-- If you upload the PDF: <a href="assets/certificates/2020AIBSEProgram_Final.pdf" target="_blank" rel="noopener">Program (PDF)</a> --></li>
+          <li><strong>X-Culture Global Virtual Symposium — Attendance</strong> (May 29, 2020). <a href="assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
+        </ul>
+      </div>
     </section>
 
     <!-- AWARDS -->
@@ -458,19 +484,6 @@
           <li><strong>KUET IPE Fest Business Case Competition</strong> — Champion (2018)</li>
           <li><strong>MIST Robolution</strong> — First Runner-up (2018)</li>
         </ul>
-        <div class="yt-actions"><a class="action" href="https://www.youtube.com/watch?v=zIDMUkLRQ1w" target="_blank" rel="noopener">▶ Watch 1-minute clip</a></div>
-      </div>
-
-      <!-- Certifications & Certificates (Descending by year; ISCEA 2019 last) -->
-      <div class="card" style="margin-top:1rem">
-        <h3>Certifications &amp; Certificates</h3>
-        <ul class="list">
-          <li><strong>X-Culture Senior Coach</strong> — mentor of coaches; leadership role <span class="muted">(Dec 30, 2020)</span>. <a href="/assets/assets/certificates/XCulture_SeniorCoach_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/assets/certificates/XCulture_SeniorCoach_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
-          <li><strong>X-Culture Top 40 Students</strong> — AIB-SE Global Symposium <span class="muted">(Oct 21–23, 2020)</span>. <a href="/assets/assets/certificates/AIBSE_Top40_XCulture_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/assets/certificates/AIBSE_Top40_XCulture_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
-          <li><strong>X-Culture Coach</strong> — theoretical &amp; practical coaching <span class="muted">(Jun 2, 2020)</span>. <a href="/assets/assets/certificates/XCulture_Coach_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/assets/certificates/XCulture_Coach_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
-          <li><strong>X-Culture Global Collaboration</strong> — Training + international team project <span class="muted">(Jan 10, 2020)</span>. <a href="/assets/assets/certificates/XCulture_GlobalCollaboration_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/assets/certificates/XCulture_GlobalCollaboration_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
-          <li><strong>ISCEA Certified Supply Chain Analyst (CSCA™)</strong> — planning, sourcing, production, logistics, cash-to-cash <span class="muted">(2019)</span>. <a href="https://www.iscea.org/" target="_blank" rel="noopener">ISCEA</a></li>
-        </ul>
       </div>
     </section>
 
@@ -480,12 +493,12 @@
       <div class="card">
         <ul class="list">
           <li>
-            <strong>Campus Envoy</strong>,
+            <strong>Campus Envoy</strong>, 
             <a href="https://bd.usembassy.gov/emk-center/" target="_blank" rel="noopener">Edward M. Kennedy (EMK) Center</a>
             <span class="muted">(Flagship American Space in Bangladesh)</span> — Helped students navigate cultural and environmental differences through open dialogue, informed action, artistic expression, and personal &amp; professional development.
           </li>
           <li>
-            <strong>Volunteer</strong>, <a href="https://songjogfoundation.org/" target="_blank" rel="noopener">Songjog Foundation</a> <span class="muted">(US-based 501(c)(3) nonprofit)</span> — Contributed to a global nonprofit focused on education, healthcare, and disaster relief.
+            <strong>Volunteer</strong>, <a href="https://songjogfoundation.org/" target="_blank" rel="noopener">Songjog Foundation</a> <span class="muted">(US-based 501(c)(3) nonprofit)</span> — Contributed to a global nonprofit focused on education, healthcare, and disaster relief as part of the volunteer team.
           </li>
           <li>
             <strong>Co-Chair</strong>, X-Culture Best Report Selection (2020) — judged top reports among 5,000+ MBA/business students from 140+ universities (40 countries)
@@ -513,57 +526,43 @@
       </div>
     </section>
 
-    <!-- EDUCATION -->
-    <section id="education" class="section">
-      <h2>Education</h2>
-      <div class="card">
-        <ul class="list">
-          <li><strong>M.Sc., Industrial &amp; Production Engineering</strong> — BUET <span class="muted nowrap">(Jun 2023–Present)</span></li>
-          <li><strong>B.Sc., Industrial &amp; Production Engineering</strong> — BUET <span class="muted nowrap">(Feb 2017–May 2023)</span></li>
-          <li><strong>H.S.C.</strong> — Dhaka College <span class="muted nowrap">(2015–2016)</span></li>
-          <li><strong>S.S.C.</strong> — Motijheel Govt. Boys' High School <span class="muted nowrap">(2007–2014)</span></li>
-        </ul>
-      </div>
-    </section>
-
     <!-- CONTACT -->
     <section id="contact" class="section">
       <h2>Contact</h2>
       <div class="two-col">
         <div class="card">
-          <h3>Let’s connect</h3>
-          <p>If you’re exploring collaborations, student mentoring, or data/experiment swaps, email works best. A short note with topic, timeline, and any links helps me respond faster. For formal opportunities, feel free to attach a brief summary/CV.</p>
-          <p class="muted">Based in Dhaka, Bangladesh · Happy to meet virtually across time zones.</p>
+          <h3>Get in touch</h3>
+          <p>Email: <a href="mailto:fahimfaisalraunaq@gmail.com">fahimfaisalraunaq@gmail.com</a><br />LinkedIn: <a href="https://www.linkedin.com/in/fahimfaisalraunaq" target="_blank" rel="noopener">linkedin.com/in/fahimfaisalraunaq</a></p>
+          <p class="muted">Dhaka, Bangladesh</p>
         </div>
       </div>
     </section>
 
     <footer>
       <div class="container">
-        <div class="footer-left">
-          <p class="mono">&copy; <span id="year"></span> Fahim Faisal Raunaq</p>
-        </div>
+        <p class="mono">&copy; <span id="year"></span> Fahim Faisal Raunaq</p>
       </div>
     </footer>
 
-    <!-- Back to top (glowy) -->
-    <div class="to-top" id="toTop"><button aria-label="Back to top">↑</button></div>
-
     <!-- Cite modal -->
-    <dialog id="cite-modal" aria-label="Citation">
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:.6rem .8rem;border-bottom:1px solid var(--accent);background:var(--panel)">
-        <strong>Cite</strong><button class="action" id="cite-close" value="cancel" aria-label="Close">✕</button>
+    <dialog id="cite-modal" class="yt-modal" aria-label="Cite">
+      <div class="bar" style="display:flex;justify-content:space-between;align-items:center;padding:.6rem .8rem;border-bottom:1px solid var(--accent);background:var(--panel)">
+        <strong>Citation</strong><button class="action" id="cite-close" value="cancel" aria-label="Close">✕</button>
       </div>
       <div style="padding:1rem;max-width:min(90vw,900px)">
-        <div style="display:flex;gap:.5rem;margin-bottom:.6rem;flex-wrap:wrap">
-          <button class="action ghost" id="btn-apa">APA</button>
-          <button class="action ghost" id="btn-bib">BibTeX</button>
-          <button class="action" id="btn-copy">Copy</button>
+        <h4 style="margin:.2rem 0">APA</h4>
+        <p id="cite-apa" class="muted" style="margin:0 0 .8rem 0"></p>
+        <button class="action" id="apa-copy">Copy APA</button>
+        <h4 style="margin:1rem 0 .2rem">BibTeX</h4>
+        <pre id="cite-bib" class="muted" style="white-space:pre-wrap;background:var(--bg);border:1px solid var(--accent);border-radius:.6rem;padding:.6rem"></pre>
+        <div class="btn-row">
+          <button class="action" id="bib-copy">Copy BibTeX</button>
         </div>
-        <pre id="cite-content" class="muted" style="white-space:pre-wrap;margin:0"></pre>
       </div>
     </dialog>
   </main>
+
+  <div class="to-top" id="toTop"><button aria-label="Back to top">↑</button></div>
 
   <script>
     // Footer year
@@ -591,17 +590,14 @@
       function setFilter(key){
         pubs.forEach(p => { const ok = key === 'all' || p.dataset.status === key; p.style.display = ok ? '' : 'none'; });
         buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === key)));
-        const hash = key === 'all' ? '#publications' : `#publications-${key}`;
-        history.replaceState(null, '', hash);
         const labelMap={all:'All','published':'Published','under-review':'Under review','in-prep':'In preparation'};
         if(status) status.textContent = '· Showing: ' + (labelMap[key]||'All');
       }
       buttons.forEach(btn => btn.addEventListener('click', () => setFilter(btn.dataset.filter)));
-      const hash = location.hash.replace('#publications-', '');
-      if (['published','under-review','in-prep'].includes(hash)) setFilter(hash);
+      setFilter('all');
     })();
 
-    // Back to top show/hide and smooth scroll
+    // Back to top show/hide + smooth scroll
     (function(){
       const btnWrap = document.getElementById('toTop');
       const btn = btnWrap.querySelector('button');
@@ -611,95 +607,31 @@
       }, {passive:true});
     })();
 
-    // Cite modal (APA + BibTeX)
+    // Cite modal handlers
     (function(){
       const dlg = document.getElementById('cite-modal');
       const closeBtn = document.getElementById('cite-close');
-      const content = document.getElementById('cite-content');
-      const btnAPA = document.getElementById('btn-apa');
-      const btnBIB = document.getElementById('btn-bib');
-      const btnCopy = document.getElementById('btn-copy');
-      let current = { apa: '', bib: '', mode: 'apa' };
-
+      const apa = document.getElementById('cite-apa');
+      const bib = document.getElementById('cite-bib');
+      const copy = async (txt, btn) => {
+        try{ await navigator.clipboard.writeText(txt); btn.textContent='Copied!'; setTimeout(()=>btn.textContent=btn.dataset.reset||'Copy', 1200); }
+        catch{ btn.textContent='Copy failed'; setTimeout(()=>btn.textContent=btn.dataset.reset||'Copy', 1200); }
+      };
       document.addEventListener('click', (e)=>{
         const btn = e.target.closest('.cite-btn');
         if(!btn) return;
-        const id = btn.dataset.citeId;
-        const el = document.querySelector(`.pub[data-id="${id}"]`);
-        if(!el) return;
-        current.apa = el.getAttribute('data-apa') || '';
-        current.bib = el.getAttribute('data-bibtex') || '';
-        current.mode = 'apa';
-        content.textContent = stripHTML(current.apa);
+        apa.innerHTML = btn.dataset.apa || '';
+        bib.textContent = btn.dataset.bib || '';
         dlg.showModal();
       });
-
-      function stripHTML(html){ const t = document.createElement('div'); t.innerHTML = html; return t.textContent || t.innerText || ''; }
-
-      btnAPA.addEventListener('click', ()=>{ current.mode='apa'; content.textContent = stripHTML(current.apa); });
-      btnBIB.addEventListener('click', ()=>{ current.mode='bib'; content.textContent = current.bib; });
-      btnCopy.addEventListener('click', async ()=>{
-        try{ await navigator.clipboard.writeText(content.textContent); btnCopy.textContent='Copied!'; setTimeout(()=>btnCopy.textContent='Copy', 1200); }
-        catch{ btnCopy.textContent='Copy failed'; setTimeout(()=>btnCopy.textContent='Copy', 1200); }
-      });
-
       closeBtn && closeBtn.addEventListener('click', ()=> dlg.close());
       dlg && dlg.addEventListener('cancel', (e)=>{ e.preventDefault(); dlg.close(); });
-    })();
-
-    // Inject JSON-LD for published articles
-    (function(){
-      const SITE = 'https://fahimfaisalraunaq.github.io';
-      const MEID = SITE + '/#person';
-      const CARD = SITE + '/assets/profile.jpg';
-      function parseAuthors(str){
-        return (str || '').split(';').map(s => s.trim()).filter(Boolean).map(seg=>{
-          const parts = seg.split('|').map(x=>x.trim());
-          const name = parts[0];
-          const isMe = (parts[1]||'').toLowerCase()==='me';
-          return isMe ? {"@id": MEID} : {"@type":"Person","name": name};
-        });
-      }
-      function inject(p){
-        const ld = {
-          "@context":"https://schema.org",
-          "@type":"ScholarlyArticle",
-          "@id": `${SITE}/#pub-${p.id}`,
-          "name": p.title,
-          "headline": p.title,
-          "mainEntityOfPage": { "@type":"WebPage", "@id": `${SITE}/#publications` },
-          "author": parseAuthors(p.authors),
-          "image": p.image || CARD,
-          "isPartOf": p.venue ? { "@type":"Periodical", "name": p.venue } : undefined,
-          "publisher": p.venue ? { "@type":"Organization", "name": p.venue } : undefined,
-          "datePublished": p.datePublished || p.year || undefined,
-          "dateModified": p.dateModified || p.datePublished || p.year || undefined,
-          "pagination": p.pages || undefined,
-          "identifier": p.doi ? { "@type":"PropertyValue","propertyID":"DOI","value": p.doi.replace(/^https?:\/\/doi.org\//,'') } : undefined,
-          "url": p.doi ? (p.doi.startsWith('10.') ? `https://doi.org/${p.doi}` : p.doi) : `${SITE}/#publications`,
-          "keywords": ["industrial engineering","operations research","machine learning","safety","optimization","Bangla NLP"]
-        };
-        const s = document.createElement('script');
-        s.type = 'application/ld+json';
-        s.textContent = JSON.stringify(ld);
-        document.head.appendChild(s);
-      }
-      document.querySelectorAll('.pub[data-status="published"]').forEach(el=>{
-        const data = {
-          id: el.getAttribute('data-id') || (el.getAttribute('data-title')||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,60),
-          title: el.getAttribute('data-title') || '',
-          venue: el.getAttribute('data-venue') || '',
-          year: el.getAttribute('data-year') || '',
-          pages: el.getAttribute('data-pages') || '',
-          doi: el.getAttribute('data-doi') || '',
-          image: el.getAttribute('data-image') || '',
-          authors: el.getAttribute('data-authors') || '',
-          datePublished: el.getAttribute('data-date-published') || '',
-          dateModified: el.getAttribute('data-date-modified') || ''
-        };
-        if (!data.title) return;
-        inject(data);
-      });
+      const apaCopy = document.getElementById('apa-copy');
+      const bibCopy = document.getElementById('bib-copy');
+      apaCopy?.addEventListener('click', ()=> copy(apa.innerText, apaCopy));
+      bibCopy?.addEventListener('click', ()=> copy(bib.textContent, bibCopy));
+      apaCopy && (apaCopy.dataset.reset='Copy APA');
+      bibCopy && (bibCopy.dataset.reset='Copy BibTeX');
     })();
   </script>
 </body>
