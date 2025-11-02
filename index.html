@@ -30,15 +30,16 @@
 
     /* Header & Nav */
     header.site{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 92%, transparent);border-bottom:1px solid var(--accent);backdrop-filter:saturate(1.1) blur(6px)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
-    .brand{font-weight:800;letter-spacing:.2px;font-size:clamp(1.1rem,2.5vw,1.3rem);text-decoration:none;color:inherit}
-    nav.primary{display:flex;align-items:center;gap:.25rem}
-    nav.primary a{color:var(--muted);text-decoration:none;font-weight:600;margin-left:1rem;padding:.5rem .25rem;border-radius:.4rem}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.8rem 0;flex-wrap:nowrap}
+    .brand{font-weight:800;letter-spacing:.2px;font-size:clamp(1.1rem,2.2vw,1.3rem);text-decoration:none;color:inherit;white-space:nowrap;flex:0 1 auto}
+    nav.primary{display:flex;align-items:center;gap:.2rem;flex:1 1 auto;justify-content:flex-end;min-width:0}
+    nav.primary a{color:var(--muted);text-decoration:none;font-weight:600;margin-left:.8rem;padding:.5rem .2rem;border-radius:.4rem}
     nav.primary a:hover,nav.primary a:focus{color:var(--link);outline:none}
     nav.primary a.active{color:var(--link);box-shadow: inset 0 -2px var(--link)}
     .menu-btn{display:none;border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.6rem;padding:.45rem .6rem}
     .menu-btn[aria-expanded="true"]{box-shadow:0 0 0 .2rem var(--ring)}
-    @media (max-width:860px){
+    /* Collapse to hamburger sooner to keep one-row header */
+    @media (max-width:1024px){
       nav.primary{position:absolute;top:60px;right:1.25rem;left:1.25rem;background:var(--panel);border:1px solid var(--accent);border-radius:.8rem;padding:.6rem;display:none;flex-direction:column;gap:.25rem}
       nav.primary.open{display:flex}
       .menu-btn{display:inline-flex}
@@ -69,8 +70,8 @@
     .stack{display:grid;gap:.9rem}
     .two-col{display:grid;grid-template-columns:1fr;gap:1rem}
     @media (min-width:800px){.two-col{grid-template-columns:repeat(2,1fr)}}
-    .three-col{display:grid;grid-template-columns:1fr;gap:1rem}
-    @media (min-width:900px){.three-col{grid-template-columns:repeat(3,1fr)}}
+    .grid-4{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media (min-width:1000px){.grid-4{grid-template-columns:repeat(4,1fr)}}
 
     .card{background:var(--panel);border:1px solid var(--accent);border-radius:1rem;padding:1rem;transition:transform .2s ease, box-shadow .2s ease}
     .card:hover{transform:translateY(-2px)}
@@ -100,21 +101,6 @@
     .action:hover{box-shadow:0 0 0 .15rem var(--ring)}
     .action.ghost{opacity:.92}
 
-    /* Back to top (redesigned) */
-    .to-top{position:fixed;right:1rem;bottom:1rem;opacity:0;pointer-events:none;transform:translateY(10px);transition:all .2s ease}
-    .to-top.show{opacity:1;pointer-events:auto;transform:none}
-    .to-top button{
-      border:1px solid var(--accent);
-      background:var(--panel);
-      color:var(--text);
-      border-radius:9999px;
-      padding:.55rem;
-      width:44px;height:44px;
-      display:inline-flex;align-items:center;justify-content:center;
-      box-shadow:0 6px 16px var(--ring);
-    }
-    .to-top svg{width:18px;height:18px;display:block}
-
     /* Footer */
     footer{border-top:1px solid var(--accent);margin-top:1.25rem}
     footer .container{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;min-height:60px;justify-content:space-between}
@@ -125,7 +111,7 @@
     @media print{
       *{background:transparent !important;box-shadow:none !important}
       body{color:#000}
-      header.site, .pub-filter, .cta-row, nav.primary, .to-top, dialog{display:none !important}
+      header.site, .pub-filter, .cta-row, nav.primary, dialog{display:none !important}
       a[href]::after{content:" (" attr(href) ")";font-size:.9em}
       .container{max-width:none;padding:0 12mm}
       .section{padding:8mm 0;page-break-inside:avoid}
@@ -157,8 +143,6 @@
   </script>
 </head>
 <body>
-  <a class="sr-only" href="#main">Skip to content</a>
-
   <header class="site">
     <div class="container nav">
       <a class="brand" href="/">Fahim Faisal Raunaq</a>
@@ -184,7 +168,7 @@
     <section class="hero" id="top">
       <div class="hero-grid">
         <div>
-          <h1 class="name"><a href="/" class="brand-link" aria-label="Home — reload site">Fahim Faisal Raunaq</a></h1>
+          <h1 class="name">Fahim Faisal Raunaq</h1>
           <h2 class="headline">Safety-critical decision analytics for socio-technical systems</h2>
           <p class="lead tagline">I turn messy operations data into auditable decisions with IE/OR and ML.</p>
           <p class="edu-line">BUET — M.Sc. IPE (ongoing) · B.Sc. IPE (2023)</p>
@@ -235,7 +219,7 @@
       <h2>Research Focus</h2>
       <p class="muted">Reliable decision support for safety-critical, resource-constrained systems.</p>
 
-      <div class="three-col" style="margin-top:.5rem">
+      <div class="two-col" style="margin-top:.5rem">
         <div class="card">
           <h3>Safety analytics &amp; risk modeling</h3>
           <ul class="list">
@@ -250,13 +234,6 @@
             <li>Cost–risk trade-offs under constraints (inventory, capacity, safety)</li>
           </ul>
         </div>
-        <div class="card">
-          <h3>Low-resource ML/NLP</h3>
-          <ul class="list">
-            <li>MT vs. native model benchmarking for Bangla UGC</li>
-            <li>Robustness to noise/imbalance; dataset design &amp; evaluation</li>
-          </ul>
-        </div>
       </div>
 
       <div class="card" style="margin-top:1rem">
@@ -264,21 +241,6 @@
         <div class="toolbox-grid">
           <div class="tool">Decision analysis</div><div class="tool">Optimization</div><div class="tool">Causal inference</div><div class="tool">Spatio-temporal</div><div class="tool">Machine learning</div>
           <div class="tool">Operations research</div><div class="tool">Data engineering</div><div class="tool">Time-series</div><div class="tool">Bayesian modeling</div><div class="tool">Evaluation &amp; ablation</div>
-        </div>
-      </div>
-
-      <!-- Research previews (moved from Projects; avoids duplication) -->
-      <h3 class="kicker" style="margin-top:1rem">Research previews (under review)</h3>
-      <div class="two-col" style="margin-top:.6rem">
-        <div class="card">
-          <strong>Taguchi–CRITIC Optimization for LDA &amp; BERTopic</strong>
-          <div class="meta">ML · Topic Modeling</div>
-          <p>Robust hyper-parameter selection unifying orthogonal design and CRITIC weighting to stabilize topic coherence and diversity across seeds.</p>
-        </div>
-        <div class="card">
-          <strong>Bangla Stance Detection &amp; Rumor Analysis</strong>
-          <div class="meta">NLP · Social Media</div>
-          <p>Topic-aware stance detection using BanglaBERT with translation-aware checks and slice-wise error audits to avoid MT artifacts.</p>
         </div>
       </div>
 
@@ -409,7 +371,7 @@
     <!-- PROJECTS -->
     <section id="projects" class="section">
       <h2>Selected Academic Projects</h2>
-      <div class="three-col">
+      <div class="grid-4">
         <div class="card">
           <div class="kicker">Product Design</div>
           <strong>Paddle-Powered Water Purifier</strong>
@@ -568,9 +530,6 @@
           <span class="muted">·</span>
           <p class="muted mono">Last updated: <span id="lastUpdated"></span></p>
         </div>
-        <div class="footer-right mono">
-          <a href="#top">Back to top</a>
-        </div>
       </div>
     </footer>
 
@@ -589,13 +548,6 @@
       </div>
     </dialog>
   </main>
-
-  <!-- Back-to-top button -->
-  <div class="to-top" id="toTop">
-    <button aria-label="Back to top" title="Back to top">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l7 7-1.4 1.4L13 9.8V20h-2V9.8L6.4 13.4 5 12z"/></svg>
-    </button>
-  </div>
 
   <script>
     // Footer year + last updated
@@ -635,18 +587,6 @@
       buttons.forEach(btn => btn.addEventListener('click', () => setFilter(btn.dataset.filter)));
       const hash = location.hash.replace('#publications-', '');
       if (['published','under-review','in-prep'].includes(hash)) setFilter(hash);
-    })();
-
-    // Back to top (show/hide + smooth)
-    (function(){
-      const wrap = document.getElementById('toTop');
-      const btn = wrap.querySelector('button');
-      btn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
-      const onScroll = ()=>{
-        if (window.scrollY > 600) wrap.classList.add('show'); else wrap.classList.remove('show');
-      };
-      window.addEventListener('scroll', onScroll, {passive:true});
-      onScroll();
     })();
 
     // Cite modal (APA + BibTeX)
