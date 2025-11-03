@@ -117,57 +117,25 @@
     .action:hover{box-shadow:0 0 0 .15rem var(--ring)}
     .action.ghost{opacity:.92}
 
-    /* Education timeline (fixed spacing & no overlap) */
+    /* Education (no bullets or dots) */
     .edu{position:relative}
     .edu-tl{
       list-style:none;
       margin:0;
-      padding:0 0 0 2.6rem;
-      position:relative;
-    }
-    .edu-tl::before{
-      content:"";
-      position:absolute;
-      left:1.2rem;
-      top:.25rem;
-      bottom:.25rem;
-      width:2px;
-      background:var(--accent);
-      border-radius:2px;
+      padding:0;          /* no left padding */
     }
     .edu-tl li{
-      position:relative;
-      padding:.25rem 0 .9rem;
+      padding:.75rem 0 1rem;
+      border-top:1px solid var(--accent);
     }
-    .edu-tl li::before{
-      content:"";
-      position:absolute;
-      left:.9rem;
-      top:.55rem;
-      width:12px;height:12px;
-      border-radius:9999px;
-      background:var(--chip);
-      border:2px solid var(--accent);
-      z-index:0;
-    }
-    .edu-title{
-      margin:0 0 .15rem 0;
-      font-weight:800;
-      position:relative;
-      z-index:1;
-    }
+    .edu-tl li:first-child{border-top:none}
+    .edu-title{margin:0 0 .15rem 0;font-weight:800}
     .edu-title a{text-decoration:none}
     .edu-meta{font-size:.95rem;color:var(--muted);margin:0 0 .35rem 0}
     .edu-desc{margin:0;color:var(--muted)}
     .badge{
-      display:inline-block;
-      padding:.08rem .4rem;
-      border:1px solid var(--accent);
-      border-radius:.45rem;
-      font-size:.75rem;
-      margin-left:.4rem;
-      color:var(--text);
-      background:var(--chip)
+      display:inline-block;padding:.08rem .4rem;border:1px solid var(--accent);
+      border-radius:.45rem;font-size:.75rem;margin-left:.4rem;color:var(--text);background:var(--chip)
     }
 
     /* Back to top (glowy) */
@@ -532,7 +500,7 @@
         <h3>Conferences &amp; Symposia</h3>
         <ul class="list">
           <li><strong>AIB US Southeast Annual Conference — Virtual</strong> (Oct 22–23, 2020). Theme: <em>Beyond 2020: Developing IB Research &amp; Education for a New Decade</em>; consortia, teaching &amp; research workshops, and a keynote by Ahmet C. Bozer (former EVP, The Coca-Cola Company).
-            · <a href="/assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a>
+            · <a href="https://github.com/fahimfaisalraunaq/fahimfaisalraunaq.github.io/blob/main/assets/certificates/AIBSE_Top40_XCulture_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="https://github.com/fahimfaisalraunaq/fahimfaisalraunaq.github.io/blob/main/assets/certificates/AIBSE_Top40_XCulture_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a>
           </li>
           <li><strong>X-Culture Global Virtual Symposium</strong> (May 29, 2020). · <a href="/assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
         </ul>
