@@ -30,7 +30,7 @@
       --bg:#0b0f1a; --panel:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --link:#60a5fa;
       --accent:#1f2937; --chip:#1e293b; --ring:rgba(96,165,250,.2);
       --hero-name:#89c2ff;       /* academic, no glow */
-      --highlight:#7dd3fc;       /* site-wide highlight color (nav active, etc.) */
+      --highlight:#7dd3fc;       /* nav active underline */
       --topglow: rgba(96,165,250,.22);
     }
     @media (prefers-color-scheme: light){
@@ -68,12 +68,14 @@
     .hero-grid{display:grid;grid-template-columns:1fr;gap:1.3rem;align-items:center}
     @media (min-width:900px){.hero-grid{grid-template-columns:1.2fr .8fr;gap:2rem}}
     .hero .name{font-size:clamp(2rem,6vw,2.8rem);line-height:1.08;margin:0 0 .25rem;color:var(--hero-name);white-space:nowrap}
-    .hero .headline{font-size:clamp(1.2rem,4.2vw,1.6rem);margin:.15rem 0 .6rem;color:var(--text)}
+    .hero .headline{font-size:clamp(1.2rem,4.2vw,1.6rem);margin:.15rem 0 .6rem}
     .lead{color:var(--muted);max-width:62ch;margin:0 0 .5rem}
     .nowline{margin:.2rem 0 .6rem}
-    .cta{display:inline-flex;gap:.6rem;align-items:center;padding:.6rem .9rem;border:1px solid var(--accent);border-radius:.75rem;text-decoration:none;color:var(--text);font-weight:700;white-space:nowrap}
+    .cta{display:inline-flex;gap:.5rem;align-items:center;justify-content:center;padding:.6rem .9rem;border:1px solid var(--accent);border-radius:.75rem;text-decoration:none;color:var(--text);font-weight:700;white-space:nowrap}
     .cta:hover{box-shadow:0 0 0 .2rem var(--ring)}
-    .cta-row{display:flex;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
+    .cta-grid{display:grid;gap:.6rem;margin-top:.6rem}
+    .cta-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:720px){.cta-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
     .avatar-wrap{display:flex;justify-content:center}
     .avatar{width:260px;height:260px;border-radius:9999px;object-fit:cover;border:2px solid var(--accent);box-shadow:0 0 0 .2rem var(--ring)}
     @media (max-width:700px){.avatar{width:180px;height:180px}}
@@ -82,7 +84,6 @@
     .section{padding:1.25rem 0;scroll-margin-top:5.5rem}
     .section h2{font-size:clamp(1.3rem,3vw,1.6rem);margin:0 0 .8rem}
     .row{display:grid;grid-template-columns:1fr;gap:.9rem}
-    @media (min-width:900px){.row{grid-template-columns:1.4fr .6fr}}
     .stack{display:grid;gap:.9rem}
     .two-col{display:grid;grid-template-columns:1fr;gap:1rem}
     @media (min-width:800px){.two-col{grid-template-columns:repeat(2,1fr)}}
@@ -170,11 +171,12 @@
 <body>
   <header class="site">
     <div class="container nav">
-      <!-- linked brand as requested -->
+      <!-- linked brand -->
       <a class="brand" href="https://fahimfaisalraunaq.github.io/">Fahim Faisal Raunaq</a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">Menu</button>
       <nav class="primary" id="primaryNav" aria-label="Primary">
         <a href="#about">About</a>
+        <a href="#education">Education</a>
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
         <a href="#experience">Experience</a>
@@ -183,7 +185,6 @@
         <a href="#awards">Awards</a>
         <a href="#service">Service</a>
         <a href="#endorsements">Endorsements</a>
-        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -198,33 +199,25 @@
           <h2 class="headline">Safety-critical decision analytics for socio-technical systems</h2>
           <p class="lead tagline">I turn messy operations data into auditable, safety-critical decisions with IE/OR and ML.</p>
           <p class="muted nowline">Dhaka, Bangladesh · Open to research collaborations and Ph.D. opportunities.</p>
-          <div class="cta-row" role="group" aria-label="Primary actions">
+
+          <!-- CTA grid: 3 columns × 2 rows in given order (first six) -->
+          <div class="cta-grid" role="group" aria-label="Primary actions">
             <a class="cta" href="assets/Fahim_Faisal_Raunaq_CV.pdf" target="_blank" rel="noopener">📄 View CV</a>
             <a class="cta" href="assets/Fahim_Faisal_Raunaq_CV.pdf" download>⬇ Download CV</a>
+            <a class="cta" href="https://www.linkedin.com/in/fahimfaisalraunaq" target="_blank" rel="noopener">in LinkedIn</a>
             <a class="cta" href="https://scholar.google.com/citations?user=BI00vUYAAAAJ" target="_blank" rel="noopener">G Scholar</a>
             <a class="cta" href="https://github.com/fahimfaisalraunaq" target="_blank" rel="noopener">GH GitHub</a>
-            <a class="cta" href="https://www.linkedin.com/in/fahimfaisalraunaq" target="_blank" rel="noopener">in LinkedIn</a>
             <a class="cta" href="https://orcid.org/0009-0001-3571-8739" target="_blank" rel="noopener">◧ ORCID</a>
+          </div>
+          <!-- Email placed immediately below to include it without breaking the 3x2 grid -->
+          <div class="cta-row" style="margin-top:.6rem">
             <a class="cta" href="mailto:fahimfaisalraunaq@gmail.com">✉ Email</a>
           </div>
         </div>
+
         <div class="avatar-wrap">
           <img src="assets/profile.jpg" alt="Portrait of Fahim Faisal Raunaq" class="avatar" loading="lazy" decoding="async" width="260" height="260" />
         </div>
-      </div>
-    </section>
-
-    <!-- HIGHLIGHT (quick scan) -->
-    <section id="highlight" class="section">
-      <h2>Highlight</h2>
-      <div class="card">
-        <ul class="list">
-          <li>M.Sc. researcher (BUET, IPE) focusing on IE/OR × ML for safety-critical decision systems.</li>
-          <li>Research tracks: low-resource Bangla NLP benchmarking and policy-driven safety analytics.</li>
-          <li>Publications: 1 published; 3 under review; 2 in preparation.</li>
-          <li>Teaching & mentorship: Adjunct Lecturer; X-Culture Coach → Senior Coach (global cohort).</li>
-          <li>Awards: World Bank–UN Road Safety (Runner-up), multiple case-competition wins.</li>
-        </ul>
       </div>
     </section>
 
@@ -232,24 +225,23 @@
     <section id="about" class="section">
       <h2>About</h2>
       <div class="row">
-        <!-- Left: narrative -->
         <div class="card">
           <p>I’m a prospective Ph.D. researcher finishing an M.Sc. in Industrial &amp; Production Engineering at BUET. I work across IE/OR, machine learning, and safety science to design end-to-end decision systems for high-stakes operations—manufacturing, supply chains, and transportation. My emphasis is on traceability and auditability so that quantitative models can support accountable decisions where safety and resources are tight.</p>
           <p>Current work follows two tracks: (1) low-resource NLP for Bangla user-generated content, benchmarking MT-based vs. native models; and (2) policy-driven safety analytics in transportation and construction, using spatio-temporal and causal methods to surface actionable countermeasures. I’m seeking a Ph.D. program with strong industrial/clinical partnerships, a reproducible research culture, and opportunities to deploy methods in resource-constrained contexts.</p>
         </div>
+      </div>
+    </section>
 
-        <!-- Right: Education box -->
-        <div class="stack">
-          <div class="card" id="education">
-            <h3>Education</h3>
-            <ul class="list">
-              <li><strong>M.Sc., Industrial &amp; Production Engineering</strong> — BUET <span class="muted nowrap">(Jun 2023–Present)</span></li>
-              <li><strong>B.Sc., Industrial &amp; Production Engineering</strong> — BUET <span class="muted nowrap">(Feb 2017–May 2023)</span></li>
-              <li><strong>H.S.C.</strong> — Dhaka College <span class="muted nowrap">(2015–2016)</span></li>
-              <li><strong>S.S.C.</strong> — Motijheel Govt. Boys' High School <span class="muted nowrap">(2007–2014)</span></li>
-            </ul>
-          </div>
-        </div>
+    <!-- EDUCATION (separate section, below About) -->
+    <section id="education" class="section">
+      <h2>Education</h2>
+      <div class="card">
+        <ul class="list">
+          <li><strong>M.Sc., Industrial &amp; Production Engineering</strong> — BUET <span class="muted nowrap">(Jun 2023–Present)</span></li>
+          <li><strong>B.Sc., Industrial &amp; Production Engineering</strong> — BUET <span class="muted nowrap">(Feb 2017–May 2023)</span></li>
+          <li><strong>H.S.C.</strong> — Dhaka College <span class="muted nowrap">(2015–2016)</span></li>
+          <li><strong>S.S.C.</strong> — Motijheel Govt. Boys' High School <span class="muted nowrap">(2007–2014)</span></li>
+        </ul>
       </div>
     </section>
 
@@ -620,7 +612,7 @@
       }, {passive:true});
     })();
 
-    // Scrollspy (site-wide highlight of active section in nav)
+    // Scrollspy (active section in nav)
     (function(){
       const links = Array.from(document.querySelectorAll('nav.primary a'));
       const map = new Map(links.map(a => [a.getAttribute('href').replace('#',''), a]));
@@ -635,7 +627,7 @@
           }
         });
       }, {root:null, rootMargin:'-45% 0px -50% 0px', threshold:0});
-      const sectionIds = ['highlight','about','research','publications','experience','projects','skills','awards','service','endorsements','education','contact'];
+      const sectionIds = ['about','education','research','publications','experience','projects','skills','awards','service','endorsements','contact'];
       sectionIds.forEach(id=>{
         const el = document.getElementById(id);
         if(el) observer.observe(el);
