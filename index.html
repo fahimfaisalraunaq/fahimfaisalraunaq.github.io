@@ -29,7 +29,7 @@
     :root{
       --bg:#0b0f1a; --panel:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --link:#60a5fa;
       --accent:#1f2937; --chip:#1e293b; --ring:rgba(96,165,250,.2);
-      --hero-name:#9ec3ff;            /* clean academic color */
+      --hero-name:#9ec3ff;
       --topglow: rgba(96,165,250,.22);
     }
     @media (prefers-color-scheme: light){
@@ -67,7 +67,6 @@
     .nowline{margin:.2rem 0 .6rem}
     .cta{display:inline-flex;gap:.4rem;align-items:center;justify-content:center;padding:.55rem .8rem;border:1px solid var(--accent);border-radius:.75rem;text-decoration:none;color:var(--text);font-weight:700;white-space:nowrap}
     .cta:hover{box-shadow:0 0 0 .2rem var(--ring)}
-    /* two-row actions */
     .cta-row{display:grid;gap:.6rem;margin-top:.6rem}
     .cta-row.top{grid-template-columns:repeat(3,minmax(0,1fr));max-width:820px}
     .cta-row.bottom{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1100px}
@@ -119,33 +118,19 @@
 
     /* Education (no bullets or dots) */
     .edu{position:relative}
-    .edu-tl{
-      list-style:none;
-      margin:0;
-      padding:0;          /* no left padding */
-    }
-    .edu-tl li{
-      padding:.75rem 0 1rem;
-      border-top:1px solid var(--accent);
-    }
+    .edu-tl{list-style:none;margin:0;padding:0}
+    .edu-tl li{padding:.75rem 0 1rem;border-top:1px solid var(--accent)}
     .edu-tl li:first-child{border-top:none}
     .edu-title{margin:0 0 .15rem 0;font-weight:800}
     .edu-title a{text-decoration:none}
     .edu-meta{font-size:.95rem;color:var(--muted);margin:0 0 .35rem 0}
     .edu-desc{margin:0;color:var(--muted)}
-    .badge{
-      display:inline-block;padding:.08rem .4rem;border:1px solid var(--accent);
-      border-radius:.45rem;font-size:.75rem;margin-left:.4rem;color:var(--text);background:var(--chip)
-    }
+    .badge{display:inline-block;padding:.08rem .4rem;border:1px solid var(--accent);border-radius:.45rem;font-size:.75rem;margin-left:.4rem;color:var(--text);background:var(--chip)}
 
     /* Back to top (glowy) */
     .to-top{position:fixed;right:1rem;bottom:1rem;opacity:0;pointer-events:none;transform:translateY(10px);transition:all .2s ease}
     .to-top.show{opacity:1;pointer-events:auto;transform:none}
-    .to-top button{
-      border:1px solid var(--accent);background:var(--panel);color:var(--text);
-      border-radius:9999px;padding:.6rem .8rem;box-shadow:0 0 0 .15rem var(--topglow), 0 8px 22px var(--topglow);
-      backdrop-filter: blur(6px); cursor:pointer
-    }
+    .to-top button{border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:9999px;padding:.6rem .8rem;box-shadow:0 0 0 .15rem var(--topglow), 0 8px 22px var(--topglow);backdrop-filter: blur(6px); cursor:pointer}
     .to-top button:hover{box-shadow:0 0 0 .25rem var(--topglow), 0 10px 26px var(--topglow)}
 
     /* Footer */
@@ -437,7 +422,7 @@
           <strong>Pedal-Powered Water Pump &amp; Purifier (PPWP)</strong>
           <div class="meta">Operations · Product Design</div>
           <p>Human-powered centrifugal pump and purification unit delivering clean water in power-scarce settings. The PPWP couples a wheel-driven pump to supply discharge/head suitable for portable irrigation and drinking-water use, with performance evaluated across RPM settings to quantify output and efficiency.</p>
-          <div class="yt-actions"><a class="action" href="https://www.youtube.com/watch?v=C02LrhTIZ44" target="_blank" rel="noopener">▶ Watch build &amp; performance demo</a></div>
+          <div class="yt-actions"><a class="action" href="https://www.youtube.com/watch?v=C02LrhTIZ44" target="_blank" rel="noopener">🎬 Build &amp; performance demo</a></div>
         </div>
 
         <div class="card">
@@ -485,46 +470,186 @@
         </div>
       </div>
 
-      <!-- Certifications & Conferences -->
+      <!-- ✅ CERTIFICATIONS & CERTIFICATES (RESTRUCTURED) -->
       <div class="card" style="margin-top:1rem">
         <h3>Certifications &amp; Certificates</h3>
-        <ul class="list">
-          <li><strong>X-Culture Senior Coach</strong> — mentor of coaches; leadership (Dec 30, 2020). <a href="/assets/certificates/XCulture_SeniorCoach_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/certificates/XCulture_SeniorCoach_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
-          <li><strong>X-Culture Coach</strong> — theoretical &amp; practical coaching (Jun 2, 2020). <a href="/assets/certificates/XCulture_Coach_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/certificates/XCulture_Coach_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
-          <li><strong>X-Culture Global Collaboration</strong> — training + international team project (Jan 10, 2020). <a href="/assets/certificates/XCulture_GlobalCollaboration_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/certificates/XCulture_GlobalCollaboration_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
-          <li><strong>ISCEA Certified Supply Chain Analyst (CSCA™)</strong> — end-to-end supply chain (2019). <a href="https://www.iscea.org/" target="_blank" rel="noopener">ISCEA</a></li>
-        </ul>
+
+        <!-- Professional Credentials -->
+        <h4 class="kicker" style="margin-top:.5rem">Professional Credentials</h4>
+        <div class="three-col" style="margin-top:.6rem">
+          <div class="card">
+            <img src="assets/certificates/ISCEA_Certificate_Fahim_Faisal_Raunaq.png" alt="ISCEA CSCA — Certified Supply Chain Analyst certificate" style="width:100%;border:1px solid var(--accent);border-radius:.5rem;display:block" loading="lazy" />
+            <strong style="display:block;margin-top:.6rem">CSCA™ — Certified Supply Chain Analyst (ISCEA)</strong>
+            <p class="meta">Global credential covering end-to-end supply chain operations, strategy, and process optimization.</p>
+            <div class="actions">
+              <a class="action" href="assets/certificates/ISCEA_Certificate_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/ISCEA_Certificate_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="assets/certificates/ISCEA_Scholarship_Fahim_Faisal_Raunaq.png" alt="ISCEA Ptak Prize Scholar certificate" style="width:100%;border:1px solid var(--accent);border-radius:.5rem;display:block" loading="lazy" />
+            <strong style="display:block;margin-top:.6rem">ISCEA Ptak Prize Scholar</strong>
+            <p class="meta">Awarded scholarship for understanding of global supply chains and leadership in the young SC community.</p>
+            <div class="actions">
+              <a class="action" href="assets/certificates/ISCEA_Scholarship_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/ISCEA_Scholarship_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coaching & Program Certificates -->
+        <h4 class="kicker" style="margin-top:1rem">Coaching &amp; Program Certificates</h4>
+        <div class="three-col" style="margin-top:.6rem">
+          <div class="card">
+            <img src="assets/certificates/XCulture_Coach_Fahim_Faisal_Raunaq.png" alt="X-Culture Global Virtual Team Coach certificate" style="width:100%;border:1px solid var(--accent);border-radius:.5rem;display:block" loading="lazy" />
+            <strong style="display:block;margin-top:.6rem">X-Culture — Global Virtual Team Coach</strong>
+            <p class="meta">Completed coaching program; mentored international consulting teams across universities and time zones.</p>
+            <div class="actions">
+              <a class="action" href="assets/certificates/XCulture_Coach_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/XCulture_Coach_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="assets/certificates/XCulture_Senior_Coach_Fahim_Faisal_Raunaq.png" alt="X-Culture Senior Coach certificate" style="width:100%;border:1px solid var(--accent);border-radius:.5rem;display:block" loading="lazy" />
+            <strong style="display:block;margin-top:.6rem">X-Culture — Senior Coach</strong>
+            <p class="meta">Advanced leadership and quality assurance role supporting coach development and program evaluation.</p>
+            <div class="actions">
+              <a class="action" href="assets/certificates/XCulture_Senior_Coach_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/XCulture_Senior_Coach_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="assets/certificates/XCulture_Global_Collaboration_Fahim_Faisal_Raunaq.png" alt="X-Culture Global Collaboration certificate" style="width:100%;border:1px solid var(--accent);border-radius:.5rem;display:block" loading="lazy" />
+            <strong style="display:block;margin-top:.6rem">X-Culture — Global Collaboration Certificate</strong>
+            <p class="meta">Completed Academy program; delivered a multinational business project with a global virtual team.</p>
+            <div class="actions">
+              <a class="action" href="assets/certificates/XCulture_Global_Collaboration_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/XCulture_Global_Collaboration_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Internships & Development -->
+        <h4 class="kicker" style="margin-top:1rem">Internships &amp; Development</h4>
+        <div class="three-col" style="margin-top:.6rem">
+          <div class="card">
+            <img src="assets/certificates/Internship_Microsoft_Bangladesh__Fahim_Faisal_Raunaq.png" alt="Microsoft × Young Bangla internship certificate" style="width:100%;border:1px solid var(--accent);border-radius:.5rem;display:block" loading="lazy" />
+            <strong style="display:block;margin-top:.6rem">Microsoft × Young Bangla — Internship Program</strong>
+            <p class="meta">Collaborative youth innovation &amp; professional development program (Microsoft Bangladesh &amp; CRI).</p>
+            <div class="actions">
+              <a class="action" href="assets/certificates/Internship_Microsoft_Bangladesh__Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/Internship_Microsoft_Bangladesh__Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
+          </div>
+        </div>
       </div>
 
+      <!-- ✅ CONFERENCES & SYMPOSIA (RESTRUCTURED) -->
       <div class="card" style="margin-top:1rem">
         <h3>Conferences &amp; Symposia</h3>
-        <ul class="list">
-          <li><strong>AIB US Southeast Annual Conference — Virtual</strong> (Oct 22–23, 2020). Theme: <em>Beyond 2020: Developing IB Research &amp; Education for a New Decade</em>; consortia, teaching &amp; research workshops, and a keynote by Ahmet C. Bozer (former EVP, The Coca-Cola Company).
-            · <a href="https://github.com/fahimfaisalraunaq/fahimfaisalraunaq.github.io/blob/main/assets/certificates/AIBSE_Top40_XCulture_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="https://github.com/fahimfaisalraunaq/fahimfaisalraunaq.github.io/blob/main/assets/certificates/AIBSE_Top40_XCulture_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a>
-          </li>
-          <li><strong>X-Culture Global Virtual Symposium</strong> (May 29, 2020). · <a href="/assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" download>Download</a> · <a href="/assets/certificates/XCulture_GlobalVirtualSymposium_Attendee_2020-05-29_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">View</a></li>
-        </ul>
+
+        <div class="two-col" style="margin-top:.6rem">
+          <div class="card">
+            <img src="assets/certificates/AIBSE_XCulture_Fahim_Faisal_Raunaq.png" alt="AIB US Southeast — X-Culture Global Symposium certificate" style="width:100%;border:1px solid var(--accent);border-radius:.5rem;display:block" loading="lazy" />
+            <strong style="display:block;margin-top:.6rem">AIB US Southeast — X-Culture Global Symposium (Top 40 Invite)</strong>
+            <p class="meta">Oct 22–23, 2020. Panels/workshops on global collaboration and career development.</p>
+            <div class="actions">
+              <a class="action" href="assets/certificates/AIBSE_XCulture_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="https://github.com/fahimfaisalraunaq/fahimfaisalraunaq.github.io/blob/main/assets/certificates/AIBSE_Top40_XCulture_FahimFaisalRaunaq.pdf" target="_blank" rel="noopener">PDF</a>
+              <a class="action" href="https://github.com/fahimfaisalraunaq/fahimfaisalraunaq.github.io/blob/main/assets/certificates/AIBSE_Top40_XCulture_FahimFaisalRaunaq.pdf" download>Download</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="assets/certificates/XCulture_Globa_lVirtual_Symposium_Attendee_2020_Fahim_Faisal_Raunaq.png" alt="X-Culture 10-Year Anniversary virtual conference certificate" style="width:100%;border:1px solid var(--accent);border-radius:.5rem;display:block" loading="lazy" />
+            <strong style="display:block;margin-top:.6rem">X-Culture “10-Year Anniversary” Virtual Conference (2020)</strong>
+            <p class="meta">Panels with industry partners; focus on global virtual teamwork and distributed decision-making.</p>
+            <div class="actions">
+              <a class="action" href="assets/certificates/XCulture_Globa_lVirtual_Symposium_Attendee_2020_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/XCulture_Globa_lVirtual_Symposium_Attendee_2020_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- AWARDS -->
+    <!-- ✅ AWARDS & HONORS (RESTRUCTURED) -->
     <section id="awards" class="section">
       <h2>Awards &amp; Honors</h2>
-      <div class="card">
+
+      <div class="three-col" style="margin-top:.6rem">
+        <div class="card">
+          <img src="assets/certificates/AEMC_Fahim_Faisal_Raunaq.png" alt="AEMC Business Case Competition champion certificate" style="width:100%;border:1px solid var(--accent);border-radius:.5rem;display:block" loading="lazy" />
+          <strong style="display:block;margin-top:.6rem">AEMC — Advanced Engineering Management Challenge (Champion)</strong>
+          <p class="meta">IEM Association, KUET (2018). Led team to 1st place; operations strategy &amp; execution plan.</p>
+          <div class="actions">
+            <a class="action" href="assets/certificates/AEMC_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+            <a class="action" href="assets/certificates/AEMC_Fahim_Faisal_Raunaq.png" download>Download</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/certificates/KUET_IPE_FEST_2018_Fahim_Faisal_Raunaq.png" alt="KUET IPE Fest Case Competition champion certificate" style="width:100%;border:1px solid var(--accent);border-radius:.5rem;display:block" loading="lazy" />
+          <strong style="display:block;margin-top:.6rem">KUET IPE Fest — Case Competition (Champion)</strong>
+          <p class="meta">National case study win; diagnosis of operational inefficiencies and implementable improvements.</p>
+          <div class="actions">
+            <a class="action" href="assets/certificates/KUET_IPE_FEST_2018_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+            <a class="action" href="assets/certificates/KUET_IPE_FEST_2018_Fahim_Faisal_Raunaq.png" download>Download</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/certificates/UN_WB_Road_Safety_Compitition_Fahim_Faisal_Raunaq.png" alt="World Bank & United Nations Road Safety competition certificate" style="width:100%;border:1px solid var(--accent);border-radius:.5rem;display:block" loading="lazy" />
+          <strong style="display:block;margin-top:.6rem">World Bank × United Nations — Road Safety Champion (First Runner-up)</strong>
+          <p class="meta">Video competition highlighting systemic road safety risks and public awareness.</p>
+          <div class="actions">
+            <a class="action" href="assets/certificates/UN_WB_Road_Safety_Compitition_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+            <a class="action" href="assets/certificates/UN_WB_Road_Safety_Compitition_Fahim_Faisal_Raunaq.png" download>Download</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1rem">
         <ul class="list">
           <li><a href="https://www.worldbank.org/en/news/press-release/2020/01/28/better-road-safety-will-boost-economic-growth-in-bangladesh" target="_blank" rel="noopener">World Bank–United Nations Road Safety Champions’ Video Competition</a> — First Runner-up (2020)</li>
           <li>X-Culture Best Coach Award (2020); Top 40 X-Culture students (2020)</li>
-          <li><strong>AEMC Business Case Competition</strong> — Champion (2019)</li>
+          <li><strong>AEMC Business Case Competition</strong> — Champion (2018)</li>
           <li><strong>KUET IPE Fest Business Case Competition</strong> — Champion (2018)</li>
           <li><strong>MIST Robolution</strong> — First Runner-up (2018)</li>
         </ul>
       </div>
     </section>
 
-    <!-- SERVICE -->
+    <!-- ✅ SERVICE & LEADERSHIP (RESTRUCTURED; WITH CERTIFICATES) -->
     <section id="service" class="section">
       <h2>Service &amp; Leadership</h2>
-      <div class="card">
+
+      <div class="two-col" style="margin-top:.6rem">
+        <div class="card">
+          <img src="assets/certificates/EMK_Fahim_Faisal_Raunaq.png" alt="EMK Center Envoy Program certificate" style="width:100%;border:1px solid var(--accent);border-radius:.5rem;display:block" loading="lazy" />
+          <strong style="display:block;margin-top:.6rem">EMK Center — Envoy Program (2019–2021)</strong>
+          <p class="meta">Selective leadership fellowship affiliated with the U.S. Embassy’s American Space (EMK Center). Led campus engagement projects; emphasis on community impact and program stewardship.</p>
+          <div class="actions">
+            <a class="action" href="assets/certificates/EMK_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+            <a class="action" href="assets/certificates/EMK_Fahim_Faisal_Raunaq.png" download>Download</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/certificates/Badhan_Fahim_Faisal_Raunaq.png" alt="BADHAN voluntary blood donor acknowledgment certificate" style="width:100%;border:1px solid var(--accent);border-radius:.5rem;display:block" loading="lazy" />
+          <strong style="display:block;margin-top:.6rem">BADHAN (BUET Zone) — Voluntary Blood Donor</strong>
+          <p class="meta">Sustained contribution to public health through voluntary blood donation; acknowledgment from BUET Zone leadership.</p>
+          <div class="actions">
+            <a class="action" href="assets/certificates/Badhan_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+            <a class="action" href="assets/certificates/Badhan_Fahim_Faisal_Raunaq.png" download>Download</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1rem">
         <ul class="list">
           <li>
             <strong>Campus Envoy</strong>,
