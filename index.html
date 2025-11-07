@@ -7,6 +7,8 @@
 
   <!-- Meta -->
   <meta name="description" content="Safety-critical decision analytics for socio-technical systems (IE/OR × ML). Spatio-temporal safety modeling, low-resource NLP, decision optimization." />
+  <meta name="twitter:title" content="Fahim Faisal Raunaq — Academic Portfolio">
+  <meta name="twitter:description" content="Data-driven safety & decision analytics (IE/OR × ML/optimization, human–technology systems).">
   <link rel="canonical" href="https://fahimfaisalraunaq.github.io/" />
   <link rel="preload" as="image" href="assets/profile.jpg" />
 
@@ -23,6 +25,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  <link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#2563eb">
   <link rel="shortcut icon" href="assets/favicon.ico" />
 
   <style>
@@ -224,6 +227,14 @@
       .section{padding:8mm 0;page-break-inside:avoid}
       .avatar{border:none;box-shadow:none}
     }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior: auto; }
+      .card:hover{ transform:none; box-shadow:none; }
+      .toolbox-grid .tool:hover{ transform:none; box-shadow:none; }
+      .to-top button{ box-shadow:none; }
+    }
   </style>
 
   <!-- Person JSON-LD (with @id) -->
@@ -238,7 +249,17 @@
     "email":"mailto:fahimfaisalraunaq@gmail.com",
     "image":"https://fahimfaisalraunaq.github.io/assets/profile.jpg",
     "url":"https://fahimfaisalraunaq.github.io/",
-    "affiliation":{"@type":"Organization","name":"Bangladesh University of Engineering and Technology (BUET)"},
+    "alumniOf":[
+      {"@type":"CollegeOrUniversity","name":"Bangladesh University of Engineering & Technology (BUET)","sameAs":"https://www.buet.ac.bd/"},
+      {"@type":"EducationalOrganization","name":"Dhaka College","sameAs":"https://www.dhakacollege.edu.bd/en"}
+    ],
+    "affiliation":[
+      {"@type":"Organization","name":"Bangladesh University of Engineering & Technology (BUET)"},
+      {"@type":"Organization","name":"Asian University of Bangladesh"}
+    ],
+    "knowsAbout":[
+      "Industrial Engineering","Operations Research","Decision Analytics","Safety Science","Machine Learning","Natural Language Processing"
+    ],
     "sameAs":[
       "https://www.linkedin.com/in/fahimfaisalraunaq",
       "https://scholar.google.com/citations?user=BI00vUYAAAAJ",
@@ -252,7 +273,7 @@
   <header class="site" id="siteHeader">
     <div class="container nav" id="navContainer">
       <a class="brand" href="#top">Fahim Faisal Raunaq</a>
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="offcanvas" aria-label="Open menu">Menu</button>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="offcanvas" aria-label="Open menu" type="button">Menu</button>
 
       <!-- inline primary nav (shown when not collapsed) -->
       <nav class="primary" id="primaryNav" aria-label="Primary">
@@ -278,7 +299,7 @@
     <aside class="offcanvas" id="offcanvas" aria-hidden="true" aria-label="Site menu">
       <header>
         <strong>Menu</strong>
-        <button class="close-btn" id="menuClose" aria-label="Close menu">✕</button>
+        <button class="close-btn" id="menuClose" aria-label="Close menu" type="button">✕</button>
       </header>
       <nav>
         <a href="#top">Home</a>
@@ -313,18 +334,19 @@
           <div class="cta-row top" role="group" aria-label="Primary actions — row 1">
             <a class="cta" href="assets/Fahim_Faisal_Raunaq_CV.pdf" target="_blank" rel="noopener">📄 View CV</a>
             <a class="cta" href="assets/Fahim_Faisal_Raunaq_CV.pdf" download>⬇ Download CV</a>
-            <a class="cta" href="https://www.linkedin.com/in/fahimfaisalraunaq" target="_blank" rel="noopener">in LinkedIn</a>
+            <a class="cta" href="https://www.linkedin.com/in/fahimfaisalraunaq" target="_blank" rel="noopener">LinkedIn</a>
           </div>
           <!-- row 2 -->
           <div class="cta-row bottom" role="group" aria-label="Primary actions — row 2">
-            <a class="cta compact" href="https://scholar.google.com/citations?user=BI00vUYAAAAJ" target="_blank" rel="noopener">G Scholar</a>
-            <a class="cta compact" href="https://github.com/fahimfaisalraunaq" target="_blank" rel="noopener">GH GitHub</a>
+            <a class="cta compact" href="https://scholar.google.com/citations?user=BI00vUYAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+            <a class="cta compact" href="https://github.com/fahimfaisalraunaq" target="_blank" rel="noopener">GitHub</a>
             <a class="cta compact" href="https://orcid.org/0009-0001-3571-8739" target="_blank" rel="noopener">◧ ORCID</a>
             <a class="cta" href="mailto:fahimfaisalraunaq@gmail.com">✉ Email</a>
           </div>
         </div>
         <div class="avatar-wrap">
-          <img src="assets/profile.jpg" alt="Portrait of Fahim Faisal Raunaq" class="avatar" loading="lazy" decoding="async" width="260" height="260" />
+          <img src="assets/profile.jpg" alt="Portrait of Fahim Faisal Raunaq" class="avatar"
+               loading="eager" decoding="async" fetchpriority="high" width="260" height="260" />
         </div>
       </div>
     </section>
@@ -399,7 +421,7 @@
         </div>
       </div>
 
-      <!-- Methods toolbox restored exactly -->
+      <!-- Methods toolbox -->
       <h3 class="kicker" style="margin-top:1rem">Methods toolbox</h3>
       <div class="card">
         <div class="toolbox-grid">
@@ -452,7 +474,7 @@
           </p>
           <div class="actions">
             <a class="action" href="https://www.sciencedirect.com/science/article/pii/S2949953425000323" target="_blank" rel="noopener">View</a>
-            <button class="action ghost cite-btn"
+            <button class="action ghost cite-btn" type="button"
               data-apa="Raunaq, F. F., Islam, S., Anam, M. Z., &amp; Bari, A. B. M. M. (2025). Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies. <em>Informatics and Health, 2</em>, 194–209. https://doi.org/10.1016/j.infoh.2025.09.001"
               data-bib='@article{raunaq2025infoh, title={Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies}, author={Raunaq, Fahim Faisal and Islam, S and Anam, MZ and Bari, ABMM}, journal={Informatics and Health}, volume={2}, pages={194--209}, year={2025}, doi={10.1016/j.infoh.2025.09.001} }'>Cite</button>
           </div>
@@ -530,7 +552,7 @@
           <strong>Pedal-Powered Water Pump &amp; Purifier (PPWP)</strong>
           <div class="meta">Operations · Product Design</div>
           <p>Human-powered centrifugal pump and purification unit delivering clean water in power-scarce settings. The PPWP couples a wheel-driven pump to supply discharge/head suitable for portable irrigation and drinking-water use, with performance evaluated across RPM settings to quantify output and efficiency.</p>
-          <div class="yt-actions"><a class="action" href="https://www.youtube.com/watch?v=C02LrhTIZ44" target="_blank" rel="noopener">▶ Watch build &amp; performance demo</a></div>
+          <div class="yt-actions"><a class="action" href="https://www.youtube.com/watch?v=C02LrhTIZ44" target="_blank" rel="noopener">Watch build &amp; performance demo on YouTube</a></div>
         </div>
 
         <div class="card">
@@ -590,7 +612,7 @@
           <div class="meta">International Supply Chain Education Alliance — Cleveland, OH, USA (Nov 23, 2018)</div>
           <p>End-to-end supply chain fundamentals: demand planning, inventory, logistics, and performance measurement.</p>
           <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_CSCA_Certified_Supply_Chain_Analyst_ISCEA_2018.jpg" alt="ISCEA CSCA Certificate">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_CSCA_Certified_Supply_Chain_Analyst_ISCEA_2018.jpg" alt="ISCEA CSCA Certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_CSCA_Certified_Supply_Chain_Analyst_ISCEA_2018.jpg" target="_blank" rel="noopener">View</a>
@@ -608,7 +630,7 @@
           <div class="two-col" style="margin-top:.5rem">
             <div>
               <div class="cert-frame">
-                <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Coach_Certificate_2020.png" alt="X-Culture Coach Certificate">
+                <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Coach_Certificate_2020.png" alt="X-Culture Coach Certificate" loading="lazy" decoding="async" width="1200" height="900">
               </div>
               <div class="actions" style="margin-top:.4rem">
                 <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Coach_Certificate_2020.png" target="_blank" rel="noopener">View</a>
@@ -617,7 +639,7 @@
             </div>
             <div>
               <div class="cert-frame">
-                <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Senior_Coach_Certificate_2020.png" alt="X-Culture Senior Coach Certificate">
+                <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Senior_Coach_Certificate_2020.png" alt="X-Culture Senior Coach Certificate" loading="lazy" decoding="async" width="1200" height="900">
               </div>
               <div class="actions" style="margin-top:.4rem">
                 <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Senior_Coach_Certificate_2020.png" target="_blank" rel="noopener">View</a>
@@ -634,7 +656,7 @@
           <div class="meta">Microsoft Bangladesh × Center for Research &amp; Information (CRI)</div>
           <p>Certificate of appreciation for participation in a national skills-building internship cohort.</p>
           <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_Microsoft_YoungBangla_Internship_Certificate.png" alt="Microsoft Young Bangla Internship certificate">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_Microsoft_YoungBangla_Internship_Certificate.png" alt="Microsoft Young Bangla Internship certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_Microsoft_YoungBangla_Internship_Certificate.png" target="_blank" rel="noopener">View</a>
@@ -655,7 +677,7 @@
           <div class="meta">Oct 22–23, 2020 · Theme: <em>Beyond 2020</em></div>
           <p>Career-development workshops and panels co-organized with X-Culture (Top-40 recognition cohort).</p>
           <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" alt="AIB US Southeast / X-Culture Symposium Top 40 certificate">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" alt="AIB US Southeast / X-Culture Symposium Top 40 certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" target="_blank" rel="noopener">View</a>
@@ -670,7 +692,7 @@
           <div class="meta">May 29, 2020</div>
           <p>Panels on working in global virtual teams, featuring speakers from Google, Microsoft, Miami International Airport, and others.</p>
           <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" alt="X-Culture 10-Year Anniversary Virtual Conference certificate">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" alt="X-Culture 10-Year Anniversary Virtual Conference certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" target="_blank" rel="noopener">View</a>
@@ -685,7 +707,7 @@
           <div class="meta">Jan 10, 2020</div>
           <p>Completed training and two-month practical project as part of a multinational virtual consulting team.</p>
           <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" alt="X-Culture Global Collaboration certificate">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" alt="X-Culture Global Collaboration certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" target="_blank" rel="noopener">View</a>
@@ -707,7 +729,7 @@
           <div class="meta">First Runner-up (2019–2020)</div>
           <p>Advocacy video on evidence-led countermeasures for Bangladesh’s road-injury burden.</p>
           <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_UN_WorldBank_Road_Safety_Champion_First_RunnerUp_2019_2020.jpg" alt="World Bank UN Road Safety competition certificate">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_UN_WorldBank_Road_Safety_Champion_First_RunnerUp_2019_2020.jpg" alt="World Bank UN Road Safety competition certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
             <a class="action" href="https://www.worldbank.org/en/news/press-release/2020/01/28/better-road-safety-will-boost-economic-growth-in-bangladesh" target="_blank" rel="noopener">Press note</a>
@@ -723,7 +745,7 @@
           <div class="meta">Khulna University of Engineering &amp; Technology (2018)</div>
           <p>Top prize for a process-improvement case; evaluated on analysis quality, feasibility, and presentation.</p>
           <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png" alt="KUET IPE Fest 2018 Champion certificate">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png" alt="KUET IPE Fest 2018 Champion certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png" target="_blank" rel="noopener">View</a>
@@ -738,7 +760,7 @@
           <div class="meta">IEM Association, KUET (2018)</div>
           <p>Team-based challenge on operations and decision-making under constraints.</p>
           <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" alt="AEMC Champion certificate">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" alt="AEMC Champion certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" target="_blank" rel="noopener">View</a>
@@ -753,7 +775,7 @@
           <div class="meta">Recognition for global supply-chain understanding &amp; leadership (2018)</div>
           <p>Merit scholarship from ISCEA acknowledging leadership in the Young Supply Chain community.</p>
           <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg" alt="ISCEA Ptak Prize Scholar certificate">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg" alt="ISCEA Ptak Prize Scholar certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg" target="_blank" rel="noopener">View</a>
@@ -775,7 +797,7 @@
           <div class="meta">2019–2021 · Flagship American Space in Bangladesh</div>
           <p>Peer leadership and community engagement: dialogue, civic action, and student programming.</p>
           <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_EMK_Envoy_Program_Certificate_of_Excellence_2019_2021.png" alt="EMK Envoy Program certificate">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_EMK_Envoy_Program_Certificate_of_Excellence_2019_2021.png" alt="EMK Envoy Program certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
             <a class="action" href="https://bd.usembassy.gov/emk-center/" target="_blank" rel="noopener">About EMK</a>
@@ -791,7 +813,7 @@
           <div class="meta">Certificate of Acknowledgement · BUET Unit</div>
           <p>Recognized for regular voluntary blood donation and participation in campus drives.</p>
           <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_BADHAN_Voluntary_Blood_Donor_Acknowledgement_BUET.jpg" alt="BADHAN acknowledgement certificate">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_BADHAN_Voluntary_Blood_Donor_Acknowledgement_BUET.jpg" alt="BADHAN acknowledgement certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_BADHAN_Voluntary_Blood_Donor_Acknowledgement_BUET.jpg" target="_blank" rel="noopener">View</a>
@@ -799,7 +821,7 @@
           </div>
         </div>
 
-        <!-- X-Culture program leadership notes (no extra cert image here beyond above) -->
+        <!-- X-Culture program leadership notes -->
         <div class="card">
           <div class="kicker">Program Leadership</div>
           <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Coaching Program</strong>
@@ -814,7 +836,7 @@
           <div class="meta">EMK Center (Dec 2019)</div>
           <p>Certificate of appreciation for a comprehensive SOP; part of student skills &amp; leadership development activities.</p>
           <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_EducationUSA_SOP_Writing_Competition_Certificate_2019.png" alt="EMK EducationUSA SOP Competition certificate">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_EducationUSA_SOP_Writing_Competition_Certificate_2019.png" alt="EMK EducationUSA SOP Competition certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_EducationUSA_SOP_Writing_Competition_Certificate_2019.png" target="_blank" rel="noopener">View</a>
@@ -866,7 +888,8 @@
               </div>
               <div class="field">
                 <label for="files">Attachments (PDF, images, docs — optional)</label>
-                <input id="files" name="attachments" type="file" multiple />
+                <input id="files" name="file" type="file" multiple
+                       accept=".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx,.ppt,.pptx" />
               </div>
             </div>
 
@@ -898,21 +921,21 @@
     <!-- Cite modal -->
     <dialog id="cite-modal" aria-label="Citation" style="border:1px solid var(--accent);border-radius:.8rem;padding:0;max-width:min(92vw,900px);background:var(--panel);color:var(--text)">
       <div style="display:flex;justify-content:space-between;align-items:center;padding:.6rem .8rem;border-bottom:1px solid var(--accent);background:var(--panel)">
-        <strong>Citation</strong><button class="action" id="cite-close" value="cancel" aria-label="Close">✕</button>
+        <strong>Citation</strong><button class="action" id="cite-close" value="cancel" aria-label="Close" type="button">✕</button>
       </div>
       <div style="padding:1rem;max-width:min(90vw,900px)">
         <h4 style="margin:.2rem 0">APA</h4>
         <p id="cite-apa" class="muted" style="margin:0 0 .8rem 0"></p>
-        <button class="action" id="apa-copy">Copy APA</button>
+        <button class="action" id="apa-copy" type="button">Copy APA</button>
         <h4 style="margin:1rem 0 .2rem">BibTeX</h4>
         <pre id="cite-bib" class="muted" style="white-space:pre-wrap;background:var(--bg);border:1px solid var(--accent);border-radius:.6rem;padding:.6rem"></pre>
-        <button class="action" id="bib-copy">Copy BibTeX</button>
+        <button class="action" id="bib-copy" type="button">Copy BibTeX</button>
       </div>
     </dialog>
   </main>
 
   <!-- Back to top -->
-  <div class="to-top" id="toTop"><button aria-label="Back to top">↑</button></div>
+  <div class="to-top" id="toTop"><button aria-label="Back to top" type="button">↑</button></div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -967,7 +990,27 @@
       if (bibCopy){ bibCopy.dataset.reset='Copy BibTeX'; bibCopy.addEventListener('click', ()=> copy(bib.textContent, bibCopy)); }
     })();
 
-    // ===== Auto-collapse header to prevent overlap =====
+    // ===== Active nav link highlight (primary + offcanvas) =====
+    (function(){
+      const navLinks = [...document.querySelectorAll('nav.primary a, .offcanvas nav a')];
+      const sections = [...document.querySelectorAll('main .section, .hero')];
+      const linkFor = id => navLinks.filter(a => a.getAttribute('href') === `#${id}`);
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(!e.isIntersecting) return;
+          const id = e.target.id || 'top';
+          navLinks.forEach(a => {
+            const active = a.getAttribute('href') === `#${id}`;
+            a.classList.toggle('active', active);
+            if(active){ a.setAttribute('aria-current', 'page'); }
+            else { a.removeAttribute('aria-current'); }
+          });
+        });
+      }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+      sections.forEach(s => io.observe(s));
+    })();
+
+    // ===== Auto-collapse header to prevent overlap (robust measure) =====
     (function(){
       const header = document.getElementById('siteHeader');
       const container = document.getElementById('navContainer');
@@ -976,14 +1019,22 @@
 
       function needsCollapse(){
         header.classList.remove('collapsed');
+        // force-measure primary even if CSS is hiding it
+        const wasHidden = getComputedStyle(primary).display === 'none';
+        if(wasHidden){
+          primary.style.visibility = 'hidden';
+          primary.style.display = 'flex';
+        }
         const needed = brand.offsetWidth + primary.scrollWidth + 32;
-        const have = container.clientWidth;
+        const have   = container.clientWidth;
+        if(wasHidden){
+          primary.style.removeProperty('visibility');
+          primary.style.removeProperty('display');
+        }
         return needed > have;
       }
-      function apply(){
-        if (needsCollapse()){ header.classList.add('collapsed'); }
-        else { header.classList.remove('collapsed'); }
-      }
+      function apply(){ header.classList.toggle('collapsed', needsCollapse()); }
+
       let t=null;
       window.addEventListener('resize', ()=>{ clearTimeout(t); t=setTimeout(apply, 80); });
       window.addEventListener('load', apply);
@@ -1020,11 +1071,12 @@
 
       const ro = new ResizeObserver(()=> {
         if (header.classList.contains('collapsed')) btn.style.display='inline-flex';
+        else btn.style.removeProperty('display');
       });
       ro.observe(header);
     })();
 
-    // ===== Contact form -> Formspree AJAX with attachments =====
+    // ===== Contact form -> Formspree AJAX with attachments (hardened) =====
     (function(){
       const form = document.getElementById('contactForm');
       const toast = document.getElementById('toast');
@@ -1052,8 +1104,12 @@
             form.reset();
             showToast('Message sent! I’ll reply as soon as I can (UTC+06:00).', true);
           } else {
-            const j = await res.json().catch(()=>({}));
-            showToast(j.error || 'Send failed. Please email me directly.', false);
+            let msg = 'Send failed. Please email me directly.';
+            try {
+              const j = await res.json();
+              msg = (j.errors && j.errors.map(e=>e.message).join(' · ')) || j.error || msg;
+            } catch {}
+            showToast(msg, false);
           }
         }catch(err){
           showToast('Network error. Try again or use the email button.', false);
