@@ -43,22 +43,32 @@
 
     /* Header */
     header.site{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 92%, transparent);border-bottom:1px solid var(--accent);backdrop-filter:saturate(1.1) blur(6px)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.8rem 0;flex-wrap:nowrap}
+
+    /* --- Navbar spacing fix (requested) --- */
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.8rem 0;flex-wrap:wrap}
     .brand{font-weight:800;letter-spacing:.2px;font-size:clamp(1.05rem,2.2vw,1.25rem);text-decoration:none;color:inherit;white-space:nowrap;flex:0 1 auto}
-    nav.primary{display:flex;align-items:center;gap:.2rem;flex:1 1 auto;justify-content:flex-end;min-width:0}
+    nav.primary{display:flex;align-items:center;gap:.4rem;flex:1 1 auto;justify-content:flex-end;min-width:0}
     nav.primary a{color:var(--muted);text-decoration:none;font-weight:600;margin-left:.8rem;padding:.5rem .2rem;border-radius:.4rem;white-space:nowrap}
     nav.primary a:hover,nav.primary a:focus{color:var(--link);outline:none}
     nav.primary a.active{color:var(--link);box-shadow: inset 0 -2px var(--link)}
     .menu-btn{display:none;border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.6rem;padding:.45rem .6rem}
     .menu-btn[aria-expanded="true"]{box-shadow:0 0 0 .2rem var(--ring)}
+
+    /* When space is tight, let links wrap under the name */
+    @media (max-width:1220px){
+      .nav{row-gap:.35rem}
+      nav.primary{order:2;flex-basis:100%;justify-content:flex-start;flex-wrap:wrap}
+      .brand{order:1}
+    }
+
     @media (max-width:1024px){
       nav.primary{position:absolute;top:60px;right:1.25rem;left:1.25rem;background:var(--panel);border:1px solid var(--accent);border-radius:.8rem;padding:.6rem;display:none;flex-direction:column;gap:.25rem}
       nav.primary.open{display:flex}
       .menu-btn{display:inline-flex}
     }
 
-    /* Hero */
-    .hero{padding:2.4rem 0 1.2rem}
+    /* Hero (add top breathing room per request) */
+    .hero{padding:3rem 0 1.2rem}
     .hero-grid{display:grid;grid-template-columns:1fr;gap:1.3rem;align-items:center}
     @media (min-width:900px){.hero-grid{grid-template-columns:1.2fr .8fr;gap:2rem}}
     .hero .name{font-size:clamp(2rem,6vw,2.8rem);line-height:1.08;margin:0 0 .25rem;color:var(--hero-name);white-space:nowrap}
@@ -80,8 +90,6 @@
     .section h2{font-size:clamp(1.3rem,3vw,1.6rem);margin:0 0 .8rem}
     .row{display:grid;grid-template-columns:1fr;gap:.9rem}
     @media (min-width:900px){.row{grid-template-columns:1.4fr .6fr}}
-    /* make single-child rows full-width */
-    .row.single{grid-template-columns:1fr}
     .stack{display:grid;gap:.9rem}
     .two-col{display:grid;grid-template-columns:1fr;gap:1rem}
     @media (min-width:800px){.two-col{grid-template-columns:repeat(2,1fr)}}
@@ -140,18 +148,6 @@
     footer .container{display:flex;align-items:center;min-height:60px;justify-content:center}
     footer .tail{opacity:.9}
 
-    /* Certificate frame for uniform sizing */
-    .cert-frame{
-      width:100%;
-      height:320px;
-      border-radius:.6rem;
-      border:1px solid var(--accent);
-      background:var(--bg);
-      display:flex;align-items:center;justify-content:center;
-      overflow:hidden;margin-top:.5rem
-    }
-    .cert-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
-
     /* Print */
     @media print{
       *{background:transparent !important;box-shadow:none !important}
@@ -199,8 +195,6 @@
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#conferences">Conferences</a>
         <a href="#awards">Awards</a>
         <a href="#service">Service</a>
         <a href="#endorsements">Endorsements</a>
@@ -242,7 +236,7 @@
     <!-- ABOUT -->
     <section id="about" class="section">
       <h2>About</h2>
-      <div class="row single">
+      <div class="row">
         <div class="card">
           <p>I’m a prospective Ph.D. researcher finishing an M.Sc. in Industrial &amp; Production Engineering at BUET. I work across IE/OR, machine learning, and safety science to design end-to-end decision systems for high-stakes operations—manufacturing, supply chains, and transportation. My emphasis is on traceability and auditability so that quantitative models can support accountable decisions where safety and resources are tight.</p>
           <p>Current work follows two tracks: (1) low-resource NLP for Bangla user-generated content, benchmarking MT-based vs. native models; and (2) policy-driven safety analytics in transportation and construction, using spatio-temporal and causal methods to surface actionable countermeasures. I’m seeking a Ph.D. program with strong industrial/clinical partnerships, a reproducible research culture, and opportunities to deploy methods in resource-constrained contexts.</p>
@@ -485,248 +479,222 @@
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- CERTIFICATIONS -->
-    <section id="certifications" class="section">
-      <h2>Certifications &amp; Certificates</h2>
-      <div class="stack">
-        <!-- ISCEA CSCA -->
-        <div class="card">
-          <div class="kicker">Professional Certification</div>
-          <strong>ISCEA Certified Supply Chain Analyst (CSCA™)</strong>
-          <div class="meta">International Supply Chain Education Alliance — Cleveland, OH, USA (Nov 23, 2018)</div>
-          <p>End-to-end supply chain fundamentals: demand planning, inventory, logistics, and performance measurement.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_CSCA_Certified_Supply_Chain_Analyst_ISCEA_2018.jpg" alt="ISCEA CSCA Certificate">
-          </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_CSCA_Certified_Supply_Chain_Analyst_ISCEA_2018.jpg" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_CSCA_Certified_Supply_Chain_Analyst_ISCEA_2018.jpg" download>Download</a>
-            <a class="action ghost" href="https://www.iscea.org/" target="_blank" rel="noopener">ISCEA</a>
-          </div>
-        </div>
+      <!-- Certifications & Certificates -->
+      <div class="card" style="margin-top:1rem">
+        <h3>Certifications &amp; Certificates</h3>
 
-        <!-- X-Culture Coach / Senior Coach -->
-        <div class="card">
-          <div class="kicker">Training &amp; Coaching</div>
-          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Global Virtual Team — Coach &amp; Senior Coach</strong>
-          <div class="meta">Program certificates (2020)</div>
-          <p>Completed coaching curriculum and practicum; mentored global virtual teams; later promoted to Senior Coach.</p>
-          <div class="two-col" style="margin-top:.5rem">
-            <div>
-              <div class="cert-frame">
-                <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Coach_Certificate_2020.png" alt="X-Culture Coach Certificate">
-              </div>
-              <div class="actions" style="margin-top:.4rem">
-                <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Coach_Certificate_2020.png" target="_blank" rel="noopener">View</a>
-                <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Coach_Certificate_2020.png" download>Download</a>
-              </div>
+        <div class="stack">
+          <!-- ISCEA CSCA -->
+          <div class="card">
+            <div class="kicker">Professional Certification</div>
+            <strong>ISCEA Certified Supply Chain Analyst (CSCA™)</strong>
+            <div class="meta">International Supply Chain Education Alliance — Cleveland, OH, USA (Nov 23, 2018)</div>
+            <p>End-to-end supply chain fundamentals: demand planning, inventory, logistics, and performance measurement.</p>
+            <img src="assets/certificates/ISCEA_Certificate_Fahim_Faisal_Raunaq.png" alt="ISCEA CSCA Certificate" style="max-width:100%;border-radius:.6rem;border:1px solid var(--accent);margin-top:.5rem"/>
+            <div class="actions">
+              <a class="action" href="assets/certificates/ISCEA_Certificate_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/ISCEA_Certificate_Fahim_Faisal_Raunaq.png" download>Download</a>
+              <a class="action ghost" href="https://www.iscea.org/" target="_blank" rel="noopener">ISCEA</a>
             </div>
-            <div>
-              <div class="cert-frame">
-                <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Senior_Coach_Certificate_2020.png" alt="X-Culture Senior Coach Certificate">
+          </div>
+
+          <!-- X-Culture Coach / Senior Coach (training completion) -->
+          <div class="card">
+            <div class="kicker">Training &amp; Coaching</div>
+            <strong>X-Culture Global Virtual Team — Coach &amp; Senior Coach</strong>
+            <div class="meta">Program certificates (2020)</div>
+            <p>Completed coaching curriculum and practicum; mentored global virtual teams; later promoted to Senior Coach.</p>
+            <div class="two-col" style="margin-top:.5rem">
+              <div>
+                <img src="assets/certificates/XCulture_Coach_Fahim_Faisal_Raunaq.png" alt="X-Culture Coach Certificate" style="max-width:100%;border-radius:.6rem;border:1px solid var(--accent)"/>
+                <div class="actions" style="margin-top:.4rem">
+                  <a class="action" href="assets/certificates/XCulture_Coach_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+                  <a class="action" href="assets/certificates/XCulture_Coach_Fahim_Faisal_Raunaq.png" download>Download</a>
+                </div>
               </div>
-              <div class="actions" style="margin-top:.4rem">
-                <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Senior_Coach_Certificate_2020.png" target="_blank" rel="noopener">View</a>
-                <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Senior_Coach_Certificate_2020.png" download>Download</a>
+              <div>
+                <img src="assets/certificates/XCulture_Senior_Coach_Fahim_Faisal_Raunaq.png" alt="X-Culture Senior Coach Certificate" style="max-width:100%;border-radius:.6rem;border:1px solid var(--accent)"/>
+                <div class="actions" style="margin-top:.4rem">
+                  <a class="action" href="assets/certificates/XCulture_Senior_Coach_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+                  <a class="action" href="assets/certificates/XCulture_Senior_Coach_Fahim_Faisal_Raunaq.png" download>Download</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Microsoft | Young Bangla -->
-        <div class="card">
-          <div class="kicker">Industry Program</div>
-          <strong>Microsoft — Young Bangla Internship Program</strong>
-          <div class="meta">Microsoft Bangladesh × Center for Research &amp; Information (CRI)</div>
-          <p>Certificate of appreciation for participation in a national skills-building internship cohort.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_Microsoft_YoungBangla_Internship_Certificate.png" alt="Microsoft Young Bangla Internship certificate">
-          </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_Microsoft_YoungBangla_Internship_Certificate.png" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_Microsoft_YoungBangla_Internship_Certificate.png" download>Download</a>
+          <!-- Microsoft | Young Bangla internship -->
+          <div class="card">
+            <div class="kicker">Industry Program</div>
+            <strong>Microsoft — Young Bangla Internship Program</strong>
+            <div class="meta">Microsoft Bangladesh × Center for Research &amp; Information (CRI)</div>
+            <p>Certificate of appreciation for participation in a national skills-building internship cohort.</p>
+            <img src="assets/certificates/Internship_Microsoft_Bangladesh__Fahim_Faisal_Raunaq.png" alt="Microsoft Young Bangla Internship certificate" style="max-width:100%;border-radius:.6rem;border:1px solid var(--accent);margin-top:.5rem"/>
+            <div class="actions">
+              <a class="action" href="assets/certificates/Internship_Microsoft_Bangladesh__Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/Internship_Microsoft_Bangladesh__Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- CONFERENCES -->
-    <section id="conferences" class="section">
-      <h2>Conferences &amp; Symposia</h2>
-      <div class="stack">
-        <!-- AIB US Southeast / X-Culture Symposium (Top 40) -->
-        <div class="card">
-          <div class="kicker">Conference Participation</div>
-          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Global Symposium — Top 40 Delegate (AIB Southeast USA)</strong>
-          <div class="meta">Oct 22–23, 2020 · Theme: <em>Beyond 2020</em></div>
-          <p>Career-development workshops and panels co-organized with X-Culture (Top-40 recognition cohort).</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" alt="AIB US Southeast / X-Culture Symposium Top 40 certificate">
-          </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" download>Download</a>
-          </div>
-        </div>
+      <!-- Conferences & Symposia -->
+      <div class="card" style="margin-top:1rem">
+        <h3>Conferences &amp; Symposia</h3>
 
-        <!-- X-Culture 10-Year Anniversary Virtual Conference -->
-        <div class="card">
-          <div class="kicker">Conference Participation</div>
-          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> “10-Year Anniversary” Virtual Conference</strong>
-          <div class="meta">May 29, 2020</div>
-          <p>Panels on working in global virtual teams, featuring speakers from Google, Microsoft, Miami International Airport, and others.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" alt="X-Culture 10-Year Anniversary Virtual Conference certificate">
+        <div class="stack">
+          <!-- AIB US Southeast / X-Culture Global Symposium -->
+          <div class="card">
+            <div class="kicker">Conference Participation</div>
+            <strong>AIB US Southeast Annual Conference — Virtual</strong>
+            <div class="meta">Oct 22–23, 2020 · Theme: <em>Beyond 2020</em></div>
+            <p>Career-development workshops and panels co-organized with X-Culture (Top-40 recognition cohort).</p>
+            <img src="assets/certificates/AIBSE_XCulture_Fahim_Faisal_Raunaq.png" alt="AIB US Southeast / X-Culture Symposium certificate" style="max-width:100%;border-radius:.6rem;border:1px solid var(--accent);margin-top:.5rem"/>
+            <div class="actions">
+              <a class="action" href="assets/certificates/AIBSE_XCulture_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/AIBSE_XCulture_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
           </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" download>Download</a>
-          </div>
-        </div>
 
-        <!-- X-Culture Global Collaboration (Academy) -->
-        <div class="card">
-          <div class="kicker">Program Completion</div>
-          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Global Collaboration (Academy)</strong>
-          <div class="meta">Jan 10, 2020</div>
-          <p>Completed training and two-month practical project as part of a multinational virtual consulting team.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" alt="X-Culture Global Collaboration certificate">
+          <!-- X-Culture 10-Year Anniversary Virtual Conference -->
+          <div class="card">
+            <div class="kicker">Conference Participation</div>
+            <strong>X-Culture “10-Year Anniversary” Virtual Conference</strong>
+            <div class="meta">May 29, 2020</div>
+            <p>Panels on working in global virtual teams, featuring speakers from Google, Microsoft, Miami International Airport, and others.</p>
+            <img src="assets/certificates/XCulture_Global_Virtual_Symposium_Attendee_2020_Fahim_Faisal_Raunaq.png" alt="X-Culture 10-Year Anniversary Virtual Conference certificate" style="max-width:100%;border-radius:.6rem;border:1px solid var(--accent);margin-top:.5rem"/>
+            <div class="actions">
+              <a class="action" href="assets/certificates/XCulture_Global_Virtual_Symposium_Attendee_2020_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/XCulture_Global_Virtual_Symposium_Attendee_2020_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
           </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" download>Download</a>
+
+          <!-- X-Culture Global Collaboration (Academy) -->
+          <div class="card">
+            <div class="kicker">Program Completion</div>
+            <strong>X-Culture Global Collaboration (Academy)</strong>
+            <div class="meta">Jan 10, 2020</div>
+            <p>Completed training and two-month practical project as part of a multinational virtual consulting team.</p>
+            <img src="assets/certificates/XCulture_Global_Collaboration_Fahim_Faisal_Raunaq.png" alt="X-Culture Global Collaboration certificate" style="max-width:100%;border-radius:.6rem;border:1px solid var(--accent);margin-top:.5rem"/>
+            <div class="actions">
+              <a class="action" href="assets/certificates/XCulture_Global_Collaboration_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/XCulture_Global_Collaboration_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- AWARDS & HONORS -->
-    <section id="awards" class="section">
-      <h2>Awards &amp; Honors</h2>
+      <!-- Awards & Honors -->
+      <div class="card" id="awards" style="margin-top:1rem">
+        <h3>Awards &amp; Honors</h3>
 
-      <div class="stack">
-        <!-- World Bank / UN Road Safety -->
-        <div class="card">
-          <div class="kicker">International Competition</div>
-          <strong>World Bank × United Nations — Road Safety Champion Video Competition</strong>
-          <div class="meta">First Runner-up (2019–2020)</div>
-          <p>Advocacy video on evidence-led countermeasures for Bangladesh’s road-injury burden.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_UN_WorldBank_Road_Safety_Champion_First_RunnerUp_2019_2020.jpg" alt="World Bank UN Road Safety competition certificate">
+        <div class="stack">
+          <!-- World Bank / UN Road Safety -->
+          <div class="card">
+            <div class="kicker">International Competition</div>
+            <strong>World Bank × United Nations — Road Safety Champion Video Competition</strong>
+            <div class="meta">First Runner-up (2019–2020)</div>
+            <p>Advocacy video on evidence-led countermeasures for Bangladesh’s road-injury burden.</p>
+            <img src="assets/certificates/UN_WB_Road_Safety_Compitition_Fahim_Faisal_Raunaq.png" alt="World Bank UN Road Safety competition certificate" style="max-width:100%;border-radius:.6rem;border:1px solid var(--accent);margin-top:.5rem"/>
+            <div class="actions">
+              <a class="action" href="https://www.worldbank.org/en/news/press-release/2020/01/28/better-road-safety-will-boost-economic-growth-in-bangladesh" target="_blank" rel="noopener">Press note</a>
+              <a class="action" href="assets/certificates/UN_WB_Road_Safety_Compitition_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/UN_WB_Road_Safety_Compitition_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
           </div>
-          <div class="actions">
-            <a class="action" href="https://www.worldbank.org/en/news/press-release/2020/01/28/better-road-safety-will-boost-economic-growth-in-bangladesh" target="_blank" rel="noopener">Press note</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_UN_WorldBank_Road_Safety_Champion_First_RunnerUp_2019_2020.jpg" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_UN_WorldBank_Road_Safety_Champion_First_RunnerUp_2019_2020.jpg" download>Download</a>
-          </div>
-        </div>
 
-        <!-- KUET IPE Fest Case Study Champion -->
-        <div class="card">
-          <div class="kicker">Case Competition</div>
-          <strong>KUET IPE Fest — Case Study Champion</strong>
-          <div class="meta">Khulna University of Engineering &amp; Technology (2018)</div>
-          <p>Top prize for a process-improvement case; evaluated on analysis quality, feasibility, and presentation.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png" alt="KUET IPE Fest 2018 Champion certificate">
+          <!-- KUET IPE Fest Case Study Champion -->
+          <div class="card">
+            <div class="kicker">Case Competition</div>
+            <strong>KUET IPE Fest — Case Study Champion</strong>
+            <div class="meta">Khulna University of Engineering &amp; Technology (2018)</div>
+            <p>Top prize for a process-improvement case; evaluated on analysis quality, feasibility, and presentation.</p>
+            <img src="assets/certificates/KUET_IPE_FEST_2018_Fahim_Faisal_Raunaq.png" alt="KUET IPE Fest 2018 Champion certificate" style="max-width:100%;border-radius:.6rem;border:1px solid var(--accent);margin-top:.5rem"/>
+            <div class="actions">
+              <a class="action" href="assets/certificates/KUET_IPE_FEST_2018_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/KUET_IPE_FEST_2018_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
           </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png" download>Download</a>
-          </div>
-        </div>
 
-        <!-- AEMC Champion -->
-        <div class="card">
-          <div class="kicker">Engineering Management</div>
-          <strong>AEMC — Advanced Engineering Management Challenge (Champion)</strong>
-          <div class="meta">IEM Association, KUET (2018)</div>
-          <p>Team-based challenge on operations and decision-making under constraints.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" alt="AEMC Champion certificate">
+          <!-- AEMC Champion -->
+          <div class="card">
+            <div class="kicker">Engineering Management</div>
+            <strong>AEMC — Advanced Engineering Management Challenge (Champion)</strong>
+            <div class="meta">IEM Association, KUET (2018)</div>
+            <p>Team-based challenge on operations and decision-making under constraints.</p>
+            <img src="assets/certificates/AEMC_Fahim_Faisal_Raunaq.png" alt="AEMC Champion certificate" style="max-width:100%;border-radius:.6rem;border:1px solid var(--accent);margin-top:.5rem"/>
+            <div class="actions">
+              <a class="action" href="assets/certificates/AEMC_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/AEMC_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
           </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" download>Download</a>
-          </div>
-        </div>
 
-        <!-- ISCEA Ptak Prize Scholar -->
-        <div class="card">
-          <div class="kicker">Scholarship</div>
-          <strong>ISCEA Ptak Prize — Scholar</strong>
-          <div class="meta">Recognition for global supply-chain understanding &amp; leadership (2018)</div>
-          <p>Merit scholarship from ISCEA acknowledging leadership in the Young Supply Chain community.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg" alt="ISCEA Ptak Prize Scholar certificate">
-          </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg" download>Download</a>
+          <!-- ISCEA Ptak Prize Scholar -->
+          <div class="card">
+            <div class="kicker">Scholarship</div>
+            <strong>ISCEA Ptak Prize — Scholar</strong>
+            <div class="meta">Recognition for global supply-chain understanding &amp; leadership (2018)</div>
+            <p>Merit scholarship from ISCEA acknowledging leadership in the Young Supply Chain community.</p>
+            <img src="assets/certificates/ISCEA_Scholarship_Fahim_Faisal_Raunaq.png" alt="ISCEA Ptak Prize Scholar certificate" style="max-width:100%;border-radius:.6rem;border:1px solid var(--accent);margin-top:.5rem"/>
+            <div class="actions">
+              <a class="action" href="assets/certificates/ISCEA_Scholarship_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/ISCEA_Scholarship_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- SERVICE & LEADERSHIP -->
-    <section id="service" class="section">
-      <h2>Service &amp; Leadership</h2>
+      <!-- Service & Leadership -->
+      <div class="card" id="service" style="margin-top:1rem">
+        <h3>Service &amp; Leadership</h3>
 
-      <div class="stack">
-        <!-- EMK Envoy -->
-        <div class="card">
-          <div class="kicker">Leadership Program</div>
-          <strong>Edward M. Kennedy (EMK) Center — Campus Envoy</strong>
-          <div class="meta">2019–2021 · Flagship American Space in Bangladesh</div>
-          <p>Peer leadership and community engagement: dialogue, civic action, and student programming.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_EMK_Envoy_Program_Certificate_of_Excellence_2019_2021.png" alt="EMK Envoy Program certificate">
+        <div class="stack">
+          <!-- EMK Envoy -->
+          <div class="card">
+            <div class="kicker">Leadership Program</div>
+            <strong>Edward M. Kennedy (EMK) Center — Campus Envoy</strong>
+            <div class="meta">2019–2021 · Flagship American Space in Bangladesh</div>
+            <p>Peer leadership and community engagement: dialogue, civic action, and student programming.</p>
+            <img src="assets/certificates/EMK_Fahim_Faisal_Raunaq.png" alt="EMK Envoy Program certificate" style="max-width:100%;border-radius:.6rem;border:1px solid var(--accent);margin-top:.5rem"/>
+            <div class="actions">
+              <a class="action" href="https://bd.usembassy.gov/emk-center/" target="_blank" rel="noopener">About EMK</a>
+              <a class="action" href="assets/certificates/EMK_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/EMK_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
           </div>
-          <div class="actions">
-            <a class="action" href="https://bd.usembassy.gov/emk-center/" target="_blank" rel="noopener">About EMK</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_EMK_Envoy_Program_Certificate_of_Excellence_2019_2021.png" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_EMK_Envoy_Program_Certificate_of_Excellence_2019_2021.png" download>Download</a>
-          </div>
-        </div>
 
-        <!-- BADHAN -->
-        <div class="card">
-          <div class="kicker">Community Service</div>
-          <strong>BADHAN — Voluntary Blood Donors’ Organization</strong>
-          <div class="meta">Certificate of Acknowledgement · BUET Unit</div>
-          <p>Recognized for regular voluntary blood donation and participation in campus drives.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_BADHAN_Voluntary_Blood_Donor_Acknowledgement_BUET.jpg" alt="BADHAN acknowledgement certificate">
+          <!-- BADHAN blood donation volunteer -->
+          <div class="card">
+            <div class="kicker">Community Service</div>
+            <strong>BADHAN — Voluntary Blood Donors’ Organization</strong>
+            <div class="meta">Certificate of Acknowledgement · BUET Unit</div>
+            <p>Recognized for regular voluntary blood donation and participation in campus drives.</p>
+            <img src="assets/certificates/Badhan_Fahim_Faisal_Raunaq.png" alt="BADHAN acknowledgement certificate" style="max-width:100%;border-radius:.6rem;border:1px solid var(--accent);margin-top:.5rem"/>
+            <div class="actions">
+              <a class="action" href="assets/certificates/Badhan_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/Badhan_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
           </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_BADHAN_Voluntary_Blood_Donor_Acknowledgement_BUET.jpg" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_BADHAN_Voluntary_Blood_Donor_Acknowledgement_BUET.jpg" download>Download</a>
-          </div>
-        </div>
 
-        <!-- X-Culture program leadership notes (no extra cert image here beyond above) -->
-        <div class="card">
-          <div class="kicker">Program Leadership</div>
-          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Coaching Program</strong>
-          <div class="meta">Senior Coach &amp; Coach (2020–2021)</div>
-          <p>Led coach training and top-report reviews; supported global cohort operations. (Certificates shown above.)</p>
-        </div>
-
-        <!-- EMK SOP Competition -->
-        <div class="card">
-          <div class="kicker">Writing Recognition</div>
-          <strong>EducationUSA — Statement of Purpose Competition</strong>
-          <div class="meta">EMK Center (Dec 2019)</div>
-          <p>Certificate of appreciation for a comprehensive SOP; part of student skills &amp; leadership development activities.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_EducationUSA_SOP_Writing_Competition_Certificate_2019.png" alt="EMK EducationUSA SOP Competition certificate">
+          <!-- X-Culture program leadership notes -->
+          <div class="card">
+            <div class="kicker">Program Leadership</div>
+            <strong>X-Culture Coaching Program</strong>
+            <div class="meta">Senior Coach &amp; Coach (2020–2021)</div>
+            <p>Led coach training and top-report reviews; supported global cohort operations. (Certificates shown in <em>Certifications</em>.)</p>
           </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_EducationUSA_SOP_Writing_Competition_Certificate_2019.png" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_EducationUSA_SOP_Writing_Competition_Certificate_2019.png" download>Download</a>
+
+          <!-- EMK SOP Competition -->
+          <div class="card">
+            <div class="kicker">Writing Recognition</div>
+            <strong>EducationUSA — Statement of Purpose Competition</strong>
+            <div class="meta">EMK Center (Dec 2019)</div>
+            <p>Certificate of appreciation for a comprehensive SOP; part of student skills &amp; leadership development activities.</p>
+            <img src="assets/certificates/EDUSA_EMK_SOP_Fahim_Faisal_Raunaq.png" alt="EMK EducationUSA SOP Competition certificate" style="max-width:100%;border-radius:.6rem;border:1px solid var(--accent);margin-top:.5rem"/>
+            <div class="actions">
+              <a class="action" href="assets/certificates/EDUSA_EMK_SOP_Fahim_Faisal_Raunaq.png" target="_blank" rel="noopener">View</a>
+              <a class="action" href="assets/certificates/EDUSA_EMK_SOP_Fahim_Faisal_Raunaq.png" download>Download</a>
+            </div>
           </div>
         </div>
       </div>
@@ -737,22 +705,26 @@
       <h2>Endorsements</h2>
       <div class="card">
         <blockquote class="muted">“The Coaching Program administrative team has provided very positive feedback on your performance.”</blockquote>
-        <div class="meta">— <a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Coaching Program (Coach review, 2020)</div>
+        <div class="meta">— X-Culture Coaching Program (Coach review, 2020)</div>
         <blockquote class="muted" style="margin-top:.6rem">“We would recommend Fahim for assignments requiring coaching, analytical thinking, understanding of team dynamics, and leadership.”</blockquote>
-        <div class="meta">— <a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Coaching Program (Senior Coach review, 2020)</div>
+        <div class="meta">— X-Culture Coaching Program (Senior Coach review, 2020)</div>
         <blockquote class="muted" style="margin-top:.6rem">“Strong results and excellent peer evaluations… among the highest (Top 5%) in the cohort.”</blockquote>
-        <div class="meta">— <a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Academy performance review</div>
+        <div class="meta">— X-Culture Academy performance review</div>
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- CONTACT (streamlined per request) -->
     <section id="contact" class="section">
       <h2>Contact</h2>
       <div class="two-col">
         <div class="card">
-          <h3>Get in touch</h3>
-          <p>Email: <a href="mailto:fahimfaisalraunaq@gmail.com">fahimfaisalraunaq@gmail.com</a><br />LinkedIn: <a href="https://www.linkedin.com/in/fahimfaisalraunaq" target="_blank" rel="noopener">linkedin.com/in/fahimfaisalraunaq</a></p>
-          <p class="muted">Dhaka, Bangladesh</p>
+          <h3>Let’s talk</h3>
+          <p class="muted">Best way to reach me:</p>
+          <p style="font-size:1.05rem;margin:.25rem 0 0">
+            ✉ <a href="mailto:fahimfaisalraunaq@gmail.com">fahimfaisalraunaq@gmail.com</a>
+          </p>
+          <p class="muted" style="margin:.6rem 0 0">Location: Dhaka, Bangladesh · UTC+6</p>
+          <p class="muted" style="margin:.2rem 0 0">For CV and profiles, use the quick links at the top.</p>
         </div>
       </div>
     </section>
