@@ -48,14 +48,13 @@
 
     /* Header */
     header.site{position:sticky;top:0;z-index:80;background:color-mix(in srgb, var(--bg) 92%, transparent);border-bottom:1px solid var(--accent);backdrop-filter:saturate(1.1) blur(6px)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.8rem 0}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.8rem 0;min-width:0}
     .brand{
       font-weight:800;letter-spacing:.2px;font-size:clamp(1.05rem,2.2vw,1.25rem);
-      text-decoration:none;color:inherit;white-space:nowrap;flex:0 1 auto;
+      text-decoration:none;color:inherit;white-space:nowrap;flex:0 0 auto;
       max-width:60%;overflow:hidden;text-overflow:ellipsis
     }
-    /* Primary nav as inline (desktop base) */
-    nav.primary{display:flex;align-items:center;gap:.2rem;flex:1 1 auto;justify-content:flex-end;min-width:0}
+    nav.primary{display:flex;align-items:center;gap:.2rem;flex:1 1 auto;justify-content:flex-end;min-width:0;overflow:hidden}
     nav.primary a{color:var(--muted);text-decoration:none;font-weight:600;margin-left:.8rem;padding:.5rem .2rem;border-radius:.4rem;white-space:nowrap}
     nav.primary a:hover,nav.primary a:focus{color:var(--link);outline:none}
     nav.primary a.active{color:var(--link);box-shadow: inset 0 -2px var(--link)}
@@ -90,7 +89,7 @@
     }
     .offcanvas nav a:hover{background:var(--chip)}
 
-    /* Collapse rules: when header gets .collapsed OR <=1280px */
+    /* Collapse rules */
     header.site.collapsed .menu-btn{display:inline-flex}
     header.site.collapsed nav.primary{display:none}
     @media (max-width:1280px){
@@ -195,7 +194,7 @@
 
     /* Contact: stretch + compact */
     .contact-wrap{display:grid;grid-template-columns:1fr}
-    .contact-card{margin:0} /* stretch like other cards */
+    .contact-card{margin:0}
     .contact-form{display:grid;gap:.8rem}
     .contact-form .row{display:grid;grid-template-columns:1fr;gap:.8rem}
     @media (min-width:800px){ .contact-form .row{grid-template-columns:1fr 1fr} }
@@ -270,7 +269,8 @@
   </script>
 </head>
 <body>
-  <header class="site" id="siteHeader">
+  <!-- Start header collapsed to avoid any initial overlap flash -->
+  <header class="site collapsed" id="siteHeader">
     <div class="container nav" id="navContainer">
       <a class="brand" href="#top">Fahim Faisal Raunaq</a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="offcanvas" aria-label="Open menu" type="button">Menu</button>
@@ -421,7 +421,6 @@
         </div>
       </div>
 
-      <!-- Methods toolbox -->
       <h3 class="kicker" style="margin-top:1rem">Methods toolbox</h3>
       <div class="card">
         <div class="toolbox-grid">
@@ -900,13 +899,11 @@
 
             <div class="contact-actions">
               <button type="submit" class="action">Send Message</button>
-              <a class="action ghost" href="mailto:fahimfaisalraunaq@gmail.com?subject=Hello%20Fahim">Open Email App</a>
             </div>
 
             <p class="note" style="margin-top:.4rem">
               I’m based in <strong>Dhaka, Bangladesh (UTC+06:00)</strong>. Depending on time zones and teaching/research hours, replies may be slightly delayed.
             </p>
-            <p class="small muted">This form uses Formspree; no sign-in required.</p>
           </form>
         </div>
       </div>
@@ -994,7 +991,6 @@
     (function(){
       const navLinks = [...document.querySelectorAll('nav.primary a, .offcanvas nav a')];
       const sections = [...document.querySelectorAll('main .section, .hero')];
-      const linkFor = id => navLinks.filter(a => a.getAttribute('href') === `#${id}`);
       const io = new IntersectionObserver((entries)=>{
         entries.forEach(e=>{
           if(!e.isIntersecting) return;
