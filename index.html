@@ -29,12 +29,14 @@
     :root{
       --bg:#0b0f1a; --panel:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --link:#60a5fa;
       --accent:#1f2937; --chip:#1e293b; --ring:rgba(96,165,250,.2);
-      --hero-name:#9ec3ff;
-      --topglow: rgba(96,165,250,.22);
+      --hero-name:#9ec3ff; --topglow: rgba(96,165,250,.22);
+      --overlay: rgba(2,6,23,.45);
     }
     @media (prefers-color-scheme: light){
       :root{ --bg:#ffffff; --panel:#f6f7f9; --text:#0f172a; --muted:#334155; --link:#2563eb;
-             --accent:#e5e7eb; --chip:#e2e8f0; --ring:rgba(37,99,235,.18); --hero-name:#1849a9; --topglow: rgba(96,165,250,.28); }
+             --accent:#e5e7eb; --chip:#e2e8f0; --ring:rgba(37,99,235,.18);
+             --hero-name:#1849a9; --topglow: rgba(96,165,250,.28);
+             --overlay: rgba(15,23,42,.35);}
     }
     html{scroll-behavior:smooth}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);line-height:1.6}
@@ -42,42 +44,62 @@
     .container{max-width:1200px;margin:0 auto;padding:0 1.25rem}
 
     /* Header */
-    header.site{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 92%, transparent);border-bottom:1px solid var(--accent);backdrop-filter:saturate(1.1) blur(6px)}
+    header.site{position:sticky;top:0;z-index:80;background:color-mix(in srgb, var(--bg) 92%, transparent);border-bottom:1px solid var(--accent);backdrop-filter:saturate(1.1) blur(6px)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.8rem 0}
     .brand{
       font-weight:800;letter-spacing:.2px;font-size:clamp(1.05rem,2.2vw,1.25rem);
       text-decoration:none;color:inherit;white-space:nowrap;flex:0 1 auto;
       max-width:60%;overflow:hidden;text-overflow:ellipsis
     }
+    /* Primary nav as inline (desktop base) */
     nav.primary{display:flex;align-items:center;gap:.2rem;flex:1 1 auto;justify-content:flex-end;min-width:0}
     nav.primary a{color:var(--muted);text-decoration:none;font-weight:600;margin-left:.8rem;padding:.5rem .2rem;border-radius:.4rem;white-space:nowrap}
     nav.primary a:hover,nav.primary a:focus{color:var(--link);outline:none}
     nav.primary a.active{color:var(--link);box-shadow: inset 0 -2px var(--link)}
     .menu-btn{display:none;border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.6rem;padding:.45rem .6rem}
-    .menu-btn[aria-expanded="true"]{box-shadow:0 0 0 .2rem var(--ring)}
 
-    /* Force collapse mode (JS adds .collapsed on <header>) */
-    header.site.collapsed nav.primary{
-      position:absolute;top:60px;right:1.25rem;left:1.25rem;
-      background:var(--panel);border:1px solid var(--accent);
-      border-radius:.8rem;padding:.6rem;display:none;flex-direction:column;gap:.25rem
+    /* Off-canvas panel for collapsed mode */
+    .overlay{position:fixed;inset:0;background:var(--overlay);opacity:0;pointer-events:none;transition:opacity .2s ease;z-index:75}
+    .overlay.show{opacity:1;pointer-events:auto}
+
+    .offcanvas{
+      position:fixed;top:0;right:0;height:100dvh;background:var(--panel);
+      border-left:1px solid var(--accent);box-shadow: -6px 0 22px rgba(0,0,0,.25);
+      width:min(360px, 90vw);
+      transform:translateX(100%);transition:transform .22s ease;
+      z-index:90;display:flex;flex-direction:column;gap:.2rem
     }
-    header.site.collapsed nav.primary.open{display:flex}
-    header.site.collapsed .menu-btn{display:inline-flex}
-    header.site.collapsed .brand{max-width:calc(100% - 120px)}
+    .offcanvas.open{transform:translateX(0)}
+    .offcanvas header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:.8rem;border-bottom:1px solid var(--accent)
+    }
+    .offcanvas .close-btn{
+      border:1px solid var(--accent);background:var(--bg);color:var(--text);
+      border-radius:.5rem;padding:.3rem .55rem;cursor:pointer
+    }
+    .offcanvas nav{
+      display:flex;flex-direction:column;padding:.4rem .6rem;gap:.1rem
+    }
+    .offcanvas nav a{
+      color:var(--text);text-decoration:none;font-weight:700;
+      padding:.6rem .55rem;border-radius:.55rem
+    }
+    .offcanvas nav a:hover{background:var(--chip)}
 
-    /* Regular responsive collapse as a fallback */
+    /* Collapse rules: when header gets .collapsed OR <=1280px */
+    header.site.collapsed .menu-btn{display:inline-flex}
+    header.site.collapsed nav.primary{display:none}
     @media (max-width:1280px){
-      nav.primary{position:absolute;top:60px;right:1.25rem;left:1.25rem;background:var(--panel);border:1px solid var(--accent);border-radius:.8rem;padding:.6rem;display:none;flex-direction:column;gap:.25rem}
-      nav.primary.open{display:flex}
       .menu-btn{display:inline-flex}
+      nav.primary{display:none}
       .brand{max-width:calc(100% - 120px)}
     }
 
     /* Hero */
-    .hero{padding:2.4rem 0 1.2rem}
-    .hero-grid{display:grid;grid-template-columns:1fr;gap:1.3rem;align-items:center}
-    @media (min-width:900px){.hero-grid{grid-template-columns:1.2fr .8fr;gap:2rem}}
+    .hero{padding:2.0rem 0 1.1rem}
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:1.1rem;align-items:center}
+    @media (min-width:900px){.hero-grid{grid-template-columns:1.2fr .8fr;gap:1.6rem}}
     .hero .name{font-size:clamp(2rem,6vw,2.8rem);line-height:1.08;margin:0 0 .25rem;color:var(--hero-name);white-space:normal}
     .hero .headline{font-size:clamp(1.2rem,4.2vw,1.6rem);margin:.15rem 0 .6rem;color:var(--text)}
     .lead{color:var(--muted);max-width:62ch;margin:0 0 .5rem}
@@ -93,7 +115,7 @@
     @media (max-width:700px){.avatar{width:180px;height:180px}}
 
     /* Sections & Cards */
-    .section{padding:1.25rem 0;scroll-margin-top:5.5rem}
+    .section{padding:1.15rem 0;scroll-margin-top:5.5rem}
     .section h2{font-size:clamp(1.3rem,3vw,1.6rem);margin:0 0 .8rem}
     .row{display:grid;grid-template-columns:1fr;gap:.9rem}
     @media (min-width:900px){.row{grid-template-columns:1.4fr .6fr}}
@@ -116,12 +138,6 @@
     .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;color:var(--muted)}
     .muted{color:var(--muted)}
     .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
-
-    /* Toolbox */
-    .toolbox-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem}
-    .toolbox-grid .tool{display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid var(--accent);background:var(--chip);border-radius:.65rem;padding:.55rem .6rem;font-weight:700;min-height:44px;transition:transform .15s ease, box-shadow .15s ease}
-    .toolbox-grid .tool:hover{transform:translateY(-2px);box-shadow:0 4px 14px var(--ring)}
-    @media (max-width:900px){ .toolbox-grid{grid-template-columns:repeat(2,1fr);} }
 
     /* Publications */
     .pub-filter{display:flex;gap:.5rem;margin:.5rem 0 1rem;flex-wrap:wrap}
@@ -156,36 +172,35 @@
     footer .container{display:flex;align-items:center;min-height:60px;justify-content:center}
     footer .tail{opacity:.9}
 
-    /* Certificate frame for uniform sizing */
-    .cert-frame{
-      width:100%;
-      height:320px;
-      border-radius:.6rem;
-      border:1px solid var(--accent);
-      background:var(--bg);
-      display:flex;align-items:center;justify-content:center;
-      overflow:hidden;margin-top:.5rem
-    }
+    /* Certificate frame */
+    .cert-frame{width:100%;height:320px;border-radius:.6rem;border:1px solid var(--accent);background:var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:.5rem}
     .cert-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 
-    /* Contact form */
-    .contact-form .field{display:flex;flex-direction:column;gap:.35rem}
+    /* Contact form + card sizing */
+    .contact-wrap{display:grid;grid-template-columns:1fr}
+    .contact-card{max-width:720px;margin:0 auto}
+    .contact-form .field{display:flex;flex-direction:column;gap:.3rem}
     .contact-form label{font-weight:700}
     .contact-form input,.contact-form textarea{
       background:var(--panel);color:var(--text);border:1px solid var(--accent);
-      border-radius:.6rem;padding:.6rem .7rem;font-size:1rem
+      border-radius:.6rem;padding:.55rem .7rem;font-size:1rem
     }
-    .contact-form textarea{min-height:140px;resize:vertical}
+    .contact-form textarea{min-height:130px;resize:vertical}
     .contact-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem}
     .note{font-size:.95rem;color:var(--muted)}
     .small{font-size:.9rem}
-    .contact-form .action{cursor:pointer}
-    
+    .toast{
+      position:fixed;right:1rem;bottom:1rem;z-index:95;
+      background:var(--panel);border:1px solid var(--accent);border-radius:.75rem;
+      padding:.65rem .8rem;box-shadow:0 8px 24px rgba(0,0,0,.25);display:none
+    }
+    .toast.show{display:block}
+
     /* Print */
     @media print{
       *{background:transparent !important;box-shadow:none !important}
       body{color:#000}
-      header.site, .pub-filter, .cta-row, nav.primary, .to-top, dialog{display:none !important}
+      header.site, .pub-filter, .cta-row, nav.primary, .to-top, dialog, .overlay, .offcanvas{display:none !important}
       a[href]::after{content:" (" attr(href) ")";font-size:.9em}
       .container{max-width:none;padding:0 12mm}
       .section{padding:8mm 0;page-break-inside:avoid}
@@ -193,7 +208,7 @@
     }
   </style>
 
-  <!-- Person JSON-LD (with @id) -->
+  <!-- Person JSON-LD -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -218,9 +233,12 @@
 <body>
   <header class="site" id="siteHeader">
     <div class="container nav" id="navContainer">
-      <a class="brand" href="/">Fahim Faisal Raunaq</a>
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">Menu</button>
+      <a class="brand" href="#top">Fahim Faisal Raunaq</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="offcanvas" aria-label="Open menu">Menu</button>
+
+      <!-- inline primary nav (shown when not collapsed) -->
       <nav class="primary" id="primaryNav" aria-label="Primary">
+        <a href="#top">Home</a>
         <a href="#about">About</a>
         <a href="#education">Education</a>
         <a href="#research">Research</a>
@@ -236,6 +254,31 @@
         <a href="#contact">Contact</a>
       </nav>
     </div>
+
+    <!-- overlay + offcanvas (only used in collapsed mode) -->
+    <div class="overlay" id="overlay" hidden></div>
+    <aside class="offcanvas" id="offcanvas" aria-hidden="true" aria-label="Site menu">
+      <header>
+        <strong>Menu</strong>
+        <button class="close-btn" id="menuClose" aria-label="Close menu">✕</button>
+      </header>
+      <nav>
+        <a href="#top">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#conferences">Conferences</a>
+        <a href="#awards">Awards</a>
+        <a href="#service">Service</a>
+        <a href="#endorsements">Endorsements</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </aside>
   </header>
 
   <main id="main" class="container">
@@ -248,13 +291,11 @@
           <p class="lead tagline">I turn messy operations data into auditable, safety-critical decisions with IE/OR and ML.</p>
           <p class="muted nowline">Dhaka, Bangladesh · Open to research collaborations and Ph.D. opportunities.</p>
 
-          <!-- row 1 -->
           <div class="cta-row top" role="group" aria-label="Primary actions — row 1">
             <a class="cta" href="assets/Fahim_Faisal_Raunaq_CV.pdf" target="_blank" rel="noopener">📄 View CV</a>
             <a class="cta" href="assets/Fahim_Faisal_Raunaq_CV.pdf" download>⬇ Download CV</a>
             <a class="cta" href="https://www.linkedin.com/in/fahimfaisalraunaq" target="_blank" rel="noopener">in LinkedIn</a>
           </div>
-          <!-- row 2 -->
           <div class="cta-row bottom" role="group" aria-label="Primary actions — row 2">
             <a class="cta compact" href="https://scholar.google.com/citations?user=BI00vUYAAAAJ" target="_blank" rel="noopener">G Scholar</a>
             <a class="cta compact" href="https://github.com/fahimfaisalraunaq" target="_blank" rel="noopener">GH GitHub</a>
@@ -581,131 +622,10 @@
       </div>
     </section>
 
-    <!-- CONFERENCES -->
-    <section id="conferences" class="section">
-      <h2>Conferences &amp; Symposia</h2>
-      <div class="stack">
-        <!-- AIB US Southeast / X-Culture Symposium (Top 40) -->
-        <div class="card">
-          <div class="kicker">Conference Participation</div>
-          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Global Symposium — Top 40 Delegate (AIB Southeast USA)</strong>
-          <div class="meta">Oct 22–23, 2020 · Theme: <em>Beyond 2020</em></div>
-          <p>Career-development workshops and panels co-organized with X-Culture (Top-40 recognition cohort).</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" alt="AIB US Southeast / X-Culture Symposium Top 40 certificate">
-          </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" download>Download</a>
-          </div>
-        </div>
-
-        <!-- X-Culture 10-Year Anniversary Virtual Conference -->
-        <div class="card">
-          <div class="kicker">Conference Participation</div>
-          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> “10-Year Anniversary” Virtual Conference</strong>
-          <div class="meta">May 29, 2020</div>
-          <p>Panels on working in global virtual teams, featuring speakers from Google, Microsoft, Miami International Airport, and others.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" alt="X-Culture 10-Year Anniversary Virtual Conference certificate">
-          </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" download>Download</a>
-          </div>
-        </div>
-
-        <!-- X-Culture Global Collaboration (Academy) -->
-        <div class="card">
-          <div class="kicker">Program Completion</div>
-          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Global Collaboration (Academy)</strong>
-          <div class="meta">Jan 10, 2020</div>
-          <p>Completed training and two-month practical project as part of a multinational virtual consulting team.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" alt="X-Culture Global Collaboration certificate">
-          </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" download>Download</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- AWARDS & HONORS -->
-    <section id="awards" class="section">
-      <h2>Awards &amp; Honors</h2>
-
-      <div class="stack">
-        <!-- World Bank / UN Road Safety -->
-        <div class="card">
-          <div class="kicker">International Competition</div>
-          <strong>World Bank × United Nations — Road Safety Champion Video Competition</strong>
-          <div class="meta">First Runner-up (2019–2020)</div>
-          <p>Advocacy video on evidence-led countermeasures for Bangladesh’s road-injury burden.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_UN_WorldBank_Road_Safety_Champion_First_RunnerUp_2019_2020.jpg" alt="World Bank UN Road Safety competition certificate">
-          </div>
-          <div class="actions">
-            <a class="action" href="https://www.worldbank.org/en/news/press-release/2020/01/28/better-road-safety-will-boost-economic-growth-in-bangladesh" target="_blank" rel="noopener">Press note</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_UN_WorldBank_Road_Safety_Champion_First_RunnerUp_2019_2020.jpg" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_UN_WorldBank_Road_Safety_Champion_First_RunnerUp_2019_2020.jpg" download>Download</a>
-          </div>
-        </div>
-
-        <!-- KUET IPE Fest Case Study Champion -->
-        <div class="card">
-          <div class="kicker">Case Competition</div>
-          <strong>KUET IPE Fest — Case Study Champion</strong>
-          <div class="meta">Khulna University of Engineering &amp; Technology (2018)</div>
-          <p>Top prize for a process-improvement case; evaluated on analysis quality, feasibility, and presentation.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png" alt="KUET IPE Fest 2018 Champion certificate">
-          </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png" download>Download</a>
-          </div>
-        </div>
-
-        <!-- AEMC Champion -->
-        <div class="card">
-          <div class="kicker">Engineering Management</div>
-          <strong>AEMC — Advanced Engineering Management Challenge (Champion)</strong>
-          <div class="meta">IEM Association, KUET (2018)</div>
-          <p>Team-based challenge on operations and decision-making under constraints.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" alt="AEMC Champion certificate">
-          </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" download>Download</a>
-          </div>
-        </div>
-
-        <!-- ISCEA Ptak Prize Scholar -->
-        <div class="card">
-          <div class="kicker">Scholarship</div>
-          <strong>ISCEA Ptak Prize — Scholar</strong>
-          <div class="meta">Recognition for global supply-chain understanding &amp; leadership (2018)</div>
-          <p>Merit scholarship from ISCEA acknowledging leadership in the Young Supply Chain community.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg" alt="ISCEA Ptak Prize Scholar certificate">
-          </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg" download>Download</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- SERVICE & LEADERSHIP -->
     <section id="service" class="section">
       <h2>Service &amp; Leadership</h2>
-
       <div class="stack">
-        <!-- EMK Envoy -->
         <div class="card">
           <div class="kicker">Leadership Program</div>
           <strong>Edward M. Kennedy (EMK) Center — Campus Envoy</strong>
@@ -721,7 +641,6 @@
           </div>
         </div>
 
-        <!-- BADHAN -->
         <div class="card">
           <div class="kicker">Community Service</div>
           <strong>BADHAN — Voluntary Blood Donors’ Organization</strong>
@@ -736,7 +655,6 @@
           </div>
         </div>
 
-        <!-- X-Culture program leadership notes (no extra cert image here beyond above) -->
         <div class="card">
           <div class="kicker">Program Leadership</div>
           <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Coaching Program</strong>
@@ -744,7 +662,6 @@
           <p>Led coach training and top-report reviews; supported global cohort operations. (Certificates shown above.)</p>
         </div>
 
-        <!-- EMK SOP Competition -->
         <div class="card">
           <div class="kicker">Writing Recognition</div>
           <strong>EducationUSA — Statement of Purpose Competition</strong>
@@ -777,10 +694,14 @@
     <!-- CONTACT -->
     <section id="contact" class="section">
       <h2>Contact</h2>
-      <div class="two-col">
-        <div class="card">
+      <div class="contact-wrap">
+        <div class="card contact-card">
           <h3>Write me a message</h3>
-          <form class="contact-form" id="contactForm">
+
+          <!-- Formspree: replace YOUR_FORMSPREE_ID -->
+          <form id="contactForm" class="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" enctype="multipart/form-data">
+            <!-- Ensures JSON response -->
+            <input type="hidden" name="_format" value="json" />
             <div class="two-col" style="margin:0 0 .8rem">
               <div class="field">
                 <label for="name">Your name (optional)</label>
@@ -788,7 +709,7 @@
               </div>
               <div class="field">
                 <label for="from">Your email</label>
-                <input id="from" name="from" type="email" autocomplete="email" required />
+                <input id="from" name="email" type="email" autocomplete="email" required />
               </div>
             </div>
             <div class="field" style="margin-bottom:.8rem">
@@ -799,14 +720,18 @@
               <label for="message">Message</label>
               <textarea id="message" name="message" placeholder="A concise overview helps me route your message quickly." required></textarea>
             </div>
+            <div class="field" style="margin-top:.6rem">
+              <label for="files">Attachments (PDF, images, docs — optional)</label>
+              <input id="files" name="attachments" type="file" multiple />
+            </div>
             <div class="contact-actions">
-              <button type="submit" class="action">Send Email</button>
-              <a class="action ghost" href="mailto:fahimfaisalraunaq@gmail.com">Open Email App</a>
+              <button type="submit" class="action">Send Message</button>
+              <a class="action ghost" href="mailto:fahimfaisalraunaq@gmail.com?subject=Hello%20Fahim">Open Email App</a>
             </div>
             <p class="note" style="margin-top:.6rem">
-              I’m based in <strong>Dhaka, Bangladesh (UTC+06:00)</strong>. Depending on time zones and teaching/research hours, responses may take a bit.
+              I’m based in <strong>Dhaka, Bangladesh (UTC+06:00)</strong>. Depending on time zones and teaching/research hours, replies may be slightly delayed.
             </p>
-            <p class="small muted">Your email client will open with your message pre-filled; no data is stored on this site.</p>
+            <p class="small muted">This form uses Formspree; no tracking, no sign-in required.</p>
           </form>
         </div>
       </div>
@@ -837,22 +762,11 @@
   <!-- Back to top -->
   <div class="to-top" id="toTop"><button aria-label="Back to top">↑</button></div>
 
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
   <script>
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile menu toggle
-    (function(){
-      const btn = document.getElementById('menuBtn');
-      const nav = document.getElementById('primaryNav');
-      btn.addEventListener('click', ()=> {
-        const open = nav.classList.toggle('open');
-        btn.setAttribute('aria-expanded', String(open));
-      });
-      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{
-        if (getComputedStyle(btn).display !== 'none') { nav.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
-      }));
-    })();
 
     // Publications filter + status label
     (function(){
@@ -869,7 +783,7 @@
       setFilter('all');
     })();
 
-    // Back to top show/hide + smooth scroll
+    // Back to top show/hide
     (function(){
       const btnWrap = document.getElementById('toTop');
       const btn = btnWrap.querySelector('button');
@@ -879,13 +793,12 @@
       }, {passive:true});
     })();
 
-    // Cite modal handlers
+    // Cite modal
     (function(){
       const dlg = document.getElementById('cite-modal');
       const closeBtn = document.getElementById('cite-close');
       const apa = document.getElementById('cite-apa');
       const bib = document.getElementById('cite-bib');
-
       document.addEventListener('click', (e)=>{
         const btn = e.target.closest('.cite-btn');
         if(!btn) return;
@@ -895,7 +808,6 @@
       });
       closeBtn && closeBtn.addEventListener('click', ()=> dlg.close());
       dlg && dlg.addEventListener('cancel', (e)=>{ e.preventDefault(); dlg.close(); });
-
       async function copy(txt, btn){ try{ await navigator.clipboard.writeText(txt); btn.textContent='Copied!'; setTimeout(()=>btn.textContent=btn.dataset.reset||'Copy', 1200);} catch{ btn.textContent='Copy failed'; setTimeout(()=>btn.textContent=btn.dataset.reset||'Copy', 1200);} }
       const apaCopy = document.getElementById('apa-copy');
       const bibCopy = document.getElementById('bib-copy');
@@ -908,58 +820,101 @@
       const header = document.getElementById('siteHeader');
       const container = document.getElementById('navContainer');
       const brand = container.querySelector('.brand');
-      const nav = document.getElementById('primaryNav');
-      const menuBtn = document.getElementById('menuBtn');
+      const primary = document.getElementById('primaryNav');
 
       function needsCollapse(){
-        // Temporarily ensure desktop layout for measurement
+        // show primary to measure, but keep styles consistent
         header.classList.remove('collapsed');
-        nav.classList.remove('open');
-        menuBtn.setAttribute('aria-expanded','false');
-
-        // Total width needed for brand + nav + a small buffer
-        const need = brand.offsetWidth + nav.scrollWidth + 32; // 32px buffer
+        const needed = brand.offsetWidth + primary.scrollWidth + 32;
         const have = container.clientWidth;
-        return need > have;
+        return needed > have;
       }
-
       function apply(){
-        if (needsCollapse()){
-          header.classList.add('collapsed');
-        }else{
-          header.classList.remove('collapsed');
-        }
+        if (needsCollapse()){ header.classList.add('collapsed'); }
+        else { header.classList.remove('collapsed'); }
       }
-
-      // Initial + on resize (debounced)
       let t=null;
       window.addEventListener('resize', ()=>{ clearTimeout(t); t=setTimeout(apply, 80); });
       window.addEventListener('load', apply);
       apply();
     })();
 
-    // ===== Contact form -> mailto composer =====
+    // ===== Off-canvas menu behavior =====
+    (function(){
+      const btn = document.getElementById('menuBtn');
+      const closeBtn = document.getElementById('menuClose');
+      const panel = document.getElementById('offcanvas');
+      const overlay = document.getElementById('overlay');
+      const header = document.getElementById('siteHeader');
+
+      function open(){
+        panel.classList.add('open');
+        panel.setAttribute('aria-hidden','false');
+        overlay.hidden = false; overlay.classList.add('show');
+        btn.setAttribute('aria-expanded','true');
+      }
+      function close(){
+        panel.classList.remove('open');
+        panel.setAttribute('aria-hidden','true');
+        overlay.classList.remove('show');
+        btn.setAttribute('aria-expanded','false');
+        setTimeout(()=>{ overlay.hidden = true; }, 200);
+      }
+
+      btn.addEventListener('click', open);
+      closeBtn.addEventListener('click', close);
+      overlay.addEventListener('click', close);
+      // close on nav click
+      panel.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+      // Escape key
+      window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && panel.classList.contains('open')) close(); });
+
+      // Ensure collapsed mode shows menu button
+      const ro = new ResizeObserver(()=> {
+        if (header.classList.contains('collapsed')) btn.style.display='inline-flex';
+      });
+      ro.observe(header);
+    })();
+
+    // ===== Contact form -> Formspree AJAX with attachments =====
     (function(){
       const form = document.getElementById('contactForm');
-      if(!form) return;
-      form.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        const name = (document.getElementById('name').value || '').trim();
-        const from = (document.getElementById('from').value || '').trim();
-        const subject = (document.getElementById('subject').value || '').trim();
-        const message = (document.getElementById('message').value || '').trim();
+      const toast = document.getElementById('toast');
 
-        const to = 'fahimfaisalraunaq@gmail.com';
-        const fullSubject = subject;
-        const bodyLines = [
-          message,
-          '',
-          '---',
-          `From: ${name ? name + ' ' : ''}<${from}>`,
-          'Sent via portfolio contact form'
-        ];
-        const href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
-        window.location.href = href; // opens default mail client
+      function showToast(msg, ok=true){
+        toast.textContent = msg;
+        toast.style.borderColor = ok ? 'var(--accent)' : 'crimson';
+        toast.classList.add('show');
+        setTimeout(()=> toast.classList.remove('show'), 3500);
+      }
+
+      if(!form) return;
+
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const action = form.getAttribute('action');
+        if (!action || action.includes('YOUR_FORMSPREE_ID')){
+          showToast('Configure Formspree: replace YOUR_FORMSPREE_ID in the form action.', false);
+          return;
+        }
+
+        const data = new FormData(form);
+        // Optional: append a concise source tag
+        data.append('_subject', data.get('subject') || 'New message from portfolio');
+        data.append('_gotcha', ''); // spam honeypot field (Formspree ignores if not configured)
+
+        try{
+          const res = await fetch(action, { method:'POST', body:data, headers:{ 'Accept':'application/json' }});
+          if (res.ok){
+            form.reset();
+            showToast('Message sent! I’ll reply as soon as I can (UTC+06:00).', true);
+          } else {
+            const j = await res.json().catch(()=>({}));
+            showToast(j.error || 'Send failed. Please email me directly.', false);
+          }
+        }catch(err){
+          showToast('Network error. Try again or use the email button.', false);
+        }
       });
     })();
   </script>
