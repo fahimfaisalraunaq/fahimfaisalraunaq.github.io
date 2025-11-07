@@ -56,12 +56,22 @@
     .menu-btn{display:none;border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.6rem;padding:.45rem .6rem}
     .menu-btn[aria-expanded="true"]{box-shadow:0 0 0 .2rem var(--ring)}
 
-    /* Collapse to hamburger earlier to prevent overlap with the name */
+    /* Force collapse mode (JS adds .collapsed on <header>) */
+    header.site.collapsed nav.primary{
+      position:absolute;top:60px;right:1.25rem;left:1.25rem;
+      background:var(--panel);border:1px solid var(--accent);
+      border-radius:.8rem;padding:.6rem;display:none;flex-direction:column;gap:.25rem
+    }
+    header.site.collapsed nav.primary.open{display:flex}
+    header.site.collapsed .menu-btn{display:inline-flex}
+    header.site.collapsed .brand{max-width:calc(100% - 120px)}
+
+    /* Regular responsive collapse as a fallback */
     @media (max-width:1280px){
       nav.primary{position:absolute;top:60px;right:1.25rem;left:1.25rem;background:var(--panel);border:1px solid var(--accent);border-radius:.8rem;padding:.6rem;display:none;flex-direction:column;gap:.25rem}
       nav.primary.open{display:flex}
       .menu-btn{display:inline-flex}
-      .brand{max-width:calc(100% - 110px)} /* leave space for the menu button */
+      .brand{max-width:calc(100% - 120px)}
     }
 
     /* Hero */
@@ -158,6 +168,19 @@
     }
     .cert-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 
+    /* Contact form */
+    .contact-form .field{display:flex;flex-direction:column;gap:.35rem}
+    .contact-form label{font-weight:700}
+    .contact-form input,.contact-form textarea{
+      background:var(--panel);color:var(--text);border:1px solid var(--accent);
+      border-radius:.6rem;padding:.6rem .7rem;font-size:1rem
+    }
+    .contact-form textarea{min-height:140px;resize:vertical}
+    .contact-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem}
+    .note{font-size:.95rem;color:var(--muted)}
+    .small{font-size:.9rem}
+    .contact-form .action{cursor:pointer}
+    
     /* Print */
     @media print{
       *{background:transparent !important;box-shadow:none !important}
@@ -193,8 +216,8 @@
   </script>
 </head>
 <body>
-  <header class="site">
-    <div class="container nav">
+  <header class="site" id="siteHeader">
+    <div class="container nav" id="navContainer">
       <a class="brand" href="/">Fahim Faisal Raunaq</a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">Menu</button>
       <nav class="primary" id="primaryNav" aria-label="Primary">
@@ -713,7 +736,7 @@
           </div>
         </div>
 
-        <!-- X-Culture program leadership notes -->
+        <!-- X-Culture program leadership notes (no extra cert image here beyond above) -->
         <div class="card">
           <div class="kicker">Program Leadership</div>
           <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Coaching Program</strong>
@@ -756,10 +779,35 @@
       <h2>Contact</h2>
       <div class="two-col">
         <div class="card">
-          <h3>Get in touch</h3>
-          <p><a class="action" href="mailto:fahimfaisalraunaq@gmail.com">✉ Email Fahim</a></p>
-          <p class="muted" style="margin-top:.4rem">For CV and profiles (LinkedIn, Google Scholar, GitHub, ORCID), see the buttons in the hero section above.</p>
-          <p class="muted">Dhaka, Bangladesh</p>
+          <h3>Write me a message</h3>
+          <form class="contact-form" id="contactForm">
+            <div class="two-col" style="margin:0 0 .8rem">
+              <div class="field">
+                <label for="name">Your name (optional)</label>
+                <input id="name" name="name" type="text" autocomplete="name" />
+              </div>
+              <div class="field">
+                <label for="from">Your email</label>
+                <input id="from" name="from" type="email" autocomplete="email" required />
+              </div>
+            </div>
+            <div class="field" style="margin-bottom:.8rem">
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" type="text" placeholder="Project idea, collaboration, speaking invite..." required />
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="A concise overview helps me route your message quickly." required></textarea>
+            </div>
+            <div class="contact-actions">
+              <button type="submit" class="action">Send Email</button>
+              <a class="action ghost" href="mailto:fahimfaisalraunaq@gmail.com">Open Email App</a>
+            </div>
+            <p class="note" style="margin-top:.6rem">
+              I’m based in <strong>Dhaka, Bangladesh (UTC+06:00)</strong>. Depending on time zones and teaching/research hours, responses may take a bit.
+            </p>
+            <p class="small muted">Your email client will open with your message pre-filled; no data is stored on this site.</p>
+          </form>
         </div>
       </div>
     </section>
@@ -853,6 +901,66 @@
       const bibCopy = document.getElementById('bib-copy');
       if (apaCopy){ apaCopy.dataset.reset='Copy APA'; apaCopy.addEventListener('click', ()=> copy(apa.innerText, apaCopy)); }
       if (bibCopy){ bibCopy.dataset.reset='Copy BibTeX'; bibCopy.addEventListener('click', ()=> copy(bib.textContent, bibCopy)); }
+    })();
+
+    // ===== Auto-collapse header to prevent overlap =====
+    (function(){
+      const header = document.getElementById('siteHeader');
+      const container = document.getElementById('navContainer');
+      const brand = container.querySelector('.brand');
+      const nav = document.getElementById('primaryNav');
+      const menuBtn = document.getElementById('menuBtn');
+
+      function needsCollapse(){
+        // Temporarily ensure desktop layout for measurement
+        header.classList.remove('collapsed');
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+
+        // Total width needed for brand + nav + a small buffer
+        const need = brand.offsetWidth + nav.scrollWidth + 32; // 32px buffer
+        const have = container.clientWidth;
+        return need > have;
+      }
+
+      function apply(){
+        if (needsCollapse()){
+          header.classList.add('collapsed');
+        }else{
+          header.classList.remove('collapsed');
+        }
+      }
+
+      // Initial + on resize (debounced)
+      let t=null;
+      window.addEventListener('resize', ()=>{ clearTimeout(t); t=setTimeout(apply, 80); });
+      window.addEventListener('load', apply);
+      apply();
+    })();
+
+    // ===== Contact form -> mailto composer =====
+    (function(){
+      const form = document.getElementById('contactForm');
+      if(!form) return;
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const name = (document.getElementById('name').value || '').trim();
+        const from = (document.getElementById('from').value || '').trim();
+        const subject = (document.getElementById('subject').value || '').trim();
+        const message = (document.getElementById('message').value || '').trim();
+
+        const to = 'fahimfaisalraunaq@gmail.com';
+        const fullSubject = subject;
+        const bodyLines = [
+          message,
+          '',
+          '---',
+          `From: ${name ? name + ' ' : ''}<${from}>`,
+          'Sent via portfolio contact form'
+        ];
+        const href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+        window.location.href = href; // opens default mail client
+      });
     })();
   </script>
 </body>
