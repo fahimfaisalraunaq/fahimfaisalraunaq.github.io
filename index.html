@@ -34,6 +34,7 @@
       --accent:#1f2937; --chip:#1e293b; --ring:rgba(96,165,250,.2);
       --hero-name:#9ec3ff; --topglow: rgba(96,165,250,.22);
       --overlay: rgba(2,6,23,.45);
+      --header-h: 64px; /* updated dynamically */
     }
     @media (prefers-color-scheme: light){
       :root{ --bg:#ffffff; --panel:#f6f7f9; --text:#0f172a; --muted:#334155; --link:#2563eb;
@@ -42,18 +43,19 @@
              --overlay: rgba(15,23,42,.35);}
     }
 
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 8px);}
     /* Prevent horizontal scroll revealing fixed elements */
     html, body{overflow-x:hidden}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);line-height:1.6}
     a{color:var(--link)} a:hover{text-decoration:underline}
     .container{max-width:1200px;margin:0 auto;padding:0 1.25rem}
 
-    /* Header (NOT sticky anymore) */
+    /* Header (sticky) */
     header.site{
-      position:static; /* previously sticky — removed as requested */
-      background:color-mix(in srgb, var(--bg) 92%, transparent);
+      position:sticky; top:0; z-index:1000;
+      background:color-mix(in srgb, var(--bg) 90%, transparent);
       border-bottom:1px solid var(--accent);
+      backdrop-filter:saturate(1.1) blur(8px);
     }
     .nav{display:flex;align-items:center;gap:.8rem;padding:.8rem 0;min-width:0}
     .brand{
@@ -82,8 +84,8 @@
     .sr-item .sr-snippet{color:var(--muted);font-size:.92rem}
     .sr-item em{font-style:normal;background:var(--chip);padding:0 .15rem;border-radius:.25rem}
 
-    /* Off-canvas (scrollable so ALL sections are accessible) */
-    .overlay{position:fixed;inset:0;background:var(--overlay);opacity:0;pointer-events:none;transition:opacity .2s ease;z-index:75}
+    /* Off-canvas (scrollable) */
+    .overlay{position:fixed;inset:0;background:var(--overlay);opacity:0;pointer-events:none;transition:opacity .2s ease;z-index:950}
     .overlay.show{opacity:1;pointer-events:auto}
 
     .offcanvas{
@@ -91,7 +93,7 @@
       border-left:1px solid var(--accent);box-shadow: -6px 0 22px rgba(0,0,0,.25);
       width:min(360px, 85vw);
       transform:translateX(100%);transition:transform .22s ease;
-      z-index:90;display:flex;flex-direction:column
+      z-index:960;display:flex;flex-direction:column
     }
     .offcanvas.open{transform:translateX(0)}
     .offcanvas header{
@@ -128,7 +130,7 @@
     @media (max-width:700px){.avatar{width:180px;height:180px}}
 
     /* Sections & Cards */
-    .section{padding:1.15rem 0;scroll-margin-top:5.5rem}
+    .section{padding:1.15rem 0;scroll-margin-top:calc(var(--header-h) + 8px)}
     .section h2{font-size:clamp(1.3rem,3vw,1.6rem);margin:0 0 .8rem}
     .row{display:grid;grid-template-columns:1fr;gap:.9rem}
     @media (min-width:900px){.row{grid-template-columns:1.4fr .6fr}}
@@ -222,6 +224,21 @@
       padding:.65rem .8rem;box-shadow:0 8px 24px rgba(0,0,0,.25);display:none
     }
     .toast.show{display:block}
+
+    /* Lightbox dialog */
+    dialog#img-lightbox{
+      border:1px solid var(--accent);
+      border-radius:.8rem; padding:0;
+      max-width:min(96vw,1200px); width:auto;
+      background:var(--panel); color:var(--text);
+      box-shadow:0 20px 60px rgba(0,0,0,.45);
+    }
+    .lb-head{display:flex;align-items:center;justify-content:space-between;padding:.6rem .8rem;border-bottom:1px solid var(--accent)}
+    .lb-body{padding:.6rem;max-height:80vh;overflow:auto}
+    .lb-body img{display:block;max-width:100%;height:auto}
+    .lb-actions{display:flex;gap:.5rem;align-items:center}
+    .lb-close{border:1px solid var(--accent);background:var(--bg);color:var(--text);border-radius:.5rem;padding:.3rem .55rem;cursor:pointer}
+    .lb-open{border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.5rem;padding:.35rem .6rem;text-decoration:none}
 
     /* Print */
     @media print{
@@ -463,7 +480,7 @@
             <span class="summary">— Empirical barriers to digital tech adoption in emerging-economy health systems; policy-oriented implications.</span>
           </p>
           <div class="actions">
-            <a class="action" href="https://www.sciencedirect.com/science/article/pii/S2949953425000323" target="_blank" rel="noopener">View</a>
+            <a class="action js-cert-view" href="https://www.sciencedirect.com/science/article/pii/S2949953425000323" target="_blank" rel="noopener">View</a>
             <button class="action ghost cite-btn" type="button"
               data-apa="Raunaq, F. F., Islam, S., Anam, M. Z., &amp; Bari, A. B. M. M. (2025). Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies. <em>Informatics and Health, 2</em>, 194–209. https://doi.org/10.1016/j.infoh.2025.09.001"
               data-bib='@article{raunaq2025infoh, title={Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies}, author={Raunaq, Fahim Faisal and Islam, S and Anam, MZ and Bari, ABMM}, journal={Informatics and Health}, volume={2}, pages={194--209}, year={2025}, doi={10.1016/j.infoh.2025.09.001} }'>Cite</button>
@@ -606,7 +623,7 @@
           </div>
           <div class="actions">
             <a class="action ghost" href="https://www.iscea.org/" target="_blank" rel="noopener">About ISCEA</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_CSCA_Certified_Supply_Chain_Analyst_ISCEA_2018.jpg" target="_blank" rel="noopener">View</a>
+            <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_CSCA_Certified_Supply_Chain_Analyst_ISCEA_2018.jpg">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_CSCA_Certified_Supply_Chain_Analyst_ISCEA_2018.jpg" download>Download</a>
           </div>
         </div>
@@ -628,7 +645,7 @@
                 <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Coach_Certificate_2020.png" alt="X-Culture Coach Certificate" loading="lazy" decoding="async" width="1200" height="900">
               </div>
               <div class="actions" style="margin-top:.4rem">
-                <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Coach_Certificate_2020.png" target="_blank" rel="noopener">View</a>
+                <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Coach_Certificate_2020.png">View</a>
                 <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Coach_Certificate_2020.png" download>Download</a>
               </div>
             </div>
@@ -637,7 +654,7 @@
                 <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Senior_Coach_Certificate_2020.png" alt="X-Culture Senior Coach Certificate" loading="lazy" decoding="async" width="1200" height="900">
               </div>
               <div class="actions" style="margin-top:.4rem">
-                <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Senior_Coach_Certificate_2020.png" target="_blank" rel="noopener">View</a>
+                <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Senior_Coach_Certificate_2020.png">View</a>
                 <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Virtual_Team_Senior_Coach_Certificate_2020.png" download>Download</a>
               </div>
             </div>
@@ -660,7 +677,7 @@
           </div>
           <div class="actions">
             <a class="action ghost" href="https://www.aib.world/event/aib-us-southeast-2020-chapter-conference/" target="_blank" rel="noopener">About AIB</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" target="_blank" rel="noopener">View</a>
+            <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" download>Download</a>
           </div>
         </div>
@@ -674,7 +691,7 @@
             <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" alt="X-Culture 10-Year Anniversary Virtual Conference certificate">
           </div>
           <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" target="_blank" rel="noopener">View</a>
+            <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" download>Download</a>
           </div>
         </div>
@@ -688,7 +705,7 @@
             <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" alt="X-Culture Global Collaboration certificate">
           </div>
           <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" target="_blank" rel="noopener">View</a>
+            <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" download>Download</a>
           </div>
         </div>
@@ -710,7 +727,7 @@
           </div>
           <div class="actions">
             <a class="action" href="https://www.worldbank.org/en/news/press-release/2020/01/28/better-road-safety-will-boost-economic-growth-in-bangladesh" target="_blank" rel="noopener">Press note</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_UN_WorldBank_Road_Safety_Champion_First_RunnerUp_2019_2020.jpg" target="_blank" rel="noopener">View</a>
+            <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_UN_WorldBank_Road_Safety_Champion_First_RunnerUp_2019_2020.jpg">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_UN_WorldBank_Road_Safety_Champion_First_RunnerUp_2019_2020.jpg" download>Download</a>
           </div>
         </div>
@@ -724,7 +741,7 @@
             <img src="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png" alt="KUET IPE Fest 2018 Champion certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png" target="_blank" rel="noopener">View</a>
+            <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png" download>Download</a>
           </div>
         </div>
@@ -738,7 +755,7 @@
             <img src="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" alt="AEMC Champion certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" target="_blank" rel="noopener">View</a>
+            <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" download>Download</a>
           </div>
         </div>
@@ -752,7 +769,7 @@
             <img src="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg" alt="ISCEA Ptak Prize Scholar certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg" target="_blank" rel="noopener">View</a>
+            <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg" download>Download</a>
           </div>
         </div>
@@ -774,7 +791,7 @@
           </div>
           <div class="actions">
             <a class="action" href="https://bd.usembassy.gov/emk-center/" target="_blank" rel="noopener">About EMK</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_EMK_Envoy_Program_Certificate_of_Excellence_2019_2021.png" target="_blank" rel="noopener">View</a>
+            <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_EMK_Envoy_Program_Certificate_of_Excellence_2019_2021.png">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_EMK_Envoy_Program_Certificate_of_Excellence_2019_2021.png" download>Download</a>
           </div>
         </div>
@@ -789,7 +806,7 @@
           </div>
           <div class="actions">
             <a class="action ghost" href="https://www.badhan.org/" target="_blank" rel="noopener">About Badhan</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_BADHAN_Voluntary_Blood_Donor_Acknowledgement_BUET.jpg" target="_blank" rel="noopener">View</a>
+            <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_BADHAN_Voluntary_Blood_Donor_Acknowledgement_BUET.jpg">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_BADHAN_Voluntary_Blood_Donor_Acknowledgement_BUET.jpg" download>Download</a>
           </div>
         </div>
@@ -810,7 +827,7 @@
             <img src="assets/certificates/Fahim_Faisal_Raunaq_EducationUSA_SOP_Writing_Competition_Certificate_2019.png" alt="EMK EducationUSA SOP Competition certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_EducationUSA_SOP_Writing_Competition_Certificate_2019.png" target="_blank" rel="noopener">View</a>
+            <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_EducationUSA_SOP_Writing_Competition_Certificate_2019.png">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_EducationUSA_SOP_Writing_Competition_Certificate_2019.png" download>Download</a>
           </div>
         </div>
@@ -894,6 +911,20 @@
         <button class="action" id="bib-copy" type="button">Copy BibTeX</button>
       </div>
     </dialog>
+
+    <!-- Image Lightbox -->
+    <dialog id="img-lightbox">
+      <div class="lb-head">
+        <div class="lb-title" id="lb-title">Preview</div>
+        <div class="lb-actions">
+          <a id="lb-open" class="lb-open" href="#" target="_blank" rel="noopener">Open in new tab</a>
+          <button class="lb-close" id="lb-close" type="button" aria-label="Close">✕</button>
+        </div>
+      </div>
+      <div class="lb-body">
+        <img id="lb-img" alt="Preview">
+      </div>
+    </dialog>
   </main>
 
   <!-- Back to top -->
@@ -904,6 +935,19 @@
   <script>
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Compute sticky header height -> anchor offset stays correct
+    (function(){
+      const header = document.getElementById('siteHeader');
+      function apply(){
+        const h = header.getBoundingClientRect().height || 64;
+        document.documentElement.style.setProperty('--header-h', Math.round(h) + 'px');
+      }
+      window.addEventListener('load', apply);
+      window.addEventListener('resize', ()=>{ requestAnimationFrame(apply); });
+      // Call once in case load already fired
+      apply();
+    })();
 
     // Publications filter + status label
     (function(){
@@ -980,15 +1024,13 @@
       window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && panel.classList.contains('open')) close(); });
     })();
 
-    // ===== Header search: Windows-like site keyword search =====
+    // ===== Header search: site keyword search =====
     (function(){
       const wrap   = document.getElementById('searchWrap');
       const toggle = document.getElementById('searchToggle');
       const input  = document.getElementById('searchInput');
       const box    = document.getElementById('searchResults');
 
-      // Build a lightweight index of text blocks across the page.
-      // We map each snippet to the nearest parent section with an id.
       function nearestSectionId(node){
         let el = node;
         while (el && el !== document.body){
@@ -1009,7 +1051,7 @@
       const grab = picker.querySelectorAll('h1,h2,h3,p,li,blockquote');
       grab.forEach(el=>{
         const text = (el.textContent || '').trim().replace(/\s+/g,' ');
-        if (text.length < 40) return; // skip tiny bits
+        if (text.length < 40) return;
         const sid = nearestSectionId(el);
         candidates.push({ el, text, sid });
       });
@@ -1019,7 +1061,6 @@
         const rx = new RegExp(esc(q), 'ig');
         return text.replace(rx, m=>`<em>${m}</em>`);
       }
-
       function snippet(text, q, len=160){
         const i = text.toLowerCase().indexOf(q.toLowerCase());
         if (i < 0) return text.slice(0,len) + (text.length>len?'…':'');
@@ -1027,7 +1068,6 @@
         const end   = Math.min(text.length, i + q.length + 120);
         return (start>0?'…':'') + text.slice(start,end) + (end<text.length?'…':'');
       }
-
       function search(q){
         if(!q) return [];
         const qq = q.trim().toLowerCase();
@@ -1036,7 +1076,6 @@
           const t = c.text.toLowerCase();
           const ix = t.indexOf(qq);
           if (ix === -1) continue;
-          // simple scoring: earlier match + headings get a nudge
           let score = 1000 - ix;
           if (/^h[1-3]$/i.test(c.el.tagName)) score += 200;
           scored.push({ ...c, score });
@@ -1044,7 +1083,6 @@
         scored.sort((a,b)=> b.score - a.score);
         return scored.slice(0, 12);
       }
-
       function render(results, q){
         if(!q){
           box.innerHTML = `<div class="sr-item"><div class="sr-title">Type to search</div><div class="sr-snippet">Find text across sections.</div></div>`;
@@ -1088,6 +1126,52 @@
       document.addEventListener('click', (e)=>{
         if(!wrap.contains(e.target)){ wrap.classList.remove('open'); }
       });
+    })();
+
+    // ===== Image Lightbox for all "View" actions on certificates =====
+    (function(){
+      const dlg   = document.getElementById('img-lightbox');
+      const imgEl = document.getElementById('lb-img');
+      const openL = document.getElementById('lb-open');
+      const title = document.getElementById('lb-title');
+      const close = document.getElementById('lb-close');
+
+      function isImageHref(href){
+        return /\.(png|jpe?g|webp|gif|bmp|svg)(\?.*)?$/i.test(href);
+      }
+
+      document.addEventListener('click', (e)=>{
+        const a = e.target.closest('a.action');
+        if(!a) return;
+
+        // Only intercept our "View" buttons that point directly to image assets
+        if (a.classList.contains('js-cert-view') || isImageHref(a.getAttribute('href')||'')){
+          const href = a.getAttribute('href');
+          if (!href) return;
+          e.preventDefault();
+
+          // Figure out an alt/title from nearest image or context
+          let alt = 'Preview';
+          const card = a.closest('.card');
+          if (card){
+            const strong = card.querySelector('strong');
+            if (strong) alt = strong.textContent.trim();
+          }
+
+          imgEl.src = href;
+          imgEl.alt = alt;
+          title.textContent = alt;
+          openL.href = href;
+
+          try { dlg.showModal(); }
+          catch { window.open(href, '_blank', 'noopener'); }
+        }
+      });
+
+      function closeDlg(){ dlg.close(); }
+      close.addEventListener('click', closeDlg);
+      dlg.addEventListener('click', (e)=>{ if (e.target === dlg) closeDlg(); });
+      dlg.addEventListener('cancel', (e)=>{ e.preventDefault(); closeDlg(); });
     })();
 
     // ===== Contact form -> Formspree AJAX =====
