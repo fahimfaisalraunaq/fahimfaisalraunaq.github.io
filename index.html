@@ -65,7 +65,7 @@
     .offcanvas{
       position:fixed;top:0;right:0;height:100dvh;background:var(--panel);
       border-left:1px solid var(--accent);box-shadow: -6px 0 22px rgba(0,0,0,.25);
-      width:min(360px, 90vw);
+      width:min(360px, 85vw);
       transform:translateX(100%);transition:transform .22s ease;
       z-index:90;display:flex;flex-direction:column;gap:.2rem
     }
@@ -139,6 +139,12 @@
     .muted{color:var(--muted)}
     .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
 
+    /* Toolbox */
+    .toolbox-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem}
+    .toolbox-grid .tool{display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid var(--accent);background:var(--chip);border-radius:.65rem;padding:.55rem .6rem;font-weight:700;min-height:44px;transition:transform .15s ease, box-shadow .15s ease}
+    .toolbox-grid .tool:hover{transform:translateY(-2px);box-shadow:0 4px 14px var(--ring)}
+    @media (max-width:900px){ .toolbox-grid{grid-template-columns:repeat(2,1fr);} }
+
     /* Publications */
     .pub-filter{display:flex;gap:.5rem;margin:.5rem 0 1rem;flex-wrap:wrap}
     .pub-filter button{padding:.4rem .6rem;border:1px solid var(--accent);background:var(--bg);color:var(--text);border-radius:.55rem;cursor:pointer}
@@ -172,23 +178,35 @@
     footer .container{display:flex;align-items:center;min-height:60px;justify-content:center}
     footer .tail{opacity:.9}
 
-    /* Certificate frame */
-    .cert-frame{width:100%;height:320px;border-radius:.6rem;border:1px solid var(--accent);background:var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:.5rem}
+    /* Certificate frame for uniform sizing */
+    .cert-frame{
+      width:100%;
+      height:320px;
+      border-radius:.6rem;
+      border:1px solid var(--accent);
+      background:var(--bg);
+      display:flex;align-items:center;justify-content:center;
+      overflow:hidden;margin-top:.5rem
+    }
     .cert-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 
-    /* Contact form + card sizing */
+    /* Contact: stretch + compact */
     .contact-wrap{display:grid;grid-template-columns:1fr}
-    .contact-card{max-width:720px;margin:0 auto}
+    .contact-card{margin:0} /* stretch like other cards */
+    .contact-form{display:grid;gap:.8rem}
+    .contact-form .row{display:grid;grid-template-columns:1fr;gap:.8rem}
+    @media (min-width:800px){ .contact-form .row{grid-template-columns:1fr 1fr} }
     .contact-form .field{display:flex;flex-direction:column;gap:.3rem}
     .contact-form label{font-weight:700}
     .contact-form input,.contact-form textarea{
       background:var(--panel);color:var(--text);border:1px solid var(--accent);
       border-radius:.6rem;padding:.55rem .7rem;font-size:1rem
     }
-    .contact-form textarea{min-height:130px;resize:vertical}
-    .contact-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem}
+    .contact-form textarea{min-height:120px;resize:vertical}
+    .contact-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.2rem}
     .note{font-size:.95rem;color:var(--muted)}
     .small{font-size:.9rem}
+
     .toast{
       position:fixed;right:1rem;bottom:1rem;z-index:95;
       background:var(--panel);border:1px solid var(--accent);border-radius:.75rem;
@@ -208,7 +226,7 @@
     }
   </style>
 
-  <!-- Person JSON-LD -->
+  <!-- Person JSON-LD (with @id) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -291,11 +309,13 @@
           <p class="lead tagline">I turn messy operations data into auditable, safety-critical decisions with IE/OR and ML.</p>
           <p class="muted nowline">Dhaka, Bangladesh · Open to research collaborations and Ph.D. opportunities.</p>
 
+          <!-- row 1 -->
           <div class="cta-row top" role="group" aria-label="Primary actions — row 1">
             <a class="cta" href="assets/Fahim_Faisal_Raunaq_CV.pdf" target="_blank" rel="noopener">📄 View CV</a>
             <a class="cta" href="assets/Fahim_Faisal_Raunaq_CV.pdf" download>⬇ Download CV</a>
             <a class="cta" href="https://www.linkedin.com/in/fahimfaisalraunaq" target="_blank" rel="noopener">in LinkedIn</a>
           </div>
+          <!-- row 2 -->
           <div class="cta-row bottom" role="group" aria-label="Primary actions — row 2">
             <a class="cta compact" href="https://scholar.google.com/citations?user=BI00vUYAAAAJ" target="_blank" rel="noopener">G Scholar</a>
             <a class="cta compact" href="https://github.com/fahimfaisalraunaq" target="_blank" rel="noopener">GH GitHub</a>
@@ -354,6 +374,7 @@
       <h2>Research Focus</h2>
       <p class="muted">Reliable decision support for safety-critical, resource-constrained systems.</p>
 
+      <h3 class="kicker" style="margin-top:.5rem">Focus Areas</h3>
       <div class="three-col" style="margin-top:.5rem">
         <div class="card">
           <h3>Safety analytics &amp; risk modeling</h3>
@@ -378,6 +399,7 @@
         </div>
       </div>
 
+      <!-- Methods toolbox restored exactly -->
       <h3 class="kicker" style="margin-top:1rem">Methods toolbox</h3>
       <div class="card">
         <div class="toolbox-grid">
@@ -622,10 +644,131 @@
       </div>
     </section>
 
+    <!-- CONFERENCES -->
+    <section id="conferences" class="section">
+      <h2>Conferences &amp; Symposia</h2>
+      <div class="stack">
+        <!-- AIB US Southeast / X-Culture Symposium (Top 40) -->
+        <div class="card">
+          <div class="kicker">Conference Participation</div>
+          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Global Symposium — Top 40 Delegate (AIB Southeast USA)</strong>
+          <div class="meta">Oct 22–23, 2020 · Theme: <em>Beyond 2020</em></div>
+          <p>Career-development workshops and panels co-organized with X-Culture (Top-40 recognition cohort).</p>
+          <div class="cert-frame">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" alt="AIB US Southeast / X-Culture Symposium Top 40 certificate">
+          </div>
+          <div class="actions">
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" target="_blank" rel="noopener">View</a>
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" download>Download</a>
+          </div>
+        </div>
+
+        <!-- X-Culture 10-Year Anniversary Virtual Conference -->
+        <div class="card">
+          <div class="kicker">Conference Participation</div>
+          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> “10-Year Anniversary” Virtual Conference</strong>
+          <div class="meta">May 29, 2020</div>
+          <p>Panels on working in global virtual teams, featuring speakers from Google, Microsoft, Miami International Airport, and others.</p>
+          <div class="cert-frame">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" alt="X-Culture 10-Year Anniversary Virtual Conference certificate">
+          </div>
+          <div class="actions">
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" target="_blank" rel="noopener">View</a>
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" download>Download</a>
+          </div>
+        </div>
+
+        <!-- X-Culture Global Collaboration (Academy) -->
+        <div class="card">
+          <div class="kicker">Program Completion</div>
+          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Global Collaboration (Academy)</strong>
+          <div class="meta">Jan 10, 2020</div>
+          <p>Completed training and two-month practical project as part of a multinational virtual consulting team.</p>
+          <div class="cert-frame">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" alt="X-Culture Global Collaboration certificate">
+          </div>
+          <div class="actions">
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" target="_blank" rel="noopener">View</a>
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" download>Download</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AWARDS & HONORS -->
+    <section id="awards" class="section">
+      <h2>Awards &amp; Honors</h2>
+
+      <div class="stack">
+        <!-- World Bank / UN Road Safety -->
+        <div class="card">
+          <div class="kicker">International Competition</div>
+          <strong>World Bank × United Nations — Road Safety Champion Video Competition</strong>
+          <div class="meta">First Runner-up (2019–2020)</div>
+          <p>Advocacy video on evidence-led countermeasures for Bangladesh’s road-injury burden.</p>
+          <div class="cert-frame">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_UN_WorldBank_Road_Safety_Champion_First_RunnerUp_2019_2020.jpg" alt="World Bank UN Road Safety competition certificate">
+          </div>
+          <div class="actions">
+            <a class="action" href="https://www.worldbank.org/en/news/press-release/2020/01/28/better-road-safety-will-boost-economic-growth-in-bangladesh" target="_blank" rel="noopener">Press note</a>
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_UN_WorldBank_Road_Safety_Champion_First_RunnerUp_2019_2020.jpg" target="_blank" rel="noopener">View</a>
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_UN_WorldBank_Road_Safety_Champion_First_RunnerUp_2019_2020.jpg" download>Download</a>
+          </div>
+        </div>
+
+        <!-- KUET IPE Fest Case Study Champion -->
+        <div class="card">
+          <div class="kicker">Case Competition</div>
+          <strong>KUET IPE Fest — Case Study Champion</strong>
+          <div class="meta">Khulna University of Engineering &amp; Technology (2018)</div>
+          <p>Top prize for a process-improvement case; evaluated on analysis quality, feasibility, and presentation.</p>
+          <div class="cert-frame">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png" alt="KUET IPE Fest 2018 Champion certificate">
+          </div>
+          <div class="actions">
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png" target="_blank" rel="noopener">View</a>
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_KUET_IPE_Fest_Case_Study_Champion_2018.png" download>Download</a>
+          </div>
+        </div>
+
+        <!-- AEMC Champion -->
+        <div class="card">
+          <div class="kicker">Engineering Management</div>
+          <strong>AEMC — Advanced Engineering Management Challenge (Champion)</strong>
+          <div class="meta">IEM Association, KUET (2018)</div>
+          <p>Team-based challenge on operations and decision-making under constraints.</p>
+          <div class="cert-frame">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" alt="AEMC Champion certificate">
+          </div>
+          <div class="actions">
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" target="_blank" rel="noopener">View</a>
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" download>Download</a>
+          </div>
+        </div>
+
+        <!-- ISCEA Ptak Prize Scholar -->
+        <div class="card">
+          <div class="kicker">Scholarship</div>
+          <strong>ISCEA Ptak Prize — Scholar</strong>
+          <div class="meta">Recognition for global supply-chain understanding &amp; leadership (2018)</div>
+          <p>Merit scholarship from ISCEA acknowledging leadership in the Young Supply Chain community.</p>
+          <div class="cert-frame">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg" alt="ISCEA Ptak Prize Scholar certificate">
+          </div>
+          <div class="actions">
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg" target="_blank" rel="noopener">View</a>
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_ISCEA_Ptak_Prize_Scholar_2018.jpg" download>Download</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SERVICE & LEADERSHIP -->
     <section id="service" class="section">
       <h2>Service &amp; Leadership</h2>
+
       <div class="stack">
+        <!-- EMK Envoy -->
         <div class="card">
           <div class="kicker">Leadership Program</div>
           <strong>Edward M. Kennedy (EMK) Center — Campus Envoy</strong>
@@ -641,6 +784,7 @@
           </div>
         </div>
 
+        <!-- BADHAN -->
         <div class="card">
           <div class="kicker">Community Service</div>
           <strong>BADHAN — Voluntary Blood Donors’ Organization</strong>
@@ -655,6 +799,7 @@
           </div>
         </div>
 
+        <!-- X-Culture program leadership notes (no extra cert image here beyond above) -->
         <div class="card">
           <div class="kicker">Program Leadership</div>
           <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Coaching Program</strong>
@@ -662,6 +807,7 @@
           <p>Led coach training and top-report reviews; supported global cohort operations. (Certificates shown above.)</p>
         </div>
 
+        <!-- EMK SOP Competition -->
         <div class="card">
           <div class="kicker">Writing Recognition</div>
           <strong>EducationUSA — Statement of Purpose Competition</strong>
@@ -698,11 +844,11 @@
         <div class="card contact-card">
           <h3>Write me a message</h3>
 
-          <!-- Formspree: replace YOUR_FORMSPREE_ID -->
-          <form id="contactForm" class="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" enctype="multipart/form-data">
-            <!-- Ensures JSON response -->
+          <!-- Live Formspree endpoint -->
+          <form id="contactForm" class="contact-form" action="https://formspree.io/f/mjkpndyp" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_format" value="json" />
-            <div class="two-col" style="margin:0 0 .8rem">
+
+            <div class="row">
               <div class="field">
                 <label for="name">Your name (optional)</label>
                 <input id="name" name="name" type="text" autocomplete="name" />
@@ -712,26 +858,32 @@
                 <input id="from" name="email" type="email" autocomplete="email" required />
               </div>
             </div>
-            <div class="field" style="margin-bottom:.8rem">
-              <label for="subject">Subject</label>
-              <input id="subject" name="subject" type="text" placeholder="Project idea, collaboration, speaking invite..." required />
+
+            <div class="row">
+              <div class="field">
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject" type="text" placeholder="Project idea, collaboration, speaking invite..." required />
+              </div>
+              <div class="field">
+                <label for="files">Attachments (PDF, images, docs — optional)</label>
+                <input id="files" name="attachments" type="file" multiple />
+              </div>
             </div>
+
             <div class="field">
               <label for="message">Message</label>
               <textarea id="message" name="message" placeholder="A concise overview helps me route your message quickly." required></textarea>
             </div>
-            <div class="field" style="margin-top:.6rem">
-              <label for="files">Attachments (PDF, images, docs — optional)</label>
-              <input id="files" name="attachments" type="file" multiple />
-            </div>
+
             <div class="contact-actions">
               <button type="submit" class="action">Send Message</button>
               <a class="action ghost" href="mailto:fahimfaisalraunaq@gmail.com?subject=Hello%20Fahim">Open Email App</a>
             </div>
-            <p class="note" style="margin-top:.6rem">
+
+            <p class="note" style="margin-top:.4rem">
               I’m based in <strong>Dhaka, Bangladesh (UTC+06:00)</strong>. Depending on time zones and teaching/research hours, replies may be slightly delayed.
             </p>
-            <p class="small muted">This form uses Formspree; no tracking, no sign-in required.</p>
+            <p class="small muted">This form uses Formspree; no sign-in required.</p>
           </form>
         </div>
       </div>
@@ -823,7 +975,6 @@
       const primary = document.getElementById('primaryNav');
 
       function needsCollapse(){
-        // show primary to measure, but keep styles consistent
         header.classList.remove('collapsed');
         const needed = brand.offsetWidth + primary.scrollWidth + 32;
         const have = container.clientWidth;
@@ -864,12 +1015,9 @@
       btn.addEventListener('click', open);
       closeBtn.addEventListener('click', close);
       overlay.addEventListener('click', close);
-      // close on nav click
       panel.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
-      // Escape key
       window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && panel.classList.contains('open')) close(); });
 
-      // Ensure collapsed mode shows menu button
       const ro = new ResizeObserver(()=> {
         if (header.classList.contains('collapsed')) btn.style.display='inline-flex';
       });
@@ -893,15 +1041,10 @@
       form.addEventListener('submit', async (e)=>{
         e.preventDefault();
         const action = form.getAttribute('action');
-        if (!action || action.includes('YOUR_FORMSPREE_ID')){
-          showToast('Configure Formspree: replace YOUR_FORMSPREE_ID in the form action.', false);
-          return;
-        }
 
         const data = new FormData(form);
-        // Optional: append a concise source tag
         data.append('_subject', data.get('subject') || 'New message from portfolio');
-        data.append('_gotcha', ''); // spam honeypot field (Formspree ignores if not configured)
+        data.append('_gotcha', '');
 
         try{
           const res = await fetch(action, { method:'POST', body:data, headers:{ 'Accept':'application/json' }});
