@@ -41,13 +41,20 @@
              --hero-name:#1849a9; --topglow: rgba(96,165,250,.28);
              --overlay: rgba(15,23,42,.35);}
     }
+
     html{scroll-behavior:smooth}
+    /* Prevent horizontal scroll revealing fixed elements */
+    html, body{overflow-x:hidden}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);line-height:1.6}
     a{color:var(--link)} a:hover{text-decoration:underline}
     .container{max-width:1200px;margin:0 auto;padding:0 1.25rem}
 
-    /* Header */
-    header.site{position:sticky;top:0;z-index:80;background:color-mix(in srgb, var(--bg) 92%, transparent);border-bottom:1px solid var(--accent);backdrop-filter:saturate(1.1) blur(6px)}
+    /* Header (NOT sticky anymore) */
+    header.site{
+      position:static; /* previously sticky — removed as requested */
+      background:color-mix(in srgb, var(--bg) 92%, transparent);
+      border-bottom:1px solid var(--accent);
+    }
     .nav{display:flex;align-items:center;gap:.8rem;padding:.8rem 0;min-width:0}
     .brand{
       font-weight:800;letter-spacing:.2px;font-size:clamp(1.05rem,2.2vw,1.25rem);
@@ -55,23 +62,27 @@
       max-width:45%;overflow:hidden;text-overflow:ellipsis
     }
 
-    /* Primary header content now only = search + hamburger */
+    /* Header controls: search + hamburger */
     nav.primary{display:flex;align-items:center;gap:.6rem;margin-left:auto;min-width:0}
     .menu-btn{display:inline-flex;border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.6rem;padding:.45rem .6rem}
     .search-wrap{position:relative;display:flex;align-items:center;gap:.4rem;min-width:0}
     .search-toggle{border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.6rem;padding:.45rem .55rem;cursor:pointer;line-height:1}
     .search-input{width:0;opacity:0;transform:scaleX(.8);transform-origin:right center;transition:all .18s ease;border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.6rem;padding:.45rem .6rem;font-size:1rem;min-width:0}
-    .search-wrap.open .search-input{width:min(52vw,360px);opacity:1;transform:scaleX(1)}
+    .search-wrap.open .search-input{width:min(52vw,420px);opacity:1;transform:scaleX(1)}
     .search-results{
-      position:absolute;right:0;top:calc(100% + .35rem);min-width:220px;max-width:min(70vw,420px);
+      position:absolute;right:0;top:calc(100% + .35rem);min-width:260px;max-width:min(80vw,640px);
+      max-height:60vh;overflow:auto;
       background:var(--panel);border:1px solid var(--accent);border-radius:.6rem;box-shadow:0 10px 24px rgba(0,0,0,.24);
-      display:none;overflow:hidden
+      display:none
     }
     .search-wrap.open .search-results{display:block}
-    .search-results a{display:block;padding:.55rem .7rem;text-decoration:none;color:var(--text)}
-    .search-results a:hover{background:var(--chip)}
+    .sr-item{display:block;text-decoration:none;color:var(--text);padding:.6rem .75rem;border-bottom:1px solid var(--accent)}
+    .sr-item:last-child{border-bottom:none}
+    .sr-item .sr-title{font-weight:800;margin:0 0 .15rem 0;font-size:.98rem}
+    .sr-item .sr-snippet{color:var(--muted);font-size:.92rem}
+    .sr-item em{font-style:normal;background:var(--chip);padding:0 .15rem;border-radius:.25rem}
 
-    /* Off-canvas */
+    /* Off-canvas (scrollable so ALL sections are accessible) */
     .overlay{position:fixed;inset:0;background:var(--overlay);opacity:0;pointer-events:none;transition:opacity .2s ease;z-index:75}
     .overlay.show{opacity:1;pointer-events:auto}
 
@@ -80,10 +91,11 @@
       border-left:1px solid var(--accent);box-shadow: -6px 0 22px rgba(0,0,0,.25);
       width:min(360px, 85vw);
       transform:translateX(100%);transition:transform .22s ease;
-      z-index:90;display:flex;flex-direction:column;gap:.2rem
+      z-index:90;display:flex;flex-direction:column
     }
     .offcanvas.open{transform:translateX(0)}
     .offcanvas header{
+      flex:0 0 auto;
       display:flex;align-items:center;justify-content:space-between;
       padding:.8rem;border-bottom:1px solid var(--accent)
     }
@@ -91,9 +103,11 @@
       border:1px solid var(--accent);background:var(--bg);color:var(--text);
       border-radius:.5rem;padding:.3rem .55rem;cursor:pointer
     }
-    .offcanvas nav{display:flex;flex-direction:column;padding:.4rem .6rem;gap:.1rem}
-    .offcanvas nav a{color:var(--text);text-decoration:none;font-weight:700;padding:.6rem .55rem;border-radius:.55rem}
-    .offcanvas nav a:hover{background:var(--chip)}
+    .off-body{flex:1 1 auto;overflow:auto;padding:.4rem .6rem}
+    .off-body nav{display:grid;gap:.1rem}
+    .off-body nav a{color:var(--text);text-decoration:none;font-weight:700;padding:.6rem .55rem;border-radius:.55rem}
+    .off-body nav a:hover{background:var(--chip)}
+    .off-footer{flex:0 0 auto;border-top:1px solid var(--accent);padding:.6rem .6rem;color:var(--muted);font-size:.9rem}
 
     /* Hero */
     .hero{padding:2.0rem 0 1.1rem}
@@ -250,16 +264,16 @@
   </script>
 </head>
 <body>
-  <!-- Header: brand + search + hamburger; section links moved to offcanvas -->
+  <!-- Header: brand + search + hamburger; section links live in the offcanvas -->
   <header class="site" id="siteHeader">
     <div class="container nav" id="navContainer">
       <a class="brand" href="#top">Fahim Faisal Raunaq</a>
 
       <nav class="primary" aria-label="Header controls">
         <div class="search-wrap" id="searchWrap">
-          <button class="search-toggle" id="searchToggle" aria-expanded="false" aria-controls="searchInput" title="Search sections" type="button">🔎</button>
-          <input id="searchInput" class="search-input" type="search" placeholder="Search sections…" aria-label="Search sections" />
-          <div class="search-results" id="searchResults" role="listbox" aria-label="Section matches"></div>
+          <button class="search-toggle" id="searchToggle" aria-expanded="false" aria-controls="searchInput" title="Search site" type="button">🔎</button>
+          <input id="searchInput" class="search-input" type="search" placeholder="Search…" aria-label="Search site content" />
+          <div class="search-results" id="searchResults" role="listbox" aria-label="Search results"></div>
         </div>
 
         <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="offcanvas" aria-label="Open menu" type="button">☰</button>
@@ -273,22 +287,27 @@
         <strong>Menu</strong>
         <button class="close-btn" id="menuClose" aria-label="Close menu" type="button">✕</button>
       </header>
-      <nav>
-        <a href="#top">Home</a>
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#conferences">Conferences</a>
-        <a href="#awards">Awards</a>
-        <a href="#service">Service</a>
-        <a href="#endorsements">Endorsements</a>
-        <a href="#contact">Contact</a>
-      </nav>
+
+      <div class="off-body">
+        <nav>
+          <a href="#top">Home</a>
+          <a href="#about">About</a>
+          <a href="#education">Education</a>
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#conferences">Conferences</a>
+          <a href="#awards">Awards</a>
+          <a href="#service">Service</a>
+          <a href="#endorsements">Endorsements</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+
+      <div class="off-footer">Scroll to see all sections</div>
     </aside>
   </header>
 
@@ -586,7 +605,6 @@
             <img src="assets/certificates/Fahim_Faisal_Raunaq_CSCA_Certified_Supply_Chain_Analyst_ISCEA_2018.jpg" alt="ISCEA CSCA Certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
-            <!-- (2) Added About ISCEA before view/download -->
             <a class="action ghost" href="https://www.iscea.org/" target="_blank" rel="noopener">About ISCEA</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_CSCA_Certified_Supply_Chain_Analyst_ISCEA_2018.jpg" target="_blank" rel="noopener">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_CSCA_Certified_Supply_Chain_Analyst_ISCEA_2018.jpg" download>Download</a>
@@ -596,12 +614,10 @@
         <!-- X-Culture Coach / Senior Coach -->
         <div class="card">
           <div class="kicker">Training &amp; Coaching</div>
-          <!-- (3) Removed hyperlink from title -->
           <strong>X-Culture Global Virtual Team — Coach &amp; Senior Coach</strong>
           <div class="meta">Program certificates (2020)</div>
           <p>Completed coaching curriculum and practicum; mentored global virtual teams; later promoted to Senior Coach.</p>
 
-          <!-- Single About X-Culture button for both certificates -->
           <div class="actions" style="margin-top:.4rem">
             <a class="action ghost" href="https://x-culture.org/" target="_blank" rel="noopener">About X-Culture</a>
           </div>
@@ -627,21 +643,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Microsoft | Young Bangla -->
-        <div class="card">
-          <div class="kicker">Industry Program</div>
-          <strong>Microsoft — Young Bangla Internship Program</strong>
-          <div class="meta">Microsoft Bangladesh × Center for Research &amp; Information (CRI)</div>
-          <p>Certificate of appreciation for participation in a national skills-building internship cohort.</p>
-          <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_Microsoft_YoungBangla_Internship_Certificate.png" alt="Microsoft Young Bangla Internship certificate" loading="lazy" decoding="async" width="1200" height="900">
-          </div>
-          <div class="actions">
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_Microsoft_YoungBangla_Internship_Certificate.png" target="_blank" rel="noopener">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_Microsoft_YoungBangla_Internship_Certificate.png" download>Download</a>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -649,10 +650,8 @@
     <section id="conferences" class="section">
       <h2>Conferences &amp; Symposia</h2>
       <div class="stack">
-        <!-- AIB US Southeast / X-Culture Symposium (Top 40) -->
         <div class="card">
           <div class="kicker">Conference Participation</div>
-          <!-- (4) Removed hyperlink from X-Culture in title -->
           <strong>X-Culture Global Symposium — Top 40 Delegate (AIB Southeast USA)</strong>
           <div class="meta">Oct 22–23, 2020 · Theme: <em>Beyond 2020</em></div>
           <p>Career-development workshops and panels co-organized with X-Culture (Top-40 recognition cohort).</p>
@@ -660,17 +659,14 @@
             <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" alt="AIB US Southeast / X-Culture Symposium Top 40 certificate">
           </div>
           <div class="actions">
-            <!-- (4) Added About AIB button before view/download -->
             <a class="action ghost" href="https://www.aib.world/event/aib-us-southeast-2020-chapter-conference/" target="_blank" rel="noopener">About AIB</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" target="_blank" rel="noopener">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" download>Download</a>
           </div>
         </div>
 
-        <!-- X-Culture 10-Year Anniversary Virtual Conference -->
         <div class="card">
           <div class="kicker">Conference Participation</div>
-          <!-- Also remove hyperlink from title here for consistency with your note -->
           <strong>X-Culture “10-Year Anniversary” Virtual Conference</strong>
           <div class="meta">May 29, 2020</div>
           <p>Panels on working in global virtual teams, featuring speakers from Google, Microsoft, Miami International Airport, and others.</p>
@@ -683,7 +679,6 @@
           </div>
         </div>
 
-        <!-- X-Culture Global Collaboration (Academy) -->
         <div class="card">
           <div class="kicker">Program Completion</div>
           <strong>X-Culture Global Collaboration (Academy)</strong>
@@ -705,7 +700,6 @@
       <h2>Awards &amp; Honors</h2>
 
       <div class="stack">
-        <!-- World Bank / UN Road Safety -->
         <div class="card">
           <div class="kicker">International Competition</div>
           <strong>World Bank × United Nations — Road Safety Champion Video Competition</strong>
@@ -721,7 +715,6 @@
           </div>
         </div>
 
-        <!-- KUET IPE Fest Case Study Champion -->
         <div class="card">
           <div class="kicker">Case Competition</div>
           <strong>KUET IPE Fest — Case Study Champion</strong>
@@ -736,7 +729,6 @@
           </div>
         </div>
 
-        <!-- AEMC Champion -->
         <div class="card">
           <div class="kicker">Engineering Management</div>
           <strong>AEMC — Advanced Engineering Management Challenge (Champion)</strong>
@@ -751,7 +743,6 @@
           </div>
         </div>
 
-        <!-- ISCEA Ptak Prize Scholar -->
         <div class="card">
           <div class="kicker">Scholarship</div>
           <strong>ISCEA Ptak Prize — Scholar</strong>
@@ -773,7 +764,6 @@
       <h2>Service &amp; Leadership</h2>
 
       <div class="stack">
-        <!-- EMK Envoy -->
         <div class="card">
           <div class="kicker">Leadership Program</div>
           <strong>Edward M. Kennedy (EMK) Center — Campus Envoy</strong>
@@ -789,7 +779,6 @@
           </div>
         </div>
 
-        <!-- BADHAN -->
         <div class="card">
           <div class="kicker">Community Service</div>
           <strong>BADHAN — Voluntary Blood Donors’ Organization</strong>
@@ -799,14 +788,12 @@
             <img src="assets/certificates/Fahim_Faisal_Raunaq_BADHAN_Voluntary_Blood_Donor_Acknowledgement_BUET.jpg" alt="BADHAN acknowledgement certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
-            <!-- (5) Added About Badhan button -->
             <a class="action ghost" href="https://www.badhan.org/" target="_blank" rel="noopener">About Badhan</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_BADHAN_Voluntary_Blood_Donor_Acknowledgement_BUET.jpg" target="_blank" rel="noopener">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_BADHAN_Voluntary_Blood_Donor_Acknowledgement_BUET.jpg" download>Download</a>
           </div>
         </div>
 
-        <!-- X-Culture program leadership notes -->
         <div class="card">
           <div class="kicker">Program Leadership</div>
           <strong>X-Culture Coaching Program</strong>
@@ -814,7 +801,6 @@
           <p>Led coach training and top-report reviews; supported global cohort operations. (Certificates shown above.)</p>
         </div>
 
-        <!-- EMK SOP Competition -->
         <div class="card">
           <div class="kicker">Writing Recognition</div>
           <strong>EducationUSA — Statement of Purpose Competition</strong>
@@ -966,7 +952,7 @@
       if (bibCopy){ bibCopy.dataset.reset='Copy BibTeX'; bibCopy.addEventListener('click', ()=> copy(bib.textContent, bibCopy)); }
     })();
 
-    // ===== Off-canvas menu behavior =====
+    // ===== Off-canvas menu behavior (scrollable panel) =====
     (function(){
       const btn = document.getElementById('menuBtn');
       const closeBtn = document.getElementById('menuClose');
@@ -994,47 +980,109 @@
       window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && panel.classList.contains('open')) close(); });
     })();
 
-    // ===== Header search (section jump) =====
+    // ===== Header search: Windows-like site keyword search =====
     (function(){
-      const wrap = document.getElementById('searchWrap');
+      const wrap   = document.getElementById('searchWrap');
       const toggle = document.getElementById('searchToggle');
-      const input = document.getElementById('searchInput');
-      const list  = document.getElementById('searchResults');
+      const input  = document.getElementById('searchInput');
+      const box    = document.getElementById('searchResults');
 
-      const sections = [
-        {id:'top', label:'Home'},
-        {id:'about', label:'About'},
-        {id:'education', label:'Education'},
-        {id:'research', label:'Research'},
-        {id:'publications', label:'Publications'},
-        {id:'experience', label:'Experience'},
-        {id:'projects', label:'Projects'},
-        {id:'skills', label:'Skills'},
-        {id:'certifications', label:'Certifications'},
-        {id:'conferences', label:'Conferences'},
-        {id:'awards', label:'Awards'},
-        {id:'service', label:'Service'},
-        {id:'endorsements', label:'Endorsements'},
-        {id:'contact', label:'Contact'}
-      ];
+      // Build a lightweight index of text blocks across the page.
+      // We map each snippet to the nearest parent section with an id.
+      function nearestSectionId(node){
+        let el = node;
+        while (el && el !== document.body){
+          if (el.id && (el.tagName === 'SECTION' || el.tagName === 'ARTICLE' || el.tagName === 'DIV')) return el.id;
+          el = el.parentElement;
+        }
+        return 'top';
+      }
+      function sectionTitle(id){
+        const sec = document.getElementById(id);
+        if(!sec) return 'Site';
+        const h = sec.querySelector('h2,h1,h3');
+        return h ? h.textContent.trim() : 'Site';
+      }
 
-      function render(results){
-        list.innerHTML = results.map(s => `<a href="#${s.id}" role="option">${s.label}</a>`).join('') || `<div style="padding:.6rem .8rem" class="muted">No matches</div>`;
-        list.querySelectorAll('a').forEach(a=>{
-          a.addEventListener('click', ()=> { wrap.classList.remove('open'); input.value=''; list.innerHTML=''; });
-        });
+      const candidates = [];
+      const picker = document.querySelector('main') || document.body;
+      const grab = picker.querySelectorAll('h1,h2,h3,p,li,blockquote');
+      grab.forEach(el=>{
+        const text = (el.textContent || '').trim().replace(/\s+/g,' ');
+        if (text.length < 40) return; // skip tiny bits
+        const sid = nearestSectionId(el);
+        candidates.push({ el, text, sid });
+      });
+
+      function highlight(text, q){
+        const esc = (s)=> s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+        const rx = new RegExp(esc(q), 'ig');
+        return text.replace(rx, m=>`<em>${m}</em>`);
+      }
+
+      function snippet(text, q, len=160){
+        const i = text.toLowerCase().indexOf(q.toLowerCase());
+        if (i < 0) return text.slice(0,len) + (text.length>len?'…':'');
+        const start = Math.max(0, i - 40);
+        const end   = Math.min(text.length, i + q.length + 120);
+        return (start>0?'…':'') + text.slice(start,end) + (end<text.length?'…':'');
+      }
+
+      function search(q){
+        if(!q) return [];
+        const qq = q.trim().toLowerCase();
+        const scored = [];
+        for (const c of candidates){
+          const t = c.text.toLowerCase();
+          const ix = t.indexOf(qq);
+          if (ix === -1) continue;
+          // simple scoring: earlier match + headings get a nudge
+          let score = 1000 - ix;
+          if (/^h[1-3]$/i.test(c.el.tagName)) score += 200;
+          scored.push({ ...c, score });
+        }
+        scored.sort((a,b)=> b.score - a.score);
+        return scored.slice(0, 12);
+      }
+
+      function render(results, q){
+        if(!q){
+          box.innerHTML = `<div class="sr-item"><div class="sr-title">Type to search</div><div class="sr-snippet">Find text across sections.</div></div>`;
+          return;
+        }
+        if(results.length === 0){
+          box.innerHTML = `<div class="sr-item"><div class="sr-title">No results</div><div class="sr-snippet">Try different keywords.</div></div>`;
+          return;
+        }
+        box.innerHTML = results.map(r=>{
+          const title = sectionTitle(r.sid);
+          const snip  = highlight(snippet(r.text, q), q);
+          return `<a class="sr-item" href="#${r.sid}" role="option">
+                    <div class="sr-title">${title}</div>
+                    <div class="sr-snippet">${snip}</div>
+                  </a>`;
+        }).join('');
       }
 
       toggle.addEventListener('click', ()=>{
         const open = wrap.classList.toggle('open');
         toggle.setAttribute('aria-expanded', String(open));
-        if(open){ input.focus(); render(sections); }
+        if(open){
+          render([], '');
+          box.scrollTop = 0;
+          input.value = '';
+          input.focus();
+        }
       });
 
+      let t=null;
       input.addEventListener('input', ()=>{
-        const q = input.value.trim().toLowerCase();
-        const filtered = q ? sections.filter(s => s.label.toLowerCase().includes(q)) : sections;
-        render(filtered);
+        clearTimeout(t);
+        const q = input.value;
+        t = setTimeout(()=>{
+          const res = search(q);
+          render(res, q);
+        }, 120);
       });
 
       document.addEventListener('click', (e)=>{
