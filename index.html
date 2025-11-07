@@ -48,19 +48,30 @@
 
     /* Header */
     header.site{position:sticky;top:0;z-index:80;background:color-mix(in srgb, var(--bg) 92%, transparent);border-bottom:1px solid var(--accent);backdrop-filter:saturate(1.1) blur(6px)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.8rem 0;min-width:0}
+    .nav{display:flex;align-items:center;gap:.8rem;padding:.8rem 0;min-width:0}
     .brand{
       font-weight:800;letter-spacing:.2px;font-size:clamp(1.05rem,2.2vw,1.25rem);
       text-decoration:none;color:inherit;white-space:nowrap;flex:0 0 auto;
-      max-width:60%;overflow:hidden;text-overflow:ellipsis
+      max-width:45%;overflow:hidden;text-overflow:ellipsis
     }
-    nav.primary{display:flex;align-items:center;gap:.2rem;flex:1 1 auto;justify-content:flex-end;min-width:0;overflow:hidden}
-    nav.primary a{color:var(--muted);text-decoration:none;font-weight:600;margin-left:.8rem;padding:.5rem .2rem;border-radius:.4rem;white-space:nowrap}
-    nav.primary a:hover,nav.primary a:focus{color:var(--link);outline:none}
-    nav.primary a.active{color:var(--link);box-shadow: inset 0 -2px var(--link)}
-    .menu-btn{display:none;border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.6rem;padding:.45rem .6rem}
 
-    /* Off-canvas panel for collapsed mode */
+    /* Primary header content now only = search + hamburger */
+    nav.primary{display:flex;align-items:center;gap:.6rem;margin-left:auto;min-width:0}
+    .menu-btn{display:inline-flex;border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.6rem;padding:.45rem .6rem}
+    .search-wrap{position:relative;display:flex;align-items:center;gap:.4rem;min-width:0}
+    .search-toggle{border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.6rem;padding:.45rem .55rem;cursor:pointer;line-height:1}
+    .search-input{width:0;opacity:0;transform:scaleX(.8);transform-origin:right center;transition:all .18s ease;border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.6rem;padding:.45rem .6rem;font-size:1rem;min-width:0}
+    .search-wrap.open .search-input{width:min(52vw,360px);opacity:1;transform:scaleX(1)}
+    .search-results{
+      position:absolute;right:0;top:calc(100% + .35rem);min-width:220px;max-width:min(70vw,420px);
+      background:var(--panel);border:1px solid var(--accent);border-radius:.6rem;box-shadow:0 10px 24px rgba(0,0,0,.24);
+      display:none;overflow:hidden
+    }
+    .search-wrap.open .search-results{display:block}
+    .search-results a{display:block;padding:.55rem .7rem;text-decoration:none;color:var(--text)}
+    .search-results a:hover{background:var(--chip)}
+
+    /* Off-canvas */
     .overlay{position:fixed;inset:0;background:var(--overlay);opacity:0;pointer-events:none;transition:opacity .2s ease;z-index:75}
     .overlay.show{opacity:1;pointer-events:auto}
 
@@ -80,29 +91,15 @@
       border:1px solid var(--accent);background:var(--bg);color:var(--text);
       border-radius:.5rem;padding:.3rem .55rem;cursor:pointer
     }
-    .offcanvas nav{
-      display:flex;flex-direction:column;padding:.4rem .6rem;gap:.1rem
-    }
-    .offcanvas nav a{
-      color:var(--text);text-decoration:none;font-weight:700;
-      padding:.6rem .55rem;border-radius:.55rem
-    }
+    .offcanvas nav{display:flex;flex-direction:column;padding:.4rem .6rem;gap:.1rem}
+    .offcanvas nav a{color:var(--text);text-decoration:none;font-weight:700;padding:.6rem .55rem;border-radius:.55rem}
     .offcanvas nav a:hover{background:var(--chip)}
-
-    /* Collapse rules */
-    header.site.collapsed .menu-btn{display:inline-flex}
-    header.site.collapsed nav.primary{display:none}
-    @media (max-width:1280px){
-      .menu-btn{display:inline-flex}
-      nav.primary{display:none}
-      .brand{max-width:calc(100% - 120px)}
-    }
 
     /* Hero */
     .hero{padding:2.0rem 0 1.1rem}
     .hero-grid{display:grid;grid-template-columns:1fr;gap:1.1rem;align-items:center}
     @media (min-width:900px){.hero-grid{grid-template-columns:1.2fr .8fr;gap:1.6rem}}
-    .hero .name{font-size:clamp(2rem,6vw,2.8rem);line-height:1.08;margin:0 0 .25rem;color:var(--hero-name);white-space:normal}
+    .hero .name{font-size:clamp(2rem,6vw,2.8rem);line-height:1.08;margin:0 0 .25rem;color:var(--hero-name)}
     .hero .headline{font-size:clamp(1.2rem,4.2vw,1.6rem);margin:.15rem 0 .6rem;color:var(--text)}
     .lead{color:var(--muted);max-width:62ch;margin:0 0 .5rem}
     .nowline{margin:.2rem 0 .6rem}
@@ -180,19 +177,15 @@
     footer .container{display:flex;align-items:center;min-height:60px;justify-content:center}
     footer .tail{opacity:.9}
 
-    /* Certificate frame for uniform sizing */
+    /* Certificate frame */
     .cert-frame{
-      width:100%;
-      height:320px;
-      border-radius:.6rem;
-      border:1px solid var(--accent);
-      background:var(--bg);
-      display:flex;align-items:center;justify-content:center;
+      width:100%;height:320px;border-radius:.6rem;border:1px solid var(--accent);
+      background:var(--bg);display:flex;align-items:center;justify-content:center;
       overflow:hidden;margin-top:.5rem
     }
     .cert-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 
-    /* Contact: stretch + compact */
+    /* Contact */
     .contact-wrap{display:grid;grid-template-columns:1fr}
     .contact-card{margin:0}
     .contact-form{display:grid;gap:.8rem}
@@ -226,8 +219,6 @@
       .section{padding:8mm 0;page-break-inside:avoid}
       .avatar{border:none;box-shadow:none}
     }
-
-    /* Reduced motion support */
     @media (prefers-reduced-motion: reduce){
       html{ scroll-behavior: auto; }
       .card:hover{ transform:none; box-shadow:none; }
@@ -236,7 +227,7 @@
     }
   </style>
 
-  <!-- Person JSON-LD (with @id) -->
+  <!-- Person JSON-LD -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -248,17 +239,7 @@
     "email":"mailto:fahimfaisalraunaq@gmail.com",
     "image":"https://fahimfaisalraunaq.github.io/assets/profile.jpg",
     "url":"https://fahimfaisalraunaq.github.io/",
-    "alumniOf":[
-      {"@type":"CollegeOrUniversity","name":"Bangladesh University of Engineering & Technology (BUET)","sameAs":"https://www.buet.ac.bd/"},
-      {"@type":"EducationalOrganization","name":"Dhaka College","sameAs":"https://www.dhakacollege.edu.bd/en"}
-    ],
-    "affiliation":[
-      {"@type":"Organization","name":"Bangladesh University of Engineering & Technology (BUET)"},
-      {"@type":"Organization","name":"Asian University of Bangladesh"}
-    ],
-    "knowsAbout":[
-      "Industrial Engineering","Operations Research","Decision Analytics","Safety Science","Machine Learning","Natural Language Processing"
-    ],
+    "affiliation":{"@type":"Organization","name":"Bangladesh University of Engineering and Technology (BUET)"},
     "sameAs":[
       "https://www.linkedin.com/in/fahimfaisalraunaq",
       "https://scholar.google.com/citations?user=BI00vUYAAAAJ",
@@ -269,32 +250,23 @@
   </script>
 </head>
 <body>
-  <!-- Start header collapsed to avoid any initial overlap flash -->
-  <header class="site collapsed" id="siteHeader">
+  <!-- Header: brand + search + hamburger; section links moved to offcanvas -->
+  <header class="site" id="siteHeader">
     <div class="container nav" id="navContainer">
       <a class="brand" href="#top">Fahim Faisal Raunaq</a>
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="offcanvas" aria-label="Open menu" type="button">Menu</button>
 
-      <!-- inline primary nav (shown when not collapsed) -->
-      <nav class="primary" id="primaryNav" aria-label="Primary">
-        <a href="#top">Home</a>
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#conferences">Conferences</a>
-        <a href="#awards">Awards</a>
-        <a href="#service">Service</a>
-        <a href="#endorsements">Endorsements</a>
-        <a href="#contact">Contact</a>
+      <nav class="primary" aria-label="Header controls">
+        <div class="search-wrap" id="searchWrap">
+          <button class="search-toggle" id="searchToggle" aria-expanded="false" aria-controls="searchInput" title="Search sections" type="button">🔎</button>
+          <input id="searchInput" class="search-input" type="search" placeholder="Search sections…" aria-label="Search sections" />
+          <div class="search-results" id="searchResults" role="listbox" aria-label="Section matches"></div>
+        </div>
+
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="offcanvas" aria-label="Open menu" type="button">☰</button>
       </nav>
     </div>
 
-    <!-- overlay + offcanvas (only used in collapsed mode) -->
+    <!-- overlay + offcanvas -->
     <div class="overlay" id="overlay" hidden></div>
     <aside class="offcanvas" id="offcanvas" aria-hidden="true" aria-label="Site menu">
       <header>
@@ -526,8 +498,8 @@
           <h3>Teaching &amp; Mentorship</h3>
           <ul class="list">
             <li><strong>Lecturer (Adjunct)</strong>, <a href="https://aub.ac.bd/" target="_blank" rel="noopener">Asian University of Bangladesh</a> — <span class="muted">Sep 2024–Jan 2025</span><br />Course: <em>C Programming &amp; Algorithm Design</em>. Built lectures/labs, assessments; emphasized clarity, reproducibility, and code quality.</li>
-            <li><strong>Senior Coach</strong>, <a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> (Remote) — <span class="muted">Winter 2020–Fall 2021</span><br/>Led coach training and best-report reviews; streamlined evaluation rubric and supported coach cohort.</li>
-            <li><strong>Coach</strong>, <a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> (Remote) — <span class="muted">Spring–Fall 2020</span><br/>Mentored global virtual consulting teams across 40+ countries; assisted program operations and onboarding.</li>
+            <li><strong>Senior Coach</strong>, X-Culture (Remote) — <span class="muted">Winter 2020–Fall 2021</span><br/>Led coach training and best-report reviews; streamlined evaluation rubric and supported coach cohort.</li>
+            <li><strong>Coach</strong>, X-Culture (Remote) — <span class="muted">Spring–Fall 2020</span><br/>Mentored global virtual consulting teams across 40+ countries; assisted program operations and onboarding.</li>
           </ul>
         </div>
 
@@ -614,18 +586,26 @@
             <img src="assets/certificates/Fahim_Faisal_Raunaq_CSCA_Certified_Supply_Chain_Analyst_ISCEA_2018.jpg" alt="ISCEA CSCA Certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
+            <!-- (2) Added About ISCEA before view/download -->
+            <a class="action ghost" href="https://www.iscea.org/" target="_blank" rel="noopener">About ISCEA</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_CSCA_Certified_Supply_Chain_Analyst_ISCEA_2018.jpg" target="_blank" rel="noopener">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_CSCA_Certified_Supply_Chain_Analyst_ISCEA_2018.jpg" download>Download</a>
-            <a class="action ghost" href="https://www.iscea.org/" target="_blank" rel="noopener">ISCEA</a>
           </div>
         </div>
 
         <!-- X-Culture Coach / Senior Coach -->
         <div class="card">
           <div class="kicker">Training &amp; Coaching</div>
-          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Global Virtual Team — Coach &amp; Senior Coach</strong>
+          <!-- (3) Removed hyperlink from title -->
+          <strong>X-Culture Global Virtual Team — Coach &amp; Senior Coach</strong>
           <div class="meta">Program certificates (2020)</div>
           <p>Completed coaching curriculum and practicum; mentored global virtual teams; later promoted to Senior Coach.</p>
+
+          <!-- Single About X-Culture button for both certificates -->
+          <div class="actions" style="margin-top:.4rem">
+            <a class="action ghost" href="https://x-culture.org/" target="_blank" rel="noopener">About X-Culture</a>
+          </div>
+
           <div class="two-col" style="margin-top:.5rem">
             <div>
               <div class="cert-frame">
@@ -672,13 +652,16 @@
         <!-- AIB US Southeast / X-Culture Symposium (Top 40) -->
         <div class="card">
           <div class="kicker">Conference Participation</div>
-          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Global Symposium — Top 40 Delegate (AIB Southeast USA)</strong>
+          <!-- (4) Removed hyperlink from X-Culture in title -->
+          <strong>X-Culture Global Symposium — Top 40 Delegate (AIB Southeast USA)</strong>
           <div class="meta">Oct 22–23, 2020 · Theme: <em>Beyond 2020</em></div>
           <p>Career-development workshops and panels co-organized with X-Culture (Top-40 recognition cohort).</p>
           <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" alt="AIB US Southeast / X-Culture Symposium Top 40 certificate" loading="lazy" decoding="async" width="1200" height="900">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" alt="AIB US Southeast / X-Culture Symposium Top 40 certificate">
           </div>
           <div class="actions">
+            <!-- (4) Added About AIB button before view/download -->
+            <a class="action ghost" href="https://www.aib.world/event/aib-us-southeast-2020-chapter-conference/" target="_blank" rel="noopener">About AIB</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" target="_blank" rel="noopener">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Symposium_Top40_AIBSE_2020.png" download>Download</a>
           </div>
@@ -687,11 +670,12 @@
         <!-- X-Culture 10-Year Anniversary Virtual Conference -->
         <div class="card">
           <div class="kicker">Conference Participation</div>
-          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> “10-Year Anniversary” Virtual Conference</strong>
+          <!-- Also remove hyperlink from title here for consistency with your note -->
+          <strong>X-Culture “10-Year Anniversary” Virtual Conference</strong>
           <div class="meta">May 29, 2020</div>
           <p>Panels on working in global virtual teams, featuring speakers from Google, Microsoft, Miami International Airport, and others.</p>
           <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" alt="X-Culture 10-Year Anniversary Virtual Conference certificate" loading="lazy" decoding="async" width="1200" height="900">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" alt="X-Culture 10-Year Anniversary Virtual Conference certificate">
           </div>
           <div class="actions">
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" target="_blank" rel="noopener">View</a>
@@ -702,11 +686,11 @@
         <!-- X-Culture Global Collaboration (Academy) -->
         <div class="card">
           <div class="kicker">Program Completion</div>
-          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Global Collaboration (Academy)</strong>
+          <strong>X-Culture Global Collaboration (Academy)</strong>
           <div class="meta">Jan 10, 2020</div>
           <p>Completed training and two-month practical project as part of a multinational virtual consulting team.</p>
           <div class="cert-frame">
-            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" alt="X-Culture Global Collaboration certificate" loading="lazy" decoding="async" width="1200" height="900">
+            <img src="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" alt="X-Culture Global Collaboration certificate">
           </div>
           <div class="actions">
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_Global_Collaboration_Certificate_2020.png" target="_blank" rel="noopener">View</a>
@@ -815,6 +799,8 @@
             <img src="assets/certificates/Fahim_Faisal_Raunaq_BADHAN_Voluntary_Blood_Donor_Acknowledgement_BUET.jpg" alt="BADHAN acknowledgement certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
           <div class="actions">
+            <!-- (5) Added About Badhan button -->
+            <a class="action ghost" href="https://www.badhan.org/" target="_blank" rel="noopener">About Badhan</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_BADHAN_Voluntary_Blood_Donor_Acknowledgement_BUET.jpg" target="_blank" rel="noopener">View</a>
             <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_BADHAN_Voluntary_Blood_Donor_Acknowledgement_BUET.jpg" download>Download</a>
           </div>
@@ -823,7 +809,7 @@
         <!-- X-Culture program leadership notes -->
         <div class="card">
           <div class="kicker">Program Leadership</div>
-          <strong><a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Coaching Program</strong>
+          <strong>X-Culture Coaching Program</strong>
           <div class="meta">Senior Coach &amp; Coach (2020–2021)</div>
           <p>Led coach training and top-report reviews; supported global cohort operations. (Certificates shown above.)</p>
         </div>
@@ -850,11 +836,11 @@
       <h2>Endorsements</h2>
       <div class="card">
         <blockquote class="muted">“The Coaching Program administrative team has provided very positive feedback on your performance.”</blockquote>
-        <div class="meta">— <a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Coaching Program (Coach review, 2020)</div>
+        <div class="meta">— X-Culture Coaching Program (Coach review, 2020)</div>
         <blockquote class="muted" style="margin-top:.6rem">“We would recommend Fahim for assignments requiring coaching, analytical thinking, understanding of team dynamics, and leadership.”</blockquote>
-        <div class="meta">— <a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Coaching Program (Senior Coach review, 2020)</div>
+        <div class="meta">— X-Culture Coaching Program (Senior Coach review, 2020)</div>
         <blockquote class="muted" style="margin-top:.6rem">“Strong results and excellent peer evaluations… among the highest (Top 5%) in the cohort.”</blockquote>
-        <div class="meta">— <a href="https://x-culture.org/" target="_blank" rel="noopener">X-Culture</a> Academy performance review</div>
+        <div class="meta">— X-Culture Academy performance review</div>
       </div>
     </section>
 
@@ -864,11 +850,8 @@
       <div class="contact-wrap">
         <div class="card contact-card">
           <h3>Write me a message</h3>
-
-          <!-- Live Formspree endpoint -->
           <form id="contactForm" class="contact-form" action="https://formspree.io/f/mjkpndyp" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_format" value="json" />
-
             <div class="row">
               <div class="field">
                 <label for="name">Your name (optional)</label>
@@ -879,7 +862,6 @@
                 <input id="from" name="email" type="email" autocomplete="email" required />
               </div>
             </div>
-
             <div class="row">
               <div class="field">
                 <label for="subject">Subject</label>
@@ -891,16 +873,13 @@
                        accept=".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx,.ppt,.pptx" />
               </div>
             </div>
-
             <div class="field">
               <label for="message">Message</label>
               <textarea id="message" name="message" placeholder="A concise overview helps me route your message quickly." required></textarea>
             </div>
-
             <div class="contact-actions">
               <button type="submit" class="action">Send Message</button>
             </div>
-
             <p class="note" style="margin-top:.4rem">
               I’m based in <strong>Dhaka, Bangladesh (UTC+06:00)</strong>. Depending on time zones and teaching/research hours, replies may be slightly delayed.
             </p>
@@ -987,63 +966,12 @@
       if (bibCopy){ bibCopy.dataset.reset='Copy BibTeX'; bibCopy.addEventListener('click', ()=> copy(bib.textContent, bibCopy)); }
     })();
 
-    // ===== Active nav link highlight (primary + offcanvas) =====
-    (function(){
-      const navLinks = [...document.querySelectorAll('nav.primary a, .offcanvas nav a')];
-      const sections = [...document.querySelectorAll('main .section, .hero')];
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(!e.isIntersecting) return;
-          const id = e.target.id || 'top';
-          navLinks.forEach(a => {
-            const active = a.getAttribute('href') === `#${id}`;
-            a.classList.toggle('active', active);
-            if(active){ a.setAttribute('aria-current', 'page'); }
-            else { a.removeAttribute('aria-current'); }
-          });
-        });
-      }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
-      sections.forEach(s => io.observe(s));
-    })();
-
-    // ===== Auto-collapse header to prevent overlap (robust measure) =====
-    (function(){
-      const header = document.getElementById('siteHeader');
-      const container = document.getElementById('navContainer');
-      const brand = container.querySelector('.brand');
-      const primary = document.getElementById('primaryNav');
-
-      function needsCollapse(){
-        header.classList.remove('collapsed');
-        // force-measure primary even if CSS is hiding it
-        const wasHidden = getComputedStyle(primary).display === 'none';
-        if(wasHidden){
-          primary.style.visibility = 'hidden';
-          primary.style.display = 'flex';
-        }
-        const needed = brand.offsetWidth + primary.scrollWidth + 32;
-        const have   = container.clientWidth;
-        if(wasHidden){
-          primary.style.removeProperty('visibility');
-          primary.style.removeProperty('display');
-        }
-        return needed > have;
-      }
-      function apply(){ header.classList.toggle('collapsed', needsCollapse()); }
-
-      let t=null;
-      window.addEventListener('resize', ()=>{ clearTimeout(t); t=setTimeout(apply, 80); });
-      window.addEventListener('load', apply);
-      apply();
-    })();
-
     // ===== Off-canvas menu behavior =====
     (function(){
       const btn = document.getElementById('menuBtn');
       const closeBtn = document.getElementById('menuClose');
       const panel = document.getElementById('offcanvas');
       const overlay = document.getElementById('overlay');
-      const header = document.getElementById('siteHeader');
 
       function open(){
         panel.classList.add('open');
@@ -1064,15 +992,57 @@
       overlay.addEventListener('click', close);
       panel.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
       window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && panel.classList.contains('open')) close(); });
-
-      const ro = new ResizeObserver(()=> {
-        if (header.classList.contains('collapsed')) btn.style.display='inline-flex';
-        else btn.style.removeProperty('display');
-      });
-      ro.observe(header);
     })();
 
-    // ===== Contact form -> Formspree AJAX with attachments (hardened) =====
+    // ===== Header search (section jump) =====
+    (function(){
+      const wrap = document.getElementById('searchWrap');
+      const toggle = document.getElementById('searchToggle');
+      const input = document.getElementById('searchInput');
+      const list  = document.getElementById('searchResults');
+
+      const sections = [
+        {id:'top', label:'Home'},
+        {id:'about', label:'About'},
+        {id:'education', label:'Education'},
+        {id:'research', label:'Research'},
+        {id:'publications', label:'Publications'},
+        {id:'experience', label:'Experience'},
+        {id:'projects', label:'Projects'},
+        {id:'skills', label:'Skills'},
+        {id:'certifications', label:'Certifications'},
+        {id:'conferences', label:'Conferences'},
+        {id:'awards', label:'Awards'},
+        {id:'service', label:'Service'},
+        {id:'endorsements', label:'Endorsements'},
+        {id:'contact', label:'Contact'}
+      ];
+
+      function render(results){
+        list.innerHTML = results.map(s => `<a href="#${s.id}" role="option">${s.label}</a>`).join('') || `<div style="padding:.6rem .8rem" class="muted">No matches</div>`;
+        list.querySelectorAll('a').forEach(a=>{
+          a.addEventListener('click', ()=> { wrap.classList.remove('open'); input.value=''; list.innerHTML=''; });
+        });
+      }
+
+      toggle.addEventListener('click', ()=>{
+        const open = wrap.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+        if(open){ input.focus(); render(sections); }
+      });
+
+      input.addEventListener('input', ()=>{
+        const q = input.value.trim().toLowerCase();
+        const filtered = q ? sections.filter(s => s.label.toLowerCase().includes(q)) : sections;
+        render(filtered);
+      });
+
+      document.addEventListener('click', (e)=>{
+        if(!wrap.contains(e.target)){ wrap.classList.remove('open'); }
+      });
+    })();
+
+    // ===== Contact form -> Formspree AJAX =====
     (function(){
       const form = document.getElementById('contactForm');
       const toast = document.getElementById('toast');
@@ -1108,7 +1078,7 @@
             showToast(msg, false);
           }
         }catch(err){
-          showToast('Network error. Try again or use the email button.', false);
+          showToast('Network error. Try again later.', false);
         }
       });
     })();
