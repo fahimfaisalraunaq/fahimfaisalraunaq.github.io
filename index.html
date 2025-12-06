@@ -260,7 +260,7 @@
     .lb-open{border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.5rem;padding:.35rem .6rem;text-decoration:none}
     /* Print */
     @media print{
-      *{background:transparent !important;box-shadow:none !important}
+      *{background:transparent !important;box-shadow:none !重要}
       body{color:#000}
       header.site, .pub-filter, .cta-row, nav.primary, .to-top, dialog, .overlay, .offcanvas{display:none !重要}
       a[href]::after{content:" (" attr(href) ")";font-size:.9em}
@@ -397,9 +397,9 @@
       <h2>About</h2>
       <div class="row single">
         <div class="card">
-          <p>I am an Industrial &amp; Production Engineering researcher working at the intersection of data-driven safety, decision analytics, and machine learning. I study how risk emerges and propagates in behavior-driven, resource-constrained environments—online communities, transportation systems, and real-world operations in Bangladesh and comparable settings, where uncertainty, noise, and human variability are the rule rather than the exception.</p>
-          <p>My research arc began with building a large-scale Bangla social-media toxicity dataset and using mixed-feature clustering to uncover how online hostility escalates over time. That early interest in human–technology interactions now continues in my M.Sc. work on translation-agnostic sentiment analysis, where I quantify how machine-translation quality distorts downstream decisions and design evaluation protocols that remain meaningful under linguistic and operational constraints.</p>
-          <p>Longer term, I want to build risk-aware, uncertainty-explicit decision frameworks that can be deployed in safety-critical settings—such as transportation planning, digital-health adoption, and content governance—while remaining auditable, interpretable, and robust to imperfect data. I am seeking Ph.D. opportunities where optimization, human-in-the-loop ML, safety analytics, and a strong culture of reproducible, open research come together.</p>
+          <p>I am an Industrial &amp; Production Engineering researcher working at the intersection of data-driven safety, decision analytics, and machine learning. My work explores how risk emerges in behavior-driven, resource-constrained environments—online communities, transportation systems, and real-world operations where uncertainty, noise, and human variability are the rule rather than the exception.</p>
+          <p>My research arc began with building a large-scale Bangla social-media toxicity dataset and modeling behavioral patterns using mixed-feature clustering. This early interest in human–technology interactions now extends into my M.Sc. work on translation-agnostic sentiment analysis, where I evaluate how machine-translation quality distorts downstream decisions and design methods that remain reliable under linguistic and operational constraints.</p>
+          <p>Broadly, I aim to develop decision systems that are auditable, interpretable, and deployment-ready—systems that can withstand noisy data, limited resources, and the practical realities of emerging-economy contexts. I am seeking Ph.D. opportunities where optimization, human-in-the-loop ML, safety analytics, and reproducible research culture come together.</p>
         </div>
       </div>
     </section>
@@ -440,7 +440,7 @@
     <!-- RESEARCH -->
     <section id="research" class="section">
       <h2>Research Focus</h2>
-      <p class="muted">Reliable decision support for safety-critical, resource-constrained socio-technical systems.</p>
+      <p class="muted">Reliable decision support for safety-critical, resource-constrained systems.</p>
       <h3 class="kicker" style="margin-top:.5rem">Focus Areas</h3>
       <div class="three-col" style="margin-top:.5rem">
         <div class="card">
@@ -472,10 +472,6 @@
           <div class="tool">Operations research</div><div class="tool">Data engineering</div><div class="tool">Time-series</div><div class="tool">Bayesian modeling</div><div class="tool">Evaluation &amp; ablation</div>
         </div>
       </div>
-      <h3 class="kicker" style="margin-top:1rem">Future directions &amp; Ph.D. goals</h3>
-      <div class="card">
-        <p>Across these areas, my near-term Ph.D. goal is to connect modern optimization and machine learning with domain partners to design decision policies that practitioners can actually trust and use. I am particularly interested in embedding causal and spatio-temporal structure into safety models, aligning algorithmic objectives with human-interpretable risk metrics, and building evaluation pipelines that stress-test models under realistic data gaps and deployment constraints in Global South contexts.</p>
-      </div>
       <h3 class="kicker" style="margin-top:1rem">Research Experiences</h3>
       <div class="two-col" style="margin-top:1rem">
         <div class="card">
@@ -483,7 +479,7 @@
           <div class="meta">Supervisor: <a href="https://ipe.buet.ac.bd/faculty/dr-nafisa-mahbub" target="_blank" rel="noopener">Dr. Nafisa Mahbub</a></div>
           <p><em>Developing a Decision Support System for Optimized Translation Agnostic Sentiment Analysis of Bangla Social Media Texts</em></p>
           <ul class="list">
-            <li>Linked MT quality (BLEU/chrF/SacreBLEU/COMET) to downstream macro-F1/accuracy on a gold-standard Bangla dataset</li>
+            <li>Linked MT quality (BLEU/chrF/SAM/COMET) to downstream macro-F1/accuracy on a gold-standard Bangla dataset</li>
             <li>Stress-tested English pipelines under MT noise; audited failure modes on phenomenon-tagged slices</li>
             <li>Ran translation-free baselines; validated “comment-as-a-unit” with ablations and McNemar tests</li>
           </ul>
@@ -519,7 +515,7 @@
         <article class="pub" data-status="published">
           <div class="kicker">Published</div>
           <p><strong>Assessing the challenges to digital technology adoption in the healthcare sector: Implications for sustainability in emerging economies.</strong> <em>Informatics and Health</em> 2, 194–209 (2025). <strong>Raunaq, F. F.</strong>, Islam, S., Anam, M. Z., &amp; Bari, A. B. M. M.
-            <span class="summary">— Empirical barriers to digital tech adoption in emerging-economy health systems; policy-oriented implications for sustainable digital-health rollouts.</span>
+            <span class="summary">— Empirical barriers to digital tech adoption in emerging-economy health systems; policy-oriented implications.</span>
           </p>
           <div class="actions">
             <a class="action" href="https://www.sciencedirect.com/science/article/pii/S2949953425000323" target="_blank" rel="noopener">View</a>
@@ -531,33 +527,39 @@
         <!-- Under review -->
         <article class="pub" data-status="under-review">
           <div class="kicker">Under review</div>
-          <p><strong>Decoding Mode-Specific Crash Dynamics in Work Zones through Machine Learning: Uncovering Spatial–Temporal Patterns for Policy-Oriented Interventions.</strong> <em>Safety Science</em>. <strong>Raunaq, F. F.</strong>, Mahbub, N., Kaiyum, A., Hasanat-e-Rabbi, S., Ali, S. M.
-            <span class="summary">— ML analysis of work-zone crash patterns to inform targeted, mode-specific safety interventions and infrastructure policy.</span>
+          <p><strong>Decoding Mode-Specific Crash Dynamics in Work Zones through Machine Learning: Uncovering Spatial–Temporal Patterns for Policy-Oriented Interventions.</strong> <em>IATSS Research</em>. <strong>Raunaq, F. F.</strong>, Mahbub, N., Kaiyum, A., Hasanat-e-Rabbi, S., Ali, S. M.
+            <span class="summary">— ML analysis of work-zone crash patterns to inform targeted safety interventions.</span>
+          </p>
+        </article>
+        <article class="pub" data-status="under-review">
+          <div class="kicker">Under review</div>
+          <p><strong>A Data-Driven Exploration of Temporal Patterns and Lifecycle Dynamics in User Activity: The Bangladeshi Online Rumors Environment.</strong> <em>ACM Transactions on Computer Systems (TOCS)</em>. Karmaker, C. L., <strong>Raunaq, F. F.</strong>, Aziz, R. A., Dip, M. A., &amp; Kaiser, A.
+            <span class="summary">— Temporal and lifecycle modeling of user activity in rumor ecosystems.</span>
           </p>
         </article>
         <article class="pub" data-status="under-review">
           <div class="kicker">Under review</div>
           <p><strong>A Data-Driven Approach to Construction Accident Prevention in Developing Countries: Insights from Bangladesh.</strong> <em>Engineering Applications of Artificial Intelligence</em>. Kaiyum, A., Mahbub, N., <strong>Raunaq, F. F.</strong>, Ali, S. M.
-            <span class="summary">— Data-centric framework for construction safety in resource-constrained contexts, emphasizing practical prevention strategies.</span>
+            <span class="summary">— Data-centric framework for construction safety in resource-constrained contexts.</span>
           </p>
         </article>
         <article class="pub" data-status="under-review">
           <div class="kicker">Under review</div>
           <p><strong>A Data-Driven Approach to Stance Detection Combining Topic Modelling and BanglaBERT: A Case Study in Social Media Rumors.</strong> <em>Language Resources and Evaluation</em>. Khan, M. R., Aziz, R. A., Karmaker, C. L., <strong>Raunaq, F. F.</strong>, &amp; Agarwal, P.
-            <span class="summary">— Topic-aware stance detection with BanglaBERT on rumor datasets; links model behavior to rumor diffusion dynamics.</span>
+            <span class="summary">— Topic-aware stance detection with BanglaBERT on rumor datasets.</span>
           </p>
         </article>
         <!-- In preparation -->
         <article class="pub" data-status="in-prep">
           <div class="kicker">In preparation</div>
           <p><strong>A Gold-Standard Bengali UGC Corpus for Translation-Agnostic Sentiment Analysis.</strong> (M.Sc. Thesis). <strong>Raunaq, F. F.</strong>, Mahbub, N.
-            <span class="summary">— Dataset plus benchmarking suite for Bangla user-generated content, enabling MT-agnostic sentiment analysis and stress-testing of cross-lingual pipelines.</span>
+            <span class="summary">— Dataset + benchmarking suite enabling MT-agnostic sentiment analysis in Bangla.</span>
           </p>
         </article>
         <article class="pub" data-status="in-prep">
           <div class="kicker">In preparation</div>
           <p><strong>Efficient Hyperparameter Optimization of Topic Models: A Taguchi–CRITIC MCDM Framework with LDA and BERTopic.</strong> (Project). <strong>Raunaq, F. F.</strong>, Aziz, R. A.
-            <span class="summary">— Robust MCDM-based tuning pipeline for probabilistic and embedding-based topic models, balancing performance and stability.</span>
+            <span class="summary">— Robust MCDM-based tuning pipeline for probabilistic and embedding-based topic models.</span>
           </p>
         </article>
       </div>
@@ -577,9 +579,9 @@
         <div class="card">
           <h3>Industry</h3>
           <ul class="list">
-            <li><strong>Sales Engineer</strong>, <a href="https://bluebaybangladesh.com/" target="_blank" rel="noopener">Blue Bay Bangladesh Ltd.</a>, Dhaka — <span class="muted">Feb 2025–Aug 2025</span><br />Analyzed material specs &amp; supplier performance; coordinated stakeholders for on-time, compliant delivery.</li>
-            <li><strong>Product Owner</strong>, MEKANICC Software Solutions, Dhaka — <span class="muted">May 2023–Sep 2024</span><br />Led discovery &amp; PRDs; maintained roadmaps; produced wireframes; bridged developers &amp; clients.</li>
-            <li><strong>Industrial Training</strong>, <a href="https://www.bergerbd.com/" target="_blank" rel="noopener">Berger Paints Bangladesh Ltd.</a>, Dhaka — <span class="muted">Apr–May 2022</span><br />Mapped manufacturing flows; contributed to warehouse layout; QC support and automation concept.</li>
+            <li><strong>Supply Chain &amp; Procurement Executive</strong>, <a href="https://bluebaybangladesh.com/" target="_blank" rel="noopener">Blue Bay Bangladesh Ltd.</a>, Dhaka — <span class="muted">Feb 2025–Aug 2025</span><br />Coordinated supplier communication, delivery tracking, and quality checks while analyzing material specs and vendor performance to support accurate documentation, compliant procurement, and on-time delivery.</li>
+            <li><strong>Operations Support Intern</strong>, MEKANICC Software Solutions, Dhaka — <span class="muted">May 2023–Sep 2024</span><br />Supported operational workflows, documentation, and task tracking while coordinating with clients and internal teams, maintaining planning logs and checklists, and contributing to PRD development, feature roadmaps, and wireframes to streamline cross-department workflow and project execution.</li>
+            <li><strong>Industrial Trainee</strong>, <a href="https://www.bergerbd.com/" target="_blank" rel="noopener">Berger Paints Bangladesh Ltd.</a>, Dhaka — <span class="muted">Apr–May 2022</span><br />Mapped manufacturing flows; contributed to warehouse layout; QC support and automation concept.</li>
           </ul>
         </div>
       </div>
@@ -592,7 +594,7 @@
           <div class="kicker">Product Design</div>
           <strong>Pedal-Powered Water Pump &amp; Purifier (PPWP)</strong>
           <div class="meta">Operations · Product Design</div>
-          <p>Human-powered centrifugal pump and purification unit delivering clean water in power-scarce settings, targeting rural Bangladesh and similar regions. The PPWP couples a wheel-driven pump to supply discharge/head suitable for portable irrigation and drinking-water use, with performance evaluated across RPM settings to quantify output and efficiency.</p>
+          <p>Human-powered centrifugal pump and purification unit delivering clean water in power-scarce settings. The PPWP couples a wheel-driven pump to supply discharge/head suitable for portable irrigation and drinking-water use, with performance evaluated across RPM settings to quantify output and efficiency.</p>
           <div class="yt-actions">
             <a class="cta" href="https://www.youtube.com/watch?v=C02LrhTIZ44" target="_blank" rel="noopener" aria-label="View Demo Video on YouTube">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M10 8l6 4-6 4V8z"/><path d="M21.6 7.2a3.1 3.1 0 0 0-2.2-2.2C17.6 4.5 12 4.5 12 4.5s-5.6 0-7.4.5a3.1 3.1 0 0 0-2.2 2.2C2 9 2 12 2 12s0 3 .4 4.8a3.1 3.1 0 0 0 2.2 2.2C6.4 19.5 12 19.5 12 19.5s5.6 0 7.4-.5a3.1 3.1 0 0 0 2.2-2.2C22 15 22 12 22 12s0-3-.4-4.8z"/></svg>
@@ -746,7 +748,7 @@
           <div class="kicker">International Competition</div>
           <strong>World Bank × United Nations — Road Safety Champion Video Competition</strong>
           <div class="meta">First Runner-up (2019–2020)</div>
-          <p>Advocacy video on evidence-led countermeasures for Bangladesh’s road-injury burden, contributing to policy conversations on safer transport systems.</p>
+          <p>Advocacy video on evidence-led countermeasures for Bangladesh’s road-injury burden.</p>
           <div class="cert-frame">
             <img src="assets/certificates/Fahim_Faisal_Raunaq_UN_WorldBank_Road_Safety_Champion_First_RunnerUp_2019_2020.jpg" alt="World Bank UN Road Safety competition certificate" loading="lazy" decoding="async" width="1200" height="900">
           </div>
@@ -779,7 +781,7 @@
           </div>
           <div class="actions">
             <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" download>Download</a>
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" download</a>
           </div>
         </div>
         <div class="card">
