@@ -262,7 +262,7 @@
     @media print{
       *{background:transparent !important;box-shadow:none !important}
       body{color:#000}
-      header.site, .pub-filter, .cta-row, nav.primary, .to-top, dialog, .overlay, .offcanvas{display:none !重要}
+      header.site, .pub-filter, .cta-row, nav.primary, .to-top, dialog, .overlay, .offcanvas{display:none !important}
       a[href]::after{content:" (" attr(href) ")";font-size:.9em}
       .container{max-width:none;padding:0 12mm}
       .section{padding:8mm 0;page-break-inside:avoid}
@@ -273,6 +273,95 @@
       .card:hover{ transform:none; box-shadow:none; }
       .toolbox-grid .tool:hover{ transform:none; box-shadow:none; }
       .to-top button{ box-shadow:none; }
+    }
+    /* Mobile Fixes: Stack CTA rows on mobile */
+    @media (max-width: 600px) {
+      .cta-row.top, .cta-row.bottom {
+        grid-template-columns: 1fr; /* Stack to single column */
+      }
+      .cta {
+        justify-content: center; /* Center buttons for better touch */
+        min-width: 200px; /* Ensure tappable size */
+      }
+    }
+
+    /* Mobile Fixes: Scale down headings on mobile */
+    @media (max-width: 600px) {
+      .hero .name {
+        font-size: clamp(1.6rem, 6vw, 2.2rem); /* Reduce min to ~25px */
+      }
+      .hero .headline {
+        font-size: clamp(1rem, 4.2vw, 1.3rem);
+      }
+      .lead {
+        font-size: 0.95rem; /* Slightly smaller for density */
+      }
+      .container {
+        padding: 0 0.75rem; /* Reduce padding for smaller screens */
+      }
+      .section {
+        padding: 0.75rem 0; /* Less vertical padding */
+      }
+      .card {
+        padding: 0.75rem; /* Smaller cards */
+      }
+    }
+
+    /* Mobile Fixes: Adjust search for very small screens */
+    @media (max-width: 400px) {
+      .search-wrap.open .search-input {
+        width: 80vw; /* More flexible */
+      }
+      .search-results {
+        min-width: 80vw; /* Prevent overflow */
+        right: auto; /* Center if needed */
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Mobile Fixes: Tweak toolbox and chips for wrapping */
+    @media (max-width: 600px) {
+      .toolbox-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Auto-wrap if text is long */
+      }
+      .chip {
+        font-size: 0.85rem; /* Smaller to fit */
+      }
+      .chips {
+        gap: 0.4rem; /* Tighter gaps */
+      }
+      .three-col, .four-col {
+        grid-template-columns: 1fr; /* Ensure stacking */
+      }
+      .cert-frame {
+        height: 200px; /* Smaller images on mobile */
+      }
+    }
+
+    /* Additional Improvements: Flexible avatar and hero padding */
+    @media (max-width: 500px) {
+      .avatar {
+        width: 140px;
+        height: 140px;
+      }
+      .hero {
+        padding: 1.5rem 0 0.8rem;
+      }
+    }
+
+    /* Ensure no horizontal overflow in lists and pubs */
+    @media (max-width: 600px) {
+      .list {
+        padding-inline-start: 1rem;
+        padding-right: 0.25rem;
+      }
+      .pub-filter {
+        justify-content: center;
+      }
+      .actions {
+        justify-content: center;
+      }
     }
   </style>
   <!-- Person JSON-LD -->
@@ -408,7 +497,6 @@
       <h2>Research Focus</h2>
       <p class="muted">Data-driven safety &amp; decision analytics in socio-technical systems.</p>
       <p>My work examines how risk emerges and propagates in socio-technical environments—such as online communities, work zones, construction operations, and digital ecosystems—where human behavior, technology, and resource constraints collide. I use IE/OR, optimization, and low-resource ML/NLP to turn noisy operational traces into auditable, uncertainty-aware decisions. Much of this involves building translation-robust pipelines for Bangla user-generated content, spatio-temporal crash and work-zone models, and interpretable OR/ML systems that survive imbalance, noise, and data sparsity. Looking ahead to a Ph.D., I aim to formalize risk-aware decision frameworks that remain deployable under real-world constraints in public safety, digital environments, and resource-limited operations.</p>
-
       <h3 class="kicker" style="margin-top:.75rem">Core Research Themes</h3>
       <div class="three-col" style="margin-top:.5rem">
         <div class="card">
@@ -424,7 +512,6 @@
           <p>I combine optimization, operations research, and interpretable ML to design decision-support tools that respect real operational constraints—capacity, inventory, cost, and human oversight—so that models remain deployable in safety-critical, resource-limited settings.</p>
         </div>
       </div>
-
       <h3 class="kicker" style="margin-top:1rem">Methods I work with</h3>
       <div class="card">
         <div class="toolbox-grid">
@@ -440,7 +527,6 @@
           <div class="tool">Evaluation &amp; ablation</div>
         </div>
       </div>
-
       <h3 class="kicker" style="margin-top:1rem">Application domains</h3>
       <div class="card">
         <div class="chips" style="margin-bottom:.25rem">
@@ -452,7 +538,6 @@
           <span class="chip">Resource-constrained supply chains &amp; services</span>
         </div>
       </div>
-
       <h3 class="kicker" style="margin-top:1rem">Research Experiences</h3>
       <div class="two-col" style="margin-top:1rem">
         <div class="card">
