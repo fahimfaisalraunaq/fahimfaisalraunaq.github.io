@@ -260,9 +260,9 @@
     .lb-open{border:1px solid var(--accent);background:var(--panel);color:var(--text);border-radius:.5rem;padding:.35rem .6rem;text-decoration:none}
     /* Print */
     @media print{
-      *{background:transparent !important;box-shadow:none !重要}
+      *{background:transparent !important;box-shadow:none !important}
       body{color:#000}
-      header.site, .pub-filter, .cta-row, nav.primary, .to-top, dialog, .overlay, .offcanvas{display:none !重要}
+      header.site, .pub-filter, .cta-row, nav.primary, .to-top, dialog, .overlay, .offcanvas{display:none !important}
       a[href]::after{content:" (" attr(href) ")";font-size:.9em}
       .container{max-width:none;padding:0 12mm}
       .section{padding:8mm 0;page-break-inside:avoid}
@@ -527,19 +527,13 @@
         <!-- Under review -->
         <article class="pub" data-status="under-review">
           <div class="kicker">Under review</div>
-          <p><strong>Decoding Mode-Specific Crash Dynamics in Work Zones through Machine Learning: Uncovering Spatial–Temporal Patterns for Policy-Oriented Interventions.</strong> <em>IATSS Research</em>. <strong>Raunaq, F. F.</strong>, Mahbub, N., Kaiyum, A., Hasanat-e-Rabbi, S., Ali, S. M.
-            <span class="summary">— ML analysis of work-zone crash patterns to inform targeted safety interventions.</span>
+          <p><strong>A Data-Driven Exploration of Temporal Patterns and Lifecycle Dynamics in User Activity: The Bangladeshi Online Rumors Environment.</strong> <em>ACM Transactions on Computer Systems (TOCS)</em>. Karmaker, C. L., <strong>Raunaq, F. F.</strong>, Aziz, R. A., Dip, M. A., &amp; Kaiser, A. A.
+            <span class="summary">— Temporal patterns and lifecycle dynamics of user behavior in Bangladeshi rumor ecosystems.</span>
           </p>
         </article>
         <article class="pub" data-status="under-review">
           <div class="kicker">Under review</div>
-          <p><strong>A Data-Driven Exploration of Temporal Patterns and Lifecycle Dynamics in User Activity: The Bangladeshi Online Rumors Environment.</strong> <em>ACM Transactions on Computer Systems (TOCS)</em>. Karmaker, C. L., <strong>Raunaq, F. F.</strong>, Aziz, R. A., Dip, M. A., &amp; Kaiser, A.
-            <span class="summary">— Temporal and lifecycle modeling of user activity in rumor ecosystems.</span>
-          </p>
-        </article>
-        <article class="pub" data-status="under-review">
-          <div class="kicker">Under review</div>
-          <p><strong>A Data-Driven Approach to Construction Accident Prevention in Developing Countries: Insights from Bangladesh.</strong> <em>Engineering Applications of Artificial Intelligence</em>. Kaiyum, A., Mahbub, N., <strong>Raunaq, F. F.</strong>, Ali, S. M.
+          <p><strong>A Data-Driven Approach to Construction Accident Prevention in Developing Countries: Insights from Bangladesh.</strong> <em>Engineering Applications of Artificial Intelligence</em>. Kaiyum, A., Mahbub, N., <strong>Raunaq, F. F.</strong>, &amp; Ali, S. M.
             <span class="summary">— Data-centric framework for construction safety in resource-constrained contexts.</span>
           </p>
         </article>
@@ -547,6 +541,12 @@
           <div class="kicker">Under review</div>
           <p><strong>A Data-Driven Approach to Stance Detection Combining Topic Modelling and BanglaBERT: A Case Study in Social Media Rumors.</strong> <em>Language Resources and Evaluation</em>. Khan, M. R., Aziz, R. A., Karmaker, C. L., <strong>Raunaq, F. F.</strong>, &amp; Agarwal, P.
             <span class="summary">— Topic-aware stance detection with BanglaBERT on rumor datasets.</span>
+          </p>
+        </article>
+        <article class="pub" data-status="under-review">
+          <div class="kicker">Under review</div>
+          <p><strong>Decoding Mode-Specific Crash Dynamics in Work Zones through Machine Learning: Uncovering Spatial–Temporal Patterns for Policy-Oriented Interventions.</strong> <em>IATSS Research</em>. <strong>Raunaq, F. F.</strong>, Mahbub, N., Kaiyum, A., Hasanat-e-Rabbi, S., &amp; Ali, S. M.
+            <span class="summary">— ML-based analysis of work-zone crash patterns to inform targeted safety interventions.</span>
           </p>
         </article>
         <!-- In preparation -->
@@ -592,9 +592,9 @@
       <div class="four-col">
         <div class="card">
           <div class="kicker">Product Design</div>
-          <strong>Pedal-Powered Water Pump &amp; Purifier (PPWP)</strong>
-          <div class="meta">Operations · Product Design</div>
-          <p>Human-powered centrifugal pump and purification unit delivering clean water in power-scarce settings. The PPWP couples a wheel-driven pump to supply discharge/head suitable for portable irrigation and drinking-water use, with performance evaluated across RPM settings to quantify output and efficiency.</p>
+          <strong>Paddle-Powered Water Purifier</strong>
+          <div class="meta">Product Design II · Industrial &amp; Marketing Mgmt</div>
+          <p>Human-powered purifier concept for low-resource communities (aligned with SDG 6). Led requirements capture and concept generation; developed full CAD and bill of materials with cost sheet, using QFD to translate user needs into design specs. Outlined a lean go-to-market and business model tailored to urban informal settlements.</p>
           <div class="yt-actions">
             <a class="cta" href="https://www.youtube.com/watch?v=C02LrhTIZ44" target="_blank" rel="noopener" aria-label="View Demo Video on YouTube">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M10 8l6 4-6 4V8z"/><path d="M21.6 7.2a3.1 3.1 0 0 0-2.2-2.2C17.6 4.5 12 4.5 12 4.5s-5.6 0-7.4.5a3.1 3.1 0 0 0-2.2 2.2C2 9 2 12 2 12s0 3 .4 4.8a3.1 3.1 0 0 0 2.2 2.2C6.4 19.5 12 19.5 12 19.5s5.6 0 7.4-.5a3.1 3.1 0 0 0 2.2-2.2C22 15 22 12 22 12s0-3-.4-4.8z"/></svg>
@@ -638,7 +638,7 @@
         <div class="card">
           <h3>Relevant Coursework</h3>
           <div class="chips" style="margin-bottom:.5rem">
-            <span class="chip">Calculus</span><span class="chip">Linear Algebra</span><span class="chip">Numerical Analysis</span><span class="chip">Probability &amp; Statistics</span><span class="chip">Operations Research</span><span class="chip">Quality Engineering</span><span class="chip">Decision Analysis</span><span class="chip">Differential Equations</span><span class="chip">Ergonomics &amp; Safety</span><span class="chip">Project &amp; Environment Mgmt</span><span class="chip">Supply Chain Mgmt</span><span class="chip">Industrial &amp; Business Mgmt</span>
+            <span class="chip">Calculus</span><span class="chip">Linear Algebra</span><span class="chip">Numerical Analysis</span><span class="chip">Machine Learning</span><span class="chip">Probability &amp; Statistics</span><span class="chip">Operations Research</span><span class="chip">Quality Engineering</span><span class="chip">Decision Analysis</span><span class="chip">Differential Equations</span><span class="chip">Ergonomics &amp; Safety</span><span class="chip">Project &amp; Environment Mgmt</span><span class="chip">Supply Chain Mgmt</span><span class="chip">Industrial &amp; Business Mgmt</span>
           </div>
         </div>
       </div>
@@ -781,7 +781,7 @@
           </div>
           <div class="actions">
             <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" download</a>
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_AEMC_Champion_Certificate_2018.png" download>Download</a>
           </div>
         </div>
         <div class="card">
