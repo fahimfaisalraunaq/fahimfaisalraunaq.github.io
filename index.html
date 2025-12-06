@@ -145,6 +145,7 @@
     .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;color:var(--muted)}
     .muted{color:var(--muted)}
     .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+    .small{font-size:.9rem}
     /* Toolbox */
     .toolbox-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem}
     .toolbox-grid .tool{display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid var(--accent);background:var(--chip);border-radius:.65rem;padding:.55rem .6rem;font-weight:700;min-height:44px;transition:transform .15s ease, box-shadow .15s ease}
@@ -261,7 +262,7 @@
     @media print{
       *{background:transparent !important;box-shadow:none !important}
       body{color:#000}
-      header.site, .pub-filter, .cta-row, nav.primary, .to-top, dialog, .overlay, .offcanvas{display:none !important}
+      header.site, .pub-filter, .cta-row, nav.primary, .to-top, dialog, .overlay, .offcanvas{display:none !重要}
       a[href]::after{content:" (" attr(href) ")";font-size:.9em}
       .container{max-width:none;padding:0 12mm}
       .section{padding:8mm 0;page-break-inside:avoid}
@@ -411,11 +412,17 @@
             <h3 class="edu-title">M.Sc. in Industrial &amp; Production Engineering <span class="badge">Current</span></h3>
             <p class="edu-meta"><a href="https://www.buet.ac.bd/web/#/" target="_blank" rel="noopener">Bangladesh University of Engineering &amp; Technology (BUET)</a> · Jun 2023–Present</p>
             <p class="edu-desc">Focus: safety &amp; decision analytics (IE/OR × ML). Thesis on translation-aware benchmarking for Bangla sentiment analysis; phenomenon-level evaluation and reproducibility.</p>
+            <p class="muted small">
+              Curriculum: <a href="https://ipe.buet.ac.bd/page/msc-enggmengg-in-ipe" target="_blank" rel="noopener">M.Sc. in IPE (BUET)</a>
+            </p>
           </li>
           <li>
             <h3 class="edu-title">B.Sc. in Industrial &amp; Production Engineering</h3>
             <p class="edu-meta"><a href="https://www.buet.ac.bd/web/#/" target="_blank" rel="noopener">Bangladesh University of Engineering &amp; Technology (BUET)</a> · Feb 2017–May 2023</p>
             <p class="edu-desc">Unsupervised modeling of online toxicity in Bangla social media; mixed-feature clustering with qualitative validation to distinguish social response from model bias.</p>
+            <p class="muted small">
+              Curriculum: <a href="https://ipe.buet.ac.bd/undergraduate-courses" target="_blank" rel="noopener">B.Sc. in IPE (BUET)</a>
+            </p>
           </li>
           <li>
             <h3 class="edu-title">Higher Secondary School Certificate</h3>
@@ -627,10 +634,6 @@
           <div class="chips" style="margin-bottom:.5rem">
             <span class="chip">Calculus</span><span class="chip">Linear Algebra</span><span class="chip">Numerical Analysis</span><span class="chip">Probability &amp; Statistics</span><span class="chip">Operations Research</span><span class="chip">Quality Engineering</span><span class="chip">Decision Analysis</span><span class="chip">Differential Equations</span><span class="chip">Ergonomics &amp; Safety</span><span class="chip">Project &amp; Environment Mgmt</span><span class="chip">Supply Chain Mgmt</span><span class="chip">Industrial &amp; Business Mgmt</span>
           </div>
-          <div class="muted small-links">
-            <div>Undergrad curriculum: <a href="https://ipe.buet.ac.bd/undergraduate-courses" target="_blank" rel="noopener">B.Sc. in IPE (BUET)</a></div>
-            <div>Graduate curriculum: <a href="https://ipe.buet.ac.bd/page/msc-enggmengg-in-ipe" target="_blank" rel="noopener">M.Sc. in IPE (BUET)</a></div>
-          </div>
         </div>
       </div>
     </section>
@@ -713,7 +716,7 @@
           </div>
           <div class="actions">
             <a class="action js-cert-view" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png">View</a>
-            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" download</a>
+            <a class="action" href="assets/certificates/Fahim_Faisal_Raunaq_XCulture_10Year_Anniversary_Virtual_Conference_2020.png" download>Download</a>
           </div>
         </div>
         <div class="card">
@@ -802,6 +805,12 @@
           <p>Reviewed submissions in data-driven decision analytics, optimization, and applied machine learning.</p>
         </div>
         <div class="card">
+          <div class="kicker">Program Leadership</div>
+          <strong>X-Culture Coaching Program</strong>
+          <div class="meta">Senior Coach &amp; Coach (2020–2021)</div>
+          <p>Led coach training and top-report reviews; supported global cohort operations. (Certificates shown above.)</p>
+        </div>
+        <div class="card">
           <div class="kicker">Leadership Program</div>
           <strong>Edward M. Kennedy (EMK) Center — Campus Envoy</strong>
           <div class="meta">2019–2021 · Flagship American Space in Bangladesh</div>
@@ -830,12 +839,6 @@
           </div>
         </div>
         <div class="card">
-          <div class="kicker">Program Leadership</div>
-          <strong>X-Culture Coaching Program</strong>
-          <div class="meta">Senior Coach &amp; Coach (2020–2021)</div>
-          <p>Led coach training and top-report reviews; supported global cohort operations. (Certificates shown above.)</p>
-        </div>
-        <div class="card">
           <div class="kicker">Writing Recognition</div>
           <strong>EducationUSA — Statement of Purpose Competition</strong>
           <div class="meta">EMK Center (Dec 2019)</div>
@@ -854,23 +857,29 @@
     <section id="endorsements" class="section">
       <h2>Endorsements</h2>
       <div class="three-col">
-        <!-- Card 1: Coaching performance & reliability -->
         <div class="card">
-          <div class="kicker">Global Coaching Performance</div>
-          <blockquote class="muted">“The Coaching Program administrative team has provided very positive feedback on your performance. You consistently meet deadlines, communicate clearly, and handle coaching responsibilities with professionalism.”</blockquote>
-          <div class="meta">— X-Culture Coaching Program performance review (Coach &amp; Senior Coach, 2020)</div>
+          <div class="kicker">Coaching Performance</div>
+          <strong>X-Culture Coaching Program — Coach Review</strong>
+          <blockquote class="muted" style="margin-top:.6rem">
+            “The Coaching Program administrative team has provided very positive feedback on your performance.”
+          </blockquote>
+          <div class="meta" style="margin-top:.4rem">Consolidated Coach feedback (2020)</div>
         </div>
-        <!-- Card 2: Analytical thinking & leadership -->
         <div class="card">
-          <div class="kicker">Analytical Thinking &amp; Leadership</div>
-          <blockquote class="muted">“We would recommend Fahim for assignments requiring coaching, analytical thinking, understanding of team dynamics, and leadership. He approaches problems systematically and supports teams in a constructive, solution-oriented way.”</blockquote>
-          <div class="meta">— X-Culture Coaching Program review (global virtual teams, 2020)</div>
+          <div class="kicker">Leadership &amp; Team Dynamics</div>
+          <strong>X-Culture Coaching Program — Senior Coach Review</strong>
+          <blockquote class="muted" style="margin-top:.6rem">
+            “We would recommend Fahim for assignments requiring coaching, analytical thinking, understanding of team dynamics, and leadership.”
+          </blockquote>
+          <div class="meta" style="margin-top:.4rem">Senior Coach consolidated feedback (2020)</div>
         </div>
-        <!-- Card 3: Top cohort performance -->
         <div class="card">
-          <div class="kicker">Top 5% Performance</div>
-          <blockquote class="muted">“Strong results and excellent peer evaluations—among the highest (Top 5%) in the cohort. Fahim’s contributions stood out in both the quality of analysis and the reliability of his teamwork.”</blockquote>
-          <div class="meta">— X-Culture Academy performance summary (multinational consulting project)</div>
+          <div class="kicker">Analytical &amp; Academic Strength</div>
+          <strong>X-Culture Academy — Participant Evaluation</strong>
+          <blockquote class="muted" style="margin-top:.6rem">
+            “Strong results and excellent peer evaluations… among the highest (Top 5%) in the cohort.”
+          </blockquote>
+          <div class="meta" style="margin-top:.4rem">X-Culture Academy performance summary</div>
         </div>
       </div>
     </section>
